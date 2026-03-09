@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#111111",
+                        "accent": "#f3f3f3",
+                        "background-dark": "#18181b",
+                    },
+                    fontFamily: {
+                        "serif": ["Playfair Display", "serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-sans bg-zinc-900 text-stone-300;
+            }
+            h1, h2, h3, h4, .serif-title {
+                @apply font-serif text-white;
+            }
+        }
+        .glowing-line {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            width: 1px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-zinc-950 text-stone-100 selection:bg-stone-100 selection:text-zinc-950">
+<header class="fixed top-0 w-full z-50 transition-all duration-500 bg-zinc-950/80 backdrop-blur-sm border-b border-white/5">
+<div class="max-w-[1600px] mx-auto px-8 md:px-12 h-20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<h2 class="text-stone-100 text-sm font-sans tracking-[0.2em] uppercase font-light">The Vanguard</h2>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-[10px] tracking-[0.2em] text-stone-400 hover:text-stone-100 transition-colors uppercase" href="#">Philosophy</a>
+<a class="text-[10px] tracking-[0.2em] text-stone-400 hover:text-stone-100 transition-colors uppercase" href="#">Technology</a>
+<button class="text-[10px] tracking-[0.2em] text-stone-100 border border-white/10 px-4 py-2 hover:bg-white/5 transition-all uppercase">Initiate</button>
+</div>
+</div>
+</header>
+<main class="relative min-h-screen pt-32 pb-24 px-8 md:px-12 flex items-center justify-center">
+<div class="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 glowing-line z-0 hidden md:block"></div>
+<div class="max-w-[1400px] w-full mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
+<div class="flex flex-col justify-center pr-0 md:pr-16 text-center md:text-right">
+<span class="text-[10px] font-medium tracking-[0.4em] text-stone-500 uppercase block mb-8">The Philosophy</span>
+<h1 class="text-5xl md:text-7xl font-serif leading-[1.1] text-stone-100 mb-10">
+                The Invisible<br/><span class="italic font-light text-stone-400">Concierge.</span>
+</h1>
+<p class="text-lg md:text-xl text-stone-400 font-light leading-relaxed max-w-lg ml-auto mb-12">
+                Service that anticipates rather than reacts. We engineer digital touchpoints that disappear into the atmosphere, leaving only the experience.
+            </p>
+<div class="flex flex-col gap-8 ml-auto max-w-md">
+<div class="text-right">
+<h3 class="text-sm font-sans tracking-[0.2em] uppercase text-stone-300 mb-3 border-b border-white/10 pb-2 inline-block">Anticipatory Design</h3>
+<p class="text-stone-500 text-sm font-light">Interfaces that adapt to intent before a query is formed.</p>
+</div>
+<div class="text-right">
+<h3 class="text-sm font-sans tracking-[0.2em] uppercase text-stone-300 mb-3 border-b border-white/10 pb-2 inline-block">Ambient Utility</h3>
+<p class="text-stone-500 text-sm font-light">Tools that exist functionally within the negative space of hospitality.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-center pl-0 md:pl-16 mt-16 md:mt-0">
+<span class="text-[10px] font-medium tracking-[0.4em] text-stone-500 uppercase block mb-8 text-center md:text-left">The Technology</span>
+<div class="grid gap-6">
+<div class="glass-card p-8 md:p-10 rounded-sm">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 flex-shrink-0 border border-white/20 flex items-center justify-center rounded-sm bg-black/50">
+<span class="material-symbols-outlined text-stone-300 font-thin">qr_code_scanner</span>
+</div>
+<div>
+<h3 class="text-xl font-serif text-stone-100 mb-3">Touchpoint of Intent</h3>
+<p class="text-stone-400 text-sm font-light leading-relaxed">
+                                The evolution of the QR code. A frictionless gateway that recognizes context—time, table, and guest history—delivering a hyper-personalized digital concierge instantly.
+                            </p>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 md:p-10 rounded-sm">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 flex-shrink-0 border border-white/20 flex items-center justify-center rounded-sm bg-black/50">
+<span class="material-symbols-outlined text-stone-300 font-thin">analytics</span>
+</div>
+<div>
+<h3 class="text-xl font-serif text-stone-100 mb-3">Data Monolith</h3>
+<p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Centralized, absolute intelligence. Disparate systems synthesized into a singular, elegant dashboard that empowers staff with actionable foresight.
+                            </p>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 md:p-10 rounded-sm">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 flex-shrink-0 border border-white/20 flex items-center justify-center rounded-sm bg-black/50">
+<span class="material-symbols-outlined text-stone-300 font-thin">all_inclusive</span>
+</div>
+<div>
+<h3 class="text-xl font-serif text-stone-100 mb-3">Silent Synchronization</h3>
+<p class="text-stone-400 text-sm font-light leading-relaxed">
+                                Zero-latency integration between front-of-house intent and back-of-house execution. The architecture operates entirely behind the veil.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-12 bg-zinc-950 border-t border-white/5">
+<div class="max-w-[1600px] mx-auto px-8 md:px-12 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-6">
+<div class="text-[10px] font-sans tracking-[0.3em] uppercase text-stone-600">
+            The Vanguard <span class="mx-2">|</span> Invisible Concierge Variant
+        </div>
+<div class="text-[10px] font-sans tracking-[0.2em] text-stone-600">
+            © 2026 DIGITAL INFRASTRUCTURE AGENCY
+        </div>
+</div>
+</footer>
+
+</body></html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0a0a0a",
+                        "accent": "#c5a368",
+                        "background-light": "#fdfcfb",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "serif": ["Playfair Display", "serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-sans bg-background-dark text-stone-300;
+            }
+            h1, h2, h3, h4, .serif-title {
+                @apply font-serif text-white;
+            }
+        }
+        .text-justified {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .luxury-gradient {
+            background: linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.8) 100%);
+        }
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-black text-white">
+<header class="fixed top-0 w-full z-50 transition-all duration-500 hover:bg-black/60 glass-panel border-b-0">
+<div class="max-w-[1600px] mx-auto px-8 md:px-12 h-24 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-8 text-white">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-serif tracking-widest uppercase italic">The Asylum Agency</h2>
+</div>
+<div class="flex items-center gap-10">
+<a class="text-[10px] tracking-[0.3em] text-stone-400 hover:text-white transition-colors uppercase" href="#">GE / EN</a>
+<button class="text-[10px] tracking-[0.3em] text-white border-b border-white/20 pb-1 hover:border-white transition-all uppercase">Client Login</button>
+</div>
+</div>
+</header>
+<section class="relative min-h-screen flex flex-col justify-center items-center pb-24 px-8 md:px-12 overflow-hidden text-center">
+<div class="absolute inset-0 z-0 scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-ns0bK428kDLU2zChduJi3DPXr9RzVv35gGZ6mcxTq-VroqK5MTG1PfPiu0nIjzT1fR18LVwWqLzYdOaGersIFWKV0i6hsrqJr3FIpaJwiiboV3bwe3EYXP9Xbh4FrTHnYnH0qcbXW6Af0tpI89NKYlITtFJMXZmKqmHPOxhiqhj41AbVGuhu6q1yT2W7ZHc62kBj5_pMOg_7aymbOQ2kYf2V9vm2ts3j4cS4JBeQkpnKzqBkSA6NzMT1I-yQ1xn4Jt0xHkRQzFrl'); background-size: cover; background-position: center; filter: brightness(0.6) saturate(0.8);"></div>
+<div class="absolute inset-0 luxury-gradient z-10"></div>
+<div class="relative z-20 max-w-5xl w-full flex flex-col items-center pt-24">
+<span class="text-xs font-medium tracking-[0.5em] text-stone-400 uppercase block mb-8">Chapter I: The Arrival</span>
+<h1 class="text-6xl md:text-[8rem] font-serif leading-[0.9] text-white mb-12">
+                The Silent<br/><span class="italic font-normal">Rhythm.</span>
+</h1>
+<p class="text-xl md:text-3xl text-stone-300 max-w-3xl font-light leading-relaxed serif-title italic py-8 border-y border-white/10 my-8">
+                Orchestrating the invisible architecture of luxury hospitality.
+            </p>
+<div class="flex flex-col md:flex-row items-center gap-8 mt-12">
+<button class="glass-panel text-white px-12 py-5 font-medium tracking-[0.2em] uppercase text-xs hover:bg-white hover:text-black transition-all duration-500 border border-white/20">
+                    Request a Consultation
+                </button>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center opacity-50">
+<span class="text-[9px] tracking-[0.4em] uppercase mb-4">Scroll to explore</span>
+<span class="material-symbols-outlined text-sm">south</span>
+</div>
+</section>
+<section class="py-32 bg-black overflow-hidden relative" id="arsenal">
+<div class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVwn74CvlOfHS7J0vxWuNhb0sYi_y1ZdU9yWW91bnJC8xaPFgn91zOhZlQOXzIFCcv0CwuIPJbdgfQs1bK4NwwHP4S65PbbINtvqgmk9_SbosI1y6YuAxdj18oxSvfEJAEcVD42VXgSBd5bB-nrbWtsRYEyYU_tx6CvsKpshQrqvw3ZNEg1_222pRtm-ZDlEPt-axUU4aZXPqW4ZO1JoF-QjeezjiwKQx0CQRA0EC5D00rTuyMxd0YLf4VV9embk0hYMTf7Et1Fke_'); background-size: cover; background-position: center; filter: grayscale(100%);"></div>
+<div class="max-w-[1600px] mx-auto px-8 md:px-12 relative z-10 text-center">
+<div class="mb-24 flex flex-col items-center">
+<span class="text-stone-500 text-xs font-bold tracking-[0.4em] uppercase block mb-6">Chapter II: The Collection</span>
+<h2 class="text-5xl md:text-7xl font-serif leading-none mb-10 max-w-4xl mx-auto">A curation of meticulous digital instruments.</h2>
+<p class="text-stone-400 text-lg leading-relaxed max-w-2xl mx-auto">Designed not just for function, but for the preservation of culinary heritage through modern precision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32 max-w-6xl mx-auto">
+<div class="group glass-panel p-12 text-center border-t-0 border-b-0 border-l border-r border-white/5 hover:bg-white/5 transition-all duration-700">
+<div class="mb-10 flex justify-center">
+<span class="material-symbols-outlined text-stone-400 text-6xl font-thin group-hover:text-white transition-colors duration-500">restaurant</span>
+</div>
+<h3 class="text-3xl font-serif italic mb-6">Absolute Command</h3>
+<p class="text-stone-400 text-sm leading-relaxed max-w-xs mx-auto">Centralized operational oversight through high-fidelity digital interfaces. Control without intrusion.</p>
+</div>
+<div class="group glass-panel p-12 text-center border-t-0 border-b-0 border-l border-r border-white/5 hover:bg-white/5 transition-all duration-700 md:translate-y-16">
+<div class="mb-10 flex justify-center">
+<span class="material-symbols-outlined text-stone-400 text-6xl font-thin group-hover:text-white transition-colors duration-500">public</span>
+</div>
+<h3 class="text-3xl font-serif italic mb-6">The Heritage of the Plate</h3>
+<p class="text-stone-400 text-sm leading-relaxed max-w-xs mx-auto">Preserving culinary legacy through meticulous digital documentation and workflow preservation.</p>
+</div>
+<div class="group glass-panel p-12 text-center border-t-0 border-b-0 border-l border-r border-white/5 hover:bg-white/5 transition-all duration-700">
+<div class="mb-10 flex justify-center">
+<span class="material-symbols-outlined text-stone-400 text-6xl font-thin group-hover:text-white transition-colors duration-500">shield</span>
+</div>
+<h3 class="text-3xl font-serif italic mb-6">Unbreakable Aesthetics</h3>
+<p class="text-stone-400 text-sm leading-relaxed max-w-xs mx-auto">Where functional utility meets the uncompromising standards of high-end, editorial design.</p>
+</div>
+<div class="group glass-panel p-12 text-center border-t-0 border-b-0 border-l border-r border-white/5 hover:bg-white/5 transition-all duration-700 md:translate-y-16">
+<div class="mb-10 flex justify-center">
+<span class="material-symbols-outlined text-stone-400 text-6xl font-thin group-hover:text-white transition-colors duration-500">hub</span>
+</div>
+<h3 class="text-3xl font-serif italic mb-6">A Borderless Dining Room</h3>
+<p class="text-stone-400 text-sm leading-relaxed max-w-xs mx-auto">Global reach, local intimacy. Scaling the essence of hospitality without dilution.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-48 bg-stone-950 text-white relative flex items-center justify-center min-h-screen">
+<div class="absolute inset-0 z-0 opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-ns0bK428kDLU2zChduJi3DPXr9RzVv35gGZ6mcxTq-VroqK5MTG1PfPiu0nIjzT1fR18LVwWqLzYdOaGersIFWKV0i6hsrqJr3FIpaJwiiboV3bwe3EYXP9Xbh4FrTHnYnH0qcbXW6Af0tpI89NKYlITtFJMXZmKqmHPOxhiqhj41AbVGuhu6q1yT2W7ZHc62kBj5_pMOg_7aymbOQ2kYf2V9vm2ts3j4cS4JBeQkpnKzqBkSA6NzMT1I-yQ1xn4Jt0xHkRQzFrl'); background-size: cover; background-position: center; filter: blur(10px) brightness(0.5);"></div>
+<div class="absolute inset-0 bg-black/60 z-10"></div>
+<div class="max-w-5xl mx-auto px-8 md:px-12 text-center relative z-20">
+<h2 class="text-5xl md:text-8xl font-serif italic leading-[1.1] text-white">
+            "We do not build templates.<br/><span class="font-normal text-stone-500">We architect an ecosystem."</span>
+</h2>
+</div>
+</section>
+<section class="py-40 bg-black text-center">
+<div class="max-w-[1200px] mx-auto px-8 md:px-12">
+<div class="pb-16 mb-16 border-b border-white/10">
+<span class="text-xs font-bold tracking-[0.4em] text-stone-500 uppercase block mb-6">Chapter III: The Process</span>
+<h2 class="text-5xl md:text-7xl font-serif uppercase tracking-tight">The Architecture of<br/><span class="italic font-normal lowercase text-stone-400">Invisible Service</span></h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+<div class="group flex flex-col items-center">
+<div class="w-32 h-32 rounded-full border border-white/10 flex items-center justify-center mb-10 group-hover:bg-white/5 transition-colors duration-700">
+<span class="text-xl font-serif italic text-white">01</span>
+</div>
+<h4 class="text-xl font-serif mb-6 uppercase tracking-widest text-white">Sensing</h4>
+<p class="text-stone-500 font-light leading-relaxed text-sm max-w-xs text-center">Advanced transaction mapping that understands the rhythm of the floor before the guest arrives.</p>
+</div>
+<div class="group flex flex-col items-center">
+<div class="w-32 h-32 rounded-full border border-white/10 flex items-center justify-center mb-10 group-hover:bg-white/5 transition-colors duration-700">
+<span class="text-xl font-serif italic text-white">02</span>
+</div>
+<h4 class="text-xl font-serif mb-6 uppercase tracking-widest text-white">Flow</h4>
+<p class="text-stone-500 font-light leading-relaxed text-sm max-w-xs text-center">Interactions so seamless they disappear into the service flow, empowering staff without distraction.</p>
+</div>
+<div class="group flex flex-col items-center">
+<div class="w-32 h-32 rounded-full border border-white/10 flex items-center justify-center mb-10 group-hover:bg-white/5 transition-colors duration-700">
+<span class="text-xl font-serif italic text-white">03</span>
+</div>
+<h4 class="text-xl font-serif mb-6 uppercase tracking-widest text-white">Legacy</h4>
+<p class="text-stone-500 font-light leading-relaxed text-sm max-w-xs text-center">Automating the final transaction touchpoint to ensure the lasting memory is the experience.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-48 bg-stone-900 text-white relative">
+<div class="absolute inset-0 bg-black/80"></div>
+<div class="max-w-4xl mx-auto px-8 md:px-12 text-center relative z-10">
+<span class="text-xs font-bold tracking-[0.4em] text-stone-500 uppercase block mb-12">Chapter IV: The Commitment</span>
+<h2 class="text-6xl md:text-8xl font-serif leading-none text-white mb-16">We do not do <span class="italic text-stone-500">easy.</span></h2>
+<div class="space-y-12">
+<p class="text-2xl md:text-3xl font-serif leading-relaxed text-stone-300 italic">
+                    Standard is the enemy of the exceptional. We don't build websites; we engineer gravity.
+                </p>
+<p class="text-stone-400 text-lg leading-relaxed max-w-2xl mx-auto font-light">
+                    In a world of fleeting digital noise, we provide the permanent structure for those who treat service as a secular religion. Every pixel is a protocol. Every interaction is a promise kept. We are the Asylum for those who are obsessively dedicated to the craft of hospitality.
+                </p>
+<div class="pt-16">
+<button class="glass-panel text-white px-14 py-6 font-medium tracking-[0.3em] uppercase text-xs hover:bg-white hover:text-black transition-all duration-500 border border-white/20 inline-flex items-center gap-4">
+                        Initiate the Process
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-24 bg-black border-t border-white/10">
+<div class="max-w-[1600px] mx-auto px-8 md:px-12 text-center">
+<div class="mb-20">
+<h2 class="text-4xl font-serif italic text-white mb-6">The Asylum Agency</h2>
+<p class="text-stone-500 text-xs leading-loose uppercase tracking-[0.3em]">Architects of high-end hospitality digital infrastructure.</p>
+</div>
+<div class="flex flex-col md:flex-row justify-center items-center gap-12 mb-20">
+<nav class="flex gap-8">
+<a class="text-[10px] font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">Architecture</a>
+<a class="text-[10px] font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">Agency Portfolio</a>
+<a class="text-[10px] font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
+</nav>
+<div class="w-px h-8 bg-white/10 hidden md:block"></div>
+<nav class="flex gap-8">
+<a class="text-[10px] font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">Instagram</a>
+<a class="text-[10px] font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">LinkedIn</a>
+</nav>
+</div>
+<div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-8 text-[9px] font-medium tracking-[0.5em] text-stone-600 uppercase">
+<span>Est. 2026 — Built on heritage.</span>
+<span class="hidden md:inline">•</span>
+<span>Copyright © 2026 The Asylum Agency</span>
+</div>
+</div>
+</footer>
+</body></html>

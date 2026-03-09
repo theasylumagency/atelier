@@ -1,0 +1,119 @@
+{
+    "nav": {
+        "login": "Client Login",
+        "agency": "The Asylum Agency",
+        "philosophy": "Philosophy",
+        "technology": "Technology",
+        "initiate": "Initiate",
+        "panel": "Simulation"
+    },
+    "hero": {
+        "chapter": "Chapter I: The Arrival",
+        "title": "The Silent<br/><span class=\"italic font-normal\">Rhythm.</span>",
+        "subtitle": "Orchestrating the invisible architecture of luxury hospitality.",
+        "cta": "Request a Consultation",
+        "scroll": "Scroll to explore"
+    },
+    "features": {
+        "chapter": "Chapter II: The Collection",
+        "title": "A curation of meticulous digital instruments.",
+        "desc": "Designed not just for function, but for the preservation of culinary heritage through modern precision.",
+        "f1_title": "Absolute Command",
+        "f1_desc": "Centralized operational oversight through high-fidelity digital interfaces. Control without intrusion.",
+        "f2_title": "The Heritage of the Plate",
+        "f2_desc": "Preserving culinary legacy through meticulous digital documentation and workflow preservation.",
+        "f3_title": "Unbreakable Aesthetics",
+        "f3_desc": "Where functional utility meets the uncompromising standards of high-end, editorial design.",
+        "f4_title": "A Borderless Dining Room",
+        "f4_desc": "Global reach, local intimacy. Scaling the essence of hospitality without dilution."
+    },
+    "transition": {
+        "text": "\"We do not build templates.<br/><span class=\"font-normal text-stone-500\">We architect an ecosystem.\"</span>"
+    },
+    "process": {
+        "chapter": "Chapter III: The Process",
+        "title": "The Architecture of<br/><span class=\"italic font-normal lowercase text-stone-400\">Invisible Service</span>",
+        "steps": [
+            {
+                "num": "01",
+                "title": "Sensing",
+                "desc": "Advanced transaction mapping that understands the rhythm of the floor before the guest arrives."
+            },
+            {
+                "num": "02",
+                "title": "Flow",
+                "desc": "Interactions so seamless they disappear into the service flow, empowering staff without distraction."
+            },
+            {
+                "num": "03",
+                "title": "Legacy",
+                "desc": "Automating the final transaction touchpoint to ensure the lasting memory is the experience."
+            }
+        ]
+    },
+    "architecture": {
+        "phil_chapter": "The Philosophy",
+        "phil_title": "The Invisible<br/><span class=\"italic font-light text-stone-400\">Concierge.</span>",
+        "phil_desc": "Service that anticipates rather than reacts. We engineer digital touchpoints that disappear into the atmosphere, leaving only the experience.",
+        "box1_title": "Anticipatory Design",
+        "box1_desc": "Interfaces that adapt to intent before a query is formed.",
+        "box2_title": "Ambient Utility",
+        "box2_desc": "Tools that exist functionally within the negative space of hospitality.",
+        "tech_chapter": "The Technology",
+        "tech1_title": "Touchpoint of Intent",
+        "tech1_desc": "The evolution of the QR code. A frictionless gateway that recognizes context—time, table, and guest history—delivering a hyper-personalized digital concierge instantly.",
+        "tech2_title": "Data Monolith",
+        "tech2_desc": "Centralized, absolute intelligence. Disparate systems synthesized into a singular, elegant dashboard that empowers staff with actionable foresight.",
+        "tech3_title": "Silent Synchronization",
+        "tech3_desc": "Zero-latency integration between front-of-house intent and back-of-house execution. The architecture operates entirely behind the veil."
+    },
+    "manifesto": {
+        "chapter": "Chapter IV: The Commitment",
+        "title": "We do not do <span class=\"italic text-stone-500\">easy.</span>",
+        "desc1": "Standard is the enemy of the exceptional. We don't build websites; we engineer gravity.",
+        "desc2": "In a world of fleeting digital noise, we provide the permanent structure for those who treat service as a secular religion. Every pixel is a protocol. Every interaction is a promise kept. We are the Asylum for those who are obsessively dedicated to the craft of hospitality.",
+        "cta": "Initiate the Process"
+    },
+    "footer": {
+        "tagline": "Architects of high-end hospitality digital infrastructure.",
+        "architecture": "Architecture",
+        "portfolio": "Agency Portfolio",
+        "privacy": "Privacy Policy",
+        "instagram": "Instagram",
+        "linkedin": "LinkedIn",
+        "bottom1": "Est. 2026 — Built on heritage.",
+        "bottom2": "Copyright © 2026 The Asylum Agency"
+    },
+    "panel": {
+        "title": "Control Panel Simulation",
+        "subtitle": "Real-time menu ecosystem management",
+        "live": "Live Visibility",
+        "soldOut": "86 (Sold Out)",
+        "vegan": "Vegan",
+        "signature": "Signature",
+        "awaitingAsset": "Awaiting Asset",
+        "menuArch": "Menu Architecture",
+        "newCategory": "+ New Category",
+        "deployDish": "+ Deploy New Dish",
+        "editAsset": "Edit Asset",
+        "newAsset": "Initialize New Asset",
+        "dropRawAsset": "Drop Raw Asset",
+        "unitPrice": "Unit Price",
+        "vegetarian": "Vegetarian",
+        "chefsPick": "Chef's Pick",
+        "nomenclature": "Nomenclature",
+        "composition": "Composition",
+        "heritage": "The Heritage",
+        "commitToLiveServer": "Commit to Live Server",
+        "styleCalibration": "Style Calibration",
+        "traditional": "Traditional & Warm (Heritage / Nostalgia)",
+        "minimalist": "Modern & Minimalist (Clean / Technique)",
+        "highEnd": "High-End / Fine Dining (Exclusive)",
+        "name": "Enter Title",
+        "description": "Comma separated ingredients",
+        "story": "The Narrative behind the dish...",
+        "aiSynthesize": "AI Synthesize",
+        "generate": "Generate",
+        "save": "Save"
+    }
+}
