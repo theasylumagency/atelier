@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000000",
+                        "accent": "#FFBF00",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#0A0A0A",
+                        "neutral-dark": "#1A1A1A",
+                        "border-dark": "#2A2A2A"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .floor-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+        }
+        .pulse-amber {
+            box-shadow: 0 0 20px rgba(255, 191, 0, 0.4);
+            border: 1px solid rgba(255, 191, 0, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-border-dark px-10 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-6 text-accent">
+<span class="material-symbols-outlined text-3xl">architecture</span>
+</div>
+<div>
+<h2 class="text-xl font-bold tracking-tight">Atelier</h2>
+<p class="text-[10px] uppercase tracking-widest text-slate-500">Floor Sync Simulation v2.4</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+<a class="text-slate-100 border-b border-accent pb-1" href="#">Dashboard</a>
+<a class="hover:text-slate-100 transition-colors" href="#">Spatial Config</a>
+<a class="hover:text-slate-100 transition-colors" href="#">Analytics</a>
+<a class="hover:text-slate-100 transition-colors" href="#">Staffing</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-neutral-dark border border-border-dark text-slate-300">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-neutral-dark border border-border-dark text-slate-300">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<div class="size-10 rounded-full border border-border-dark overflow-hidden">
+<img alt="User profile" data-alt="Sophisticated male portrait professional profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXUzB9X7gY2_cz5r8C716mGazz0jNUtXDslLgdc8ANSWPj_Fe9OgLj7b4N2Bvetdf1nkEJkgjuyCO0NW7K9_TJxwbc9xquvbGcnrIfDHy57oUr6Y2yV3WYM03xOv1OAOcBzFYUfzjFfncDIib0gIhZBOKV_K4pWvSS-ld2cEHHJufA90G0qltfmcef3Lq9WRIgjE7Dm28nZvbarGARM0ovuWAubnzKZOFmC36PoEVwxHTAlKS7pLZ6zGf_yHE3mSlzbPjqzJ3vrt_x"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 flex-col lg:flex-row p-6 gap-6 max-w-[1600px] mx-auto w-full">
+<!-- Left Side: Mobile Mockup Editorial Menu -->
+<section class="w-full lg:w-[400px] flex flex-col items-center">
+<div class="relative w-[320px] h-[650px] bg-black rounded-[3rem] border-[8px] border-neutral-800 shadow-2xl overflow-hidden">
+<!-- Notch -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-neutral-800 rounded-b-2xl z-20"></div>
+<!-- Mobile Content -->
+<div class="h-full w-full bg-[#0F0F0F] flex flex-col overflow-y-auto no-scrollbar">
+<div class="pt-12 px-6 pb-6">
+<h3 class="text-[10px] uppercase tracking-[0.3em] text-accent mb-2">Degustation</h3>
+<h1 class="text-3xl font-light leading-tight">The Autumn<br/><span class="font-bold italic">Atelier</span></h1>
+</div>
+<div class="px-6 space-y-8">
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-xl mb-3 aspect-[4/5]">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Exquisite minimalist culinary dish with gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-a-aK2nyGGiqYUnGl9ATdqVk0sJmXX5ncOFm-Jehm--BxNX6SKp899DOoUGQK7v_s3Ga6pv5IWEhaf0tWkwzipUerFUMo-GGx296tnTzdF0OIpels7MPxfkoOKn8Y_WZKEBQkFvHTuaXn4TRa9PPLbJqYFJIRFVU5xzpUF-l3mi6TkxImYVNsQlzwhQKWgBaW9N7SgJgYtlkt_kSE4lGQ6YBE7qm8CRgx1vkqIDEiTdrioHiNMYvjh7SmI15MZhUgNOlNVlkg5yne"/>
+</div>
+<div class="flex justify-between items-end border-b border-white/10 pb-2">
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest">Entrée</p>
+<h4 class="text-lg">Poached Diver Scallops</h4>
+</div>
+<p class="text-accent font-light">42</p>
+</div>
+</div>
+<div class="group cursor-pointer opacity-80 hover:opacity-100">
+<div class="flex justify-between items-end border-b border-white/10 pb-2">
+<div>
+<p class="text-xs text-slate-500 uppercase tracking-widest">Main</p>
+<h4 class="text-lg">A5 Miyazaki Wagyu</h4>
+</div>
+<p class="text-accent font-light">125</p>
+</div>
+<p class="text-[10px] text-slate-400 mt-2 leading-relaxed">Smoked bone marrow, fermented truffle jus, charcoal leek.</p>
+</div>
+<div class="group cursor-pointer">
+<button class="w-full py-4 mt-4 bg-white text-black text-xs font-bold uppercase tracking-[0.2em] rounded-sm">
+                                    Fire Selection
+                                </button>
+</div>
+</div>
+<div class="mt-12 px-6 pb-12">
+<div class="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8"></div>
+<p class="text-[10px] text-center text-slate-500 uppercase tracking-widest">Service Protocol Active</p>
+</div>
+</div>
+</div>
+<p class="mt-4 text-xs text-slate-500 font-medium">Guest Interface: Tablet v.4</p>
+</section>
+<!-- Right Side: Spatial Protocol Map -->
+<section class="flex-1 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<div>
+<h2 class="text-2xl font-light tracking-tight">Spatial Protocol: <span class="font-bold">Main Floor</span></h2>
+<p class="text-sm text-slate-500">Real-time occupancy and heat-map sync</p>
+</div>
+<div class="flex gap-3">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-dark border border-border-dark">
+<span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-medium">Live Feed</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-dark border border-border-dark">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="text-xs font-medium">Layer: Service</span>
+</div>
+</div>
+</div>
+<!-- Map Grid Area -->
+<div class="flex-1 relative rounded-xl border border-border-dark bg-[#0D0D0D] floor-grid overflow-hidden min-h-[500px]">
+<!-- Table 04 - THE PULSING TABLE -->
+<div class="absolute top-[20%] left-[15%] group">
+<div class="w-24 h-24 rounded-full border border-accent/30 bg-accent/5 pulse-amber flex items-center justify-center relative">
+<div class="text-[10px] font-bold text-accent uppercase">T-04</div>
+<!-- Pulse effect -->
+<div class="absolute inset-0 rounded-full border border-accent animate-ping opacity-20"></div>
+<!-- Digital Ticket -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-48 glass-panel rounded-lg p-3 shadow-2xl z-30 border border-accent/50">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[9px] bg-accent text-black px-1.5 py-0.5 font-bold rounded">FIRED</span>
+<span class="text-[9px] text-slate-400">19:42:01</span>
+</div>
+<h5 class="text-xs font-bold text-white mb-1">Miyazaki Wagyu (x2)</h5>
+<p class="text-[10px] text-slate-400 border-t border-white/10 pt-1">Notes: Medium Rare, No Truffle.</p>
+</div>
+</div>
+<!-- Connection Line -->
+<div class="absolute top-0 left-1/2 w-px h-12 bg-accent/50 -translate-y-full"></div>
+</div>
+<!-- Other Tables -->
+<div class="absolute top-[30%] left-[45%] w-32 h-16 rounded-xl border border-slate-700 bg-slate-800/20 flex items-center justify-center">
+<span class="text-[10px] text-slate-600 font-bold uppercase">T-12</span>
+</div>
+<div class="absolute top-[60%] left-[25%] w-20 h-20 rounded-lg border border-slate-700 bg-slate-800/20 flex items-center justify-center">
+<span class="text-[10px] text-slate-600 font-bold uppercase">T-08</span>
+</div>
+<div class="absolute top-[15%] left-[70%] w-24 h-24 rounded-full border border-slate-700 bg-slate-800/20 flex items-center justify-center">
+<span class="text-[10px] text-slate-600 font-bold uppercase">T-01</span>
+</div>
+<div class="absolute top-[55%] left-[65%] w-40 h-20 rounded-full border border-slate-700 bg-slate-800/20 flex items-center justify-center">
+<span class="text-[10px] text-slate-600 font-bold uppercase">Booth B-1</span>
+</div>
+<!-- Architectural elements (Walls) -->
+<div class="absolute inset-x-8 top-8 h-1 bg-slate-800/40"></div>
+<div class="absolute inset-y-8 right-8 w-1 bg-slate-800/40"></div>
+<div class="absolute inset-y-8 left-8 w-1 bg-slate-800/40"></div>
+<!-- Legend -->
+<div class="absolute bottom-6 left-6 flex flex-col gap-2 glass-panel p-4 rounded-lg">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-accent"></div>
+<span class="text-[10px] uppercase tracking-wider text-slate-300">Active Order</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-slate-700"></div>
+<span class="text-[10px] uppercase tracking-wider text-slate-300">Available</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full border border-slate-500"></div>
+<span class="text-[10px] uppercase tracking-wider text-slate-300">Occupied</span>
+</div>
+</div>
+</div>
+<!-- Bottom Stats Bar -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-neutral-dark border border-border-dark p-4 rounded-xl">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Total Covers</p>
+<p class="text-2xl font-bold">148</p>
+</div>
+<div class="bg-neutral-dark border border-border-dark p-4 rounded-xl">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Avg Turn Time</p>
+<p class="text-2xl font-bold">1h 12m</p>
+</div>
+<div class="bg-neutral-dark border border-border-dark p-4 rounded-xl">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Service Efficiency</p>
+<p class="text-2xl font-bold text-accent">94%</p>
+</div>
+<div class="bg-neutral-dark border border-border-dark p-4 rounded-xl">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Server Pacing</p>
+<div class="flex items-end gap-1 h-8 mt-1">
+<div class="w-full bg-accent/20 h-1/2 rounded-t-sm"></div>
+<div class="w-full bg-accent/40 h-3/4 rounded-t-sm"></div>
+<div class="w-full bg-accent h-full rounded-t-sm"></div>
+<div class="w-full bg-accent/60 h-2/3 rounded-t-sm"></div>
+<div class="w-full bg-accent/30 h-1/3 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Subtle Footer -->
+<footer class="px-10 py-6 border-t border-border-dark flex justify-between items-center text-[10px] uppercase tracking-[0.2em] text-slate-600">
+<div>Atelier Ecosystem © 2024</div>
+<div class="flex gap-6">
+<span>Encryption: AES-256</span>
+<span>Latency: 12ms</span>
+<span>System: Optimal</span>
+</div>
+</footer>
+</div>
+</body></html>

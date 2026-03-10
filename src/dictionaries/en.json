@@ -5,7 +5,8 @@
         "philosophy": "Philosophy",
         "technology": "Technology",
         "initiate": "Initiate",
-        "panel": "Simulation"
+        "panel": "Simulation",
+        "floorSync": "Floor Sync"
     },
     "hero": {
         "chapter": "Chapter I: The Arrival",
@@ -115,5 +116,23 @@
         "aiSynthesize": "AI Synthesize",
         "generate": "Generate",
         "save": "Save"
+    },
+    "floorSync": {
+        "title": "The Spatial Protocol",
+        "subtitle": "Experience the frictionless connection between the guest's mobile device and the kitchen's real-time floor board. No waiters, no delays. Just absolute command.",
+        "table": "Table",
+        "menuTitle": "Georgian Heritage",
+        "main": "Main",
+        "wine": "Wine",
+        "wineDesc": "Deep, dark, and complex. Decanted 30 minutes prior to pouring.",
+        "fireOrder": "Fire to Kitchen",
+        "settleBill": "Settle Bill (152 ₾)",
+        "resetSim": "Reset Simulation",
+        "transactionComplete": "Transaction Complete",
+        "serviceProtocol": "Service Protocol Active",
+        "floorBoard": "Floor Board",
+        "realTime": "Real-time spatial sync",
+        "liveFeed": "Live",
+        "winterCollectionDesc": "Seasonal menu reflecting the beauty and richness of Georgia's nature. Each dish is a work of art created with the finest ingredients and traditional recipes."
     }
 }

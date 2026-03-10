@@ -78,6 +78,10 @@
   }
 }
 
+.categories-mobile::-webkit-scrollbar {
+  height: 8px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
