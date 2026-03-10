@@ -43,12 +43,6 @@ export default async function Page(props: { params: Promise<{ locale: 'en' | 'ka
             <Features dict={dict} />
             <Transition dict={dict} />
             <Process dict={dict} />
-
-            {/* The Aha! Moment Embed */}
-            <div className="border-t border-b border-white/5 bg-black">
-                <FloorSync dict={dict} initialCategories={categories} initialDishes={dishes} locale={params.locale} />
-            </div>
-
             <Architecture dict={dict} />
             <Manifesto dict={dict} />
             <Footer dict={dict} />
