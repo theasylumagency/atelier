@@ -4,11 +4,44 @@ import React, { useState, useEffect, useRef } from 'react';
 
 type OrderStatus = 'browsing' | 'fired' | 'settled';
 type ViewState = 'menu' | 'details' | 'cart';
+type FloorState = 'browsing' | 'ordering' | 'fired' | 'settled';
 
 interface CartItem {
     dish: any;
     quantity: number;
 }
+const DISH_FALLBACK_SRC = '/images/fallbacks/dish-placeholder.svg';
+
+const UI = {
+    en: {
+        emptySelection: 'Your selection is empty.',
+        confirmOrder: 'Confirm Order',
+        clearTable: 'Clear Table',
+        complete: 'Complete',
+        guestInitiated: 'Guest initiated order.',
+        menu: 'Menu',
+        cart: 'Cart',
+        browsing: 'Browsing',
+        ordering: 'Ordering',
+        sent: 'Sent',
+        completed: 'Completed',
+        tableStarted: 'The menu opened and order started.',
+    },
+    ka: {
+        emptySelection: 'არჩევანი არ არის დამატებული.',
+        confirmOrder: 'შეკვეთის დადასტურება',
+        clearTable: 'მაგიდის გასუფთავება',
+        complete: 'დასრულებულია',
+        guestInitiated: 'სტუმარმა დაიწყო შეკვეთა.',
+        menu: 'მენიუ',
+        cart: 'კალათა',
+        browsing: 'ათვალიერებს',
+        ordering: 'უკვეთავს',
+        sent: 'გაგზავნილია',
+        completed: 'დასრულებულია',
+        tableStarted: 'მენიუ გახსნა და შეკვეთა დაიწყო.',
+    },
+} as const;
 
 export default function FloorSync({ dict, initialCategories = [], initialDishes = [], locale = 'en' }: { dict: any, initialCategories?: any[], initialDishes?: any[], locale?: string }) {
     const [status, setStatus] = useState<OrderStatus>('browsing');
@@ -16,10 +49,64 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
     const [selectedDish, setSelectedDish] = useState<any | null>(null);
     const [cart, setCart] = useState<CartItem[]>([]);
 
-    const [selectedCategory, setSelectedCategory] = useState<string>("cat_0001");
+    const [selectedCategory, setSelectedCategory] = useState<string>('all');
     const [time, setTime] = useState<string>('');
     const scrollRef = useRef<HTMLDivElement>(null);
+    const seededRef = useRef(false);
+    const ui = locale === 'ka' ? UI.ka : UI.en;
 
+    const addToCart = (dish: any) => {
+        setCart((prev) => {
+            const existing = prev.find((item) => item.dish.id === dish.id);
+            if (existing) {
+                return prev.map((item) =>
+                    item.dish.id === dish.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                );
+            }
+            return [...prev, { dish, quantity: 1 }];
+        });
+    };
+
+    const decreaseQty = (dishId: string) => {
+        setCart((prev) =>
+            prev
+                .map((item) =>
+                    item.dish.id === dishId
+                        ? { ...item, quantity: item.quantity - 1 }
+                        : item
+                )
+                .filter((item) => item.quantity > 0)
+        );
+    };
+
+    const removeFromCart = (dishId: string) => {
+        setCart((prev) => prev.filter((item) => item.dish.id !== dishId));
+    };
+
+    const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+    const totalPrice = cart.reduce(
+        (acc, item) => acc + item.quantity * (item.dish.priceMinor / 100),
+        0
+    );
+    const floorState: FloorState =
+        status === 'settled'
+            ? 'settled'
+            : status === 'fired'
+                ? 'fired'
+                : cart.length > 0
+                    ? 'ordering'
+                    : 'browsing';
+
+    const floorStateLabel =
+        floorState === 'settled'
+            ? ui.completed
+            : floorState === 'fired'
+                ? ui.sent
+                : floorState === 'ordering'
+                    ? ui.ordering
+                    : ui.browsing;
     useEffect(() => {
         if (scrollRef.current) {
             scrollRef.current.scrollTo({ top: 300, behavior: 'smooth' });
@@ -37,7 +124,6 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
         const interval = setInterval(updateTime, 1000);
         return () => clearInterval(interval);
     }, []);
-
     // Filter active items
     const activeDishes = initialDishes.filter(d => d.status === 'active' && !d.soldOut).sort((a, b) => a.order - b.order);
     const activeCategories = initialCategories.filter(c =>
@@ -45,11 +131,42 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
     ).sort((a, b) => a.order - b.order);
 
     const displayedDishes = activeDishes.filter(d => selectedCategory === 'all' || d.categoryId === selectedCategory);
+    useEffect(() => {
+        if (seededRef.current) return;
+        if (!activeDishes.length) return;
 
+        const featured = activeDishes[0];
+
+        setCart([{ dish: featured, quantity: 1 }]);
+        setSelectedCategory(featured.categoryId);
+        setStatus('browsing');
+        setActiveView('menu');
+
+        seededRef.current = true;
+    }, [activeDishes]);
+    useEffect(() => {
+        if (
+            selectedCategory !== 'all' &&
+            !activeCategories.some((category) => category.id === selectedCategory)
+        ) {
+            setSelectedCategory('all');
+        }
+    }, [activeCategories, selectedCategory]);
     const handleAction = () => {
-        if (status === 'browsing') setStatus('fired');
-        else if (status === 'fired') setStatus('settled');
-        else setStatus('browsing'); // Reset loop for demo purposes
+        if (status === 'browsing') {
+            if (cart.length === 0) return;
+            setStatus('fired');
+            return;
+        }
+
+        if (status === 'fired') {
+            setStatus('settled');
+            return;
+        }
+
+        setStatus('browsing');
+        setCart([]);
+        setActiveView('menu');
     };
 
     return (
@@ -117,7 +234,7 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                         <p className="text-[10px] tracking-normal text-stone-500 mb-2 pt-4">{dict.floorSync?.winterCollectionDesc || 'Winter Collection'}</p>
                                     </div>
                                     {/* Horizontal Categories */}
-                                    <div className="categories-mobile border-t border-white/5 bg-[#0F0F0F] pt-2 mt-2 flex sticky top-[56px] z-9 items-center overflow-x-auto custom-scrollbar flex-shrink-0 px-6 gap-3 whitespace-nowrap border-b border-white/5 pb-3">
+                                    <div className="categories-mobile border-t border-white/5 bg-[#0F0F0F] pt-2 mt-2 flex sticky top-[56px] z-[9] items-center overflow-x-auto custom-scrollbar flex-shrink-0 px-6 gap-3 whitespace-nowrap border-b border-white/5 pb-3">
                                         <button
                                             onClick={() => setSelectedCategory('all')}
                                             className={`text-[10px] uppercase tracking-widest px-4 py-2 rounded-full transition-all duration-300 ${selectedCategory === 'all' ? 'bg-white text-black font-bold' : 'text-stone-400 hover:text-white bg-white/5 hover:bg-white/10'}`}
@@ -166,7 +283,10 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                                             {dish.chefsPick && <span className="px-2 py-1 bg-amber-500/20 text-amber-500 backdrop-blur-md border border-amber-500/30 text-[9px] uppercase tracking-widest rounded-full shadow-lg">Signature</span>}
                                                         </div>
                                                         <button
-                                                            onClick={(e) => { e.stopPropagation(); setCart([...cart, { dish, quantity: 1 }]); }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                addToCart(dish);
+                                                            }}
                                                             className="h-8 w-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-amber-500 hover:text-black hover:border-amber-500 transition-all duration-300 transform group-hover:scale-110"
                                                         >
                                                             <span className="material-symbols-outlined text-[18px]">add</span>
@@ -195,7 +315,7 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                     {selectedDish && (
                                         <>
                                             {/* Hero Image Background */}
-                                            <div className="absolute inset-0 w-full h-[60%] bg-cover bg-center bg-neutral-900 border-b border-white/10" style={{ backgroundImage: `url(${selectedDish.photo?.small ? `/uploads/dishes/${selectedDish.photo.small}` : "https://images.unsplash.com/photo-1616421061986-7a8efc9883ea?q=80&w=800&auto=format&fit=crop"})` }}>
+                                            <div className="absolute inset-0 w-full h-[60%] bg-cover bg-center bg-neutral-900 border-b border-white/10" style={{ backgroundImage: `url(${selectedDish.photo?.small ? `/uploads/dishes/${selectedDish.photo.small}` : DISH_FALLBACK_SRC})` }}>
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                                             </div>
 
@@ -232,7 +352,10 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                             {/* Action Bar */}
                                             <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/90 to-transparent p-6 pt-12 flex-shrink-0 pb-20">
                                                 <button
-                                                    onClick={() => { setCart([...cart, { dish: selectedDish, quantity: 1 }]); setActiveView('menu'); }}
+                                                    onClick={() => {
+                                                        addToCart(selectedDish);
+                                                        setActiveView('menu');
+                                                    }}
                                                     className="w-full bg-white text-black h-14 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-stone-200 transition-all duration-300 flex items-center justify-center gap-3 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transform hover:-translate-y-1"
                                                 >
                                                     <span className="material-symbols-outlined text-[16px]">add</span>
@@ -260,21 +383,43 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                         {cart.length === 0 ? (
                                             <div className="h-full flex flex-col items-center justify-center text-stone-500 text-xs uppercase tracking-widest p-6 text-center opacity-50">
                                                 <span className="material-symbols-outlined text-4xl mb-4 font-light">receipt_long</span>
-                                                Your selection is empty.
+                                                {ui.emptySelection}
                                             </div>
                                         ) : (
                                             <div className="space-y-6">
-                                                {cart.map((item, idx) => (
-                                                    <div key={idx} className="flex gap-4 items-center p-3 rounded-2xl bg-[#111] border border-white/5 shadow-lg group hover:border-white/10 transition-colors">
-                                                        <div className="h-16 w-16 flex-shrink-0 bg-neutral-900 rounded-xl bg-cover bg-center shadow-inner" style={{ backgroundImage: `url(${item.dish.photo?.small ? `/uploads/dishes/${item.dish.photo.small}` : "https://images.unsplash.com/photo-1616421061986-7a8efc9883ea?q=80&w=800&auto=format&fit=crop"})` }}></div>
+                                                {cart.map((item) => (
+                                                    <div key={item.dish.id} className="flex gap-4 items-center p-3 rounded-2xl bg-[#111] border border-white/5 shadow-lg group hover:border-white/10 transition-colors">
+                                                        <div className="h-16 w-16 flex-shrink-0 bg-neutral-900 rounded-xl bg-cover bg-center shadow-inner" style={{ backgroundImage: `url(${item.dish.photo?.small ? `/uploads/dishes/${item.dish.photo.small}` : DISH_FALLBACK_SRC})` }}></div>
                                                         <div className="flex-1 flex flex-col justify-center h-full">
                                                             <div className="flex justify-between items-start">
                                                                 <h3 className="text-sm font-light tracking-tight pr-2 leading-tight line-clamp-2">{item.dish.title[locale as keyof typeof item.dish.title] || item.dish.title.en}</h3>
                                                                 <span className="text-xs font-medium text-amber-500 whitespace-nowrap">{item.dish.priceMinor / 100} {item.dish.currency === 'GEL' ? '₾' : '$'}</span>
                                                             </div>
-                                                            <div className="flex justify-between items-end mt-2">
-                                                                <span className="text-[9px] uppercase tracking-widest text-stone-400 bg-white/5 px-2 py-0.5 rounded-md">Qty: {item.quantity}</span>
-                                                                <button onClick={() => setCart(cart.filter((_, i) => i !== idx))} className="h-6 w-6 rounded-full bg-red-500/10 text-red-500/70 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-300">
+                                                            <div className="flex justify-between items-end mt-2 gap-3">
+                                                                <div className="flex items-center gap-2">
+                                                                    <button
+                                                                        onClick={() => decreaseQty(item.dish.id)}
+                                                                        className="h-6 w-6 rounded-full bg-white/5 text-stone-300 hover:bg-white/10 flex items-center justify-center transition-all duration-300"
+                                                                    >
+                                                                        <span className="material-symbols-outlined text-[12px]">remove</span>
+                                                                    </button>
+
+                                                                    <span className="text-[9px] uppercase tracking-widest text-stone-400 bg-white/5 px-2 py-0.5 rounded-md">
+                                                                        Qty: {item.quantity}
+                                                                    </span>
+
+                                                                    <button
+                                                                        onClick={() => addToCart(item.dish)}
+                                                                        className="h-6 w-6 rounded-full bg-white/5 text-stone-300 hover:bg-white/10 flex items-center justify-center transition-all duration-300"
+                                                                    >
+                                                                        <span className="material-symbols-outlined text-[12px]">add</span>
+                                                                    </button>
+                                                                </div>
+
+                                                                <button
+                                                                    onClick={() => removeFromCart(item.dish.id)}
+                                                                    className="h-6 w-6 rounded-full bg-red-500/10 text-red-500/70 hover:bg-red-500 hover:text-white flex items-center justify-center transition-all duration-300"
+                                                                >
                                                                     <span className="material-symbols-outlined text-[12px]">close</span>
                                                                 </button>
                                                             </div>
@@ -287,7 +432,7 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                                     <div className="flex justify-between items-center text-white mb-2">
                                                         <span className="text-[10px] uppercase font-medium tracking-[0.2em] text-stone-400">{dict.floorSync?.total || 'Total'}</span>
                                                         <span className="text-xl font-light tracking-tight text-white">
-                                                            {cart.reduce((acc, item) => acc + (item.dish.priceMinor / 100), 0).toFixed(2)} <span className="text-sm text-stone-400">₾</span>
+                                                            {totalPrice.toFixed(2)} <span className="text-sm text-stone-400">₾</span>
                                                         </span>
                                                     </div>
 
@@ -322,13 +467,13 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                                 <div className="flex justify-around items-center max-w-lg mx-auto">
                                     <button onClick={() => setActiveView('menu')} className={`flex flex-col items-center gap-1 group transition-colors ${activeView === 'menu' ? 'text-amber-500' : 'text-stone-500'}`}>
                                         <span className={`material-symbols-outlined text-[18px] ${activeView === 'menu' ? 'fill-current' : ''}`}>restaurant_menu</span>
-                                        <span className="text-[8px] uppercase tracking-widest">Menu</span>
+                                        <span className="text-[8px] uppercase tracking-widest">{ui.menu}</span>
                                     </button>
                                     <button onClick={() => setActiveView('cart')} className={`flex flex-col items-center gap-1 relative transition-colors ${activeView === 'cart' ? 'text-amber-500' : 'text-stone-500'}`}>
                                         <span className={`material-symbols-outlined text-[18px] ${activeView === 'cart' ? 'fill-current' : ''}`}>shopping_bag</span>
-                                        <span className="text-[8px] uppercase tracking-widest">Cart</span>
-                                        {cart.length > 0 && (
-                                            <span className="absolute -top-1 -right-2 flex h-3 w-3 items-center justify-center rounded-full bg-amber-500 text-[8px] font-bold text-black border border-[#0A0A0A]">{cart.length}</span>
+                                        <span className="text-[8px] uppercase tracking-widest">{ui.cart}</span>
+                                        {totalItems > 0 && (
+                                            <span className="absolute -top-1 -right-2 flex h-3 w-3 items-center justify-center rounded-full bg-amber-500 text-[8px] font-bold text-black border border-[#0A0A0A]">{totalItems}</span>
                                         )}
                                     </button>
                                 </div>
@@ -341,14 +486,22 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                 {/* RIGHT HEMISPHERE: The Floor Board */}
                 {/* -------------------------------------------------------------------------------- */}
                 <section className="flex-1 flex flex-col w-full min-h-[500px] lg:min-h-0">
-                    <div className="flex justify-between items-end mb-4">
+                    <div className="flex justify-between items-end mb-4 gap-4">
                         <div>
-                            <h2 className="text-xl font-light tracking-tight">{dict.floorSync?.floorBoard || 'Floor Board'}</h2>
-                            <p className="text-xs text-stone-500">{dict.floorSync?.realTime || 'Real-time spatial sync'}</p>
+                            <h2 className="text-xl font-light tracking-tight">
+                                {dict.floorSync?.floorBoard || 'Floor Board'}
+                            </h2>
+                            <p className="text-xs text-stone-500">
+                                {dict.floorSync?.realTime || 'Real-time spatial sync'}
+                            </p>
+
                         </div>
+
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-neutral-900 border border-neutral-800">
                             <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                            <span className="text-[10px] font-sans uppercase tracking-[0.2em]">{dict.floorSync?.liveFeed || 'Live'}</span>
+                            <span className="text-[10px] font-sans uppercase tracking-[0.2em]">
+                                {dict.floorSync?.liveFeed || 'Live'}
+                            </span>
                         </div>
                     </div>
 
@@ -357,48 +510,127 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
 
                         {/* Table 04 - THE DYNAMIC TABLE */}
                         <div className="absolute top-[20%] left-[20%] group">
-                            {/* The Table Shape */}
-                            <div className={`w-28 h-28 rounded-full border flex items-center justify-center relative transition-all duration-500 ${status === 'browsing' ? 'border-white/30 bg-transparent' :
-                                status === 'fired' ? 'border-amber-500 bg-amber-500/10 shadow-[0_0_30px_rgba(245,158,11,0.3)]' :
-                                    'border-green-500 bg-green-500/10 shadow-[0_0_30px_rgba(34,197,94,0.2)]'
-                                }`}>
-                                <div className={`text-xs font-bold uppercase transition-colors duration-500 ${status === 'browsing' ? 'text-white/50' :
-                                    status === 'fired' ? 'text-amber-500' :
-                                        'text-green-500'
-                                    }`}>
-                                    T-04
+                            <div
+                                className={`w-28 h-28 rounded-full border flex items-center justify-center relative transition-all duration-500 ${floorState === 'browsing'
+                                    ? 'border-white/20 bg-transparent'
+                                    : floorState === 'ordering'
+                                        ? 'border-white/60 bg-white/5 shadow-[0_0_24px_rgba(255,255,255,0.12)]'
+                                        : floorState === 'fired'
+                                            ? 'border-amber-500 bg-amber-500/10 shadow-[0_0_30px_rgba(245,158,11,0.3)]'
+                                            : 'border-green-500 bg-green-500/10 shadow-[0_0_30px_rgba(34,197,94,0.2)]'
+                                    }`}
+                            >
+                                <div className="flex flex-col items-center justify-center gap-1">
+                                    <div
+                                        className={`text-xs font-bold uppercase transition-colors duration-500 ${floorState === 'browsing'
+                                            ? 'text-white/50'
+                                            : floorState === 'ordering'
+                                                ? 'text-white'
+                                                : floorState === 'fired'
+                                                    ? 'text-amber-500'
+                                                    : 'text-green-500'
+                                            }`}
+                                    >
+                                        T-04
+                                    </div>
+
+                                    <div
+                                        className={`text-[8px] uppercase tracking-[0.24em] ${floorState === 'browsing'
+                                            ? 'text-stone-500'
+                                            : floorState === 'ordering'
+                                                ? 'text-white/75'
+                                                : floorState === 'fired'
+                                                    ? 'text-amber-400'
+                                                    : 'text-green-400'
+                                            }`}
+                                    >
+                                        {floorStateLabel}
+                                    </div>
                                 </div>
 
-                                {/* Pulse Effect when fired */}
-                                {status === 'fired' && (
+                                {/* Ordering pulse */}
+                                {floorState === 'ordering' && (
+                                    <div className="absolute inset-0 rounded-full border border-white/30 animate-pulse opacity-40"></div>
+                                )}
+
+                                {/* Fired pulse */}
+                                {floorState === 'fired' && (
                                     <div className="absolute inset-0 rounded-full border border-amber-500 animate-ping opacity-20"></div>
                                 )}
 
-                                {/* Digital Ticket sliding in when fired */}
-                                <div className={`absolute -top-28 left-1/2 -translate-x-1/2 w-48 bg-black/80 backdrop-blur-md rounded border p-3 shadow-2xl z-30 transition-all duration-500 pointer-events-none ${status === 'fired' ? 'opacity-100 translate-y-0 border-amber-500/50' : 'opacity-0 translate-y-4 border-neutral-800'
-                                    }`}>
-                                    <div className="flex justify-between items-start mb-2">
-                                        <span className="text-[9px] bg-amber-500 text-black px-1.5 py-0.5 font-bold uppercase rounded-sm">Fired</span>
-                                        <span className="text-[9px] text-stone-400">Live</span>
+                                {/* Cart count badge */}
+                                {cart.length > 0 && floorState !== 'settled' && (
+                                    <div className="absolute -right-2 -top-2 min-w-[22px] h-[22px] px-1 rounded-full bg-amber-500 text-black text-[10px] font-bold flex items-center justify-center border border-black shadow-lg">
+                                        {totalItems}
                                     </div>
-                                    <div className="space-y-1">
-                                        {cart.length > 0 ? cart.map((item, idx) => (
-                                            <div key={idx} className="flex justify-between items-start">
-                                                <h5 className="text-xs font-bold text-white leading-tight line-clamp-1 flex-1 pr-2">{item.dish.title[locale as keyof typeof item.dish.title] || item.dish.title.en}</h5>
-                                                <span className="text-[10px] text-stone-400 border border-stone-700 px-1 rounded-sm">x{item.quantity}</span>
-                                            </div>
-                                        )) : (
-                                            <h5 className="text-xs font-bold text-white leading-tight mb-1">Acharuli Khachapuri</h5>
+                                )}
+
+                                {/* Ordering started notification */}
+                                <div
+                                    className={`absolute -top-20 left-1/2 -translate-x-1/2 w-52 bg-black/80 backdrop-blur-md rounded border border-white/10 px-3 py-2 shadow-2xl z-20 transition-all duration-500 pointer-events-none ${floorState === 'ordering'
+                                        ? 'opacity-100 translate-y-0'
+                                        : 'opacity-0 translate-y-3'
+                                        }`}
+                                >
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div className="flex items-center gap-2 min-w-0">
+                                            <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse shrink-0"></span>
+                                            <span className="text-[10px] uppercase tracking-[0.2em] text-stone-200 truncate">
+                                                {ui.tableStarted}
+                                            </span>
+                                        </div>
+
+                                        {totalItems > 0 && (
+                                            <span className="text-[10px] text-amber-400 border border-amber-500/30 bg-amber-500/10 px-1.5 py-0.5 rounded-sm shrink-0">
+                                                {totalItems}
+                                            </span>
                                         )}
                                     </div>
+                                </div>
+
+                                {/* Digital Ticket */}
+                                <div
+                                    className={`absolute -top-28 left-1/2 -translate-x-1/2 w-48 bg-black/80 backdrop-blur-md rounded border p-3 shadow-2xl z-30 transition-all duration-500 pointer-events-none ${floorState === 'fired'
+                                        ? 'opacity-100 translate-y-0 border-amber-500/50'
+                                        : 'opacity-0 translate-y-4 border-neutral-800'
+                                        }`}
+                                >
+                                    <div className="flex justify-between items-start mb-2">
+                                        <span className="text-[9px] bg-amber-500 text-black px-1.5 py-0.5 font-bold uppercase rounded-sm">
+                                            {ui.sent}
+                                        </span>
+                                        <span className="text-[9px] text-stone-400">Live</span>
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        {cart.length > 0 ? (
+                                            cart.map((item) => (
+                                                <div key={item.dish.id} className="flex justify-between items-start">
+                                                    <h5 className="text-xs font-bold text-white leading-tight line-clamp-1 flex-1 pr-2">
+                                                        {item.dish.title[locale as keyof typeof item.dish.title] || item.dish.title.en}
+                                                    </h5>
+                                                    <span className="text-[10px] text-stone-400 border border-stone-700 px-1 rounded-sm">
+                                                        x{item.quantity}
+                                                    </span>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <h5 className="text-xs font-bold text-white leading-tight mb-1">
+                                                —
+                                            </h5>
+                                        )}
+                                    </div>
+
                                     <p className="text-[9px] text-stone-400 border-t border-white/10 pt-1 mt-2">
-                                        Guest initiated order.
+                                        {ui.guestInitiated}
                                     </p>
                                 </div>
 
                                 {/* Paid indicator */}
-                                <div className={`absolute -top-10 left-1/2 -translate-x-1/2 bg-green-950 border border-green-500/50 text-green-400 px-3 py-1 text-[10px] font-mono tracking-widest uppercase rounded shadow-2xl transition-all duration-500 ${status === 'settled' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                                    }`}>
+                                <div
+                                    className={`absolute -top-10 left-1/2 -translate-x-1/2 bg-green-950 border border-green-500/50 text-green-400 px-3 py-1 text-[10px] font-mono tracking-widest uppercase rounded shadow-2xl transition-all duration-500 ${floorState === 'settled' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                                        }`}
+                                >
                                     PAID / CLEAR
                                 </div>
                             </div>
@@ -408,8 +640,14 @@ export default function FloorSync({ dict, initialCategories = [], initialDishes 
                         <div className="absolute top-[35%] left-[60%] w-32 h-16 rounded-md border border-neutral-800 bg-neutral-900/50 flex items-center justify-center">
                             <span className="text-[10px] text-stone-600 font-bold uppercase">T-12</span>
                         </div>
-                        <div className="absolute top-[70%] left-[30%] w-20 h-20 rounded-md border border-neutral-800 bg-neutral-900/50 flex items-center justify-center">
-                            <span className="text-[10px] text-stone-600 font-bold uppercase">T-08</span>
+                        <div className="absolute top-[70%] left-[30%] w-20 h-20 rounded-md border border-green-500 bg-green-500/10 shadow-[0_0_20px_rgba(34,197,94,0.2)] flex items-center justify-center">
+                            <div className="flex flex-col items-center justify-center gap-1">
+                                <span className="text-[10px] text-green-500 font-bold uppercase">T-08</span>
+                                <span className="text-[7px] uppercase tracking-[0.2em] text-green-400">{ui.completed}</span>
+                            </div>
+                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-green-950 border border-green-500/50 text-green-400 px-2 py-1 text-[8px] font-mono tracking-widest uppercase rounded shadow-2xl whitespace-nowrap">
+                                PAID / CLEAR
+                            </div>
                         </div>
                         <div className="absolute top-[15%] left-[75%] w-24 h-24 rounded-full border border-neutral-800 bg-neutral-900/50 flex items-center justify-center">
                             <span className="text-[10px] text-stone-600 font-bold uppercase">T-01</span>

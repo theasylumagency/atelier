@@ -5,7 +5,10 @@ export default function Footer({ dict }: { dict: any }) {
         <footer className="py-24 bg-black border-t border-white/10">
             <div className="max-w-[1600px] mx-auto px-8 md:px-12 text-center">
                 <div className="mb-20">
-                    <h2 className="text-4xl font-serif italic text-white mb-6">The Asylum Agency</h2>
+                    <h2 className="text-4xl font-serif italic text-white mb-6">MAÎTRISE Atelier</h2>
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.35em] text-stone-500">
+                        by The Asylum Agency
+                    </p>
                     <p className="text-stone-500 font-sans text-xs leading-loose uppercase tracking-[0.3em]">{dict.footer.tagline}</p>
                 </div>
 

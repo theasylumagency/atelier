@@ -3,7 +3,7 @@
 export default function Features({ dict }: { dict: any }) {
     return (
         <section className="py-32 bg-black overflow-hidden relative" id="arsenal">
-            <div className="absolute inset-0 z-0 opacity-20" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVwn74CvlOfHS7J0vxWuNhb0sYi_y1ZdU9yWW91bnJC8xaPFgn91zOhZlQOXzIFCcv0CwuIPJbdgfQs1bK4NwwHP4S65PbbINtvqgmk9_SbosI1y6YuAxdj18oxSvfEJAEcVD42VXgSBd5bB-nrbWtsRYEyYU_tx6CvsKpshQrqvw3ZNEg1_222pRtm-ZDlEPt-axUU4aZXPqW4ZO1JoF-QjeezjiwKQx0CQRA0EC5D00rTuyMxd0YLf4VV9embk0hYMTf7Et1Fke_')", backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(100%)' }}></div>
+            <div className="absolute inset-0 z-0 opacity-20 texture-lattice"></div>
             <div className="max-w-[1600px] mx-auto px-8 md:px-12 relative z-10 text-center">
                 <div className="mb-24 flex flex-col items-center">
                     <span className="text-stone-500 text-xs font-bold font-sans tracking-[0.4em] uppercase block mb-6">{dict.features.chapter}</span>

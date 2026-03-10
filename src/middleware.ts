@@ -1,26 +1,27 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-let locales = ['en', 'ka']
-let defaultLocale = 'en'
+const locales = ['en', 'ka'];
+const defaultLocale = 'ka';
 
 export function middleware(request: NextRequest) {
-    // Check if there is any supported locale in the pathname
-    const { pathname } = request.nextUrl
+    const { pathname } = request.nextUrl;
+
     const pathnameHasLocale = locales.some(
-        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    )
+        (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+    );
 
-    if (pathnameHasLocale) return
+    if (pathnameHasLocale) {
+        return NextResponse.next();
+    }
 
-    // Redirect if there is no locale
-    request.nextUrl.pathname = `/${defaultLocale}${pathname}`
-    return NextResponse.redirect(request.nextUrl)
+    const url = request.nextUrl.clone();
+    url.pathname = `/${defaultLocale}${pathname}`;
+    return NextResponse.redirect(url);
 }
 
 export const config = {
     matcher: [
-        // Skip all internal paths (_next)
-        '/((?!_next|api|favicon.ico|videos|logo|images|uploads).*)',
+        '/((?!_next|api|favicon.ico|videos|logo|images|uploads|.*\\..*).*)',
     ],
-}
+};

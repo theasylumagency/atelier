@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import PhotoStylizer from '@/components/PhotoStylizer';
 
 interface LocalizedText {
     ka: string;
@@ -56,11 +57,22 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
 
     const handleGenerateAI = async () => {
         const currentDishName = formData.title?.[activeLang] || formData.title?.['en'] || formData.title?.['ka'];
+
         if (!currentDishName) {
             alert(dict.panel?.enterDishName || 'Please enter a dish nomenclature first.');
             return;
         }
 
+        if (currentDishName.length > 80) {
+            alert('Dish name is too long.'); currentDishName
+            return;
+        }
+        const ingredientsValue = formData.description?.[activeLang] || '';
+
+        if (ingredientsValue.length > 240) {
+            alert('Ingredient line is too long.');
+            return;
+        }
         setIsGenerating(true);
         try {
             const response = await fetch('/api/synthesize', {
@@ -68,14 +80,18 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     dishName: currentDishName,
-                    ingredients: formData.description?.[activeLang] || '',
+                    ingredients: ingredientsValue,
                     brandVoice,
                 }),
             });
 
-            if (!response.ok) throw new Error('API request failed');
+            const payload = await response.json();
 
-            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(payload?.error || 'API request failed');
+            }
+
+            const data = payload;
 
             setFormData(prev => ({
                 ...prev,
@@ -85,12 +101,15 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
             }));
         } catch (error) {
             console.error('AI Synthesis Error:', error);
-            alert(dict.panel?.aiError || 'Failed to synthesize content.');
+            alert(
+                error instanceof Error
+                    ? error.message
+                    : dict.panel?.aiError || 'Failed to synthesize content.'
+            );
         } finally {
             setIsGenerating(false);
         }
     };
-
     const handleSave = () => {
         if (onSave) {
             onSave(formData);
@@ -122,54 +141,8 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
                 <div className="flex flex-1 flex-col overflow-y-auto sm:flex-row custom-scrollbar">
 
                     {/* LEFT HEMISPHERE: Operations & Visuals */}
-                    <div className="flex flex-col gap-6 border-b border-neutral-800 p-6 sm:w-1/2 sm:border-b-0 sm:border-r">
 
-                        {/* AI Image Studio Dropzone */}
-                        <div className="group relative flex h-48 w-full cursor-pointer items-center justify-center border-2 border-dashed border-neutral-800 bg-neutral-900/50 transition-colors hover:border-neutral-500">
-                            <span className="font-mono text-xs uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors text-center px-4">
-                                {dict.panel.dropRawAsset || 'Drop Raw Asset'}
-                            </span>
-                        </div>
-
-                        {/* Financial Input */}
-                        <div>
-                            <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-neutral-500">
-                                {dict.panel.unitPrice || 'Unit Price'} ({formData.currency})
-                            </label>
-                            <input
-                                type="number"
-                                value={(formData.priceMinor! / 100).toFixed(2)}
-                                onChange={(e) => setFormData({ ...formData, priceMinor: Math.round(parseFloat(e.target.value) * 100) })}
-                                className="w-full border border-neutral-800 bg-transparent p-4 font-mono text-xl text-white outline-none focus:border-white transition-colors"
-                                step="0.10"
-                            />
-                        </div>
-
-                        {/* Binary Identifiers (Toggles) */}
-                        <div className="flex flex-col gap-4 pt-4">
-                            <div className="flex items-center justify-between">
-                                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">{dict.panel.vegetarian || 'Vegetarian'}</span>
-                                <button
-                                    onClick={() => setFormData({ ...formData, vegetarian: !formData.vegetarian })}
-                                    className={`relative h-6 w-12 border transition-colors duration-200 ${formData.vegetarian ? 'border-green-500 bg-green-500/20' : 'border-neutral-700 bg-transparent'}`}
-                                >
-                                    <div className={`absolute top-0.5 h-4 w-4 transition-transform duration-200 ${formData.vegetarian ? 'translate-x-7 bg-green-400' : 'translate-x-1 bg-neutral-500'}`} />
-                                </button>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">{dict.panel.signature || "Chef's Pick"}</span>
-                                <button
-                                    onClick={() => setFormData({ ...formData, chefsPick: !formData.chefsPick })}
-                                    className={`relative h-6 w-12 border transition-colors duration-200 ${formData.chefsPick ? 'border-amber-500 bg-amber-500/20' : 'border-neutral-700 bg-transparent'}`}
-                                >
-                                    <div className={`absolute top-0.5 h-4 w-4 transition-transform duration-200 ${formData.chefsPick ? 'translate-x-7 bg-amber-400' : 'translate-x-1 bg-neutral-500'}`} />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* RIGHT HEMISPHERE: The Narrative Engine */}
-                    <div className="flex flex-col sm:w-1/2">
+                    <div className="flex flex-col sm:w-1/2 border-b border-neutral-800  sm:border-b-0 sm:border-r">
 
                         {/* Language Tabs */}
                         <div className="flex w-full border-b border-neutral-800">
@@ -256,6 +229,51 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
                                     className="flex-1 min-h-[150px] w-full resize-none border border-neutral-800 bg-transparent p-3 text-sm text-white outline-none focus:border-white transition-colors leading-relaxed"
                                     placeholder={dict.panel?.story || 'The narrative behind the dish...'}
                                 />
+                            </div>
+                        </div>
+                    </div>
+                    {/* RIGHT HEMISPHERE: The Narrative Engine */}
+                    <div className="flex flex-col gap-6 p-6 sm:w-1/2">
+
+                        {/* AI Image Studio Dropzone */}
+                        <PhotoStylizer
+                            dishName={formData.title?.[activeLang] || ''}
+                            ingredients={formData.description?.[activeLang] || ''}
+                            locale={activeLang === 'ru' ? 'en' : activeLang}
+                        />
+                        {/* Financial Input */}
+                        <div>
+                            <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-neutral-500">
+                                {dict.panel.unitPrice || 'Unit Price'} ({formData.currency})
+                            </label>
+                            <input
+                                type="number"
+                                value={(formData.priceMinor! / 100).toFixed(2)}
+                                onChange={(e) => setFormData({ ...formData, priceMinor: Math.round(parseFloat(e.target.value) * 100) })}
+                                className="w-full border border-neutral-800 bg-transparent p-4 font-mono text-xl text-white outline-none focus:border-white transition-colors"
+                                step="0.10"
+                            />
+                        </div>
+
+                        {/* Binary Identifiers (Toggles) */}
+                        <div className="flex flex-col gap-4 pt-4">
+                            <div className="flex items-center justify-between">
+                                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">{dict.panel.vegetarian || 'Vegetarian'}</span>
+                                <button
+                                    onClick={() => setFormData({ ...formData, vegetarian: !formData.vegetarian })}
+                                    className={`relative h-6 w-12 border transition-colors duration-200 ${formData.vegetarian ? 'border-green-500 bg-green-500/20' : 'border-neutral-700 bg-transparent'}`}
+                                >
+                                    <div className={`absolute top-0.5 h-4 w-4 transition-transform duration-200 ${formData.vegetarian ? 'translate-x-7 bg-green-400' : 'translate-x-1 bg-neutral-500'}`} />
+                                </button>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">{dict.panel.signature || "Chef's Pick"}</span>
+                                <button
+                                    onClick={() => setFormData({ ...formData, chefsPick: !formData.chefsPick })}
+                                    className={`relative h-6 w-12 border transition-colors duration-200 ${formData.chefsPick ? 'border-amber-500 bg-amber-500/20' : 'border-neutral-700 bg-transparent'}`}
+                                >
+                                    <div className={`absolute top-0.5 h-4 w-4 transition-transform duration-200 ${formData.chefsPick ? 'translate-x-7 bg-amber-400' : 'translate-x-1 bg-neutral-500'}`} />
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 {
     "nav": {
         "login": "Client Login",
-        "agency": "The Asylum Agency",
+        "agency": "MAÎTRISE Atelier",
         "philosophy": "Philosophy",
         "technology": "Technology",
         "initiate": "Initiate",
@@ -72,7 +72,7 @@
         "chapter": "Chapter IV: The Commitment",
         "title": "We do not do <span class=\"italic text-stone-500\">easy.</span>",
         "desc1": "Standard is the enemy of the exceptional. We don't build websites; we engineer gravity.",
-        "desc2": "In a world of fleeting digital noise, we provide the permanent structure for those who treat service as a secular religion. Every pixel is a protocol. Every interaction is a promise kept. We are the Asylum for those who are obsessively dedicated to the craft of hospitality.",
+        "desc2": "For restaurants that treat service as craft, not content. MAÎTRISE Atelier brings design discipline, operational control, and quiet digital precision to the guest experience.",
         "cta": "Initiate the Process"
     },
     "footer": {
