@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import PhotoStylizer from '@/components/PhotoStylizer';
+import AssetForge from '@/components/AssetForge';
 
 interface LocalizedText {
     ka: string;
@@ -19,6 +19,7 @@ interface DishData {
     title?: LocalizedText;
     description?: LocalizedText;
     story?: LocalizedText;
+    imageUrl?: string | null;
     [key: string]: any;
 }
 
@@ -34,6 +35,7 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
     const [activeLang, setActiveLang] = useState<'ka' | 'en' | 'ru'>('ka'); // 'ka', 'en', 'ru'
     const [brandVoice, setBrandVoice] = useState('Modern & Minimalist');
     const [isGenerating, setIsGenerating] = useState(false);
+    const [showAssetForge, setShowAssetForge] = useState(false);
 
     // 2. Form State (Pre-filled if editing, empty if new)
     const [formData, setFormData] = useState<DishData>({
@@ -44,6 +46,7 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
         title: dish?.title || { ka: '', en: '', ru: '' },
         description: dish?.description || { ka: '', en: '', ru: '' },
         story: dish?.story || { ka: '', en: '', ru: '' },
+        imageUrl: dish?.imageUrl || null,
         ...dish, // Keep other properties like id, status intact
     });
 
@@ -117,9 +120,24 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
         onClose();
     };
 
+    const handleSaveImage = (imageUrl: string | null) => {
+        setFormData(prev => ({ ...prev, imageUrl }));
+        setShowAssetForge(false);
+    };
+
     return (
-        // THE OVERLAY: Darkens the grid behind it, blur effect for depth
-        <div className="fixed inset-0 z-[100] flex justify-end bg-black/80 backdrop-blur-sm sm:items-stretch">
+        <>
+            {showAssetForge && (
+                <AssetForge
+                    dishName={formData.title?.[activeLang] || formData.title?.['en'] || formData.title?.['ka'] || 'Unnamed Dish'}
+                    initialImage={formData.imageUrl}
+                    onClose={() => setShowAssetForge(false)}
+                    onSave={handleSaveImage}
+                />
+            )}
+            
+            {/* THE OVERLAY: Darkens the grid behind it, blur effect for depth */}
+            <div className="fixed inset-0 z-[100] flex justify-end bg-black/80 backdrop-blur-sm sm:items-stretch">
 
             {/* THE SHEET: Full width on mobile (slides up), fixed 800px on desktop (slides left) */}
             <div className="flex h-full w-full flex-col border-l border-neutral-800 bg-[#0a0a0a] shadow-2xl transition-transform sm:w-[800px] animate-in slide-in-from-bottom sm:slide-in-from-right duration-300">
@@ -235,12 +253,54 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
                     {/* RIGHT HEMISPHERE: The Narrative Engine */}
                     <div className="flex flex-col gap-6 p-6 sm:w-1/2">
 
-                        {/* AI Image Studio Dropzone */}
-                        <PhotoStylizer
-                            dishName={formData.title?.[activeLang] || ''}
-                            ingredients={formData.description?.[activeLang] || ''}
-                            locale={activeLang === 'ru' ? 'en' : activeLang}
-                        />
+                        {/* Visual Asset Section (Replacing old AI tool) */}
+                        <div className="flex flex-col gap-4">
+                            <div className="flex items-center justify-between">
+                                <label className="block font-mono text-[10px] uppercase tracking-widest text-[#a855f7]">
+                                    {dict.panel?.visualAsset || 'Visual Asset'}
+                                </label>
+                            </div>
+
+                            {/* Final Photo Display or Placeholder */}
+                            <div className="relative aspect-video w-full border border-neutral-800 bg-black flex flex-col items-center justify-center p-2 group overflow-hidden">
+                                {formData.imageUrl ? (
+                                    <>
+                                        {/* If it's a real URL, show it, else show a placeholder text for testing */}
+                                        {formData.imageUrl === '/placeholder-generated.webp' ? (
+                                             <div className="flex h-full w-full flex-col items-center justify-center bg-neutral-900 absolute inset-0 text-neutral-600 font-mono text-xs uppercase tracking-widest border border-dashed border-neutral-800 m-2">
+                                                 <span>[ Generated .WEBP ]</span>
+                                             </div>
+                                        ) : (
+                                            <img
+                                                src={formData.imageUrl}
+                                                alt="Dish Asset"
+                                                className="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+                                            />
+                                        )}
+                                        
+                                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                                            <button 
+                                                onClick={() => setShowAssetForge(true)}
+                                                className="border border-[#a855f7] bg-[#a855f7]/20 px-6 py-2 font-mono text-[10px] uppercase tracking-widest text-white hover:bg-[#a855f7]/40 transition-colors"
+                                            >
+                                                {dict.panel?.editInForge || 'Edit in AI Forge'}
+                                            </button>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="flex h-32 w-full flex-col items-center justify-center gap-4 py-4 px-2 text-center text-neutral-500">
+                                        <span className="material-symbols-outlined text-4xl mb-2 opacity-50">hide_image</span>
+                                        <span className="font-mono text-[10px] uppercase tracking-widest">{dict.panel?.noAsset || 'No Asset Provided'}</span>
+                                        <button 
+                                            onClick={() => setShowAssetForge(true)}
+                                            className="mt-2 border border-[#a855f7]/50 bg-[#a855f7]/10 px-6 py-2 font-mono text-[10px] uppercase tracking-widest text-[#a855f7] hover:bg-[#a855f7]/20 hover:border-[#a855f7] transition-colors flex items-center gap-2"
+                                        >
+                                            <span className="material-symbols-outlined text-sm">auto_awesome</span> {dict.panel?.openForge || 'Open AI Forge'}
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                         {/* Financial Input */}
                         <div>
                             <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-neutral-500">
@@ -291,5 +351,6 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
 
             </div>
         </div>
+        </>
     );
 }

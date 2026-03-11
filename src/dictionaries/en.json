@@ -134,7 +134,11 @@
         "story": "The Narrative behind the dish...",
         "aiSynthesize": "AI Synthesize",
         "generate": "Generate",
-        "save": "Save"
+        "save": "Save",
+        "visualAsset": "Visual Asset",
+        "editInForge": "Edit in AI Forge",
+        "noAsset": "No Asset Provided",
+        "openForge": "Open AI Forge"
     },
     "floorSync": {
         "title": "The Spatial Protocol",
