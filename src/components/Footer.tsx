@@ -13,7 +13,7 @@ export default function Footer({ dict }: { dict: any }) {
                 </div>
 
                 <div className="flex flex-col md:flex-row justify-center items-center gap-12 mb-20">
-                    <nav className="flex gap-8">
+                    <nav className="flex max-sm:flex-col gap-8">
                         <a className="text-[10px] font-sans font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">{dict.footer.architecture}</a>
                         <a className="text-[10px] font-sans font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">{dict.footer.portfolio}</a>
                         <a className="text-[10px] font-sans font-bold tracking-[0.4em] uppercase text-stone-500 hover:text-white transition-colors" href="#">{dict.footer.privacy}</a>

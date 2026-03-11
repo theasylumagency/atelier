@@ -1,7 +1,7 @@
 'use client';
 export default function Transition({ dict }: { dict: any }) {
     return (
-        <section className="relative flex min-h-[100vh] w-full flex-col justify-between overflow-hidden border-y border-neutral-800 bg-[#050505] p-6 md:min-h-[100vh] md:p-28 lg:p-30">
+        <section className="relative flex min-h-[100vh] w-full flex-col justify-between overflow-hidden border-y border-neutral-800 bg-[#050505] p-6 md:min-h-[100vh] max-sm:pt-28 md:p-28 lg:p-30">
 
             {/* ფონის ბადე (აბსოლუტური სიღრმისთვის) */}
             <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
