@@ -45,7 +45,10 @@
         "step3_desc": "Full-scale deployment with architectural precision, ensuring peak performance across the digital ecosystem."
     },
     "transition": {
-        "text": "\"We do not build templates.<br/><span class=\"font-normal text-stone-500\">We architect an ecosystem.\"</span>"
+        "chapter": "Chapter III: Code",
+        "title": "We don't accept templates.",
+        "desc1": "No templates. A system designed for a specific restaurant only.",
+        "desc2": "Interface, operation and space control — fully managed processes and flows."
     },
     "process": {
         "chapter": "Chapter III: The Process",

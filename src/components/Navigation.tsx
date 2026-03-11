@@ -52,7 +52,7 @@ export default function Navigation({ dict, locale }: { dict: any; locale: string
                         <span>/</span>
                         <Link href={getLocalizedPath('en')} className={`hover:text-white transition-colors ${locale === 'en' ? 'text-white font-bold' : ''}`}>EN</Link>
                     </div>
-                    <div className="flex items-center gap-6 sm:hidden">
+                    <div className="flex items-center gap-6 max-sm:hidden">
                         <Link href={`/${locale}/floor-sync`}>
                             <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">{dict.nav?.floorSync || 'Floor Sync'}</button>
                         </Link>
