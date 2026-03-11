@@ -28,12 +28,20 @@ export default function Navigation({ dict, locale }: { dict: any; locale: string
                 <div className="flex items-center gap-4">
 
                     <Link href={`/${locale}`}>
-                        <div>
+                        <div className="flex items-center">
                             <img
                                 src="/logo/maitrise-atelier-logo-white-outline-nf.svg"
                                 alt="Logo"
                                 width={200}
                                 height={200}
+                                className="hidden md:block"
+                            />
+                            <img
+                                src="/logo/maitrise-atelier-logo-mobile.svg"
+                                alt="Mobile Logo"
+                                width={40}
+                                height={40}
+                                className="block md:hidden"
                             />
                         </div>
                     </Link>
@@ -44,15 +52,12 @@ export default function Navigation({ dict, locale }: { dict: any; locale: string
                         <span>/</span>
                         <Link href={getLocalizedPath('en')} className={`hover:text-white transition-colors ${locale === 'en' ? 'text-white font-bold' : ''}`}>EN</Link>
                     </div>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-6 sm:hidden">
                         <Link href={`/${locale}/floor-sync`}>
                             <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">{dict.nav?.floorSync || 'Floor Sync'}</button>
                         </Link>
                         <Link href={`/${locale}/panel`}>
                             <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">{dict.nav?.panel || 'Simulation'}</button>
-                        </Link>
-                        <Link href={`/${locale}/login`}>
-                            <button className="text-[10px] tracking-[0.3em] font-sans text-white border-b border-white/20 pb-1 hover:border-white transition-all uppercase">{dict.nav.login}</button>
                         </Link>
                     </div>
                 </div>

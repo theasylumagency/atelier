@@ -106,7 +106,7 @@ export default function Features({ dict }: { dict: any }) {
                                 className="w-full h-full object-cover opacity-20 mix-blend-overlay grayscale absolute inset-0 transition-transform duration-1000 group-hover:scale-[1.03] group-hover:opacity-30"
                             />
                         </Link>
-
+                        {/* core_engine */}
                         <Link href={panelHref} className="col-span-2 md:col-span-1 aspect-square bg-slate-200 relative overflow-hidden group border border-slate-200 cursor-pointer block">
                             <img
                                 src="/images/backgrounds/core_engine.webp"
@@ -125,23 +125,23 @@ export default function Features({ dict }: { dict: any }) {
                                 </div>
                             </div>
                         </Link>
-
+                        {/* neural_engine */}
                         <Link href={panelHref} className="col-span-2 md:col-span-1 aspect-square bg-orange-600 relative overflow-hidden group cursor-pointer block">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50 z-0 group-hover:opacity-70 transition-opacity duration-700"></div>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50 z-0 group-hover:opacity-75 transition-all duration-1000 group-hover:scale-110"></div>
                             <div className="absolute inset-0 p-8 flex flex-col justify-between text-white z-10">
-                                <span className="material-symbols-outlined text-white/80 group-hover:text-white transition-colors duration-500 group-hover:scale-110 origin-left">analytics</span>
+                                <span className="material-symbols-outlined text-white/80 group-hover:text-white transition-all duration-1000 group-hover:scale-110 origin-left">analytics</span>
                                 <div>
                                     <h4 className="font-mono font-bold text-sm uppercase tracking-widest mb-2 text-white">
                                         {dict.features.neural_title}
                                     </h4>
-                                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/80 group-hover:text-white transition-opacity">
+                                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/80 group-hover:text-white transition-opacity duration-1000">
                                         {dict.features.neural_desc}
                                     </p>
                                 </div>
                             </div>
                             {/* Wireframe pattern overlay */}
                             <div
-                                className="absolute inset-0 opacity-[0.15] group-hover:opacity-[0.25] transition-opacity duration-700 pointer-events-none z-0"
+                                className="absolute inset-0 opacity-[0.15] group-hover:opacity-[0.3] transition-all duration-1000 group-hover:scale-105 pointer-events-none z-0"
                                 style={{
                                     backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
                                     backgroundSize: "20px 20px"

@@ -21,11 +21,40 @@ const bpgClassic = localFont({
 });
 
 export const metadata: Metadata = {
-    title: {
-        default: 'MAÎTRISE Atelier',
-        template: '%s | MAÎTRISE Atelier',
+    title: "MAÎTRISE Atelier",
+    description: "Elegant digital atelier for hospitality experiences.",
+    icons: {
+        icon: [
+            { url: "/brand/favicon.ico", sizes: "any" },
+            { url: "/brand/favicon.svg", type: "image/svg+xml" },
+        ],
+        apple: [
+            { url: "/brand/apple-touch-icon.png", sizes: "180x180" },
+        ],
+        shortcut: ["/brand/favicon.ico"],
     },
-    description: 'Premium restaurant websites, menu control, QR table flow, and digital service infrastructure.',
+    openGraph: {
+        title: "MAÎTRISE Atelier",
+        description: "Elegant digital atelier for hospitality experiences.",
+        url: "https://your-domain.com",
+        siteName: "MAÎTRISE Atelier",
+        images: [
+            {
+                url: "/og/maitrise-atelier-og-1200x630.jpg",
+                width: 1200,
+                height: 630,
+                alt: "MAÎTRISE Atelier",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "MAÎTRISE Atelier",
+        description: "Elegant digital atelier for hospitality experiences.",
+        images: ["/og/maitrise-atelier-og-1200x630.jpg"],
+    },
 };
 
 export default function RootLayout({
