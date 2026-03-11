@@ -25,12 +25,13 @@ interface DishData {
 
 interface DishEditorProps {
     dish: DishData | null;
+    categories?: any[];
     dict: any;
     onClose: () => void;
     onSave?: (data: DishData) => void;
 }
 
-export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorProps) {
+export default function DishEditor({ dish, categories = [], dict, onClose, onSave }: DishEditorProps) {
     // 1. Tab State for the Narrative Engine
     const [activeLang, setActiveLang] = useState<'ka' | 'en' | 'ru'>('ka'); // 'ka', 'en', 'ru'
     const [brandVoice, setBrandVoice] = useState('Modern & Minimalist');
@@ -197,6 +198,26 @@ export default function DishEditor({ dish, dict, onClose, onSave }: DishEditorPr
                                     <option value="High-End / Fine Dining">{dict.panel?.highEnd || 'High-End / Fine Dining (Exclusive)'}</option>
                                 </select>
                             </div>
+
+                            {/* Category Assignment Dropdown */}
+                            {categories && categories.length > 0 && (
+                                <div>
+                                    <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-neutral-500">
+                                        {dict.panel?.category || 'Category'}
+                                    </label>
+                                    <select
+                                        value={formData.categoryId || categories[0]?.id || ''}
+                                        onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
+                                        className="w-full appearance-none border border-neutral-800 bg-black p-3 font-mono text-sm text-white outline-none focus:border-white transition-colors cursor-pointer"
+                                    >
+                                        {categories.map((cat: any) => (
+                                            <option key={cat.id} value={cat.id} className="bg-[#050505] text-white">
+                                                {cat.title?.[activeLang] || cat.title?.['en'] || cat.title?.['ka'] || 'Unnamed Category'}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
 
                             <div>
                                 <label className="mb-2 block font-mono text-xs uppercase tracking-wider text-neutral-500">

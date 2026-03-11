@@ -143,7 +143,8 @@
         "visualAsset": "ვიზუალური აქტივი",
         "editInForge": "რედაქტირება AI Forge-ში",
         "noAsset": "აქტივი არ არის ნაპოვნი",
-        "openForge": "AI Forge-ის გახსნა"
+        "openForge": "AI Forge-ის გახსნა",
+        "category": "კატეგორია"
     },
     "floorSync": {
         "title": "სივრცითი პროტოკოლი",

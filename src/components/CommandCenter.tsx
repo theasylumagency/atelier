@@ -345,6 +345,7 @@ export default function CommandCenter({
             {editingDish !== null && (
                 <DishEditor
                     dish={Object.keys(editingDish).length === 0 ? null : editingDish}
+                    categories={categories}
                     dict={dict}
                     onClose={() => setEditingDish(null)}
                     onSave={handleSaveDish}

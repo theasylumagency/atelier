@@ -138,7 +138,8 @@
         "visualAsset": "Visual Asset",
         "editInForge": "Edit in AI Forge",
         "noAsset": "No Asset Provided",
-        "openForge": "Open AI Forge"
+        "openForge": "Open AI Forge",
+        "category": "Category"
     },
     "floorSync": {
         "title": "The Spatial Protocol",
