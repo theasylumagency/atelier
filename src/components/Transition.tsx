@@ -1,46 +1,61 @@
 'use client';
 export default function Transition({ dict }: { dict: any }) {
     return (
-        <section className="relative flex min-h-[100vh] w-full flex-col justify-between overflow-hidden border-y border-neutral-800 bg-[#050505] p-6 md:min-h-[100vh] max-sm:pt-28 md:p-28 lg:p-30">
+        <section className="relative flex min-h-[100vh] w-full items-center justify-center overflow-hidden border-y border-neutral-800 bg-[#050505]">
 
-            {/* ფონის ბადე (აბსოლუტური სიღრმისთვის) */}
+            {/* ფონის ბადე */}
             <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
 
-            {/* ზედა მარჯვენა კუთხე: სათაური და ჰედლაინი */}
-            <div className="relative z-10 flex w-full flex-col items-end text-right font-[default-font-family]!">
-
-                <span className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 md:text-sm font-sans">
-                    {dict.transition.chapter}
-                </span>
-                <h2
-                    className="text-[7vw] font-bold uppercase leading-none tracking-tighter text-transparent sm:text-[6vw] md:text-[4.5vw] font-sans!"
-                    style={{ WebkitTextStroke: '2px #404040' }}
-                >
-                    {dict.transition.title}
+            {/* გიგანტური ასიმეტრიული ტიპოგრაფია (The Anti-Template) */}
+            <div className="pointer-events-none absolute flex w-full flex-col justify-center px-4 md:px-12">
+                <h2 className="flex flex-col font-bold uppercase tracking-tighter mix-blend-lighten">
+                    <span
+                        className="text-[14vw] leading-[0.85] text-transparent font-sans!"
+                        style={{ WebkitTextStroke: '2px #222' }}
+                    >
+                        {dict.transition.title_1}
+                    </span>
+                    <span className="pl-[8vw] text-[12vw] leading-[0.85] text-white opacity-95 font-sans!">
+                        {dict.transition.title_2}
+                    </span>
+                    <span
+                        className="text-right text-[12vw] leading-[0.85] text-transparent font-sans!"
+                        style={{ WebkitTextStroke: '2px #333' }}
+                    >
+                        {dict.transition.title_3}
+                    </span>
                 </h2>
             </div>
 
-            {/* Right Bottom/Center */}
-            <div className="relative z-10 mt-auto mb-auto flex w-full flex-1 flex-col items-end justify-center text-right">
-                <div className="max-w-2xl pl-12">
-                    <p className="mb-6 text-xl font-medium font-sans leading-relaxed text-white md:text-2xl lg:text-3xl">
-                        {dict.transition.desc1}
-                    </p>
-                    <p className="text-sm leading-relaxed font-sans text-neutral-400 md:text-base lg:text-lg">
-                        {dict.transition.desc2}
-                    </p>
+            {/* მკაცრი არქიტექტურული მართვის ყუთი (The Control Box) */}
+            <div className="absolute bottom-0 right-0 z-20 w-full border-l border-t border-neutral-800 bg-[#0a0a0a]/95 p-8 backdrop-blur-xl md:w-3/4 md:p-12 lg:w-1/2 lg:p-16">
+                <span className="mb-6 block font-mono text-xs font-bold uppercase tracking-[0.3em] text-amber-500 font-sans!" >
+                    {dict.transition.chapter}
+                </span>
+                <p className="mb-6 text-xl font-medium leading-tight text-white md:text-3xl font-sans!">
+                    {dict.transition.desc1}
+                </p>
+                <p className="mb-10 text-sm leading-relaxed text-neutral-400 md:text-base font-sans!">
+                    {dict.transition.desc2}
+                </p>
+
+                {/* ტექნიკური დირექტივები */}
+                <div className="flex flex-col gap-4 sm:flex-row">
+                    <a
+                        href="/ka/panel"
+                        className="flex items-center justify-center border border-neutral-700 bg-transparent px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400 transition-colors hover:border-white hover:text-white"
+                    >
+                        {dict.transition.cta1}
+                    </a>
+                    <a
+                        href="/ka/floor-sync"
+                        className="flex items-center justify-center border border-white bg-white px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-widest text-black transition-transform active:scale-95 hover:bg-neutral-200"
+                    >
+                        {dict.transition.cta2}
+                    </a>
                 </div>
             </div>
 
-            {/* ქვედა მარჯვენა ნაწილი: სტაფილოსფერი ჰორიზონტალური ზოლი */}
-            <div className="relative z-10 flex w-full justify-end">
-                {/* ხაზი, რომელიც ნელ-ნელა ქრება მარცხნივ, რათა სივრცეს შეერწყას */}
-                <div className="h-[3px] w-2/3 max-w-2xl bg-gradient-to-l from-amber-500 to-transparent md:w-1/2"></div>
-            </div>
-
-
-
-
-        </section >
+        </section>
     );
 }
