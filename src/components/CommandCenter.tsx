@@ -297,29 +297,7 @@ export default function CommandCenter({
                     </ul>
                 </div>
 
-                <div className="hidden border-t border-white/10 bg-black p-4 md:flex md:flex-col md:gap-3">
-                    <button
-                        onClick={() => setEditingDish({ categoryId: activeCategoryId })}
-                        className="w-full border border-white/10 bg-transparent py-4 text-[10px] font-sans font-medium uppercase tracking-[0.3em] text-stone-400 transition-colors hover:border-white/30 hover:text-white hover:bg-white/5"
-                    >
-                        {dict.panel.deployDish}
-                    </button>
 
-                    <button
-                        onClick={handlePublish}
-                        disabled={publishState === 'publishing'}
-                        className="w-full border border-emerald-500/20 bg-emerald-500/10 py-4 text-[10px] font-sans font-medium uppercase tracking-[0.3em] text-emerald-300 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/15 disabled:opacity-60"
-                    >
-                        {ui.publishDemo}
-                    </button>
-
-                    <button
-                        onClick={handleResetDemo}
-                        className="w-full border border-white/10 bg-transparent py-4 text-[10px] font-sans font-medium uppercase tracking-[0.3em] text-stone-500 transition-colors hover:border-white/20 hover:text-white hover:bg-white/5"
-                    >
-                        {ui.resetDemo}
-                    </button>
-                </div>
             </aside>
 
             <main className="flex h-full flex-1 flex-col overflow-hidden bg-zinc-950 relative">

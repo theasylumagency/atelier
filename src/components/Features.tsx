@@ -79,12 +79,7 @@ export default function Features({ dict }: { dict: any }) {
                                         <span className="text-slate-800 bg-slate-100 px-2 py-0.5 group-hover:bg-slate-200 transition-colors">{dict.features.spec3_val}</span>
                                     </li>
                                 </Link>
-                                <Link href={panelHref} className="bg-slate-100 py-1 block group cursor-pointer">
-                                    <li className="flex justify-center border-b border-slate-100 pb-3 mt-4 group-hover:border-slate-300 transition-colors">
-                                        <span className="text-slate-400 group-hover:text-slate-600 transition-colors">{dict.features.to_panel}</span>
 
-                                    </li>
-                                </Link>
                             </ul>
                         </div>
                     </div>

@@ -57,7 +57,9 @@ export default function Navigation({ dict, locale }: { dict: any; locale: string
                             <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">{dict.nav?.floorSync || 'Floor Sync'}</button>
                         </Link>
                         <Link href={`/${locale}/panel`}>
-                            <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">{dict.nav?.panel || 'Simulation'}</button>
+                            <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">
+                                {dict.nav?.panel || 'Control Panel'}
+                            </button>
                         </Link>
                     </div>
                 </div>

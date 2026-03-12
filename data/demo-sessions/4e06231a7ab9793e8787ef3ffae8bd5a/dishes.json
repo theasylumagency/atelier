@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-12T05:54:37.243Z",
+  "updatedAt": "2026-03-12T09:26:07.005Z",
   "items": [
     {
       "id": "dish_0001",
@@ -139,7 +139,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "small": "dish_1773307552211_8c785fed_sm.webp",
+        "full": "dish_1773307552211_8c785fed.webp"
+      }
     },
     {
       "id": "dish_0005",

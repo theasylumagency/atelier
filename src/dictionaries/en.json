@@ -5,14 +5,16 @@
         "philosophy": "Philosophy",
         "technology": "Technology",
         "initiate": "Initiate",
-        "panel": "Simulation",
-        "floorSync": "Floor Sync"
+        "floorSync": "Floor Sync",
+        "panel": "Control Panel"
     },
     "hero": {
         "chapter": "Chapter I: The Arrival",
         "title": "The Silent<br/><span class=\"italic font-normal\">Rhythm.</span>",
-        "subtitle": "Orchestrating the invisible architecture of luxury hospitality.",
-        "cta": "Request a Consultation",
+        "subtitle": "A refined operating surface for modern restaurant teams.",
+        "supporting": "Menu control, AI dish stories, photo generation, and service simulation in one quiet system.",
+        "primaryCta": "Open Control Panel",
+        "secondaryCta": "Visit Simulation",
         "scroll": "Scroll to explore"
     },
     "features": {
@@ -33,10 +35,10 @@
         "spec3_val": "< 1.5s",
         "core_engine": "Core Engine V1.0.4",
         "blueprint": "Blueprint V1.0",
-        "integrity_title": "Structural Integrity",
-        "integrity_desc": "Verified Framework",
-        "neural_title": "Neural Grid",
-        "neural_desc": "Optimized Deployment",
+        "integrity_title": "Control Panel Simulation",
+        "integrity_desc": "Check out the restaurant menu control panel. You can also view AI-generated dish stories and photos here.",
+        "neural_title": "Restaurant Visit Simulation",
+        "neural_desc": "Experience the simplicity and complexity of our system through a restaurant visit simulation.",
         "step1_title": "01 / Analysis",
         "step1_desc": "Systemic auditing of existing digital assets to identify structural vulnerabilities and optimization vectors.",
         "step2_title": "02 / Engineering",
@@ -46,9 +48,15 @@
     },
     "transition": {
         "chapter": "Chapter III: Code",
-        "title": "We don't accept templates.",
+        "title_prefix": "The Digital ",
+        "title_highlight": "Blueprint",
+        "title_1": "We don't",
+        "title_2": "accept",
+        "title_3": "templates",
         "desc1": "No templates. A system designed for a specific restaurant only.",
-        "desc2": "Interface, operation and space control — fully managed processes and flows."
+        "desc2": "Interface, operation and space control — fully managed processes and flows.",
+        "cta1": "Control Panel",
+        "cta2": "Floor Sync"
     },
     "process": {
         "chapter": "Chapter III: The Process",
