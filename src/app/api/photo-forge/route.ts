@@ -19,6 +19,7 @@ const requestLog = new Map<string, number[]>();
 // 1. Updated Schema to catch the 4 new modular fields
 const RequestSchema = z.object({
     dishName: z.string().trim().min(2).max(80),
+    ingredients: z.string().trim().max(300).optional(), // <-- New field
     angle: z.string().trim(),
     lighting: z.string().trim(),
     setting: z.string().trim(),
@@ -50,10 +51,10 @@ function sanitizePromptValue(value: string): string {
 }
 
 // 2. The "Digital Studio" Prompt Engine
-function buildPrompt(dishName: string, angle: string, lighting: string, setting: string, styling: string) {
+function buildPrompt(dishName: string, ingredients: string | undefined, angle: string, lighting: string, setting: string, styling: string) {
     const safeDishName = sanitizePromptValue(dishName);
+    const safeIngredients = ingredients ? sanitizePromptValue(ingredients) : '';
 
-    // Dictionaries translating UI choices into professional photography jargon
     const angles: Record<string, string> = {
         '45-deg': 'Diner POV, 45-degree angle, showing the appetizing depth of the dish.',
         'overhead': 'Perfect 90-degree top-down overhead shot, flatlay style, perfect geometric precision.',
@@ -78,11 +79,14 @@ function buildPrompt(dishName: string, angle: string, lighting: string, setting:
         'messy': 'Lived-in, organic and messy styling. A casual linen napkin, scattered crumbs, a pinch of coarse sea salt on the table.'
     };
 
-    // Fallbacks just in case the UI sends an unexpected string
+
     const selectedAngle = angles[angle] || angles['45-deg'];
     const selectedLighting = lightings[lighting] || lightings['harsh'];
     const selectedSetting = settings[setting] || settings['concrete'];
     const selectedStyling = stylings[styling] || stylings['minimalist'];
+    const ingredientsInstruction = safeIngredients
+        ? `- STRICT VISUAL COMPOSITION (MUST INCLUDE): Ensure these specific ingredients are visible on the plate: ${safeIngredients}`
+        : '';
 
     return [
         `A breathtaking, award-winning culinary photograph of exactly this dish: ${safeDishName}.`,
@@ -95,10 +99,12 @@ function buildPrompt(dishName: string, angle: string, lighting: string, setting:
         '',
         '--- STRICT PHOTOGRAPHIC REQUIREMENTS ---',
         '- Shot on medium format camera, 100mm macro lens, f/2.8 aperture for beautiful bokeh.',
-        '- Razor-sharp focus on the intricate textures of the food.',
+        '- COMPOSITION SAFE ZONE: The main subject (the food) MUST be placed in the absolute dead center of the frame.',
+        '- NEGATIVE SPACE: Leave generous, empty padding around all four edges of the food to allow for aggressive UI cropping.',
+        ingredientsInstruction, // <-- Injected right into the strict requirements
         '- Exclusions: Single plated dish ONLY. No hands, no people, no text, no logos, no surreal garnishes.',
         '- Quality: 8k resolution, photorealistic, upscale editorial restaurant photography.',
-    ].join('\n');
+    ].filter(Boolean).join('\n'); // filter removes empty lines
 }
 
 function getUploadsDir() {
@@ -133,15 +139,17 @@ async function saveOptimizedWebpVariants(imageBuffer: Buffer) {
     const fullPath = path.join(getUploadsDir(), fullFilename);
     const smallPath = path.join(getUploadsDir(), smallFilename);
 
+    // Full quality: 1024x1024 (Standard high-res square)
     await sharp(imageBuffer)
         .rotate()
-        .resize({ width: 896, height: 1152, fit: 'cover', position: 'centre', withoutEnlargement: true })
+        .resize({ width: 1024, height: 1024, fit: 'cover', position: 'centre', withoutEnlargement: true })
         .webp({ quality: 80, effort: 6 })
         .toFile(fullPath);
 
+    // Small preview: 512x512 (Perfect for thumbnails and mobile grids)
     await sharp(imageBuffer)
         .rotate()
-        .resize({ width: 448, height: 576, fit: 'cover', position: 'centre', withoutEnlargement: true })
+        .resize({ width: 512, height: 512, fit: 'cover', position: 'centre', withoutEnlargement: true })
         .webp({ quality: 72, effort: 6 })
         .toFile(smallPath);
 
@@ -156,18 +164,23 @@ export async function POST(req: NextRequest) {
 
         const clientKey = getClientKey(req);
         if (isRateLimited(clientKey)) {
-            return NextResponse.json({ error: 'Too many image generation requests. Please try again in a minute.' }, { status: 429 });
+            return NextResponse.json({ error: 'Too many image generation requests.' }, { status: 429 });
         }
 
         const formData = await req.formData();
         const rawDishName = formData.get('dishName');
+        const rawIngredients = formData.get('ingredients'); // <-- Extract here
         const rawAngle = formData.get('angle');
         const rawLighting = formData.get('lighting');
         const rawSetting = formData.get('setting');
         const rawStyling = formData.get('styling');
 
+        // Extract the optional reference image
+        const referenceFile = formData.get('referenceImage') as File | null;
+
         const parsed = RequestSchema.safeParse({
             dishName: typeof rawDishName === 'string' ? rawDishName : '',
+            ingredients: typeof rawIngredients === 'string' ? rawIngredients : undefined, // <-- Parse here
             angle: typeof rawAngle === 'string' ? rawAngle : '',
             lighting: typeof rawLighting === 'string' ? rawLighting : '',
             setting: typeof rawSetting === 'string' ? rawSetting : '',
@@ -175,20 +188,40 @@ export async function POST(req: NextRequest) {
         });
 
         if (!parsed.success) {
-            return NextResponse.json({ error: 'Invalid photo forge payload.', details: parsed.error.flatten() }, { status: 400 });
+            return NextResponse.json({ error: 'Invalid payload.' }, { status: 400 });
         }
 
-        const { dishName, angle, lighting, setting, styling } = parsed.data;
-        const prompt = buildPrompt(dishName, angle, lighting, setting, styling);
+        const { dishName, ingredients, angle, lighting, setting, styling } = parsed.data;
 
-        // 3. Updated to the exact model string for Gemini 3.1 Flash Image
+        // Pass ingredients into the prompt builder
+        let finalPrompt = buildPrompt(dishName, ingredients, angle, lighting, setting, styling);
+        // Prepare the contents payload
+        const contentsPayload: any[] = [];
+
+        // If the chef uploaded a photo, process it and prepend it to the payload
+        if (referenceFile && referenceFile.size > 0) {
+            const buffer = Buffer.from(await referenceFile.arrayBuffer());
+            contentsPayload.push({
+                inlineData: {
+                    data: buffer.toString('base64'),
+                    mimeType: referenceFile.type
+                }
+            });
+
+            // Add an instruction to strictly follow the structure of the uploaded photo
+            finalPrompt = `[CRITICAL INSTRUCTION: Use the attached image as the strict structural reference for the food plating and shape, but completely restyle the lighting, background, and quality according to the parameters below.]\n\n` + finalPrompt;
+        }
+
+        // Add the text prompt
+        contentsPayload.push(finalPrompt);
+
         const response = await ai.models.generateContent({
             model: 'gemini-3.1-flash-image-preview',
-            contents: prompt,
+            contents: contentsPayload,
             config: {
                 responseModalities: ['Image'],
                 imageConfig: {
-                    aspectRatio: '4:5',
+                    aspectRatio: '1:1',
                 },
             },
         });
@@ -205,6 +238,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ photo }, { status: 200 });
     } catch (error) {
         console.error('POST /api/photo-forge failed:', error);
-        return NextResponse.json({ error: 'Failed to generate and save dish photo.' }, { status: 500 });
+        return NextResponse.json({ error: 'Failed to generate dish photo.' }, { status: 500 });
     }
 }

@@ -151,7 +151,8 @@ export default function DishEditor({ dish, categories = [], dict, onClose, onSav
         <>
             {showAssetForge && (
                 <AssetForge
-                    dishName={formData.title?.[activeLang] || formData.title?.['en'] || formData.title?.['ka'] || 'Unnamed Dish'}
+                    dishName={formData.title?.['en'] || formData.title?.['ka'] || 'Unnamed Dish'}
+                    ingredients={formData.description?.['en']} // <-- Add this new prop!
                     initialImage={previewImageSrc}
                     onClose={() => setShowAssetForge(false)}
                     onSave={handleSaveImage}

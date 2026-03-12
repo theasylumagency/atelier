@@ -33,6 +33,7 @@ interface DishPhoto {
 
 interface AssetForgeProps {
     dishName: string;
+    ingredients?: string;
     initialImage?: string | null;
     onClose: () => void;
     onSave: (photo: DishPhoto | null) => void;
@@ -41,7 +42,7 @@ interface AssetForgeProps {
 type PreviewType = 'initial' | 'generated';
 type ForgeStep = 'idle' | 'processing';
 
-export default function AssetForge({ dishName, initialImage, onClose, onSave }: AssetForgeProps) {
+export default function AssetForge({ dishName, ingredients, initialImage, onClose, onSave }: AssetForgeProps) {
     const [step, setStep] = useState<ForgeStep>('idle');
     const [progressLog, setProgressLog] = useState<string[]>([]);
     const [previewImage, setPreviewImage] = useState<string | null>(initialImage || null);
@@ -54,14 +55,26 @@ export default function AssetForge({ dishName, initialImage, onClose, onSave }: 
     const [lighting, setLighting] = useState(OPTIONS.lighting[0].id);
     const [setting, setSetting] = useState(OPTIONS.setting[0].id);
     const [styling, setStyling] = useState(OPTIONS.styling[0].id);
-
+    const [referenceFile, setReferenceFile] = useState<File | null>(null);
+    const [referencePreview, setReferencePreview] = useState<string | null>(null);
     useEffect(() => {
         setPreviewImage(initialImage || null);
         setPreviewType(initialImage ? 'initial' : 'initial');
         setGeneratedPhoto(null);
         setErrorMessage('');
     }, [initialImage]);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setReferenceFile(file);
+            setReferencePreview(URL.createObjectURL(file));
+        }
+    };
 
+    const clearReferenceImage = () => {
+        setReferenceFile(null);
+        setReferencePreview(null);
+    };
     const appendLog = (message: string) => {
         setProgressLog((prev) => [...prev, message]);
     };
@@ -79,25 +92,54 @@ export default function AssetForge({ dishName, initialImage, onClose, onSave }: 
         setErrorMessage('');
         setGeneratedPhoto(null);
 
-        appendLog('ვალიდაცია: პარამეტრების შემოწმება...');
-        appendLog(`სტუდია: ${angle} | ${lighting} | ${setting} | ${styling}`);
-        appendLog('გენერაცია: Google Gemini 3 Flash Image...');
+        // 1. Define the dynamic, realistic sequence of steps
+        const simulatedSteps = [
+            'ვალიდაცია: პარამეტრების შემოწმება...',
+            `სტუდია: მოწყობა (${angle}, ${lighting})...`,
+            referenceFile
+                ? 'ანალიზი: ობიექტის სტრუქტურის ამოცნობა (Image-to-Image)...'
+                : 'კომპოზიცია: ახალი სცენის აგება (Text-to-Image)...',
+            'განათება: ჩრდილების და ტექსტურების კალკულაცია...',
+            'რენდერი: ულტრა-რეალისტური დეტალების დამატება...',
+            'ფინალიზაცია: ფერების კორექცია...',
+            'ოპტიმიზაცია: ქსელისთვის მომზადება (WEBP)...',
+            'თითქმის მზადაა...'
+        ];
+
+        // 2. Start the interval to reveal logs one by one
+        let stepIndex = 0;
+        appendLog(simulatedSteps[stepIndex]); // Show first step immediately
+
+        const logInterval = setInterval(() => {
+            stepIndex++;
+            if (stepIndex < simulatedSteps.length) {
+                appendLog(simulatedSteps[stepIndex]);
+            } else {
+                clearInterval(logInterval); // Stop when we run out of simulated steps
+            }
+        }, 1500); // Reveals a new log every 1.5 seconds
 
         try {
             const body = new FormData();
             body.append('dishName', currentDishName);
-            // Sending modular options instead of a single template ID
             body.append('angle', angle);
             body.append('lighting', lighting);
             body.append('setting', setting);
             body.append('styling', styling);
 
+            // 3. Append ingredients if they exist
+            if (ingredients) {
+                body.append('ingredients', ingredients);
+            }
+
+            if (referenceFile) {
+                body.append('referenceImage', referenceFile);
+            }
+
             const response = await fetch('/api/photo-forge', {
                 method: 'POST',
                 body,
             });
-
-            appendLog('ოპტიმიზაცია: WEBP ვერსიების მომზადება...');
 
             const payload = await response.json();
 
@@ -113,14 +155,23 @@ export default function AssetForge({ dishName, initialImage, onClose, onSave }: 
 
             const fullSrc = photo.full.startsWith('/') ? photo.full : `/uploads/dishes/${photo.full}`;
 
-            setGeneratedPhoto(photo);
-            setPreviewImage(fullSrc);
-            setPreviewType('generated');
-            appendLog('მზადაა: ფოტო შენახულია.');
+            // 4. Clear the interval and set the success state
+            clearInterval(logInterval);
+            appendLog('მზადაა: ფოტო წარმატებით დაგენერირდა.');
+
+            // Adding a tiny delay here just so the user reads the "success" message before it disappears
+            setTimeout(() => {
+                setGeneratedPhoto(photo);
+                setPreviewImage(fullSrc);
+                setPreviewType('generated');
+                setStep('idle');
+            }, 800);
+
         } catch (error) {
+            clearInterval(logInterval);
             const message = error instanceof Error ? error.message : 'Failed to generate photo.';
             setErrorMessage(message);
-        } finally {
+            appendLog(`შეცდომა: ${message}`);
             setStep('idle');
         }
     }
@@ -158,8 +209,55 @@ export default function AssetForge({ dishName, initialImage, onClose, onSave }: 
 
             <div className="flex flex-1 flex-col overflow-hidden sm:flex-row">
                 {/* LEFT SIDEBAR: MODULAR CONTROLS */}
+
                 <div className="shrink-0 border-b border-neutral-800 bg-[#0a0a0a] sm:w-[320px] sm:border-b-0 sm:border-r">
                     <div className="custom-scrollbar flex h-full flex-col overflow-y-auto p-6 md:p-8">
+                        {/* REFERENCE IMAGE UPLOAD & CAPTURE (NEW) */}
+                        <div className="mb-6 flex flex-col gap-2 border border-neutral-800 bg-black p-4">
+                            <label className="font-mono text-[9px] uppercase tracking-widest text-neutral-400">
+                                Reference Photo (Optional)
+                            </label>
+
+                            {referencePreview ? (
+                                <div className="relative aspect-[1/1] w-full overflow-hidden border border-neutral-700 bg-neutral-900">
+                                    <img src={referencePreview} alt="Reference" className="h-full w-full object-cover opacity-70" />
+                                    <button
+                                        type="button"
+                                        onClick={clearReferenceImage}
+                                        className="absolute right-2 top-2 bg-black/80 px-2 py-1 font-mono text-[9px] text-red-500 hover:bg-red-500 hover:text-white"
+                                    >
+                                        REMOVE
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="flex gap-2">
+                                    {/* 1. Standard Upload Button */}
+                                    <label className="flex flex-1 cursor-pointer flex-col items-center justify-center border border-dashed border-neutral-700 bg-neutral-900 py-6 transition-colors hover:border-amber-500 hover:bg-neutral-800">
+                                        <span className="material-symbols-outlined mb-2 text-xl text-neutral-500">folder_open</span>
+                                        <span className="font-mono text-[9px] text-neutral-500">UPLOAD</span>
+                                        <input
+                                            type="file"
+                                            accept="image/jpeg, image/png, image/webp"
+                                            className="hidden"
+                                            onChange={handleFileChange}
+                                        />
+                                    </label>
+
+                                    {/* 2. Device Camera Capture Button */}
+                                    <label className="flex flex-1 cursor-pointer flex-col items-center justify-center border border-dashed border-neutral-700 bg-neutral-900 py-6 transition-colors hover:border-amber-500 hover:bg-neutral-800">
+                                        <span className="material-symbols-outlined mb-2 text-xl text-neutral-500">photo_camera</span>
+                                        <span className="font-mono text-[9px] text-neutral-500">CAMERA</span>
+                                        <input
+                                            type="file"
+                                            accept="image/jpeg, image/png, image/webp"
+                                            capture="environment" // <-- This is the magic attribute for mobile cameras
+                                            className="hidden"
+                                            onChange={handleFileChange}
+                                        />
+                                    </label>
+                                </div>
+                            )}
+                        </div>
                         <h3 className="mb-6 font-mono text-[10px] uppercase tracking-widest text-neutral-500">
                             სტუდიის პარამეტრები (Parameters)
                         </h3>
