@@ -1,196 +1,276 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+// Modular Studio Options for the B2B Demo
+const OPTIONS = {
+    angle: [
+        { id: '45-deg', label: 'Diner POV (45°)' },
+        { id: 'overhead', label: 'Overhead / Flatlay' },
+        { id: 'macro', label: 'Hero / Macro Level' }
+    ],
+    lighting: [
+        { id: 'harsh', label: 'Harsh & Brutalist' },
+        { id: 'moody', label: 'Moody & Cinematic' },
+        { id: 'soft', label: 'Soft & Natural' }
+    ],
+    setting: [
+        { id: 'concrete', label: 'Stark Concrete' },
+        { id: 'dark-slate', label: 'Matte Dark Slate' },
+        { id: 'white-linen', label: 'White Porcelain' }
+    ],
+    styling: [
+        { id: 'minimalist', label: 'Ultra-Minimalist' },
+        { id: 'michelin', label: 'Michelin Precision' },
+        { id: 'messy', label: 'Lived-In / Organic' }
+    ]
+};
+
+interface DishPhoto {
+    small?: string;
+    full?: string;
+}
 
 interface AssetForgeProps {
     dishName: string;
     initialImage?: string | null;
     onClose: () => void;
-    onSave: (imageUrl: string | null) => void;
+    onSave: (photo: DishPhoto | null) => void;
 }
 
+type PreviewType = 'initial' | 'generated';
+type ForgeStep = 'idle' | 'processing';
+
 export default function AssetForge({ dishName, initialImage, onClose, onSave }: AssetForgeProps) {
-    const [step, setStep] = useState<'idle' | 'processing'>('idle');
-    const [activeTemplate, setActiveTemplate] = useState('dark_slate');
+    const [step, setStep] = useState<ForgeStep>('idle');
     const [progressLog, setProgressLog] = useState<string[]>([]);
-    
-    // We use one main state for the visible image in the preview box
     const [previewImage, setPreviewImage] = useState<string | null>(initialImage || null);
-    // Track if what we are seeing is a raw upload vs generated result vs initial provided
-    const [previewType, setPreviewType] = useState<'initial' | 'raw' | 'generated'>(initialImage ? 'initial' : 'initial');
+    const [previewType, setPreviewType] = useState<PreviewType>(initialImage ? 'initial' : 'initial');
+    const [generatedPhoto, setGeneratedPhoto] = useState<DishPhoto | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const templates = [
-        { id: 'dark_slate', name: 'Dark Brutalism', desc: 'შავი ფიქალი, დრამატული განათება' },
-        { id: 'heritage', name: 'Heritage Wood', desc: 'ძველი მუხა, თბილი შუქი' },
-        { id: 'clean_marble', name: 'Clean Marble', desc: 'თეთრი მარმარილო, ნათელი' }
-    ];
+    // New Modular State
+    const [angle, setAngle] = useState(OPTIONS.angle[0].id);
+    const [lighting, setLighting] = useState(OPTIONS.lighting[0].id);
+    const [setting, setSetting] = useState(OPTIONS.setting[0].id);
+    const [styling, setStyling] = useState(OPTIONS.styling[0].id);
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            const tempUrl = URL.createObjectURL(file);
-            setPreviewImage(tempUrl);
-            setPreviewType('raw');
-            setStep('idle');
+    useEffect(() => {
+        setPreviewImage(initialImage || null);
+        setPreviewType(initialImage ? 'initial' : 'initial');
+        setGeneratedPhoto(null);
+        setErrorMessage('');
+    }, [initialImage]);
+
+    const appendLog = (message: string) => {
+        setProgressLog((prev) => [...prev, message]);
+    };
+
+    async function handleGenerate() {
+        const currentDishName = dishName.trim();
+
+        if (!currentDishName || currentDishName.length < 2) {
+            alert('Dish name is too short.');
+            return;
         }
-    };
 
-    const handleDelete = () => {
-        setPreviewImage(null);
-        setPreviewType('initial');
-        setStep('idle');
-    };
-
-    const simulateAIPipeline = () => {
         setStep('processing');
         setProgressLog([]);
-        const logs = [
-            previewType === 'raw' 
-                ? "ინიციალიზაცია: ნედლი ფაილის კომპრესია..." 
-                : "ინიციალიზაცია: ტექსტური პრომპტის გენერაცია...",
-            previewType === 'raw' 
-                ? "AI სეგმენტაცია: ობიექტის ამოჭრა ფონიდან..." 
-                : "AI გენერაცია: ბაზისური მოდელის სინთეზი...",
-            `გარემოს სინთეზი: [${activeTemplate.toUpperCase()}] შაბლონის მორგება...`,
-            "ფერთა კორექცია: ჩრდილების და კონტრასტის დაბალანსება...",
-            "ექსპორტი: ოპტიმიზაცია .WEBP ფორმატში..."
-        ];
+        setErrorMessage('');
+        setGeneratedPhoto(null);
 
-        let currentLog = 0;
-        const processLog = () => {
-            setProgressLog(prev => [...prev, logs[currentLog]]);
-            currentLog++;
-            if (currentLog >= logs.length) {
-                setTimeout(() => {
-                    setStep('idle');
-                    // In a real scenario, this would be the URL returned from the AI.
-                    setPreviewImage('/placeholder-generated.webp'); 
-                    setPreviewType('generated');
-                }, 800);
-            } else {
-                setTimeout(processLog, 1200);
+        appendLog('ვალიდაცია: პარამეტრების შემოწმება...');
+        appendLog(`სტუდია: ${angle} | ${lighting} | ${setting} | ${styling}`);
+        appendLog('გენერაცია: Google Gemini 3 Flash Image...');
+
+        try {
+            const body = new FormData();
+            body.append('dishName', currentDishName);
+            // Sending modular options instead of a single template ID
+            body.append('angle', angle);
+            body.append('lighting', lighting);
+            body.append('setting', setting);
+            body.append('styling', styling);
+
+            const response = await fetch('/api/photo-forge', {
+                method: 'POST',
+                body,
+            });
+
+            appendLog('ოპტიმიზაცია: WEBP ვერსიების მომზადება...');
+
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload?.error || 'Failed to generate photo.');
             }
-        };
 
-        // Start the progress simulation
-        setTimeout(processLog, 800);
+            const photo = payload?.photo as DishPhoto | undefined;
+
+            if (!photo?.full) {
+                throw new Error('The server did not return a valid photo.');
+            }
+
+            const fullSrc = photo.full.startsWith('/') ? photo.full : `/uploads/dishes/${photo.full}`;
+
+            setGeneratedPhoto(photo);
+            setPreviewImage(fullSrc);
+            setPreviewType('generated');
+            appendLog('მზადაა: ფოტო შენახულია.');
+        } catch (error) {
+            const message = error instanceof Error ? error.message : 'Failed to generate photo.';
+            setErrorMessage(message);
+        } finally {
+            setStep('idle');
+        }
+    }
+
+    const handleDelete = () => { /* ... existing logic ... */
+        setPreviewImage(initialImage || null);
+        setPreviewType(initialImage ? 'initial' : 'initial');
+        setGeneratedPhoto(null);
+        setErrorMessage('');
     };
 
+    const handleUseImage = () => { /* ... existing logic ... */
+        if (generatedPhoto) return onSave(generatedPhoto);
+        if (previewImage && previewType === 'initial') return onSave({ small: previewImage, full: previewImage });
+        onSave(null);
+    };
+
+    const canUseImage = Boolean(generatedPhoto || (previewImage && previewType === 'initial'));
+
     return (
-        // The container perfectly overlaps DishEditor. Fixed right side, 800px max width.
-        <div className="fixed inset-y-0 right-0 z-[110] w-full sm:w-[800px] flex flex-col border-l border-neutral-800 bg-[#050505] text-[#f5f5f5] animate-in slide-in-from-right duration-300 shadow-2xl">
-            {/* Header */}
-            <header className="flex items-center justify-between border-b border-neutral-800 p-6 bg-black shrink-0">
-                <div>
-                    <span className="block font-mono text-[10px] uppercase tracking-[0.3em] text-amber-500">Asset Forge</span>
-                    <h2 className="mt-1 text-sm font-bold uppercase tracking-widest text-white">{dishName || 'Unnamed Asset'}</h2>
+        <div className="fixed inset-y-0 right-0 z-[110] flex w-full flex-col border-l border-neutral-800 bg-[#050505] text-[#f5f5f5] shadow-2xl animate-in slide-in-from-right duration-300 sm:w-[800px]">
+            <header className="shrink-0 border-b border-neutral-800 bg-black p-6">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <span className="block font-mono text-[10px] uppercase tracking-[0.3em] text-amber-500">
+                            Digital Studio Engine
+                        </span>
+                        <h2 className="mt-1 text-sm font-bold uppercase tracking-widest text-white">
+                            {dishName || 'Unnamed Asset'}
+                        </h2>
+                    </div>
+                    <button onClick={onClose} className="text-xl text-neutral-500 transition-colors hover:text-white">✕</button>
                 </div>
-                <button onClick={onClose} className="text-neutral-500 hover:text-white font-mono text-xl transition-colors">✕</button>
             </header>
 
-            <div className="flex flex-1 flex-col sm:flex-row overflow-hidden">
-                {/* Control Panel (Left/Top) */}
-                <div className="flex flex-col border-b border-neutral-800 bg-[#0a0a0a] sm:w-[320px] sm:border-b-0 sm:border-r shrink-0">
-                    <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
-                        <h3 className="mb-6 font-mono text-[10px] uppercase tracking-widest text-neutral-500">ვიზუალური შაბლონი (Template)</h3>
-                        <div className="flex flex-col gap-3">
-                            {templates.map(tmpl => (
-                                <button
-                                    key={tmpl.id}
-                                    onClick={() => setActiveTemplate(tmpl.id)}
+            <div className="flex flex-1 flex-col overflow-hidden sm:flex-row">
+                {/* LEFT SIDEBAR: MODULAR CONTROLS */}
+                <div className="shrink-0 border-b border-neutral-800 bg-[#0a0a0a] sm:w-[320px] sm:border-b-0 sm:border-r">
+                    <div className="custom-scrollbar flex h-full flex-col overflow-y-auto p-6 md:p-8">
+                        <h3 className="mb-6 font-mono text-[10px] uppercase tracking-widest text-neutral-500">
+                            სტუდიის პარამეტრები (Parameters)
+                        </h3>
+
+                        <div className="flex flex-col gap-5">
+                            {/* Camera Angle */}
+                            <div className="flex flex-col gap-2">
+                                <label className="font-mono text-[9px] uppercase tracking-widest text-neutral-400">Camera Angle</label>
+                                <select
+                                    value={angle}
+                                    onChange={(e) => setAngle(e.target.value)}
                                     disabled={step === 'processing'}
-                                    className={`flex flex-col items-start border p-4 text-left transition-all ${activeTemplate === tmpl.id ? 'border-amber-500 bg-amber-500/10 text-white' : 'border-neutral-800 bg-transparent text-neutral-400 hover:border-neutral-500'
-                                        } disabled:opacity-50`}
+                                    className="w-full appearance-none border border-neutral-800 bg-black p-3 font-mono text-[10px] uppercase tracking-widest text-amber-500 focus:border-amber-500 focus:outline-none disabled:opacity-50"
                                 >
-                                    <span className={`font-bold uppercase tracking-wider text-xs ${activeTemplate === tmpl.id ? 'text-amber-500' : ''}`}>{tmpl.name}</span>
-                                    <span className={`mt-1 font-mono text-[9px] uppercase tracking-widest ${activeTemplate === tmpl.id ? 'text-amber-200/80' : 'text-neutral-600'}`}>
-                                        {tmpl.desc}
-                                    </span>
-                                </button>
-                            ))}
+                                    {OPTIONS.angle.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+                                </select>
+                            </div>
+
+                            {/* Lighting */}
+                            <div className="flex flex-col gap-2">
+                                <label className="font-mono text-[9px] uppercase tracking-widest text-neutral-400">Lighting Model</label>
+                                <select
+                                    value={lighting}
+                                    onChange={(e) => setLighting(e.target.value)}
+                                    disabled={step === 'processing'}
+                                    className="w-full appearance-none border border-neutral-800 bg-black p-3 font-mono text-[10px] uppercase tracking-widest text-amber-500 focus:border-amber-500 focus:outline-none disabled:opacity-50"
+                                >
+                                    {OPTIONS.lighting.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+                                </select>
+                            </div>
+
+                            {/* Setting */}
+                            <div className="flex flex-col gap-2">
+                                <label className="font-mono text-[9px] uppercase tracking-widest text-neutral-400">Plating & Background</label>
+                                <select
+                                    value={setting}
+                                    onChange={(e) => setSetting(e.target.value)}
+                                    disabled={step === 'processing'}
+                                    className="w-full appearance-none border border-neutral-800 bg-black p-3 font-mono text-[10px] uppercase tracking-widest text-amber-500 focus:border-amber-500 focus:outline-none disabled:opacity-50"
+                                >
+                                    {OPTIONS.setting.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+                                </select>
+                            </div>
+
+                            {/* Styling */}
+                            <div className="flex flex-col gap-2">
+                                <label className="font-mono text-[9px] uppercase tracking-widest text-neutral-400">Styling & Garnish</label>
+                                <select
+                                    value={styling}
+                                    onChange={(e) => setStyling(e.target.value)}
+                                    disabled={step === 'processing'}
+                                    className="w-full appearance-none border border-neutral-800 bg-black p-3 font-mono text-[10px] uppercase tracking-widest text-amber-500 focus:border-amber-500 focus:outline-none disabled:opacity-50"
+                                >
+                                    {OPTIONS.styling.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+                                </select>
+                            </div>
                         </div>
 
-                        <label className={`mt-8 flex h-16 w-full cursor-pointer items-center justify-center border border-dashed border-neutral-700 bg-[#050505] transition-colors hover:border-amber-500 hover:bg-neutral-900/50 ${step === 'processing' ? 'opacity-50 pointer-events-none' : ''}`}>
-                            <span className="material-symbols-outlined text-neutral-600 mr-2 text-sm">add_photo_alternate</span>
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-neutral-400">ნედლი ფოტოს ატვირთვა</span>
-                            <input type="file" className="hidden" accept="image/*" onChange={handleFileChange} disabled={step === 'processing'} />
-                        </label>
-
-                        <button 
-                            onClick={simulateAIPipeline} 
-                            disabled={step === 'processing'} 
-                            className="mt-4 w-full border border-amber-500 bg-amber-500/10 py-4 font-mono text-[10px] font-bold uppercase tracking-widest text-amber-500 transition-colors hover:bg-amber-500 hover:text-black disabled:opacity-50 disabled:pointer-events-none"
+                        <button
+                            type="button"
+                            onClick={handleGenerate}
+                            disabled={step === 'processing'}
+                            className="mt-8 w-full border border-amber-500 bg-amber-500/10 py-4 font-mono text-[10px] font-bold uppercase tracking-widest text-amber-500 transition-colors hover:bg-amber-500 hover:text-black disabled:pointer-events-none disabled:opacity-50"
                         >
-                            AI სინთეზის დაწყება
+                            ფოტოს გენერაცია
+                        </button>
+
+                        <button
+                            type="button"
+                            onClick={handleUseImage}
+                            disabled={!canUseImage || step === 'processing'}
+                            className="mt-3 w-full border border-white/20 bg-white/5 py-4 font-mono text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white hover:text-black disabled:pointer-events-none disabled:opacity-40"
+                        >
+                            გამოიყენე ეს ფოტო
                         </button>
                     </div>
                 </div>
 
-                {/* Visual Preview (Right/Bottom) */}
-                <div className="relative flex flex-1 flex-col items-center justify-center bg-[#111] bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:2rem_2rem] p-8 overflow-hidden">
+                {/* RIGHT PANEL: PREVIEW */}
+                <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-[#111] bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:2rem_2rem] p-8">
                     {step === 'processing' ? (
-                        <div className="w-full max-w-lg flex flex-col p-8 bg-black/80 border border-neutral-800 shadow-2xl backdrop-blur-md">
-                            <div className="flex items-center gap-3 mb-8 border-b border-neutral-800 pb-4">
-                                <div className="h-2 w-2 rounded-full bg-amber-500 animate-pulse"></div>
-                                <span className="font-mono text-xs uppercase text-amber-500 tracking-widest">სისტემა მუშაობს / SYSTEM WORKING</span>
+                        <div className="flex w-full max-w-lg flex-col border border-neutral-800 bg-black/80 p-8 shadow-2xl backdrop-blur-md">
+                            <div className="mb-8 flex items-center gap-3 border-b border-neutral-800 pb-4">
+                                <div className="h-2 w-2 animate-pulse rounded-full bg-amber-500"></div>
+                                <span className="font-mono text-xs uppercase tracking-widest text-amber-500">
+                                    სისტემა მუშაობს / RENDERING ASSET
+                                </span>
                             </div>
-                            <div className="flex flex-col gap-4 font-mono text-[10px] uppercase tracking-widest text-neutral-500 h-[240px] overflow-hidden">
+                            <div className="flex h-[240px] flex-col gap-4 overflow-hidden font-mono text-[10px] uppercase tracking-widest text-neutral-500">
                                 {progressLog.map((log, i) => (
-                                    <div key={i} className="flex items-start gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                                        <span className="text-green-500 shrink-0 select-none">✓</span>
-                                        <span className="text-white break-words">{log}</span>
+                                    <div key={i} className="animate-in fade-in flex items-start gap-3">
+                                        <span className="shrink-0 text-green-500">✓</span>
+                                        <span className="text-white">{log}</span>
                                     </div>
                                 ))}
-                                {/* Blinking cursor indicating active processing */}
-                                <div className="flex flex-col gap-2 opacity-50">
-                                  <span className="w-2 h-4 bg-neutral-500 animate-pulse ml-6"></span>
-                                </div>
                             </div>
                         </div>
                     ) : (
-                        <div className="flex flex-col items-center justify-center animate-in fade-in zoom-in-95 duration-500 w-full max-w-[360px]">
-                            {/* In a real app, this would display previewImage. We use a placeholder here for the simulation. */}
-                            <div className="relative aspect-square w-full border border-white bg-black shadow-2xl p-4 flex flex-col items-center group">
-                                
-                                {/* Delete button (only if image exists) */}
+                        <div className="animate-in fade-in zoom-in-95 flex w-full max-w-[360px] flex-col items-center justify-center duration-500">
+                            <div className="group relative flex aspect-[4/5] w-full flex-col items-center border border-white bg-black p-4 shadow-2xl">
                                 {previewImage && (
-                                    <button 
-                                        onClick={handleDelete} 
-                                        className="absolute top-6 right-6 z-10 bg-black/80 border border-neutral-700 hover:border-red-500 text-neutral-400 hover:text-red-500 h-8 w-8 flex items-center justify-center rounded-sm transition-colors backdrop-blur-md opacity-0 group-hover:opacity-100"
-                                        title="ფოტოს წაშლა"
-                                    >
-                                        <span className="material-symbols-outlined text-sm">delete</span>
-                                    </button>
+                                    <button onClick={handleDelete} className="absolute right-6 top-6 z-10 flex h-8 w-8 items-center justify-center border border-neutral-700 bg-black/80 text-neutral-400 opacity-0 transition-colors hover:border-red-500 hover:text-red-500 group-hover:opacity-100">✕</button>
                                 )}
-
-                                <div className="w-full aspect-square bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-4 overflow-hidden relative">
+                                <div className="relative flex flex-1 items-center justify-center overflow-hidden border border-neutral-900 bg-[#0d0d0d] w-full">
                                     {previewImage ? (
-                                        <>
-                                            {previewImage === '/placeholder-generated.webp' && (
-                                                <span className="font-mono text-[10px] text-neutral-200 bg-black/60 px-2 py-1 uppercase tracking-widest absolute bottom-4 right-4 z-10 backdrop-blur-sm pointer-events-none group-hover:opacity-0 transition-opacity duration-300">
-                                                    AI Gen.
-                                                </span>
-                                            )}
-                                            <img src={previewImage} alt="Preview Asset" className="w-full h-full object-cover" />
-                                        </>
+                                        <img src={previewImage} alt="Asset preview" className="h-full w-full object-cover" />
                                     ) : (
-                                        <div className="flex flex-col items-center justify-center text-neutral-600 gap-2">
-                                            <span className="material-symbols-outlined text-4xl">hide_image</span>
-                                            <span className="font-mono text-[9px] uppercase tracking-widest">ფოტო არ არის შერჩეული</span>
-                                        </div>
+                                        <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-600">No preview available</span>
                                     )}
                                 </div>
-                                <span className="font-mono text-[10px] uppercase text-neutral-400 tracking-widest border-b border-neutral-800 pb-2 w-full text-center">
-                                    {previewType === 'raw' ? '[ RAW UPLOAD ]' : previewType === 'generated' ? '[ AI GENERATED .WEBP ]' : previewType === 'initial' && previewImage ? '[ EXISTING ASSET ]' : '[ NO ASSET ]'}
-                                </span>
                             </div>
-
-                            <button
-                                onClick={() => onSave(previewImage)}
-                                className="mt-8 border border-white bg-white w-full py-4 font-mono text-xs font-bold uppercase tracking-widest text-black transition-all hover:bg-neutral-200 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
-                            >
-                                დადასტურება & შენახვა
-                            </button>
                         </div>
                     )}
                 </div>

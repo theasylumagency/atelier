@@ -13,7 +13,6 @@ interface CommandCenterProps {
 
 type PublishState = 'ready' | 'draft' | 'publishing' | 'published';
 
-const STORAGE_KEY = 'maitrise-atelier-panel-demo-v1';
 
 const UI = {
     en: {
@@ -23,7 +22,7 @@ const UI = {
         ready: 'Ready',
         resetDemo: 'Reset demo',
         publishDemo: 'Publish demo',
-        localDraft: 'Saved locally for this browser',
+        localDraft: 'Saved in this private demo session',
         lastPublished: 'Last published',
         noDishes: 'No Dishes Deployed',
         noDishesSub: 'Architecture requires population.',
@@ -35,7 +34,7 @@ const UI = {
         ready: 'მზადაა',
         resetDemo: 'დემო გაასუფთავე',
         publishDemo: 'გამოაქვეყნე დემო',
-        localDraft: 'ლოკალურად შენახულია ამ ბრაუზერში',
+        localDraft: 'შენახულია ამ კერძო დემო სესიაში',
         lastPublished: 'ბოლოს გამოქვეყნდა',
         noDishes: 'კერძები არ არის დამატებული',
         noDishesSub: 'არქიტექტურას შევსება სჭირდება.',
@@ -69,7 +68,7 @@ export default function CommandCenter({
 }: CommandCenterProps) {
     const ui = locale === 'ka' ? UI.ka : UI.en;
 
-    const [categories, setCategories] = useState(initialCategories);
+    const [categories] = useState(initialCategories);
     const [dishes, setDishes] = useState(initialDishes);
     const [editingDish, setEditingDish] = useState<any | null>(null);
     const [activeCategoryId, setActiveCategoryId] = useState<string | null>(
@@ -77,22 +76,6 @@ export default function CommandCenter({
     );
     const [publishState, setPublishState] = useState<PublishState>('ready');
     const [lastPublishedAt, setLastPublishedAt] = useState<string | null>(null);
-
-    useEffect(() => {
-        try {
-            const raw = window.localStorage.getItem(STORAGE_KEY);
-            if (!raw) return;
-
-            const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed.categories)) setCategories(parsed.categories);
-            if (Array.isArray(parsed.dishes)) setDishes(parsed.dishes);
-            if (parsed.lastPublishedAt) setLastPublishedAt(parsed.lastPublishedAt);
-            if (parsed.hasDraftChanges) setPublishState('draft');
-            else if (parsed.lastPublishedAt) setPublishState('published');
-        } catch (error) {
-            console.error('Failed to load demo panel snapshot:', error);
-        }
-    }, []);
 
     useEffect(() => {
         if (!activeCategoryId || !categories.some((c) => c.id === activeCategoryId)) {
@@ -115,77 +98,136 @@ export default function CommandCenter({
 
     const activeCategoryTitle =
         activeCategory?.title?.[locale] || activeCategory?.title?.en || '';
+    async function loadDemoDishes() {
+        try {
+            const response = await fetch('/api/demo/dishes', {
+                method: 'GET',
+                cache: 'no-store',
+            });
 
-    function persistSnapshot(nextCategories: any[], nextDishes: any[], options?: {
-        lastPublishedAt?: string | null;
-        hasDraftChanges?: boolean;
-    }) {
-        const payload = {
-            categories: nextCategories,
-            dishes: nextDishes,
-            lastPublishedAt: options?.lastPublishedAt ?? lastPublishedAt,
-            hasDraftChanges: options?.hasDraftChanges ?? publishState === 'draft',
-        };
+            const payload = await response.json();
 
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+            if (!response.ok) {
+                throw new Error(payload?.error || 'Failed to load demo dishes.');
+            }
+
+            setDishes(Array.isArray(payload.items) ? payload.items : []);
+            setLastPublishedAt(payload.lastPublishedAt || null);
+
+            const updatedAt = payload.updatedAt ? new Date(payload.updatedAt).getTime() : 0;
+            const publishedAt = payload.lastPublishedAt ? new Date(payload.lastPublishedAt).getTime() : 0;
+
+            if (!payload.lastPublishedAt) {
+                setPublishState('ready');
+            } else if (updatedAt > publishedAt) {
+                setPublishState('draft');
+            } else {
+                setPublishState('published');
+            }
+        } catch (error) {
+            console.error('Failed to load demo dishes:', error);
+        }
     }
 
-    function handleSaveDish(data: any) {
+    useEffect(() => {
+        loadDemoDishes();
+    }, []);
+
+    async function handleSaveDish(data: any) {
         const categoryId = data.categoryId || activeCategoryId || categories[0]?.id || 'cat_0001';
 
         const categoryOrders = dishes
-            .filter((dish) => dish.categoryId === categoryId)
+            .filter((dish) => dish.categoryId === categoryId && dish.id !== data.id)
             .map((dish) => Number(dish.order) || 0);
 
         const nextOrder =
-            categoryOrders.length > 0 ? Math.max(...categoryOrders) + 10 : 10;
+            data.order ??
+            (categoryOrders.length > 0 ? Math.max(...categoryOrders) + 10 : 10);
 
         const normalizedDish = {
             ...data,
             id: data.id || makeDishId(),
             categoryId,
-            order: typeof data.order === 'number' ? data.order : nextOrder,
+            order: nextOrder,
             status: data.status || 'active',
-            currency: data.currency || 'GEL',
-            soldOut: Boolean(data.soldOut),
         };
 
-        const nextDishes = dishes.some((dish) => dish.id === normalizedDish.id)
-            ? dishes.map((dish) => (dish.id === normalizedDish.id ? { ...dish, ...normalizedDish } : dish))
-            : [...dishes, normalizedDish];
+        try {
+            if (data.id) {
+                const response = await fetch(`/api/demo/dishes/${data.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(normalizedDish),
+                });
 
-        setDishes(nextDishes);
-        setPublishState('draft');
-        persistSnapshot(categories, nextDishes, {
-            hasDraftChanges: true,
-        });
-        setEditingDish(null);
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload?.error || 'Failed to update dish.');
+                }
+            } else {
+                const response = await fetch('/api/demo/dishes/create', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(normalizedDish),
+                });
+
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload?.error || 'Failed to create dish.');
+                }
+            }
+
+            await loadDemoDishes();
+            setPublishState('draft');
+            setEditingDish(null);
+        } catch (error) {
+            console.error('Failed to save dish:', error);
+            alert(error instanceof Error ? error.message : 'Failed to save dish.');
+        }
     }
 
-    function handlePublish() {
-        setPublishState('publishing');
-
-        window.setTimeout(() => {
-            const stamp = new Date().toISOString();
-            setLastPublishedAt(stamp);
-            setPublishState('published');
-            persistSnapshot(categories, dishes, {
-                lastPublishedAt: stamp,
-                hasDraftChanges: false,
+    async function handlePublish() {
+        try {
+            const response = await fetch('/api/demo/publish', {
+                method: 'POST',
             });
-        }, 700);
+
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload?.error || 'Failed to publish demo.');
+            }
+
+            setLastPublishedAt(payload.lastPublishedAt || null);
+            setPublishState('published');
+        } catch (error) {
+            console.error('Failed to publish demo:', error);
+            alert(error instanceof Error ? error.message : 'Failed to publish demo.');
+        }
     }
 
-    function handleResetDemo() {
-        window.localStorage.removeItem(STORAGE_KEY);
-        setCategories(initialCategories);
-        setDishes(initialDishes);
-        setActiveCategoryId(initialCategories[0]?.id ?? null);
-        setLastPublishedAt(null);
-        setPublishState('ready');
-        setEditingDish(null);
-    }
+    async function handleResetDemo() {
+        try {
+            const response = await fetch('/api/demo/reset', {
+                method: 'POST',
+            });
 
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload?.error || 'Failed to reset demo.');
+            }
+
+            setDishes(Array.isArray(payload.items) ? payload.items : []);
+            setLastPublishedAt(null);
+            setPublishState('ready');
+        } catch (error) {
+            console.error('Failed to reset demo:', error);
+            alert(error instanceof Error ? error.message : 'Failed to reset demo.');
+        }
+    }
     const statusLabel =
         publishState === 'draft'
             ? ui.draft
@@ -205,12 +247,12 @@ export default function CommandCenter({
                     <div className="mt-4 flex items-center justify-between gap-3">
                         <span
                             className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] uppercase tracking-[0.28em] ${publishState === 'draft'
-                                    ? 'border-amber-500/30 text-amber-400 bg-amber-500/10'
-                                    : publishState === 'publishing'
-                                        ? 'border-white/20 text-white bg-white/10'
-                                        : publishState === 'published'
-                                            ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
-                                            : 'border-white/10 text-stone-400 bg-white/5'
+                                ? 'border-amber-500/30 text-amber-400 bg-amber-500/10'
+                                : publishState === 'publishing'
+                                    ? 'border-white/20 text-white bg-white/10'
+                                    : publishState === 'published'
+                                        ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10'
+                                        : 'border-white/10 text-stone-400 bg-white/5'
                                 }`}
                         >
                             {statusLabel}
@@ -235,8 +277,8 @@ export default function CommandCenter({
                                     <button
                                         onClick={() => setActiveCategoryId(category.id)}
                                         className={`group flex items-center justify-between border px-4 py-2 transition-all duration-200 md:w-full md:py-3 ${isActive
-                                                ? 'border-white/30 bg-white/10 text-white'
-                                                : 'border-white/5 bg-transparent text-stone-400 hover:border-white/20 hover:text-white hover:bg-white/5'
+                                            ? 'border-white/30 bg-white/10 text-white'
+                                            : 'border-white/5 bg-transparent text-stone-400 hover:border-white/20 hover:text-white hover:bg-white/5'
                                             }`}
                                     >
                                         <span className="whitespace-nowrap text-[10px] md:text-xs font-sans font-medium uppercase tracking-[0.2em] md:whitespace-normal md:text-left">
