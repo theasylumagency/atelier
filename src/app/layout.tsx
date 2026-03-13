@@ -20,40 +20,44 @@ const bpgClassic = localFont({
     display: 'swap',
 });
 
+const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.SITE_URL ||
+    'http://localhost:3000';
+
 export const metadata: Metadata = {
-    title: "MAÎTRISE Atelier",
-    description: "Elegant digital atelier for hospitality experiences.",
+    metadataBase: new URL(siteUrl),
+    title: 'MAITRISE Atelier',
+    description: 'Elegant digital atelier for hospitality experiences.',
     icons: {
         icon: [
-            { url: "/brand/favicon.ico", sizes: "any" },
-            { url: "/brand/favicon.svg", type: "image/svg+xml" },
+            { url: '/brand/favicon.ico', sizes: 'any' },
+            { url: '/brand/favicon.svg', type: 'image/svg+xml' },
         ],
-        apple: [
-            { url: "/brand/apple-touch-icon.png", sizes: "180x180" },
-        ],
-        shortcut: ["/brand/favicon.ico"],
+        apple: [{ url: '/brand/apple-touch-icon.png', sizes: '180x180' }],
+        shortcut: ['/brand/favicon.ico'],
     },
     openGraph: {
-        title: "MAÎTRISE Atelier",
-        description: "Elegant digital atelier for hospitality experiences.",
-        url: "https://your-domain.com",
-        siteName: "MAÎTRISE Atelier",
+        title: 'MAITRISE Atelier',
+        description: 'Elegant digital atelier for hospitality experiences.',
+        url: siteUrl,
+        siteName: 'MAITRISE Atelier',
         images: [
             {
-                url: "/og/maitrise-atelier-og-1200x630.jpg",
+                url: '/og/maitrise-atelier-og-1200x630.jpg',
                 width: 1200,
                 height: 630,
-                alt: "MAÎTRISE Atelier",
+                alt: 'MAITRISE Atelier',
             },
         ],
-        locale: "en_US",
-        type: "website",
+        locale: 'en_US',
+        type: 'website',
     },
     twitter: {
-        card: "summary_large_image",
-        title: "MAÎTRISE Atelier",
-        description: "Elegant digital atelier for hospitality experiences.",
-        images: ["/og/maitrise-atelier-og-1200x630.jpg"],
+        card: 'summary_large_image',
+        title: 'MAITRISE Atelier',
+        description: 'Elegant digital atelier for hospitality experiences.',
+        images: ['/og/maitrise-atelier-og-1200x630.jpg'],
     },
 };
 

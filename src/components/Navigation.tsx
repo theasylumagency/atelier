@@ -1,15 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import type { AppDictionary } from '@/lib/dictionaries';
 import { getFloorSyncHubPath } from '@/lib/floor-sync';
 
 export default function Navigation({ dict, locale }: { dict: AppDictionary; locale: string }) {
     const [hidden, setHidden] = useState(false);
     const [hovered, setHovered] = useState(false);
+    const [guestMode, setGuestMode] = useState(false);
     const pathname = usePathname();
-    const searchParams = useSearchParams();
 
     useEffect(() => {
         let lastScrollY = window.scrollY;
@@ -26,6 +26,15 @@ export default function Navigation({ dict, locale }: { dict: AppDictionary; loca
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        setGuestMode(pathname?.endsWith('/floor-sync') && params.get('guest') === '1');
+    }, [pathname]);
+
     const getLocalizedPath = (targetLocale: string) => {
         if (!pathname) return `/${targetLocale}`;
         const segments = pathname.split('/');
@@ -33,7 +42,7 @@ export default function Navigation({ dict, locale }: { dict: AppDictionary; loca
         return segments.join('/');
     };
 
-    if (pathname?.endsWith('/floor-sync') && searchParams.get('guest') === '1') {
+    if (guestMode) {
         return null;
     }
 
