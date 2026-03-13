@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { normalizeDishPhotoRef, resolveDishPhotoSrc } from '@/lib/dish-photo';
 
 // Modular Studio Options for the B2B Demo
 const OPTIONS = {
@@ -42,6 +43,115 @@ interface AssetForgeProps {
 type PreviewType = 'initial' | 'generated';
 type ForgeStep = 'idle' | 'processing';
 
+const MAX_REFERENCE_BYTES = 900 * 1024;
+const MAX_REFERENCE_DIMENSION = 1600;
+const TARGET_REFERENCE_MIME = 'image/jpeg';
+
+function canvasToBlob(canvas: HTMLCanvasElement, quality: number) {
+    return new Promise<Blob>((resolve, reject) => {
+        canvas.toBlob((blob) => {
+            if (blob) {
+                resolve(blob);
+                return;
+            }
+
+            reject(new Error('Failed to optimize the reference photo.'));
+        }, TARGET_REFERENCE_MIME, quality);
+    });
+}
+
+function loadImageElement(file: File) {
+    return new Promise<HTMLImageElement>((resolve, reject) => {
+        const objectUrl = URL.createObjectURL(file);
+        const image = new Image();
+
+        image.onload = () => {
+            URL.revokeObjectURL(objectUrl);
+            resolve(image);
+        };
+
+        image.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            reject(new Error('Failed to read the reference photo.'));
+        };
+
+        image.src = objectUrl;
+    });
+}
+
+async function prepareReferenceImageUpload(file: File) {
+    if (!file.type.startsWith('image/')) {
+        return file;
+    }
+
+    const image = await loadImageElement(file);
+    const maxInputDimension = Math.max(image.naturalWidth, image.naturalHeight);
+    const initialScale =
+        maxInputDimension > MAX_REFERENCE_DIMENSION
+            ? MAX_REFERENCE_DIMENSION / maxInputDimension
+            : 1;
+
+    let width = Math.max(1, Math.round(image.naturalWidth * initialScale));
+    let height = Math.max(1, Math.round(image.naturalHeight * initialScale));
+    let quality = 0.82;
+
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+
+    if (!context) {
+        throw new Error('The browser could not prepare the reference photo.');
+    }
+
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+        canvas.width = width;
+        canvas.height = height;
+        context.clearRect(0, 0, width, height);
+        context.drawImage(image, 0, 0, width, height);
+
+        const blob = await canvasToBlob(canvas, quality);
+
+        if (blob.size <= MAX_REFERENCE_BYTES || attempt === 5) {
+            const baseName = file.name.replace(/\.[^.]+$/, '') || 'reference';
+            return new File([blob], `${baseName}-ref.jpg`, {
+                type: TARGET_REFERENCE_MIME,
+                lastModified: Date.now(),
+            });
+        }
+
+        if (attempt >= 2) {
+            width = Math.max(480, Math.round(width * 0.85));
+            height = Math.max(480, Math.round(height * 0.85));
+        }
+
+        quality = Math.max(0.55, quality - 0.08);
+    }
+
+    return file;
+}
+
+async function readResponsePayload(response: Response) {
+    const contentType = response.headers.get('content-type') || '';
+
+    if (contentType.includes('application/json')) {
+        return response.json();
+    }
+
+    const text = await response.text();
+    return { error: text.trim() };
+}
+
+function getGenerationErrorMessage(status: number, fallback?: string) {
+    if (status === 413) {
+        return 'The supporting photo is too large for the production server. Use a smaller crop or lower-resolution image.';
+    }
+
+    if (status === 404) {
+        return 'The generated image could not be loaded from the server.';
+    }
+
+    return fallback || 'Failed to generate photo.';
+}
+
 export default function AssetForge({ dishName, ingredients, initialImage, onClose, onSave }: AssetForgeProps) {
     const [step, setStep] = useState<ForgeStep>('idle');
     const [progressLog, setProgressLog] = useState<string[]>([]);
@@ -63,17 +173,39 @@ export default function AssetForge({ dishName, ingredients, initialImage, onClos
         setGeneratedPhoto(null);
         setErrorMessage('');
     }, [initialImage]);
+
+    useEffect(() => {
+        return () => {
+            if (referencePreview) {
+                URL.revokeObjectURL(referencePreview);
+            }
+        };
+    }, [referencePreview]);
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             setReferenceFile(file);
-            setReferencePreview(URL.createObjectURL(file));
+            const nextPreview = URL.createObjectURL(file);
+            setReferencePreview((current) => {
+                if (current) {
+                    URL.revokeObjectURL(current);
+                }
+
+                return nextPreview;
+            });
         }
     };
 
     const clearReferenceImage = () => {
         setReferenceFile(null);
-        setReferencePreview(null);
+        setReferencePreview((current) => {
+            if (current) {
+                URL.revokeObjectURL(current);
+            }
+
+            return null;
+        });
     };
     const appendLog = (message: string) => {
         setProgressLog((prev) => [...prev, message]);
@@ -133,7 +265,8 @@ export default function AssetForge({ dishName, ingredients, initialImage, onClos
             }
 
             if (referenceFile) {
-                body.append('referenceImage', referenceFile);
+                const preparedReferenceFile = await prepareReferenceImageUpload(referenceFile);
+                body.append('referenceImage', preparedReferenceFile);
             }
 
             const response = await fetch('/api/photo-forge', {
@@ -141,10 +274,10 @@ export default function AssetForge({ dishName, ingredients, initialImage, onClos
                 body,
             });
 
-            const payload = await response.json();
+            const payload = await readResponsePayload(response);
 
             if (!response.ok) {
-                throw new Error(payload?.error || 'Failed to generate photo.');
+                throw new Error(getGenerationErrorMessage(response.status, payload?.error));
             }
 
             const photo = payload?.photo as DishPhoto | undefined;
@@ -153,7 +286,11 @@ export default function AssetForge({ dishName, ingredients, initialImage, onClos
                 throw new Error('The server did not return a valid photo.');
             }
 
-            const fullSrc = photo.full.startsWith('/') ? photo.full : `/uploads/dishes/${photo.full}`;
+            const fullSrc = resolveDishPhotoSrc(photo.full);
+
+            if (!fullSrc) {
+                throw new Error('The server did not return a usable photo path.');
+            }
 
             // 4. Clear the interval and set the success state
             clearInterval(logInterval);
@@ -184,8 +321,18 @@ export default function AssetForge({ dishName, ingredients, initialImage, onClos
     };
 
     const handleUseImage = () => { /* ... existing logic ... */
-        if (generatedPhoto) return onSave(generatedPhoto);
-        if (previewImage && previewType === 'initial') return onSave({ small: previewImage, full: previewImage });
+        if (generatedPhoto) {
+            return onSave({
+                small: normalizeDishPhotoRef(generatedPhoto.small),
+                full: normalizeDishPhotoRef(generatedPhoto.full),
+            });
+        }
+
+        if (previewImage && previewType === 'initial') {
+            const normalized = normalizeDishPhotoRef(previewImage);
+            return onSave({ small: normalized, full: normalized });
+        }
+
         onSave(null);
     };
 
@@ -333,6 +480,12 @@ export default function AssetForge({ dishName, ingredients, initialImage, onClos
                         >
                             გამოიყენე ეს ფოტო
                         </button>
+
+                        {errorMessage && (
+                            <p className="mt-4 border border-red-900/60 bg-red-950/30 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-red-300">
+                                {errorMessage}
+                            </p>
+                        )}
                     </div>
                 </div>
 

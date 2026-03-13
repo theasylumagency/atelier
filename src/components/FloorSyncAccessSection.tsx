@@ -3,6 +3,7 @@ import QRCode from 'qrcode';
 import type { AppDictionary } from '@/lib/dictionaries';
 import { DEMO_TABLES, getFloorSyncBoardPath } from '@/lib/floor-sync';
 import { getFloorSyncScanPath } from '@/lib/floor-sync-server';
+import TableActions from './TableActions';
 
 async function makeQrDataUrl(value: string) {
     return QRCode.toDataURL(value, {
@@ -108,16 +109,12 @@ export default async function FloorSyncAccessSection({
                             </div>
 
                             <div className="mt-5 space-y-3">
-                                <p className="text-xs leading-relaxed text-stone-400 break-all">
-                                    {table.scanUrl}
-                                </p>
-                                <Link
-                                    href={table.scanPath}
-                                    target="_blank"
-                                    className="inline-flex items-center justify-center rounded-full border border-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-stone-300 transition-colors hover:border-white/20 hover:text-white"
-                                >
-                                    {dict.floorSync?.previewGuest || 'Preview guest route'}
-                                </Link>
+
+                                {/* Replace the old raw URL and preview button with this component */}
+                                <TableActions
+                                    scanUrl={table.scanUrl}
+                                    scanPath={table.scanPath}
+                                />
                             </div>
                         </article>
                     ))}

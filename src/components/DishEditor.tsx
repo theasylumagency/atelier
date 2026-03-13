@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import AssetForge from '@/components/AssetForge';
+import { normalizeDishPhotoRef, resolveDishPhotoSrc } from '@/lib/dish-photo';
 
 interface LocalizedText {
     ka: string;
@@ -17,6 +18,7 @@ interface DishPhoto {
 
 interface DishData {
     id?: string;
+    categoryId?: string;
     priceMinor?: number;
     currency?: string;
     vegetarian?: boolean;
@@ -25,13 +27,26 @@ interface DishData {
     description?: LocalizedText;
     story?: LocalizedText;
     photo?: DishPhoto;
-    [key: string]: any;
+    [key: string]: unknown;
+}
+
+interface CategoryOption {
+    id: string;
+    title?: LocalizedText;
+}
+
+interface PanelDictionary {
+    [key: string]: string | undefined;
+}
+
+interface EditorDictionary {
+    panel: PanelDictionary;
 }
 
 interface DishEditorProps {
     dish: DishData | null;
-    categories?: any[];
-    dict: any;
+    categories?: CategoryOption[];
+    dict: EditorDictionary;
     onClose: () => void;
     onSave?: (data: DishData) => void;
 }
@@ -64,17 +79,7 @@ export default function DishEditor({ dish, categories = [], dict, onClose, onSav
         }));
     };
     const getPreviewImageSrc = () => {
-        const full = formData.photo?.full?.trim();
-        const small = formData.photo?.small?.trim();
-        const raw = full || small;
-
-        if (!raw) return null;
-
-        if (raw.startsWith('http://') || raw.startsWith('https://') || raw.startsWith('/')) {
-            return raw;
-        }
-
-        return `/uploads/dishes/${raw}`;
+        return resolveDishPhotoSrc(formData.photo?.full) || resolveDishPhotoSrc(formData.photo?.small);
     };
     const previewImageSrc = getPreviewImageSrc();
     const handleGenerateAI = async () => {
@@ -142,7 +147,12 @@ export default function DishEditor({ dish, categories = [], dict, onClose, onSav
     const handleSaveImage = (photo: { small?: string; full?: string } | null) => {
         setFormData((prev) => ({
             ...prev,
-            photo: photo || { small: '', full: '' },
+            photo: photo
+                ? {
+                    small: normalizeDishPhotoRef(photo.small),
+                    full: normalizeDishPhotoRef(photo.full),
+                }
+                : { small: '', full: '' },
         }));
         setShowAssetForge(false);
     };
@@ -232,7 +242,7 @@ export default function DishEditor({ dish, categories = [], dict, onClose, onSav
                                             onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
                                             className="w-full appearance-none border border-neutral-800 bg-black p-3 font-mono text-sm text-white outline-none focus:border-white transition-colors cursor-pointer"
                                         >
-                                            {categories.map((cat: any) => (
+                                            {categories.map((cat) => (
                                                 <option key={cat.id} value={cat.id} className="bg-[#050505] text-white">
                                                     {cat.title?.[activeLang] || cat.title?.['en'] || cat.title?.['ka'] || 'Unnamed Category'}
                                                 </option>

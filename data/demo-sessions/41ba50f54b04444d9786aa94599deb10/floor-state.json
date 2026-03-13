@@ -1,0 +1,38 @@
+{
+  "updatedAt": "2026-03-13T07:06:21.445Z",
+  "tables": {
+    "table-01": {
+      "tableId": "table-01",
+      "status": "idle",
+      "activeView": "menu",
+      "selectedCategory": "all",
+      "selectedDishId": null,
+      "cart": [],
+      "sessionStartedAt": null,
+      "updatedAt": "2026-03-13T07:06:21.445Z",
+      "activityFeed": []
+    },
+    "table-04": {
+      "tableId": "table-04",
+      "status": "idle",
+      "activeView": "menu",
+      "selectedCategory": "all",
+      "selectedDishId": null,
+      "cart": [],
+      "sessionStartedAt": null,
+      "updatedAt": "2026-03-13T07:06:21.445Z",
+      "activityFeed": []
+    },
+    "table-08": {
+      "tableId": "table-08",
+      "status": "idle",
+      "activeView": "menu",
+      "selectedCategory": "all",
+      "selectedDishId": null,
+      "cart": [],
+      "sessionStartedAt": null,
+      "updatedAt": "2026-03-13T07:06:21.445Z",
+      "activityFeed": []
+    }
+  }
+}

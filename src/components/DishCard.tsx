@@ -1,12 +1,50 @@
 'use client';
 
 import React, { useState } from 'react';
+import { resolveDishPhotoSrc } from '@/lib/dish-photo';
 
-// Using a flexible any type for the dish to match the data structure read from the JSON without over-engineering types for the simulation
-export default function DishCard({ dish, dict, onEdit }: { dish: any, dict: any, onEdit?: (dish: any) => void }) {
+interface DishCardPhoto {
+    small?: string;
+    full?: string;
+}
+
+interface DishCardText {
+    en?: string;
+    ka?: string;
+}
+
+interface DishCardData {
+    status?: string;
+    soldOut?: boolean;
+    priceMinor: number;
+    currency?: string;
+    photo?: DishCardPhoto;
+    title: DishCardText;
+    vegetarian?: boolean;
+    chefsPick?: boolean;
+}
+
+interface DishCardDictionary {
+    panel: {
+        awaitingAsset?: string;
+        vegan?: string;
+        signature?: string;
+        live?: string;
+        soldOut?: string;
+    };
+}
+
+interface DishCardProps {
+    dish: DishCardData;
+    dict: DishCardDictionary;
+    onEdit?: (dish: DishCardData) => void;
+}
+
+export default function DishCard({ dish, dict, onEdit }: DishCardProps) {
     // Local state for the brutalist toggles to simulate instant execution
     const [isActive, setIsActive] = useState(dish.status === 'active');
     const [isSoldOut, setIsSoldOut] = useState(dish.soldOut);
+    const photoSrc = resolveDishPhotoSrc(dish.photo?.full) || resolveDishPhotoSrc(dish.photo?.small);
 
     // Convert minor units back to standard decimal
     const formattedPrice = (dish.priceMinor / 100).toFixed(2);
@@ -21,9 +59,9 @@ export default function DishCard({ dish, dict, onEdit }: { dish: any, dict: any,
             >
                 {/* Visual Studio (Image Section) */}
                 <div className="relative h-56 w-full overflow-hidden border-b border-white/10 bg-zinc-900/50 flex-shrink-0">
-                    {dish.photo?.full ? (
+                    {photoSrc ? (
                         <img
-                            src={`/uploads/dishes/${dish.photo.full}`}
+                            src={photoSrc}
                             alt={dish.title.en}
                             className="h-full w-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0 opacity-80"
                         />

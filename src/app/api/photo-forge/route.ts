@@ -16,6 +16,28 @@ const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 6;
 const requestLog = new Map<string, number[]>();
 
+type GeneratedInlineDataPart = {
+    inlineData?: {
+        data?: string;
+        mimeType?: string;
+    };
+};
+
+type GenerateContentResponseShape = {
+    candidates?: Array<{
+        content?: {
+            parts?: GeneratedInlineDataPart[];
+        };
+    }>;
+};
+
+type GenerateContentInput = string | {
+    inlineData: {
+        data: string;
+        mimeType: string;
+    };
+};
+
 // 1. Updated Schema to catch the 4 new modular fields
 const RequestSchema = z.object({
     dishName: z.string().trim().min(2).max(80),
@@ -108,7 +130,7 @@ function buildPrompt(dishName: string, ingredients: string | undefined, angle: s
 }
 
 function getUploadsDir() {
-    return path.join(process.cwd(), 'public', 'uploads', 'dishes');
+    return path.join(process.cwd(), 'data', 'uploads', 'dishes');
 }
 
 async function ensureUploadsDir() {
@@ -119,7 +141,7 @@ function makeBaseName() {
     return `dish_${Date.now()}_${crypto.randomUUID().slice(0, 8)}`;
 }
 
-function extractImageBase64(response: any): string | null {
+function extractImageBase64(response: GenerateContentResponseShape): string | null {
     const parts = response?.candidates?.[0]?.content?.parts ?? [];
     for (const part of parts) {
         if (part?.inlineData?.data) {
@@ -196,7 +218,7 @@ export async function POST(req: NextRequest) {
         // Pass ingredients into the prompt builder
         let finalPrompt = buildPrompt(dishName, ingredients, angle, lighting, setting, styling);
         // Prepare the contents payload
-        const contentsPayload: any[] = [];
+        const contentsPayload: GenerateContentInput[] = [];
 
         // If the chef uploaded a photo, process it and prepend it to the payload
         if (referenceFile && referenceFile.size > 0) {

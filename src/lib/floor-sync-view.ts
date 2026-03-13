@@ -1,4 +1,5 @@
 import type { Category, Dish } from '@/lib/types';
+import { resolveDishPhotoSrc } from '@/lib/dish-photo';
 
 export type FloorDish = Dish & {
     images?: {
@@ -57,7 +58,8 @@ export function getDishImageSrc(dish: FloorDish | null | undefined) {
         dish.images?.portrait ||
         dish.images?.landscape ||
         dish.images?.square ||
-        (dish.photo?.small ? `/uploads/dishes/${dish.photo.small}` : DISH_FALLBACK_SRC)
+        resolveDishPhotoSrc(dish.photo?.small) ||
+        DISH_FALLBACK_SRC
     );
 }
 

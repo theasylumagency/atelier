@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-13T08:46:05.456Z",
+  "updatedAt": "2026-03-13T07:06:21.531Z",
   "items": [
     {
       "id": "dish_0001",
@@ -6916,35 +6916,6 @@
         "ru": ""
       },
       "priceVariants": []
-    },
-    {
-      "priceMinor": 0,
-      "currency": "GEL",
-      "vegetarian": false,
-      "chefsPick": false,
-      "title": {
-        "ka": "ბაჟე",
-        "en": "Bazhe",
-        "ru": "Баже"
-      },
-      "description": {
-        "ka": "ნიგვზის, ნივრისა და სანელებლების დახვეწილი სოუსი",
-        "en": "A refined sauce of walnuts, garlic, and aromatic spices",
-        "ru": "Изысканный соус из грецких орехов, чеснока и ароматных специй"
-      },
-      "story": {
-        "ka": "ქართული სუფრის განუყოფელი ნაწილი, ბაჟე სოუსების მეფედ ითვლება. მისი მდიდარი არომატი და ხავერდოვანი ტექსტურა ნებისმიერ კერძს განსაკუთრებულ ელფერს სძენს.",
-        "en": "An indispensable part of the Georgian supra, Bazhe is revered as the king of sauces. Its rich aroma and velvety texture elevate any dish it accompanies.",
-        "ru": "Неотъемлемая часть грузинского стола, баже почитается как король соусов. Его богатый аромат и бархатистая текстура придают особую изысканность любому блюду."
-      },
-      "photo": {
-        "small": "dish_1773391479286_d5afd85a_sm.webp",
-        "full": "dish_1773391479286_d5afd85a.webp"
-      },
-      "categoryId": "cat_0001",
-      "id": "dish_1773391564101",
-      "order": 220,
-      "status": "active"
     }
   ]
 }
