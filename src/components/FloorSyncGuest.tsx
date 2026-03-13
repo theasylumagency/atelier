@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AppDictionary } from '@/lib/dictionaries';
+import type { ContentLocale } from '@/lib/types';
 import type {
     DemoTableId,
     FloorActivityEvent,
@@ -23,60 +24,202 @@ import {
 type MenuFilter = 'all' | 'chef' | 'signature' | 'vegetarian';
 
 const UI = {
-    emptySelection: 'No dishes selected yet.',
-    confirmOrder: 'Confirm Selection',
-    clearTable: 'Clear Table',
-    complete: 'Complete',
-    menu: 'Menu',
-    cart: 'Finalise',
-    guestBrowsing: 'Guest is browsing the menu.',
-    viewingDish: 'Viewing dish',
-    browsingCategory: 'Browsing category',
-    addedToCart: 'Added to cart',
-    removedFromCart: 'Removed from cart',
-    quantityUpdated: 'Quantity updated',
-    orderConfirmed: 'Order confirmed',
-    tableCleared: 'Table cleared',
-    allCategories: 'All',
-    sessionOpened: 'Menu opened',
-    guestOpenedSession: 'Guest opened the menu.',
-    addService: 'Add to Selection',
-    qty: 'Qty',
-    total: 'Total',
-    byContinuing: 'Secured via Spatial Protocol',
-    enterAtelier: 'Enter the Atelier',
-    homeEyebrow: 'The New Renaissance',
-    homeSubtitle: 'A collision of 18th-century opulence and celestial modernism.',
-    estate: 'EST. 1824 - 2050',
-    collectionTitle: 'Carte Gastronomique',
-    detailStory: 'The Story',
-    detailComposition: 'The Composition',
-    investment: 'Investment',
-    excludingCharges: 'Excluding service charges',
-    reservation: 'Reservation',
-    dateTime: 'Date & Time',
-    guests: 'Guests',
-    orderSummary: "L'Ordre Du Jour",
-    paymentMode: 'Payment Method',
-    modify: 'Modify',
-    subtotal: 'Sous-total',
-    serviceCharge: 'Service Du Chateau',
-    totalInvestment: 'Investissement Total',
-    confirmInvestment: 'Confirm The Investment',
-    details: 'Details of the creation',
-    noMatches: 'No dishes match this filter.',
-    home: "L'Atelier",
-    atelier: "L'Atelier",
-    tableLabel: 'Table',
-    houseCard: 'House Selection',
-    reserve: 'Reserve',
-    profile: 'Profile',
-    chefChoice: "Chef's Choice",
-    signature: 'Signature',
-    vegetarian: 'Vegetarian',
-    bestseller: 'Bestseller',
-    sustainable: 'Sustainable',
+    en: {
+        emptySelection: 'No dishes selected yet.',
+        confirmOrder: 'Confirm Selection',
+        clearTable: 'Clear Table',
+        complete: 'Complete',
+        menu: 'Menu',
+        cart: 'Finalise',
+        guestBrowsing: 'Guest is browsing the menu.',
+        viewingDish: 'Viewing dish',
+        browsingCategory: 'Browsing category',
+        addedToCart: 'Added to cart',
+        removedFromCart: 'Removed from cart',
+        quantityUpdated: 'Quantity updated',
+        orderConfirmed: 'Order confirmed',
+        tableCleared: 'Table cleared',
+        allCategories: 'All',
+        sessionOpened: 'Menu opened',
+        guestOpenedSession: 'Guest opened the menu.',
+        addService: 'Add to Selection',
+        quickAdd: 'Quick add',
+        qty: 'Qty',
+        total: 'Total',
+        byContinuing: 'Secured via Spatial Protocol',
+        enterAtelier: 'Enter the Atelier',
+        homeEyebrow: 'The New Renaissance',
+        homeSubtitle: 'A collision of 18th-century opulence and celestial modernism.',
+        estate: 'EST. 1824 - 2050',
+        collectionTitle: 'Carte Gastronomique',
+        detailStory: 'The Story',
+        detailComposition: 'The Composition',
+        investment: 'Investment',
+        excludingCharges: 'Excluding service charges',
+        reservation: 'Reservation',
+        dateTime: 'Date & Time',
+        guests: 'Guests',
+        orderSummary: "L'Ordre Du Jour",
+        paymentMode: 'Payment Method',
+        modify: 'Modify',
+        subtotal: 'Sous-total',
+        serviceCharge: 'Service Du Chateau',
+        totalInvestment: 'Investissement Total',
+        confirmInvestment: 'Confirm The Investment',
+        details: 'Details of the creation',
+        noMatches: 'No dishes match this filter.',
+        home: "L'Atelier",
+        atelier: "L'Atelier",
+        tableLabel: 'Table',
+        houseCard: 'House Selection',
+        reserve: 'Reserve',
+        profile: 'Profile',
+        chefChoice: "Chef's Choice",
+        signature: 'Signature',
+        vegetarian: 'Vegetarian',
+        bestseller: 'Bestseller',
+        sustainable: 'Sustainable',
+        remove: 'Remove',
+        unit: 'unit',
+        language: 'Language',
+        back: 'Back',
+        openMenu: 'Open menu',
+    },
+    ka: {
+        emptySelection: 'ჯერ კერძები არ არის არჩეული.',
+        confirmOrder: 'შეკვეთის დადასტურება',
+        clearTable: 'მაგიდის გასუფთავება',
+        complete: 'დასრულება',
+        menu: 'მენიუ',
+        cart: 'ფინალიზაცია',
+        guestBrowsing: 'სტუმარი მენიუს ათვალიერებს.',
+        viewingDish: 'კერძის ნახვა',
+        browsingCategory: 'კატეგორიის ნახვა',
+        addedToCart: 'შეკვეთაში დაემატა',
+        removedFromCart: 'შეკვეთიდან წაიშალა',
+        quantityUpdated: 'რაოდენობა განახლდა',
+        orderConfirmed: 'შეკვეთა დადასტურდა',
+        tableCleared: 'მაგიდა გასუფთავდა',
+        allCategories: 'ყველა',
+        sessionOpened: 'მენიუ გაიხსნა',
+        guestOpenedSession: 'სტუმარმა მენიუ გახსნა.',
+        addService: 'შეკვეთაში დამატება',
+        quickAdd: 'სწრაფი დამატება',
+        qty: 'რაოდ.',
+        total: 'ჯამი',
+        byContinuing: 'დაცულია Spatial Protocol-ით',
+        enterAtelier: 'ატელიეში შესვლა',
+        homeEyebrow: 'ახალი რენესანსი',
+        homeSubtitle: 'მე-18 საუკუნის ბრწყინვალებისა და ციური მოდერნიზმის შეჯახება.',
+        estate: 'EST. 1824 - 2050',
+        collectionTitle: 'გასტრონომიული ბარათი',
+        detailStory: 'ისტორია',
+        detailComposition: 'შემადგენლობა',
+        investment: 'ღირებულება',
+        excludingCharges: 'სერვისის საფასურის გარეშე',
+        reservation: 'რეზერვაცია',
+        dateTime: 'თარიღი და დრო',
+        guests: 'სტუმრები',
+        orderSummary: 'შეკვეთის სია',
+        paymentMode: 'გადახდის მეთოდი',
+        modify: 'შეცვლა',
+        subtotal: 'ქვეჯამი',
+        serviceCharge: 'სერვისის საფასური',
+        totalInvestment: 'სრული ღირებულება',
+        confirmInvestment: 'შეკვეთის დადასტურება',
+        details: 'კომპოზიციის დეტალები',
+        noMatches: 'ამ ფილტრში კერძები ვერ მოიძებნა.',
+        home: "L'Atelier",
+        atelier: 'ატელიე',
+        tableLabel: 'მაგიდა',
+        houseCard: 'სახლის არჩევანი',
+        reserve: 'რეზერვი',
+        profile: 'პროფილი',
+        chefChoice: 'შეფის არჩევანი',
+        signature: 'საფირმო',
+        vegetarian: 'ვეგეტარიანული',
+        bestseller: 'ბესტსელერი',
+        sustainable: 'მდგრადი',
+        remove: 'წაშლა',
+        unit: 'ც.',
+        language: 'ენა',
+        back: 'უკან',
+        openMenu: 'მენიუს გახსნა',
+    },
+    ru: {
+        emptySelection: 'Пока ничего не выбрано.',
+        confirmOrder: 'Подтверждение заказа',
+        clearTable: 'Очистить стол',
+        complete: 'Завершить',
+        menu: 'Меню',
+        cart: 'Оформление',
+        guestBrowsing: 'Гость просматривает меню.',
+        viewingDish: 'Просмотр блюда',
+        browsingCategory: 'Просмотр категории',
+        addedToCart: 'Добавлено в заказ',
+        removedFromCart: 'Удалено из заказа',
+        quantityUpdated: 'Количество обновлено',
+        orderConfirmed: 'Заказ подтвержден',
+        tableCleared: 'Стол очищен',
+        allCategories: 'Все',
+        sessionOpened: 'Меню открыто',
+        guestOpenedSession: 'Гость открыл меню.',
+        addService: 'Добавить в заказ',
+        quickAdd: 'Быстро добавить',
+        qty: 'Кол-во',
+        total: 'Итого',
+        byContinuing: 'Защищено Spatial Protocol',
+        enterAtelier: 'Войти в Atelier',
+        homeEyebrow: 'Новый Ренессанс',
+        homeSubtitle: 'Столкновение роскоши XVIII века и небесного модернизма.',
+        estate: 'EST. 1824 - 2050',
+        collectionTitle: 'Гастрономическая карта',
+        detailStory: 'История',
+        detailComposition: 'Состав',
+        investment: 'Стоимость',
+        excludingCharges: 'Без сервисного сбора',
+        reservation: 'Бронирование',
+        dateTime: 'Дата и время',
+        guests: 'Гости',
+        orderSummary: 'Ваш заказ',
+        paymentMode: 'Способ оплаты',
+        modify: 'Изменить',
+        subtotal: 'Промежуточный итог',
+        serviceCharge: 'Сервисный сбор',
+        totalInvestment: 'Итоговая сумма',
+        confirmInvestment: 'Подтвердить заказ',
+        details: 'Детали блюда',
+        noMatches: 'По этому фильтру блюд не найдено.',
+        home: "L'Atelier",
+        atelier: 'Atelier',
+        tableLabel: 'Стол',
+        houseCard: 'Выбор дома',
+        reserve: 'Бронь',
+        profile: 'Профиль',
+        chefChoice: 'Выбор шефа',
+        signature: 'Фирменное',
+        vegetarian: 'Вегетарианское',
+        bestseller: 'Хит',
+        sustainable: 'Сезонное',
+        remove: 'Удалить',
+        unit: 'шт.',
+        language: 'Язык',
+        back: 'Назад',
+        openMenu: 'Открыть меню',
+    },
 } as const;
+
+type GuestUi = (typeof UI)[ContentLocale];
+
+const LANGUAGE_OPTIONS: Array<{ id: ContentLocale; label: string }> = [
+    { id: 'en', label: 'EN' },
+    { id: 'ka', label: 'GE' },
+    { id: 'ru', label: 'RU' },
+];
+
+function resolveGuestLocale(value: string | undefined): ContentLocale {
+    return value === 'ka' || value === 'ru' ? value : 'en';
+}
 
 function makeEvent(type: FloorActivityType, label: string, meta?: string): FloorActivityEvent {
     const now = new Date().toISOString();
@@ -90,11 +233,12 @@ function makeEvent(type: FloorActivityType, label: string, meta?: string): Floor
     };
 }
 
-function getShortDateTime(value: string | null, locale: string) {
+function getShortDateTime(value: string | null, locale: ContentLocale) {
     const date = value ? new Date(value) : new Date();
+    const formatLocale = locale === 'ka' ? 'ka-GE' : locale === 'ru' ? 'ru-RU' : 'en-GB';
 
     try {
-        return new Intl.DateTimeFormat(locale === 'ka' ? 'ka-GE' : 'en-GB', {
+        return new Intl.DateTimeFormat(formatLocale, {
             day: '2-digit',
             month: 'short',
             hour: '2-digit',
@@ -105,14 +249,14 @@ function getShortDateTime(value: string | null, locale: string) {
     }
 }
 
-function getDishBadges(dish: FloorDish) {
+function getDishBadges(dish: FloorDish, ui: GuestUi) {
     const badges: Array<{ key: string; label: string; tone: string; icon: string }> = [];
 
     if (dish.topRated) {
         badges.push({
             key: 'bestseller',
-            label: UI.bestseller,
-            tone: 'border-[#c5b38d]/35 bg-[#c5b38d]/12 text-[#dbc9a0]',
+            label: ui.bestseller,
+            tone: 'border-[#d4c196]/65 bg-[#120d08]/92 text-[#f2e4bd]',
             icon: 'star',
         });
     }
@@ -120,8 +264,8 @@ function getDishBadges(dish: FloorDish) {
     if (dish.vegetarian) {
         badges.push({
             key: 'sustainable',
-            label: UI.sustainable,
-            tone: 'border-emerald-400/25 bg-emerald-400/8 text-emerald-300',
+            label: ui.sustainable,
+            tone: 'border-emerald-300/45 bg-[#0d1a15]/90 text-emerald-200',
             icon: 'eco',
         });
     }
@@ -129,8 +273,8 @@ function getDishBadges(dish: FloorDish) {
     if (dish.chefsPick) {
         badges.push({
             key: 'chef',
-            label: UI.chefChoice,
-            tone: 'border-[#c5b38d]/25 bg-black/35 text-[#dbc9a0]',
+            label: ui.chefChoice,
+            tone: 'border-[#d4c196]/58 bg-[#171009]/92 text-[#f2e4bd]',
             icon: 'workspace_premium',
         });
     }
@@ -138,7 +282,7 @@ function getDishBadges(dish: FloorDish) {
     return badges.slice(0, 2);
 }
 
-function getIngredientCards(dish: FloorDish, locale: string) {
+function getIngredientCards(dish: FloorDish, locale: ContentLocale, ui: GuestUi) {
     const raw = getDishDescription(dish, locale)
         .split(/[,.]/)
         .map((item) => item.trim())
@@ -148,8 +292,8 @@ function getIngredientCards(dish: FloorDish, locale: string) {
 
     if (unique.length === 0) {
         return [
-            { title: UI.houseCard, note: UI.signature, icon: 'restaurant' },
-            { title: UI.chefChoice, note: UI.investment, icon: 'diamond' },
+            { title: ui.houseCard, note: ui.signature, icon: 'restaurant' },
+            { title: ui.chefChoice, note: ui.investment, icon: 'diamond' },
         ];
     }
 
@@ -157,18 +301,27 @@ function getIngredientCards(dish: FloorDish, locale: string) {
         const icons = ['restaurant', 'mystery', 'water_drop', 'stars'];
         return {
             title: item,
-            note: index % 2 === 0 ? UI.signature : UI.chefChoice,
+            note: index % 2 === 0 ? ui.signature : ui.chefChoice,
             icon: icons[index] || 'restaurant',
         };
     });
 }
 
-function getSecondaryDishLine(dish: FloorDish, locale: string) {
-    if (locale === 'ka') {
-        return dish.title.en || dish.title.ka || '';
+function getSecondaryDishLine(dish: FloorDish, locale: ContentLocale) {
+    const fallbackOrder: Record<ContentLocale, ContentLocale[]> = {
+        en: ['ka', 'ru'],
+        ka: ['en', 'ru'],
+        ru: ['en', 'ka'],
+    };
+
+    for (const fallbackLocale of fallbackOrder[locale]) {
+        const value = dish.title[fallbackLocale];
+        if (value) {
+            return value;
+        }
     }
 
-    return dish.title.ka || dish.title.en || '';
+    return dish.title.en || dish.title.ka || dish.title.ru || '';
 }
 
 function getCategoryTitle(category: FloorCategory, locale: string) {
@@ -193,7 +346,11 @@ export default function FloorSyncGuest({
     tableId: DemoTableId;
 }) {
     const skipFirstSync = useRef(true);
+    const routeLocale = resolveGuestLocale(locale);
     const floorSyncCopy = dict.floorSync as Partial<Record<string, string>> | undefined;
+    const [guestLocale, setGuestLocale] = useState<ContentLocale>(routeLocale);
+    const ui = UI[guestLocale];
+    const usesRouteCopy = guestLocale === routeLocale;
     const [status, setStatus] = useState<FloorTableState['status']>(initialTableState.status);
     const [activeView, setActiveView] = useState(initialTableState.activeView);
     const [selectedCategory, setSelectedCategory] = useState(initialTableState.selectedCategory || 'all');
@@ -211,7 +368,7 @@ export default function FloorSyncGuest({
     const [activityFeed, setActivityFeed] = useState<FloorActivityEvent[]>(
         initialTableState.activityFeed.length > 0
             ? initialTableState.activityFeed
-            : [makeEvent('session_started', UI.sessionOpened, UI.guestOpenedSession)]
+            : [makeEvent('session_started', UI[routeLocale].sessionOpened, UI[routeLocale].guestOpenedSession)]
     );
 
     const activeDishes = useMemo(
@@ -272,9 +429,18 @@ export default function FloorSyncGuest({
     const grandTotalMinor = totalPriceMinor + serviceChargeMinor;
     const latestCurrency = cartItems[0]?.dish?.currency || activeDishes[0]?.currency;
     const tableLabel = getDemoTableLabel(tableId);
-    const reservationDateTime = getShortDateTime(sessionStartedAt, locale);
+    const reservationDateTime = getShortDateTime(sessionStartedAt, guestLocale);
     const guestCountLabel = String(Math.max(totalItems, 2)).padStart(2, '0');
-    const serifClass = locale === 'ka' ? 'font-serif-ka' : 'font-serif-latin';
+    const serifClass = guestLocale === 'ka' ? 'font-serif-ka' : 'font-serif-latin';
+    const allCategoriesLabel = usesRouteCopy ? floorSyncCopy?.all || ui.allCategories : ui.allCategories;
+    const tableChipLabel = usesRouteCopy ? floorSyncCopy?.table || ui.tableLabel : ui.tableLabel;
+    const addServiceLabel =
+        usesRouteCopy
+            ? floorSyncCopy?.addCart || floorSyncCopy?.addService || ui.addService
+            : ui.addService;
+    const checkoutLabel = usesRouteCopy ? floorSyncCopy?.checkout || ui.confirmInvestment : ui.confirmInvestment;
+    const completeLabel = usesRouteCopy ? floorSyncCopy?.complete || ui.complete : ui.complete;
+    const clearTableLabel = usesRouteCopy ? floorSyncCopy?.clearTable || ui.clearTable : ui.clearTable;
 
     const resolvedStatus =
         status === 'fired' || status === 'settled'
@@ -350,8 +516,8 @@ export default function FloorSyncGuest({
         setShowLanding(false);
         pushActivity(
             existing ? 'quantity_changed' : 'item_added',
-            existing ? UI.quantityUpdated : UI.addedToCart,
-            `${getDishTitle(dish, locale)} x${existing ? existing.quantity + 1 : 1}`
+            existing ? ui.quantityUpdated : ui.addedToCart,
+            `${getDishTitle(dish, guestLocale)} x${existing ? existing.quantity + 1 : 1}`
         );
     };
 
@@ -359,12 +525,12 @@ export default function FloorSyncGuest({
         setShowLanding(false);
         setSelectedDishId(dish.id);
         setActiveView('details');
-        pushActivity('dish_view', UI.viewingDish, getDishTitle(dish, locale));
+        pushActivity('dish_view', ui.viewingDish, getDishTitle(dish, guestLocale));
     };
 
     const removeFromCart = (dishId: string) => {
         setCart((previous) => previous.filter((item) => item.dishId !== dishId));
-        pushActivity('item_removed', UI.removedFromCart, getDishTitle(dishMap.get(dishId), locale));
+        pushActivity('item_removed', ui.removedFromCart, getDishTitle(dishMap.get(dishId), guestLocale));
     };
 
     const changeQuantity = (dishId: string, delta: number) => {
@@ -385,8 +551,8 @@ export default function FloorSyncGuest({
         );
         pushActivity(
             'quantity_changed',
-            UI.quantityUpdated,
-            `${getDishTitle(dishMap.get(dishId), locale)} x${existing.quantity + delta}`
+            ui.quantityUpdated,
+            `${getDishTitle(dishMap.get(dishId), guestLocale)} x${existing.quantity + delta}`
         );
     };
 
@@ -399,8 +565,8 @@ export default function FloorSyncGuest({
             setStatus('fired');
             pushActivity(
                 'order_confirmed',
-                UI.orderConfirmed,
-                `${totalItems} items | ${formatCurrency(grandTotalMinor / 100, latestCurrency, locale)}`
+                ui.orderConfirmed,
+                `${totalItems} items | ${formatCurrency(grandTotalMinor / 100, latestCurrency, guestLocale)}`
             );
             return;
         }
@@ -417,17 +583,40 @@ export default function FloorSyncGuest({
         setMenuFilter('all');
         setActiveView('menu');
         setShowLanding(true);
-        pushActivity('table_cleared', UI.tableCleared, tableLabel);
+        pushActivity('table_cleared', ui.tableCleared, tableLabel);
     };
 
     const actionLabel =
         resolvedStatus === 'fired'
-            ? floorSyncCopy?.complete || UI.complete
+            ? completeLabel
             : resolvedStatus === 'settled'
-                ? floorSyncCopy?.clearTable || UI.clearTable
-                : floorSyncCopy?.checkout || UI.confirmInvestment;
+                ? clearTableLabel
+                : checkoutLabel;
 
     const renderBottomNav = !showLanding;
+    const renderLanguageSwitch = (className = '') => (
+        <div
+            role="group"
+            aria-label={ui.language}
+            className={`inline-flex items-center gap-1 rounded-full border border-[#3a2f1f] bg-[#120f09]/94 p-1 shadow-[0_14px_32px_rgba(0,0,0,0.24)] ${className}`.trim()}
+        >
+            {LANGUAGE_OPTIONS.map((option) => (
+                <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setGuestLocale(option.id)}
+                    aria-pressed={guestLocale === option.id}
+                    className={`min-w-[2.35rem] rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] transition ${
+                        guestLocale === option.id
+                            ? 'bg-[#d4c196] text-black'
+                            : 'text-[#b9a880] hover:text-white'
+                    }`}
+                >
+                    {option.label}
+                </button>
+            ))}
+        </div>
+    );
 
     return (
         <div className="min-h-screen bg-[#070604] text-[#f7f1e8] selection:bg-[#c5b38d]/30">
@@ -444,12 +633,12 @@ export default function FloorSyncGuest({
 
                         <div className="relative z-10 flex min-h-screen flex-col px-6 pb-10 pt-14">
                             <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.35em] text-[#bfae86]/72">
-                                <span>{UI.estate}</span>
+                                <span>{ui.estate}</span>
                                 <button
                                     type="button"
                                     onClick={openMenu}
                                     className="flex h-11 w-11 items-center justify-center rounded-full border border-[#c5b38d]/20 bg-black/25 backdrop-blur-sm"
-                                    aria-label="Open menu"
+                                    aria-label={ui.openMenu}
                                 >
                                     <span className="material-symbols-outlined text-[24px] text-[#c8b892]">
                                         menu
@@ -457,19 +646,21 @@ export default function FloorSyncGuest({
                                 </button>
                             </div>
 
+                            <div className="mt-5 flex justify-center">{renderLanguageSwitch()}</div>
+
                             <div className="flex flex-1 flex-col items-center justify-center text-center">
                                 <div className="rounded-full border border-[#c5b38d]/18 bg-[#3b2f1b]/35 px-7 py-3 backdrop-blur-md">
                                     <span className="text-[11px] uppercase tracking-[0.42em] text-[#d5c399]">
-                                        {UI.homeEyebrow}
+                                        {ui.homeEyebrow}
                                     </span>
                                 </div>
 
                                 <h1 className={`mt-10 text-[clamp(4.5rem,18vw,6.6rem)] leading-[0.92] text-white ${serifClass}`}>
-                                    {UI.home}
+                                    {ui.home}
                                 </h1>
                                 <div className="mt-5 h-px w-24 bg-[#c5b38d]/35" />
                                 <p className="mt-8 max-w-xs text-[1.05rem] leading-9 text-[#c7c0b0]/82 italic">
-                                    {UI.homeSubtitle}
+                                    {ui.homeSubtitle}
                                 </p>
 
                                 <button
@@ -477,7 +668,7 @@ export default function FloorSyncGuest({
                                     onClick={openMenu}
                                     className="mt-14 inline-flex min-w-[16.5rem] items-center justify-center rounded-full border border-[#c5b38d]/24 bg-black/30 px-8 py-5 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#d7c59c] backdrop-blur-md transition hover:border-[#c5b38d]/45 hover:text-white"
                                 >
-                                    {UI.enterAtelier}
+                                    {ui.enterAtelier}
                                 </button>
                             </div>
 
@@ -491,7 +682,7 @@ export default function FloorSyncGuest({
                                 </div>
 
                                 <div className="inline-flex items-center gap-3 rounded-full border border-[#c5b38d]/14 bg-black/28 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-[#c3b08a] backdrop-blur-md">
-                                    <span>{floorSyncCopy?.table || UI.tableLabel}</span>
+                                    <span>{tableChipLabel}</span>
                                     <span className="h-3 w-px bg-[#c5b38d]/24" />
                                     <span>{tableLabel}</span>
                                 </div>
@@ -503,32 +694,26 @@ export default function FloorSyncGuest({
                     <>
                         <header className="sticky top-0 z-30 border-b border-[#2e2416]/70 bg-[#090704]/88 backdrop-blur-xl">
                             <div className="px-4 pb-3 pt-4">
-                                <div className="flex items-center justify-between">
+                                <div className="relative flex items-center justify-between">
                                     <button
                                         type="button"
                                         onClick={() => setShowLanding(true)}
                                         className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a2f1f] bg-[#120f09] text-[#c9b88f]"
-                                        aria-label="Back"
+                                        aria-label={ui.back}
                                     >
                                         <span className="material-symbols-outlined text-[18px]">arrow_back_ios_new</span>
                                     </button>
 
-                                    <div className="text-center">
+                                    <div className="pointer-events-none absolute left-1/2 top-1/2 w-[11.5rem] -translate-x-1/2 -translate-y-1/2 text-center">
                                         <p className="text-[10px] uppercase tracking-[0.34em] text-[#c3b084]">
-                                            {UI.home}
+                                            {ui.home}
                                         </p>
                                         <h1 className="mt-1 text-sm font-semibold text-white">
-                                            {UI.collectionTitle}
+                                            {ui.collectionTitle}
                                         </h1>
                                     </div>
 
-                                    <button
-                                        type="button"
-                                        className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a2f1f] bg-[#120f09] text-[#c9b88f]"
-                                        aria-label="Search"
-                                    >
-                                        <span className="material-symbols-outlined text-[18px]">search</span>
-                                    </button>
+                                    <div className="pl-3">{renderLanguageSwitch()}</div>
                                 </div>
 
                                 <div className="mt-4 flex gap-8 overflow-x-auto pb-1 text-[11px] font-medium tracking-[0.18em] text-[#8f8467] no-scrollbar">
@@ -536,7 +721,7 @@ export default function FloorSyncGuest({
                                         type="button"
                                         onClick={() => {
                                             setSelectedCategory('all');
-                                            pushActivity('category_focus', UI.browsingCategory, UI.allCategories);
+                                            pushActivity('category_focus', ui.browsingCategory, allCategoriesLabel);
                                         }}
                                         className={`whitespace-nowrap border-b pb-3 uppercase transition ${
                                             selectedCategory === 'all'
@@ -544,7 +729,7 @@ export default function FloorSyncGuest({
                                                 : 'border-transparent'
                                         }`}
                                     >
-                                        {floorSyncCopy?.all || UI.allCategories}
+                                        {allCategoriesLabel}
                                     </button>
 
                                     {activeCategories.map((category) => (
@@ -555,8 +740,8 @@ export default function FloorSyncGuest({
                                                 setSelectedCategory(category.id);
                                                 pushActivity(
                                                     'category_focus',
-                                                    UI.browsingCategory,
-                                                    getCategoryTitle(category, locale)
+                                                    ui.browsingCategory,
+                                                    getCategoryTitle(category, guestLocale)
                                                 );
                                             }}
                                             className={`whitespace-nowrap border-b pb-3 uppercase transition ${
@@ -565,7 +750,7 @@ export default function FloorSyncGuest({
                                                     : 'border-transparent'
                                             }`}
                                         >
-                                            {getCategoryTitle(category, locale)}
+                                            {getCategoryTitle(category, guestLocale)}
                                         </button>
                                     ))}
                                 </div>
@@ -576,10 +761,10 @@ export default function FloorSyncGuest({
                             <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
                                 {(
                                     [
-                                        { id: 'all', label: floorSyncCopy?.all || UI.allCategories },
-                                        { id: 'chef', label: UI.chefChoice },
-                                        { id: 'signature', label: UI.signature },
-                                        { id: 'vegetarian', label: UI.vegetarian },
+                                        { id: 'all', label: allCategoriesLabel },
+                                        { id: 'chef', label: ui.chefChoice },
+                                        { id: 'signature', label: ui.signature },
+                                        { id: 'vegetarian', label: ui.vegetarian },
                                     ] satisfies Array<{ id: MenuFilter; label: string }>
                                 ).map((filter) => (
                                     <button
@@ -600,63 +785,69 @@ export default function FloorSyncGuest({
                             <div className="space-y-10">
                                 {displayedDishes.length === 0 && (
                                     <div className="rounded-[2rem] border border-[#2b2215] bg-[#110d08] px-6 py-12 text-center text-sm text-[#9e9073]">
-                                        {UI.noMatches}
+                                        {ui.noMatches}
                                     </div>
                                 )}
 
                                 {displayedDishes.map((dish) => (
                                     <article key={dish.id} className="group">
+                                        <div className="relative overflow-hidden rounded-[1.8rem] border border-[#342917] bg-[#0f0b07] shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
+                                            <img
+                                                src={getDishImageSrc(dish)}
+                                                alt={getDishTitle(dish, guestLocale)}
+                                                className="aspect-[4/5] w-full object-cover"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#070604] via-transparent to-transparent" />
+                                            <div className="absolute left-4 top-4 flex max-w-[70%] flex-wrap gap-2">
+                                                {getDishBadges(dish, ui).map((badge) => (
+                                                    <span
+                                                        key={badge.key}
+                                                        className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.22em] backdrop-blur-md ${badge.tone}`}
+                                                    >
+                                                        <span className="material-symbols-outlined text-[12px]">
+                                                            {badge.icon}
+                                                        </span>
+                                                        {badge.label}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => addToCart(dish)}
+                                                aria-label={`${ui.quickAdd}: ${getDishTitle(dish, guestLocale)}`}
+                                                className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-[#d4c196]/55 bg-[#120d08]/92 text-[#f2e4bd] shadow-[0_18px_30px_rgba(0,0,0,0.35)] backdrop-blur-md transition hover:border-[#f2e4bd] hover:text-white"
+                                            >
+                                                <span className="material-symbols-outlined text-[20px]">add</span>
+                                            </button>
+                                        </div>
+
                                         <button
                                             type="button"
                                             onClick={() => openDish(dish)}
-                                            className="w-full text-left"
+                                            className="w-full px-1 pt-5 text-left"
                                         >
-                                            <div className="relative overflow-hidden rounded-[1.8rem] border border-[#342917] bg-[#0f0b07] shadow-[0_24px_60px_rgba(0,0,0,0.32)]">
-                                                <img
-                                                    src={getDishImageSrc(dish)}
-                                                    alt={getDishTitle(dish, locale)}
-                                                    className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.04]"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-[#070604] via-transparent to-transparent" />
-                                                <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-                                                    {getDishBadges(dish).map((badge) => (
-                                                        <span
-                                                            key={badge.key}
-                                                            className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.22em] ${badge.tone}`}
-                                                        >
-                                                            <span className="material-symbols-outlined text-[12px]">
-                                                                {badge.icon}
-                                                            </span>
-                                                            {badge.label}
-                                                        </span>
-                                                    ))}
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="min-w-0">
+                                                    <h2 className={`text-[2rem] leading-none text-white ${serifClass}`}>
+                                                        {getDishTitle(dish, guestLocale)}
+                                                    </h2>
+                                                    <p className="mt-2 text-sm uppercase tracking-[0.28em] text-[#938566]">
+                                                        {getSecondaryDishLine(dish, guestLocale)}
+                                                    </p>
                                                 </div>
+
+                                                <span className="pt-2 text-xl text-[#d4c196]">
+                                                    {formatCurrency(dish.priceMinor / 100, dish.currency, guestLocale)}
+                                                </span>
                                             </div>
 
-                                            <div className="px-1 pt-5">
-                                                <div className="flex items-start justify-between gap-4">
-                                                    <div className="min-w-0">
-                                                        <h2 className={`text-[2rem] leading-none text-white ${serifClass}`}>
-                                                            {getDishTitle(dish, locale)}
-                                                        </h2>
-                                                        <p className="mt-2 text-sm uppercase tracking-[0.28em] text-[#938566]">
-                                                            {getSecondaryDishLine(dish, locale)}
-                                                        </p>
-                                                    </div>
+                                            <p className="mt-4 max-w-[24rem] text-[0.97rem] leading-7 text-[#b5aa95]">
+                                                {getDishDescription(dish, guestLocale)}
+                                            </p>
 
-                                                    <span className="pt-2 text-xl text-[#d4c196]">
-                                                        {formatCurrency(dish.priceMinor / 100, dish.currency, locale)}
-                                                    </span>
-                                                </div>
-
-                                                <p className="mt-4 max-w-[24rem] text-[0.97rem] leading-7 text-[#b5aa95]">
-                                                    {getDishDescription(dish, locale)}
-                                                </p>
-
-                                                <div className="mt-5 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#cfbc90]">
-                                                    <span>{UI.details}</span>
-                                                    <span className="material-symbols-outlined text-[14px]">east</span>
-                                                </div>
+                                            <div className="mt-5 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#cfbc90]">
+                                                <span>{ui.details}</span>
+                                                <span className="material-symbols-outlined text-[14px]">east</span>
                                             </div>
                                         </button>
                                     </article>
@@ -667,41 +858,37 @@ export default function FloorSyncGuest({
                 )}
                 {resolvedActiveView === 'details' && selectedDish && (
                     <>
-                        <header className="fixed inset-x-0 top-0 z-30 mx-auto flex w-full max-w-md items-center justify-between bg-[#090704]/80 px-4 py-4 backdrop-blur-xl">
-                            <button
-                                type="button"
-                                onClick={() => setActiveView('menu')}
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-black/28 text-[#d4c196]"
-                                aria-label="Back"
-                            >
-                                <span className="material-symbols-outlined text-[20px]">arrow_back</span>
-                            </button>
-                            <p className="text-[12px] font-semibold uppercase tracking-[0.34em] text-[#d4c196]">
-                                {UI.home}
-                            </p>
-                            <button
-                                type="button"
-                                className="flex h-10 w-10 items-center justify-center rounded-full bg-black/28 text-[#d4c196]"
-                                aria-label="Share"
-                            >
-                                <span className="material-symbols-outlined text-[20px]">share</span>
-                            </button>
+                        <header className="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-md bg-[#090704]/80 px-4 py-4 backdrop-blur-xl">
+                            <div className="relative flex items-center justify-between">
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveView('menu')}
+                                    className="flex h-10 w-10 items-center justify-center rounded-full bg-black/28 text-[#d4c196]"
+                                    aria-label={ui.back}
+                                >
+                                    <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+                                </button>
+                                <p className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[12px] font-semibold uppercase tracking-[0.34em] text-[#d4c196]">
+                                    {ui.home}
+                                </p>
+                                <div className="pl-3">{renderLanguageSwitch()}</div>
+                            </div>
                         </header>
 
                         <main className="pb-32">
                             <section className="relative">
                                 <img
                                     src={getDishImageSrc(selectedDish)}
-                                    alt={getDishTitle(selectedDish, locale)}
+                                    alt={getDishTitle(selectedDish, guestLocale)}
                                     className="aspect-[4/5] w-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#090704] via-transparent to-transparent" />
                                 <div className="absolute inset-x-0 bottom-0 px-6 pb-8">
                                     <div className="flex flex-wrap gap-2">
-                                        {getDishBadges(selectedDish).map((badge) => (
+                                        {getDishBadges(selectedDish, ui).map((badge) => (
                                             <span
                                                 key={badge.key}
-                                                className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.22em] ${badge.tone}`}
+                                                className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.22em] backdrop-blur-md ${badge.tone}`}
                                             >
                                                 <span className="material-symbols-outlined text-[12px]">
                                                     {badge.icon}
@@ -712,10 +899,10 @@ export default function FloorSyncGuest({
                                     </div>
 
                                     <h1 className={`mt-5 text-[3.3rem] leading-[0.9] text-white ${serifClass}`}>
-                                        {getDishTitle(selectedDish, locale)}
+                                        {getDishTitle(selectedDish, guestLocale)}
                                     </h1>
                                     <p className="mt-3 text-[1.05rem] italic text-[#d1be97]">
-                                        {getSecondaryDishLine(selectedDish, locale)}
+                                        {getSecondaryDishLine(selectedDish, guestLocale)}
                                     </p>
                                 </div>
                             </section>
@@ -725,14 +912,14 @@ export default function FloorSyncGuest({
                                     <div className="flex items-center gap-4">
                                         <div className="h-px flex-1 bg-[#2f2618]" />
                                         <p className="text-[10px] font-semibold uppercase tracking-[0.36em] text-[#cfbc90]">
-                                            {UI.detailStory}
+                                            {ui.detailStory}
                                         </p>
                                         <div className="h-px flex-1 bg-[#2f2618]" />
                                     </div>
 
                                     <div className="mt-5 rounded-[1.8rem] border border-[#2c2316] bg-[radial-gradient(circle_at_top,rgba(197,179,141,0.08),transparent_55%),#0e0b07] p-6 shadow-[0_18px_40px_rgba(0,0,0,0.3)]">
                                         <p className="text-[1.08rem] leading-9 text-[#eee1cb]">
-                                            {getDishStory(selectedDish, locale)}
+                                            {getDishStory(selectedDish, guestLocale)}
                                         </p>
                                     </div>
                                 </section>
@@ -741,13 +928,13 @@ export default function FloorSyncGuest({
                                     <div className="flex items-center gap-4">
                                         <div className="h-px flex-1 bg-[#2f2618]" />
                                         <p className="text-[10px] font-semibold uppercase tracking-[0.36em] text-[#cfbc90]">
-                                            {UI.detailComposition}
+                                            {ui.detailComposition}
                                         </p>
                                         <div className="h-px flex-1 bg-[#2f2618]" />
                                     </div>
 
                                     <div className="mt-5 grid grid-cols-2 gap-4">
-                                        {getIngredientCards(selectedDish, locale).map((item) => (
+                                        {getIngredientCards(selectedDish, guestLocale, ui).map((item) => (
                                             <div
                                                 key={`${selectedDish.id}-${item.title}`}
                                                 className="rounded-[1.35rem] border border-[#2a2114] bg-[#0f0b07] px-4 py-5 text-center shadow-[0_14px_32px_rgba(0,0,0,0.24)]"
@@ -766,19 +953,19 @@ export default function FloorSyncGuest({
 
                                 <section className="rounded-[2rem] border border-[#2a2215] bg-[radial-gradient(circle_at_top,rgba(197,179,141,0.09),transparent_55%),#0c0906] px-6 py-8 text-center shadow-[0_18px_40px_rgba(0,0,0,0.32)]">
                                     <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[#cfbc90]">
-                                        {UI.investment}
+                                        {ui.investment}
                                     </p>
                                     <p className="mt-4 text-5xl font-semibold tracking-tight text-white">
-                                        {formatCurrency(selectedDish.priceMinor / 100, selectedDish.currency, locale)}
+                                        {formatCurrency(selectedDish.priceMinor / 100, selectedDish.currency, guestLocale)}
                                     </p>
-                                    <p className="mt-3 text-sm italic text-[#91856d]">{UI.excludingCharges}</p>
+                                    <p className="mt-3 text-sm italic text-[#91856d]">{ui.excludingCharges}</p>
 
                                     <button
                                         type="button"
                                         onClick={() => addToCart(selectedDish)}
                                         className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#d0bc91] px-6 py-5 text-[12px] font-semibold uppercase tracking-[0.28em] text-black transition hover:bg-[#dac89f]"
                                     >
-                                        {floorSyncCopy?.addCart || floorSyncCopy?.addService || UI.addService}
+                                        {addServiceLabel}
                                     </button>
                                 </section>
                             </div>
@@ -788,30 +975,24 @@ export default function FloorSyncGuest({
                 {resolvedActiveView === 'cart' && (
                     <>
                         <header className="sticky top-0 z-30 border-b border-[#2b2215] bg-[#090704]/92 px-6 py-5 backdrop-blur-xl">
-                            <div className="flex items-center justify-between">
+                            <div className="relative flex items-center justify-between">
                                 <button
                                     type="button"
                                     onClick={() => setActiveView('menu')}
                                     className="flex h-10 w-10 items-center justify-center rounded-full text-white"
-                                    aria-label="Back"
+                                    aria-label={ui.back}
                                 >
                                     <span className="material-symbols-outlined text-[24px]">arrow_back</span>
                                 </button>
 
-                                <div className="text-center">
+                                <div className="pointer-events-none absolute left-1/2 top-1/2 w-[11rem] -translate-x-1/2 -translate-y-1/2 text-center">
                                     <p className="text-[10px] uppercase tracking-[0.4em] text-[#cbb98f]">
-                                        {UI.confirmOrder}
+                                        {ui.cart}
                                     </p>
-                                    <h2 className="mt-1 text-[2rem] font-semibold text-white">{UI.home}</h2>
+                                    <h2 className="mt-1 text-[2rem] font-semibold text-white">{ui.home}</h2>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    className="flex h-10 w-10 items-center justify-center rounded-full text-white"
-                                    aria-label="More"
-                                >
-                                    <span className="material-symbols-outlined text-[24px]">more_vert</span>
-                                </button>
+                                <div className="pl-3">{renderLanguageSwitch()}</div>
                             </div>
                         </header>
 
@@ -820,7 +1001,7 @@ export default function FloorSyncGuest({
                                 <div className="flex items-start justify-between">
                                     <div>
                                         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#c9b88f]">
-                                            {UI.reservation}
+                                            {ui.reservation}
                                         </p>
                                         <h3 className="mt-2 text-2xl text-white">{tableLabel}</h3>
                                     </div>
@@ -831,12 +1012,14 @@ export default function FloorSyncGuest({
 
                                 <div className="mt-6 grid grid-cols-2 gap-5 text-sm">
                                     <div>
-                                        <p className="text-[#8d8267]">{UI.dateTime}</p>
+                                        <p className="text-[#8d8267]">{ui.dateTime}</p>
                                         <p className="mt-1 text-xl text-white">{reservationDateTime}</p>
                                     </div>
                                     <div>
-                                        <p className="text-[#8d8267]">{UI.guests}</p>
-                                        <p className="mt-1 text-xl text-white">{guestCountLabel} personnes</p>
+                                        <p className="text-[#8d8267]">{ui.guests}</p>
+                                        <p className="mt-1 text-xl text-white">
+                                            {guestCountLabel} {ui.guests.toLowerCase()}
+                                        </p>
                                     </div>
                                 </div>
                             </section>
@@ -844,14 +1027,14 @@ export default function FloorSyncGuest({
                             <section>
                                 <div className="flex items-center justify-between">
                                     <h3 className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[#cfbc90]">
-                                        {UI.orderSummary}
+                                        {ui.orderSummary}
                                     </h3>
                                 </div>
 
                                 <div className="mt-6 space-y-5">
                                     {cartItems.length === 0 ? (
                                         <div className="rounded-[1.6rem] border border-[#2b2215] bg-[#100d09] px-6 py-12 text-center text-sm text-[#9e9073]">
-                                            {UI.emptySelection}
+                                            {ui.emptySelection}
                                         </div>
                                     ) : (
                                         cartItems.map((item) => (
@@ -859,7 +1042,7 @@ export default function FloorSyncGuest({
                                                 <div className="h-[5.5rem] w-[5.5rem] overflow-hidden rounded-[1.1rem] border border-[#2f2618] bg-black">
                                                     <img
                                                         src={getDishImageSrc(item.dish)}
-                                                        alt={getDishTitle(item.dish, locale)}
+                                                        alt={getDishTitle(item.dish, guestLocale)}
                                                         className="h-full w-full object-cover"
                                                     />
                                                 </div>
@@ -868,17 +1051,17 @@ export default function FloorSyncGuest({
                                                     <div className="flex items-start justify-between gap-4">
                                                         <div className="min-w-0">
                                                             <h4 className="truncate text-[1.45rem] text-white">
-                                                                {getDishTitle(item.dish, locale)}
+                                                                {getDishTitle(item.dish, guestLocale)}
                                                             </h4>
                                                             <p className="mt-1 text-sm text-[#9c9178]">
-                                                                {item.quantity} unit | {getSecondaryDishLine(item.dish, locale)}
+                                                                {item.quantity} {ui.unit} | {getSecondaryDishLine(item.dish, guestLocale)}
                                                             </p>
                                                         </div>
                                                         <p className="text-[1.85rem] text-[#d0bc91]">
                                                             {formatCurrency(
                                                                 (item.dish.priceMinor * item.quantity) / 100,
                                                                 item.dish.currency,
-                                                                locale
+                                                                guestLocale
                                                             )}
                                                         </p>
                                                     </div>
@@ -892,7 +1075,7 @@ export default function FloorSyncGuest({
                                                             -
                                                         </button>
                                                         <span className="min-w-14 text-center text-[11px] uppercase tracking-[0.24em] text-[#91856d]">
-                                                            {UI.qty}: {item.quantity}
+                                                            {ui.qty}: {item.quantity}
                                                         </span>
                                                         <button
                                                             type="button"
@@ -906,7 +1089,7 @@ export default function FloorSyncGuest({
                                                             onClick={() => removeFromCart(item.dishId)}
                                                             className="ml-auto text-[10px] uppercase tracking-[0.28em] text-[#bc6e6e]"
                                                         >
-                                                            Remove
+                                                            {ui.remove}
                                                         </button>
                                                     </div>
                                                 </div>
@@ -919,13 +1102,13 @@ export default function FloorSyncGuest({
                             <section>
                                 <div className="mb-5 flex items-center justify-between">
                                     <h3 className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[#cfbc90]">
-                                        {UI.paymentMode}
+                                        {ui.paymentMode}
                                     </h3>
                                     <button
                                         type="button"
                                         className="text-[10px] uppercase tracking-[0.28em] text-[#988a6e]"
                                     >
-                                        {UI.modify}
+                                        {ui.modify}
                                     </button>
                                 </div>
 
@@ -957,15 +1140,15 @@ export default function FloorSyncGuest({
                             <section className="border-t border-[#241c11] pt-8">
                                 <div className="space-y-4">
                                     <div className="flex items-center justify-between text-[1.05rem] text-[#b8ac96]">
-                                        <span>{UI.subtotal}</span>
+                                        <span>{ui.subtotal}</span>
                                         <span className="text-white">
-                                            {formatCurrency(totalPriceMinor / 100, latestCurrency, locale)}
+                                            {formatCurrency(totalPriceMinor / 100, latestCurrency, guestLocale)}
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between text-[1.05rem] text-[#b8ac96]">
-                                        <span>{UI.serviceCharge}</span>
+                                        <span>{ui.serviceCharge}</span>
                                         <span className="text-white">
-                                            {formatCurrency(serviceChargeMinor / 100, latestCurrency, locale)}
+                                            {formatCurrency(serviceChargeMinor / 100, latestCurrency, guestLocale)}
                                         </span>
                                     </div>
                                 </div>
@@ -973,11 +1156,11 @@ export default function FloorSyncGuest({
                                 <div className="mt-8 flex items-end justify-between border-t border-[#241c11] pt-6">
                                     <div>
                                         <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[#cfbc90]">
-                                            {UI.totalInvestment}
+                                            {ui.totalInvestment}
                                         </p>
                                     </div>
                                     <p className="text-[3rem] font-semibold leading-none tracking-tight text-white">
-                                        {formatCurrency(grandTotalMinor / 100, latestCurrency, locale)}
+                                        {formatCurrency(grandTotalMinor / 100, latestCurrency, guestLocale)}
                                     </p>
                                 </div>
                             </section>
@@ -993,7 +1176,7 @@ export default function FloorSyncGuest({
                                     <span className="material-symbols-outlined text-[18px]">east</span>
                                 </button>
                                 <p className="mt-5 text-center text-[10px] uppercase tracking-[0.3em] text-[#81745d] italic">
-                                    {floorSyncCopy?.byContinuing || UI.byContinuing}
+                                    {usesRouteCopy ? floorSyncCopy?.byContinuing || ui.byContinuing : ui.byContinuing}
                                 </p>
                             </section>
                         </main>
@@ -1015,7 +1198,7 @@ export default function FloorSyncGuest({
                             }`}
                         >
                             <span className="material-symbols-outlined text-[20px]">restaurant_menu</span>
-                            <span className="text-[9px] uppercase tracking-[0.26em]">{UI.menu}</span>
+                            <span className="text-[9px] uppercase tracking-[0.26em]">{ui.menu}</span>
                         </button>
 
                         <button
@@ -1026,7 +1209,7 @@ export default function FloorSyncGuest({
                             }`}
                         >
                             <span className="material-symbols-outlined text-[20px]">event_available</span>
-                            <span className="text-[9px] uppercase tracking-[0.26em]">{UI.reserve}</span>
+                            <span className="text-[9px] uppercase tracking-[0.26em]">{ui.reserve}</span>
                             {totalItems > 0 && (
                                 <span className="absolute -right-3 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#d0bc91] px-1 text-[9px] font-bold text-black">
                                     {totalItems}
@@ -1045,12 +1228,12 @@ export default function FloorSyncGuest({
                             }`}
                         >
                             <span className="material-symbols-outlined text-[20px]">auto_awesome</span>
-                            <span className="text-[9px] uppercase tracking-[0.26em]">{UI.atelier}</span>
+                            <span className="text-[9px] uppercase tracking-[0.26em]">{ui.atelier}</span>
                         </button>
 
                         <div className="flex flex-col items-center gap-1 text-[#7f725a]">
                             <span className="material-symbols-outlined text-[20px]">person</span>
-                            <span className="text-[9px] uppercase tracking-[0.26em]">{UI.profile}</span>
+                            <span className="text-[9px] uppercase tracking-[0.26em]">{ui.profile}</span>
                         </div>
                     </div>
                 </nav>
