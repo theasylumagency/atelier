@@ -1,9 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { resetSessionDishes } from '@/lib/demo-session';
 
-export async function POST() {
+export async function POST(req: NextRequest) {
     try {
-        const data = await resetSessionDishes();
+        const sessionId = req.nextUrl.searchParams.get('session') || undefined;
+        const data = await resetSessionDishes(sessionId);
         return NextResponse.json(
             { ok: true, items: data.items, updatedAt: data.updatedAt },
             { status: 200 }

@@ -4,14 +4,16 @@ import {
     readSessionDishes,
     readSessionMeta,
 } from '@/lib/demo-session';
+import type { NextRequest } from 'next/server';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
     try {
         await cleanupExpiredDemoSessions();
+        const sessionId = req.nextUrl.searchParams.get('session') || undefined;
 
         const [data, meta] = await Promise.all([
-            readSessionDishes(),
-            readSessionMeta(),
+            readSessionDishes(sessionId),
+            readSessionMeta(sessionId),
         ]);
 
         return NextResponse.json(

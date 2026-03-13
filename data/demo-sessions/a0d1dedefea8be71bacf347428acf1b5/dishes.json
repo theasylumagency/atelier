@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-12T09:26:07.005Z",
+  "updatedAt": "2026-03-12T17:39:15.110Z",
   "items": [
     {
       "id": "dish_0001",
@@ -139,11 +139,7 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": [],
-      "photo": {
-        "small": "dish_1773307552211_8c785fed_sm.webp",
-        "full": "dish_1773307552211_8c785fed.webp"
-      }
+      "priceVariants": []
     },
     {
       "id": "dish_0005",
@@ -539,11 +535,7 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": [],
-      "photo": {
-        "small": "/placeholder-generated.webp",
-        "full": "/placeholder-generated.webp"
-      }
+      "priceVariants": []
     },
     {
       "id": "dish_0017",
@@ -6924,142 +6916,6 @@
         "ru": ""
       },
       "priceVariants": []
-    },
-    {
-      "priceMinor": 0,
-      "currency": "GEL",
-      "vegetarian": false,
-      "chefsPick": false,
-      "title": {
-        "ka": "kupati",
-        "en": "",
-        "ru": ""
-      },
-      "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "story": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "imageUrl": null,
-      "categoryId": "cat_0003",
-      "id": "dish_1773246344802",
-      "order": 130,
-      "status": "active"
-    },
-    {
-      "priceMinor": 0,
-      "currency": "GEL",
-      "vegetarian": false,
-      "chefsPick": false,
-      "title": {
-        "ka": "kupati",
-        "en": "",
-        "ru": ""
-      },
-      "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "story": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "imageUrl": null,
-      "categoryId": "cat_0001",
-      "id": "dish_1773246423411",
-      "order": 220,
-      "status": "active"
-    },
-    {
-      "priceMinor": 0,
-      "currency": "GEL",
-      "vegetarian": false,
-      "chefsPick": false,
-      "title": {
-        "ka": "axali kupati",
-        "en": "",
-        "ru": ""
-      },
-      "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "story": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "imageUrl": null,
-      "categoryId": "cat_0001",
-      "id": "dish_1773246912326",
-      "order": 230,
-      "status": "active"
-    },
-    {
-      "priceMinor": 0,
-      "currency": "GEL",
-      "vegetarian": false,
-      "chefsPick": false,
-      "title": {
-        "ka": "კუპატი",
-        "en": "Kupati Sausage",
-        "ru": "Купати"
-      },
-      "description": {
-        "ka": "წვრილად დაჭრილი ღორის/ძროხის ხორცი, სურნელოვანი ქართული სანელებლები, ბუნებრივი გარსი",
-        "en": "Minced pork and beef, aromatic Georgian spices, natural casing",
-        "ru": "Рубленая свинина и говядина, ароматные грузинские специи, натуральная оболочка"
-      },
-      "story": {
-        "ka": "იმერული სუფრის გული, კუპატი ტრადიციული ქართული კულინარიის დახვეწილი ნიმუშია. მისი მდიდარი არომატი და ხელნაკეთი სრულყოფილება თაობიდან თაობას გადაეცემა, როგორც ოჯახური დღესასწაულების შეუცვლელი ნაწილი.",
-        "en": "The heart of the Imeretian supra, Kupati is a refined example of traditional Georgian culinary artistry. Its rich aroma and handcrafted perfection are passed down through generations, an indispensable part of family celebrations.",
-        "ru": "Сердце имеретинской супры, Купати — это изысканный образец традиционного грузинского кулинарного искусства. Его богатый аромат и ручное совершенство передаются из поколения в поколение, являясь незаменимой частью семейных торжеств."
-      },
-      "photo": {
-        "small": "dish_1773288128777_59ab8ca5_sm.webp",
-        "full": "dish_1773288128777_59ab8ca5.webp"
-      },
-      "categoryId": "cat_0001",
-      "id": "dish_1773249449305",
-      "order": 240,
-      "status": "active"
-    },
-    {
-      "priceMinor": 0,
-      "currency": "GEL",
-      "vegetarian": false,
-      "chefsPick": false,
-      "title": {
-        "ka": "კუჭმაჭი",
-        "en": "Kuchmachi",
-        "ru": "Кучмачи"
-      },
-      "description": {
-        "ka": "ქათმის სუბპროდუქტები, ნიგოზი, ბროწეული, სურნელოვანი მწვანილი",
-        "en": "Chicken offal, walnuts, pomegranate, aromatic herbs",
-        "ru": "Куриные субпродукты, грецкие орехи, гранат, ароматные травы"
-      },
-      "story": {
-        "ka": "ქართული სუფრის გამორჩეული კერძი, რომელიც თაობიდან თაობას გადაეცემა. მისი დახვეწილი გემო და არომატი ნამდვილად გაგაოცებთ.",
-        "en": "A distinguished dish of the Georgian supra, passed down through generations. Its refined taste and aroma truly captivate the senses.",
-        "ru": "Изысканное блюдо грузинской супры, передаваемое из поколения в поколение. Его утонченный вкус и аромат по-настоящему очаровывают."
-      },
-      "photo": {
-        "small": "dish_1773294731084_bf3575d8_sm.webp",
-        "full": "dish_1773294731084_bf3575d8.webp"
-      },
-      "categoryId": "cat_0001",
-      "id": "dish_1773283872322",
-      "order": 250,
-      "status": "active"
     }
   ]
 }

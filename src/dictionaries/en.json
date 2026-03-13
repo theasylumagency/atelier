@@ -152,6 +152,13 @@
     "floorSync": {
         "title": "The Spatial Protocol",
         "subtitle": "Experience the frictionless connection between the guest's mobile device and the kitchen's real-time floor board. No waiters, no delays. Just absolute command.",
+        "qrEyebrow": "Session-specific QR launch",
+        "qrTitle": "Open the live floor demo on real phones",
+        "qrSubtitle": "These QR codes point to this computer session. If you already changed the menu in Control Panel, guests will open that local version. Otherwise the standard menu is used for this session.",
+        "qrNote": "Scan on mobile. The scan route immediately redirects into /floor-sync with the correct table and shared session.",
+        "openBoard": "Open live floor board",
+        "openPanel": "Open control panel",
+        "previewGuest": "Preview guest route",
         "table": "Table",
         "menuTitle": "Georgian Heritage",
         "main": "Main",

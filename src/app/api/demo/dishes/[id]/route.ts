@@ -7,6 +7,7 @@ interface RouteContext {
 
 export async function PUT(req: NextRequest, context: RouteContext) {
     try {
+        const sessionId = req.nextUrl.searchParams.get('session') || undefined;
         const { id } = await context.params;
         const body = await req.json().catch(() => null);
 
@@ -17,7 +18,7 @@ export async function PUT(req: NextRequest, context: RouteContext) {
             );
         }
 
-        const updated = await updateSessionDish(id, body);
+        const updated = await updateSessionDish(id, body, sessionId);
         const savedDish = updated.items.find((dish) => dish.id === id);
 
         return NextResponse.json(

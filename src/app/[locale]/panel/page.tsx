@@ -1,33 +1,23 @@
 import { getDictionary } from '@/lib/dictionaries';
 import CommandCenter from '@/components/CommandCenter';
-import fs from 'fs';
-import path from 'path';
+import { loadDemoMenuData } from '@/lib/menu-data';
+import { resolveDemoSessionId } from '@/lib/demo-session';
+import type { Category, Dish } from '@/lib/types';
 
 export default async function PanelPage(props: { params: Promise<{ locale: 'en' | 'ka' }> }) {
     const params = await props.params;
     const dict = await getDictionary(params.locale);
+    const sessionId = await resolveDemoSessionId();
 
-    // Read the static JSON files
-    const dishesPath = path.join(process.cwd(), 'data', 'dishes.json');
-    const categoriesPath = path.join(process.cwd(), 'data', 'categories.json');
-
-    let dishes = [];
-    let categories = [];
+    let dishes: Dish[] = [];
+    let categories: Category[] = [];
 
     try {
-        const fileContents = fs.readFileSync(dishesPath, 'utf8');
-        const data = JSON.parse(fileContents);
-        dishes = data.items || [];
+        const data = await loadDemoMenuData(sessionId);
+        dishes = data.dishes;
+        categories = data.categories;
     } catch (error) {
-        console.error("Failed to parse dishes data:", error);
-    }
-
-    try {
-        const fileContents = fs.readFileSync(categoriesPath, 'utf8');
-        const data = JSON.parse(fileContents);
-        categories = data.items || [];
-    } catch (error) {
-        console.error("Failed to parse categories data:", error);
+        console.error('Failed to load demo menu data for panel:', error);
     }
 
     return (
@@ -36,6 +26,7 @@ export default async function PanelPage(props: { params: Promise<{ locale: 'en' 
             initialDishes={dishes}
             dict={dict}
             locale={params.locale}
+            sessionId={sessionId}
         />
     );
 }

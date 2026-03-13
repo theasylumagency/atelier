@@ -1,9 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { markSessionPublished } from '@/lib/demo-session';
 
-export async function POST() {
+export async function POST(req: NextRequest) {
     try {
-        const meta = await markSessionPublished();
+        const sessionId = req.nextUrl.searchParams.get('session') || undefined;
+        const meta = await markSessionPublished(sessionId);
 
         return NextResponse.json(
             {

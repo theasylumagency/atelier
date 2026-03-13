@@ -9,6 +9,7 @@ interface CommandCenterProps {
     initialDishes: any[];
     dict: any;
     locale: string;
+    sessionId: string;
 }
 
 type PublishState = 'ready' | 'draft' | 'publishing' | 'published';
@@ -65,6 +66,7 @@ export default function CommandCenter({
     initialDishes,
     dict,
     locale,
+    sessionId,
 }: CommandCenterProps) {
     const ui = locale === 'ka' ? UI.ka : UI.en;
 
@@ -98,9 +100,15 @@ export default function CommandCenter({
 
     const activeCategoryTitle =
         activeCategory?.title?.[locale] || activeCategory?.title?.en || '';
+
+    const getDemoApiPath = (pathname: string) => {
+        const params = new URLSearchParams({ session: sessionId });
+        return `${pathname}?${params.toString()}`;
+    };
+
     async function loadDemoDishes() {
         try {
-            const response = await fetch('/api/demo/dishes', {
+            const response = await fetch(getDemoApiPath('/api/demo/dishes'), {
                 method: 'GET',
                 cache: 'no-store',
             });
@@ -154,7 +162,7 @@ export default function CommandCenter({
 
         try {
             if (data.id) {
-                const response = await fetch(`/api/demo/dishes/${data.id}`, {
+                const response = await fetch(getDemoApiPath(`/api/demo/dishes/${data.id}`), {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(normalizedDish),
@@ -166,7 +174,7 @@ export default function CommandCenter({
                     throw new Error(payload?.error || 'Failed to update dish.');
                 }
             } else {
-                const response = await fetch('/api/demo/dishes/create', {
+                const response = await fetch(getDemoApiPath('/api/demo/dishes/create'), {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(normalizedDish),
@@ -190,7 +198,7 @@ export default function CommandCenter({
 
     async function handlePublish() {
         try {
-            const response = await fetch('/api/demo/publish', {
+            const response = await fetch(getDemoApiPath('/api/demo/publish'), {
                 method: 'POST',
             });
 
@@ -210,7 +218,7 @@ export default function CommandCenter({
 
     async function handleResetDemo() {
         try {
-            const response = await fetch('/api/demo/reset', {
+            const response = await fetch(getDemoApiPath('/api/demo/reset'), {
                 method: 'POST',
             });
 
@@ -238,7 +246,7 @@ export default function CommandCenter({
                     : ui.ready;
 
     return (
-        <div className="flex xl:h-screen w-full flex-col bg-zinc-950 font-sans text-stone-100 overflow-hidden md:flex-row pt-24 min-h-screen">
+        <div className="flex xl:h-screen w-full flex-col bg-zinc-950 font-sans text-stone-100 overflow-hidden md:flex-row pt-16 min-h-screen">
             <aside className="flex w-full flex-col border-b border-white/10 bg-black md:w-80 md:border-r md:border-b-0 shrink-0">
                 <div className="hidden border-b border-white/10 p-6 md:block">
                     <h1 className="text-[10px] font-sans font-bold tracking-[0.4em] uppercase text-stone-500">

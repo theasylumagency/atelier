@@ -3,10 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import type { AppDictionary } from '@/lib/dictionaries';
+import { getFloorSyncHubPath } from '@/lib/floor-sync';
 
-export default function Process({ dict }: { dict: any }) {
+export default function Process({ dict }: { dict: AppDictionary }) {
     const params = useParams();
     const locale = params.locale || 'en';
+    const floorSyncHref = getFloorSyncHubPath(String(locale));
     const [activeIndex, setActiveIndex] = useState(0);
 
     // Auto-cycle the active step
@@ -94,12 +97,12 @@ export default function Process({ dict }: { dict: any }) {
                     />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-                    {dict.process.steps.map((step: any, idx: number) => {
+                    {dict.process.steps.map((step, idx: number) => {
                         const isActive = activeIndex === idx;
 
                         return (
                             <Link
-                                href={`/${locale}/floor-sync`}
+                                href={floorSyncHref}
                                 key={idx}
                                 className="group flex flex-col items-center relative cursor-pointer"
                                 onMouseEnter={() => setActiveIndex(idx)} // Pause auto-cycle on hover

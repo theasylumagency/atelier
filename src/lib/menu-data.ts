@@ -26,11 +26,11 @@ export function loadStaticMenuData(): { categories: Category[]; dishes: Dish[] }
     };
 }
 
-export async function loadDemoMenuData(): Promise<{ categories: Category[]; dishes: Dish[] }> {
+export async function loadDemoMenuData(sessionId?: string): Promise<{ categories: Category[]; dishes: Dish[] }> {
     const categoriesPath = path.join(process.cwd(), 'data', 'categories.json');
 
     const categoriesFile = readJsonFile<CategoryFile>(categoriesPath, { items: [] });
-    const dishesFile = await readSessionDishes();
+    const dishesFile = await readSessionDishes(sessionId);
 
     return {
         categories: categoriesFile.items ?? [],

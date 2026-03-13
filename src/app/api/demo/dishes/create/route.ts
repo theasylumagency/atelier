@@ -4,6 +4,7 @@ import { createSessionDish } from '@/lib/demo-session';
 
 export async function POST(req: NextRequest) {
     try {
+        const sessionId = req.nextUrl.searchParams.get('session') || undefined;
         const body = (await req.json().catch(() => null)) as Dish | null;
 
         if (!body || typeof body !== 'object' || !body.id) {
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const updated = await createSessionDish(body);
+        const updated = await createSessionDish(body, sessionId);
         return NextResponse.json(
             { ok: true, dish: body, updatedAt: updated.updatedAt },
             { status: 200 }

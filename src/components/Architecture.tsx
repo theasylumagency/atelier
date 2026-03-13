@@ -2,10 +2,13 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import type { AppDictionary } from '@/lib/dictionaries';
+import { getFloorSyncHubPath } from '@/lib/floor-sync';
 
-export default function Architecture({ dict }: { dict: any }) {
+export default function Architecture({ dict }: { dict: AppDictionary }) {
     const params = useParams();
     const locale = params.locale || 'en';
+    const floorSyncHref = getFloorSyncHubPath(String(locale));
     return (
         <main className="relative min-h-screen pt-32 pb-24 bg-zinc-950 px-8 md:px-12 flex items-center justify-center">
             <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 glowing-line z-0 hidden md:block"></div>
@@ -39,7 +42,7 @@ export default function Architecture({ dict }: { dict: any }) {
                     <span className="text-[10px] font-sans font-medium tracking-[0.4em] text-stone-500 uppercase block mb-8 text-center md:text-left">{dict.architecture.tech_chapter}</span>
                     <div className="grid gap-6">
 
-                        <Link href={`/${locale}/floor-sync`} className="group block">
+                        <Link href={floorSyncHref} className="group block">
                             <div className="border border-stone-800/80 bg-zinc-950 p-8 md:p-10 transition-all duration-300 relative group-hover:bg-zinc-900 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-[4px_4px_0_0_#ea580c] group-active:translate-y-0 group-active:translate-x-0 group-active:shadow-none">
                                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span className="material-symbols-outlined text-orange-600 font-light text-sm">arrow_forward_ios</span>
@@ -58,7 +61,7 @@ export default function Architecture({ dict }: { dict: any }) {
                             </div>
                         </Link>
 
-                        <Link href={`/${locale}/floor-sync`} className="group block">
+                        <Link href={floorSyncHref} className="group block">
                             <div className="border border-stone-800/80 bg-zinc-950 p-8 md:p-10 transition-all duration-300 relative group-hover:bg-zinc-900 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-[4px_4px_0_0_#ea580c] group-active:translate-y-0 group-active:translate-x-0 group-active:shadow-none">
                                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span className="material-symbols-outlined text-orange-600 font-light text-sm">arrow_forward_ios</span>
@@ -77,7 +80,7 @@ export default function Architecture({ dict }: { dict: any }) {
                             </div>
                         </Link>
 
-                        <Link href={`/${locale}/floor-sync`} className="group block">
+                        <Link href={floorSyncHref} className="group block">
                             <div className="border border-stone-800/80 bg-zinc-950 p-8 md:p-10 transition-all duration-300 relative group-hover:bg-zinc-900 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-[4px_4px_0_0_#ea580c] group-active:translate-y-0 group-active:translate-x-0 group-active:shadow-none">
                                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span className="material-symbols-outlined text-orange-600 font-light text-sm">arrow_forward_ios</span>

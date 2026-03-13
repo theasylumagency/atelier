@@ -1,11 +1,23 @@
+import crypto from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
-import crypto from 'crypto';
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import type { Dish, DishFile } from '@/lib/types';
+import type { DemoTableId, FloorStateFile, FloorTableState } from '@/lib/floor-sync';
+import {
+    createEmptyFloorState,
+    isValidDemoSessionId,
+    normalizeFloorStateFile,
+    normalizeFloorTableState,
+} from '@/lib/floor-sync';
 
 const DEMO_COOKIE = 'maitrise_demo_session';
+const DEMO_HEADER = 'x-maitrise-demo-session';
 const SESSION_TTL_MS = 1000 * 60 * 60 * 24; // 24 hours
+
+interface DemoSessionMeta {
+    lastPublishedAt: string | null;
+}
 
 function getSeedPath() {
     return path.join(process.cwd(), 'data', 'dishes.json');
@@ -21,6 +33,14 @@ function getSessionDir(sessionId: string) {
 
 function getSessionDishesPath(sessionId: string) {
     return path.join(getSessionDir(sessionId), 'dishes.json');
+}
+
+function getSessionMetaPath(sessionId: string) {
+    return path.join(getSessionDir(sessionId), 'meta.json');
+}
+
+function getSessionFloorStatePath(sessionId: string) {
+    return path.join(getSessionDir(sessionId), 'floor-state.json');
 }
 
 async function ensureDir(dirPath: string) {
@@ -52,17 +72,22 @@ export async function getOrCreateDemoSessionId() {
         return existing;
     }
 
-    const sessionId = makeSessionId();
+    const headerStore = await headers();
+    const injected = headerStore.get(DEMO_HEADER);
 
-    cookieStore.set(DEMO_COOKIE, sessionId, {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production',
-        path: '/',
-        maxAge: SESSION_TTL_MS / 1000,
-    });
+    if (isValidDemoSessionId(injected)) {
+        return injected;
+    }
 
-    return sessionId;
+    return makeSessionId();
+}
+
+export async function resolveDemoSessionId(sessionId?: string) {
+    if (isValidDemoSessionId(sessionId)) {
+        return sessionId;
+    }
+
+    return getOrCreateDemoSessionId();
 }
 
 export async function ensureDemoSessionFile(sessionId: string) {
@@ -85,15 +110,66 @@ export async function ensureDemoSessionFile(sessionId: string) {
     return sessionFile;
 }
 
-export async function readSessionDishes(): Promise<DishFile> {
-    const sessionId = await getOrCreateDemoSessionId();
-    const sessionFile = await ensureDemoSessionFile(sessionId);
+async function ensureSessionMetaFile(sessionId: string) {
+    const metaPath = getSessionMetaPath(sessionId);
+
+    try {
+        await fs.access(metaPath);
+    } catch {
+        const initialMeta: DemoSessionMeta = {
+            lastPublishedAt: null,
+        };
+        await writeJsonFile(metaPath, initialMeta);
+    }
+
+    return metaPath;
+}
+
+async function ensureSessionFloorStateFile(sessionId: string) {
+    const floorStatePath = getSessionFloorStatePath(sessionId);
+
+    try {
+        await fs.access(floorStatePath);
+    } catch {
+        await writeJsonFile(floorStatePath, createEmptyFloorState());
+    }
+
+    const current = await readJsonFile<FloorStateFile | null>(floorStatePath, null);
+    const normalized = normalizeFloorStateFile(current ?? undefined);
+
+    if (JSON.stringify(current) !== JSON.stringify(normalized)) {
+        await writeJsonFile(floorStatePath, normalized);
+    }
+
+    return floorStatePath;
+}
+
+export async function prepareDemoSession(sessionId?: string) {
+    const resolvedSessionId = await resolveDemoSessionId(sessionId);
+    await ensureDir(getSessionDir(resolvedSessionId));
+
+    await Promise.all([
+        ensureDemoSessionFile(resolvedSessionId),
+        ensureSessionMetaFile(resolvedSessionId),
+        ensureSessionFloorStateFile(resolvedSessionId),
+    ]);
+
+    return resolvedSessionId;
+}
+
+export async function readSessionDishes(sessionId?: string): Promise<DishFile> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const sessionFile = getSessionDishesPath(resolvedSessionId);
     return readJsonFile<DishFile>(sessionFile, { items: [] });
 }
 
-export async function updateSessionDish(id: string, patch: Partial<Dish>): Promise<DishFile> {
-    const sessionId = await getOrCreateDemoSessionId();
-    const sessionFile = await ensureDemoSessionFile(sessionId);
+export async function updateSessionDish(
+    id: string,
+    patch: Partial<Dish>,
+    sessionId?: string
+): Promise<DishFile> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const sessionFile = getSessionDishesPath(resolvedSessionId);
     const current = await readJsonFile<DishFile>(sessionFile, { items: [] });
 
     const nextItems = current.items.map((dish) =>
@@ -115,9 +191,9 @@ export async function updateSessionDish(id: string, patch: Partial<Dish>): Promi
     return updated;
 }
 
-export async function createSessionDish(newDish: Dish): Promise<DishFile> {
-    const sessionId = await getOrCreateDemoSessionId();
-    const sessionFile = await ensureDemoSessionFile(sessionId);
+export async function createSessionDish(newDish: Dish, sessionId?: string): Promise<DishFile> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const sessionFile = getSessionDishesPath(resolvedSessionId);
     const current = await readJsonFile<DishFile>(sessionFile, { items: [] });
 
     const updated: DishFile = {
@@ -129,9 +205,9 @@ export async function createSessionDish(newDish: Dish): Promise<DishFile> {
     return updated;
 }
 
-export async function resetSessionDishes(): Promise<DishFile> {
-    const sessionId = await getOrCreateDemoSessionId();
-    const sessionFile = await ensureDemoSessionFile(sessionId);
+export async function resetSessionDishes(sessionId?: string): Promise<DishFile> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const sessionFile = getSessionDishesPath(resolvedSessionId);
     const seed = await readJsonFile<DishFile>(getSeedPath(), { items: [] });
 
     const resetData: DishFile = {
@@ -141,48 +217,80 @@ export async function resetSessionDishes(): Promise<DishFile> {
 
     await writeJsonFile(sessionFile, resetData);
 
-    const metaPath = await ensureSessionMetaFile(sessionId);
+    const metaPath = await ensureSessionMetaFile(resolvedSessionId);
     await writeJsonFile(metaPath, { lastPublishedAt: null });
 
     return resetData;
 }
-interface DemoSessionMeta {
-    lastPublishedAt: string | null;
-}
 
-function getSessionMetaPath(sessionId: string) {
-    return path.join(getSessionDir(sessionId), 'meta.json');
-}
+export async function readSessionFloorState(sessionId?: string): Promise<FloorStateFile> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const floorStatePath = await ensureSessionFloorStateFile(resolvedSessionId);
+    const current = await readJsonFile<FloorStateFile | null>(floorStatePath, null);
+    const normalized = normalizeFloorStateFile(current ?? undefined);
 
-async function ensureSessionMetaFile(sessionId: string) {
-    const metaPath = getSessionMetaPath(sessionId);
-
-    try {
-        await fs.access(metaPath);
-    } catch {
-        const initialMeta: DemoSessionMeta = {
-            lastPublishedAt: null,
-        };
-        await writeJsonFile(metaPath, initialMeta);
+    if (JSON.stringify(current) !== JSON.stringify(normalized)) {
+        await writeJsonFile(floorStatePath, normalized);
     }
 
-    return metaPath;
+    return normalized;
 }
 
-export async function readSessionMeta(): Promise<DemoSessionMeta> {
-    const sessionId = await getOrCreateDemoSessionId();
-    await ensureDir(getSessionDir(sessionId));
-    const metaPath = await ensureSessionMetaFile(sessionId);
+export async function updateSessionFloorTable(
+    tableId: DemoTableId,
+    patch: Partial<FloorTableState>,
+    sessionId?: string
+): Promise<FloorTableState> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const floorStatePath = await ensureSessionFloorStateFile(resolvedSessionId);
+    const current = normalizeFloorStateFile(
+        await readJsonFile<FloorStateFile | null>(floorStatePath, null) ?? undefined
+    );
+    const now = new Date().toISOString();
+
+    const updatedTable = normalizeFloorTableState(
+        tableId,
+        {
+            ...current.tables[tableId],
+            ...patch,
+            updatedAt: now,
+        },
+        now
+    );
+
+    const updatedState: FloorStateFile = {
+        updatedAt: now,
+        tables: {
+            ...current.tables,
+            [tableId]: updatedTable,
+        },
+    };
+
+    await writeJsonFile(floorStatePath, updatedState);
+    return updatedTable;
+}
+
+export async function resetSessionFloorState(sessionId?: string) {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const floorStatePath = await ensureSessionFloorStateFile(resolvedSessionId);
+    const resetState = createEmptyFloorState();
+
+    await writeJsonFile(floorStatePath, resetState);
+    return resetState;
+}
+
+export async function readSessionMeta(sessionId?: string): Promise<DemoSessionMeta> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const metaPath = await ensureSessionMetaFile(resolvedSessionId);
 
     return readJsonFile<DemoSessionMeta>(metaPath, {
         lastPublishedAt: null,
     });
 }
 
-export async function markSessionPublished(): Promise<DemoSessionMeta> {
-    const sessionId = await getOrCreateDemoSessionId();
-    await ensureDir(getSessionDir(sessionId));
-    const metaPath = await ensureSessionMetaFile(sessionId);
+export async function markSessionPublished(sessionId?: string): Promise<DemoSessionMeta> {
+    const resolvedSessionId = await prepareDemoSession(sessionId);
+    const metaPath = await ensureSessionMetaFile(resolvedSessionId);
 
     const meta: DemoSessionMeta = {
         lastPublishedAt: new Date().toISOString(),
@@ -191,6 +299,7 @@ export async function markSessionPublished(): Promise<DemoSessionMeta> {
     await writeJsonFile(metaPath, meta);
     return meta;
 }
+
 export async function cleanupExpiredDemoSessions() {
     const root = getSessionsRoot();
     await ensureDir(root);

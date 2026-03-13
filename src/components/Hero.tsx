@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import type { AppDictionary } from '@/lib/dictionaries';
+import { getFloorSyncHubPath } from '@/lib/floor-sync';
 
-export default function Hero({ dict }: { dict: any }) {
+export default function Hero({ dict }: { dict: AppDictionary }) {
     const params = useParams();
     const locale = params.locale || 'en';
 
@@ -49,7 +51,7 @@ export default function Hero({ dict }: { dict: any }) {
                     </Link>
 
                     <Link
-                        href={`/${locale}/floor-sync`}
+                        href={getFloorSyncHubPath(String(locale))}
                         className="font-sans text-stone-300 px-8 py-4 font-medium tracking-[0.2em] uppercase text-xs border border-white/10 hover:border-white/30 hover:text-white transition-all duration-500"
                     >
                         {dict.hero.secondaryCta}

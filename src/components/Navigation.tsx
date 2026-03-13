@@ -1,17 +1,28 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+import type { AppDictionary } from '@/lib/dictionaries';
+import { getFloorSyncHubPath } from '@/lib/floor-sync';
 
-export default function Navigation({ dict, locale }: { dict: any; locale: string }) {
-    const [scrolled, setScrolled] = useState(false);
+export default function Navigation({ dict, locale }: { dict: AppDictionary; locale: string }) {
+    const [hidden, setHidden] = useState(false);
+    const [hovered, setHovered] = useState(false);
     const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
+        let lastScrollY = window.scrollY;
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 20) {
+                setHidden(true);
+            } else {
+                setHidden(false);
+            }
+            lastScrollY = currentScrollY;
         };
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -22,9 +33,17 @@ export default function Navigation({ dict, locale }: { dict: any; locale: string
         return segments.join('/');
     };
 
+    if (pathname?.endsWith('/floor-sync') && searchParams.get('guest') === '1') {
+        return null;
+    }
+
     return (
-        <header className={`fixed top-0 w-full z-50 transition-all duration-500 hover:bg-black/60 glass-panel border-b-0 ${scrolled ? 'bg-black/80' : ''}`}>
-            <div className="max-w-[1600px] mx-auto px-8 md:px-12 h-24 flex items-center justify-between">
+        <header
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className={`fixed top-0 w-full z-50 glass-panel border-b-0 transition-transform duration-500 ease-in-out ${hidden && !hovered ? '-translate-y-full' : 'translate-y-0'}`}
+        >
+            <div className="max-w-[1600px] mx-auto px-8 md:px-12 h-24 md:h-16 flex items-center justify-between">
                 <div className="flex items-center gap-4">
 
                     <Link href={`/${locale}`}>
@@ -53,7 +72,7 @@ export default function Navigation({ dict, locale }: { dict: any; locale: string
                         <Link href={getLocalizedPath('en')} className={`hover:text-white transition-colors ${locale === 'en' ? 'text-white font-bold' : ''}`}>EN</Link>
                     </div>
                     <div className="flex items-center gap-6 max-sm:hidden">
-                        <Link href={`/${locale}/floor-sync`}>
+                        <Link href={getFloorSyncHubPath(locale)}>
                             <button className="text-[10px] tracking-[0.3em] font-sans text-stone-400 border-b border-transparent pb-1 hover:text-white hover:border-white/20 transition-all uppercase">{dict.nav?.floorSync || 'Floor Sync'}</button>
                         </Link>
                         <Link href={`/${locale}/panel`}>
