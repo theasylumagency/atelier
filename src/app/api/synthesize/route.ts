@@ -7,16 +7,16 @@ import {
     sanitizePromptValue,
     type SynthesizeRequest,
 } from '@/lib/ai-synthesis';
+import Redis from 'ioredis'; // <-- Import the Redis client
 
 const apiKey = process.env.GEMINI_API_KEY;
-
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
-// Simple in-memory limiter.
-// Good enough for now, but remember: on serverless this is per-instance, not global.
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX = 8;
-const requestLog = new Map<string, number[]>();
+// Initialize Redis. It securely connects to localhost:6379 on your Hostinger VPS
+const redis = new Redis();
+
+const RATE_LIMIT_WINDOW_SECONDS = 60; // 1 minute window
+const RATE_LIMIT_MAX = 8; // 8 requests allowed per IP
 
 function getClientKey(req: NextRequest): string {
     const forwardedFor = req.headers.get('x-forwarded-for');
@@ -26,16 +26,18 @@ function getClientKey(req: NextRequest): string {
     return 'local';
 }
 
-function isRateLimited(key: string): boolean {
-    const now = Date.now();
-    const recent = (requestLog.get(key) ?? []).filter(
-        (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS
-    );
-
-    recent.push(now);
-    requestLog.set(key, recent);
-
-    return recent.length > RATE_LIMIT_MAX;
+// --- REDIS RATE LIMITER ---
+// Safely tracks text generation requests across all PM2 cluster cores
+async function isRateLimited(key: string): Promise<boolean> {
+    const redisKey = `text_synthesis_limit:${key}`;
+    
+    const currentCount = await redis.incr(redisKey);
+    
+    if (currentCount === 1) {
+        await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS);
+    }
+    
+    return currentCount > RATE_LIMIT_MAX;
 }
 
 function buildPrompt(input: SynthesizeRequest): string {
@@ -68,7 +70,9 @@ export async function POST(req: NextRequest) {
         }
 
         const clientKey = getClientKey(req);
-        if (isRateLimited(clientKey)) {
+        
+        // Await the Redis rate limiter
+        if (await isRateLimited(clientKey)) {
             return NextResponse.json(
                 { error: 'Too many synthesis requests. Please try again in a minute.' },
                 { status: 429 }
@@ -90,8 +94,10 @@ export async function POST(req: NextRequest) {
 
         const input = parsedInput.data;
 
+        // Upgrade to Gemini 3.1 Flash Preview for identical cost, 
+        // vastly superior Georgian translations, and stricter JSON adherence
         const model = genAI.getGenerativeModel({
-            model: 'gemini-2.5-flash',
+            model: 'gemini-3-flash-preview', 
             systemInstruction: `
 You are an elite culinary copywriter and expert in Georgian gastronomy.
 

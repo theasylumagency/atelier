@@ -6,14 +6,36 @@ import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { z } from 'zod';
+import Redis from 'ioredis'; // <-- Import ioredis
 
 export const runtime = 'nodejs';
 
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX = 6;
+// Initialize Redis. By default, it seamlessly connects to localhost:6379
+const redis = new Redis();
+
+const RATE_LIMIT_WINDOW_SECONDS = 60; // 1 minute window
+const RATE_LIMIT_MAX = 6; // 6 requests allowed
+
+// --- REDIS RATE LIMITER ---
+// This safely tracks requests across all PM2 cluster cores.
+async function isRateLimited(key: string): Promise<boolean> {
+    const redisKey = `photo_forge_limit:${key}`;
+    
+    // Increment the request count for this specific IP address
+    const currentCount = await redis.incr(redisKey);
+    
+    // If this is their very first request in this window, start the 60-second expiration timer
+    if (currentCount === 1) {
+        await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS);
+    }
+    
+    return currentCount > RATE_LIMIT_MAX;
+}
+
+
 const requestLog = new Map<string, number[]>();
 
 type GeneratedInlineDataPart = {
@@ -38,10 +60,9 @@ type GenerateContentInput = string | {
     };
 };
 
-// 1. Updated Schema to catch the 4 new modular fields
 const RequestSchema = z.object({
     dishName: z.string().trim().min(2).max(80),
-    ingredients: z.string().trim().max(300).optional(), // <-- New field
+    ingredients: z.string().trim().max(300).optional(),
     angle: z.string().trim(),
     lighting: z.string().trim(),
     setting: z.string().trim(),
@@ -56,23 +77,11 @@ function getClientKey(req: NextRequest): string {
     return 'local';
 }
 
-function isRateLimited(key: string): boolean {
-    const now = Date.now();
-    const recent = (requestLog.get(key) ?? []).filter(
-        (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS
-    );
-
-    recent.push(now);
-    requestLog.set(key, recent);
-
-    return recent.length > RATE_LIMIT_MAX;
-}
 
 function sanitizePromptValue(value: string): string {
     return value.replace(/[<>`$]/g, '').replace(/\s+/g, ' ').trim();
 }
 
-// 2. The "Digital Studio" Prompt Engine
 function buildPrompt(dishName: string, ingredients: string | undefined, angle: string, lighting: string, setting: string, styling: string) {
     const safeDishName = sanitizePromptValue(dishName);
     const safeIngredients = ingredients ? sanitizePromptValue(ingredients) : '';
@@ -123,10 +132,10 @@ function buildPrompt(dishName: string, ingredients: string | undefined, angle: s
         '- Shot on medium format camera, 100mm macro lens, f/2.8 aperture for beautiful bokeh.',
         '- COMPOSITION SAFE ZONE: The main subject (the food) MUST be placed in the absolute dead center of the frame.',
         '- NEGATIVE SPACE: Leave generous, empty padding around all four edges of the food to allow for aggressive UI cropping.',
-        ingredientsInstruction, // <-- Injected right into the strict requirements
+        ingredientsInstruction,
         '- Exclusions: Single plated dish ONLY. No hands, no people, no text, no logos, no surreal garnishes.',
         '- Quality: 8k resolution, photorealistic, upscale editorial restaurant photography.',
-    ].filter(Boolean).join('\n'); // filter removes empty lines
+    ].filter(Boolean).join('\n');
 }
 
 function getUploadsDir() {
@@ -161,18 +170,16 @@ async function saveOptimizedWebpVariants(imageBuffer: Buffer) {
     const fullPath = path.join(getUploadsDir(), fullFilename);
     const smallPath = path.join(getUploadsDir(), smallFilename);
 
-    // Full quality: 1024x1024 (Standard high-res square)
-    await sharp(imageBuffer)
-        .rotate()
-        .resize({ width: 1024, height: 1024, fit: 'cover', position: 'centre', withoutEnlargement: true })
-        .webp({ quality: 80, effort: 6 })
-        .toFile(fullPath);
+    // 1. FULL QUALITY (1024x1024): 
+    // Since Gemini natively returned a highly compressed WebP, we bypass Sharp 
+    // entirely and write the raw buffer straight to disk to save VPS CPU compute.
+    await fs.writeFile(fullPath, imageBuffer);
 
-    // Small preview: 512x512 (Perfect for thumbnails and mobile grids)
+    // 2. SMALL PREVIEW (512x512): 
+    // We only invoke Sharp to rapidly generate the downscaled mobile thumbnail.
     await sharp(imageBuffer)
-        .rotate()
         .resize({ width: 512, height: 512, fit: 'cover', position: 'centre', withoutEnlargement: true })
-        .webp({ quality: 72, effort: 6 })
+        .webp({ quality: 72, effort: 4 }) // Lowered effort slightly for faster processing
         .toFile(smallPath);
 
     return { small: smallFilename, full: fullFilename };
@@ -185,24 +192,23 @@ export async function POST(req: NextRequest) {
         }
 
         const clientKey = getClientKey(req);
-        if (isRateLimited(clientKey)) {
+        if (await isRateLimited(clientKey)) {
             return NextResponse.json({ error: 'Too many image generation requests.' }, { status: 429 });
         }
 
         const formData = await req.formData();
         const rawDishName = formData.get('dishName');
-        const rawIngredients = formData.get('ingredients'); // <-- Extract here
+        const rawIngredients = formData.get('ingredients');
         const rawAngle = formData.get('angle');
         const rawLighting = formData.get('lighting');
         const rawSetting = formData.get('setting');
         const rawStyling = formData.get('styling');
 
-        // Extract the optional reference image
         const referenceFile = formData.get('referenceImage') as File | null;
 
         const parsed = RequestSchema.safeParse({
             dishName: typeof rawDishName === 'string' ? rawDishName : '',
-            ingredients: typeof rawIngredients === 'string' ? rawIngredients : undefined, // <-- Parse here
+            ingredients: typeof rawIngredients === 'string' ? rawIngredients : undefined,
             angle: typeof rawAngle === 'string' ? rawAngle : '',
             lighting: typeof rawLighting === 'string' ? rawLighting : '',
             setting: typeof rawSetting === 'string' ? rawSetting : '',
@@ -215,12 +221,9 @@ export async function POST(req: NextRequest) {
 
         const { dishName, ingredients, angle, lighting, setting, styling } = parsed.data;
 
-        // Pass ingredients into the prompt builder
         let finalPrompt = buildPrompt(dishName, ingredients, angle, lighting, setting, styling);
-        // Prepare the contents payload
         const contentsPayload: GenerateContentInput[] = [];
 
-        // If the chef uploaded a photo, process it and prepend it to the payload
         if (referenceFile && referenceFile.size > 0) {
             const buffer = Buffer.from(await referenceFile.arrayBuffer());
             contentsPayload.push({
@@ -230,20 +233,21 @@ export async function POST(req: NextRequest) {
                 }
             });
 
-            // Add an instruction to strictly follow the structure of the uploaded photo
             finalPrompt = `[CRITICAL INSTRUCTION: Use the attached image as the strict structural reference for the food plating and shape, but completely restyle the lighting, background, and quality according to the parameters below.]\n\n` + finalPrompt;
         }
 
-        // Add the text prompt
         contentsPayload.push(finalPrompt);
 
         const response = await ai.models.generateContent({
             model: 'gemini-3.1-flash-image-preview',
             contents: contentsPayload,
             config: {
-                responseModalities: ['Image'],
+                // Ensure the model knows we expect an image format back
+                responseModalities: ['IMAGE'],
                 imageConfig: {
                     aspectRatio: '1:1',
+                    // Request WebP directly from Google's servers
+                    outputMimeType: 'image/webp', 
                 },
             },
         });

@@ -11,19 +11,19 @@
       "topRated": true,
       "soldOut": false,
       "story": {
-        "ka": "გაზაფხულის ნამდვილი გემო! ტყეში შეგროვებული ეკალა, შეზავებული ნიგვზითა და სუნელებით - სეზონური დელიკატესი, რომელიც ბუნების სიჯანსაღეს პირდაპირ თეფშზე გთავაზობთ.",
-        "en": "A true taste of Georgian spring! Ekala, or wild smilax, is forged in the forests and seasoned with a rich walnut paste. It's a seasonal delicacy that brings the freshness of the wild directly to your plate.",
-        "ru": ""
+        "ka": "გაზაფხულის ველური ნობათი იმერეთიდან. ნაზი ყლორტებისა და ნიგვზის დახვეწილი ბალანსი.",
+        "en": "A seasonal wild green from the forests of Imereti. A delicate balance of tender shoots and rich walnut paste.",
+        "ru": "Весенний дар лесов Имеретии. Изысканное сочетание нежных побегов сассапариля и пряного грецкого ореха."
       },
       "title": {
-        "ka": "ეკალა ფხალი (სეზონურად)",
-        "en": "Ekala Pkhali (seasonal)",
-        "ru": "Экала Пхали (сезонное блюдо)"
+        "ka": "ეკალა ფხალი (სეზონური)",
+        "en": "Ekala Pkhali (Seasonal)",
+        "ru": "Пхали из экалы (сезонное)"
       },
       "description": {
         "ka": "ეკალა, ნიგოზი, ნიორი, ძმარი, ქინძი, სუნელები",
-        "en": "Ekala (wild smilax), walnuts, garlic, vinegar, fresh cilantro, spices",
-        "ru": ""
+        "en": "Wild smilax, walnuts, garlic, vinegar, fresh cilantro, spices",
+        "ru": "Дикая колючка (экала), грецкие орехи, чеснок, уксус, кинза, специи"
       },
       "chefsPick": true,
       "priceLabel": {
@@ -31,7 +31,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0001_1600.webp",
+        "small": "dish_dish_0001_800.webp"
+      }
     },
     {
       "id": "dish_0002",
@@ -44,19 +48,19 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული სუფრის მეფე. შემწვარი ბადრიჯნის ზოლები ნიგვზიანი საცხით, რომელსაც ბროწეულის მარცვლები და მჟავიანობა განსაკუთრებულ პიკანტურობას სძენს.",
-        "en": "The king of Georgian appetizers, 'Badrijani Nigvzit' combines fried eggplant strips with a creamy, spiced walnut filling. Pomegranate seeds add a burst of jewel-like acidity to this rich, nutty masterpiece.",
-        "ru": ""
+        "ka": "ქართული სუფრის მარადიული კლასიკა. შემწვარი ბადრიჯანი და ნიგვზის არომატული გულსართი სრულყოფილ ჰარმონიას ქმნის.",
+        "en": "A timeless staple of the Georgian supra. Golden-fried eggplant rolls filled with a rich, spiced walnut paste.",
+        "ru": "Неизменная классика грузинского стола. Обжаренные ломтики баклажана с нежной ореховой пастой и пряными специями."
       },
       "title": {
         "ka": "ბადრიჯანი ნიგვზით",
-        "en": "Eggplant with walnuts",
-        "ru": "Баклажаны с грецкими орехами"
+        "en": "Eggplant with Walnuts",
+        "ru": "Баклажаны с орехами"
       },
       "description": {
-        "ka": "ბადრიჯანი, ნიგოზი, ნიორი, ძმარი, უცხო სუნელი, ხმელი ქინძი, ბროწეული, ზეთი",
+        "ka": "ბადრიჯანი, ნიგოზი, ნიორი, ძმარი, უცხო სუნელი, ქინძი, ბროწეული, ზეთი",
         "en": "Eggplant, walnuts, garlic, vinegar, blue fenugreek, coriander, pomegranate, oil",
-        "ru": ""
+        "ru": "Баклажаны, грецкие орехи, чеснок, уксус, уцхо-сунели, кинза, гранат, масло"
       },
       "photo": {
         "full": "dish_dish_0002_1600.webp",
@@ -81,19 +85,19 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ჯანსაღი და გემრიელი არჩევანი. ცოცხალი ისპანახი და ნიგვზიანი საკმაზის კლასიკური დუეტი - აუცილებელი ატრიბუტი ნებისმიერი სუფრისთვის.",
-        "en": "Green Pkhali is a healthy, vibrant dish where minced spinach meets the classic Georgian walnut-garlic paste. Garnished with pomegranate, it's a testament to how Georgians turn simple vegetables into a feast.",
-        "ru": ""
+        "ka": "ტრადიციული ფხალი თანამედროვე აქცენტით. ნიგვზისა და ისპანახის ჰარმონიული ბალანსი.",
+        "en": "A refined Georgian classic. Perfectly balanced textures of creamy walnut and vibrant spinach.",
+        "ru": "Изысканная грузинская классика. Гармоничное сочетание нежного шпината и пряного ореха."
       },
       "title": {
         "ka": "ისპანახი ნიგვზით",
-        "en": "Spinach with walnuts",
-        "ru": "Шпинат с грецкими орехами"
+        "en": "Spinach with Walnuts",
+        "ru": "Шпинат с грецким орехом"
       },
       "description": {
-        "ka": "ისპანახი, ნიგოზი, ნიორი, ძმარი, ცოცხალი მწვანილი, სუნელები, ბროწეული",
-        "en": "Spinach, walnuts, garlic, vinegar, fresh herbs, spices, pomegranate",
-        "ru": ""
+        "ka": "ისპანახი, ნიგოზი, ნიორი, ძმარი, ქინძი, უცხო სუნელი, ბროწეული",
+        "en": "spinach, walnuts, garlic, vinegar, fresh cilantro, blue fenugreek, pomegranate seeds",
+        "ru": "шпинат, грецкий орех, чеснок, уксус, свежая кинза, специи, гранат"
       },
       "photo": {
         "full": "dish_dish_0003_1600.webp",
@@ -116,21 +120,21 @@
       "currency": "GEL",
       "title": {
         "ka": "წითელი ფხალი ნიგვზით",
-        "en": "Red Pkhali with walnuts",
-        "ru": "Красный Пхали с грецкими орехами"
+        "en": "Beetroot Pkhali with Walnuts",
+        "ru": "Пхали из свеклы с грецким орехом"
       },
       "description": {
-        "ka": "ჭარხალი, ნიგოზი, ნიორი, ძმარი, ცოცხალი მწვანილი, სუნელები",
+        "ka": "ჭარხალი, ნიგოზი, ნიორი, ძმარი, ნედლი მწვანილი, სუნელები",
         "en": "Beets, walnuts, garlic, vinegar, fresh herbs, spices",
-        "ru": ""
+        "ru": "Свекла, грецкие орехи, чеснок, уксус, свежая зелень, специи"
       },
       "vegetarian": true,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ჭარხლისა და ნიგვზის ჰარმონიული შერწყმა. ეს კერძი არა მხოლოდ გემრიელია, არამედ სუფრასაც ამშვენებს თავისი მკვეთრი ფერითა და არომატით.",
-        "en": "Made from beets and walnuts, this vibrant red appetizer is as pleasing to the eye as it is to the palate. Earthy beets are transformed by the aromatic blue fenugreek and coriander spices.",
-        "ru": ""
+        "ka": "ტრადიციული ქართული კერძი, სადაც ჭარხლის სიტკბო და ნიგვზის არომატი იდეალურად ერწყმის ერთმანეთს. დახვეწილი და ჯანსაღი არჩევანი.",
+        "en": "A refined fusion of earthy beets and rich walnuts. A vibrant classic of Georgian plant-based cuisine.",
+        "ru": "Изысканное сочетание сладости свеклы и насыщенности грецкого ореха. Яркая классика грузинской растительной кухни."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -138,7 +142,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0004_1600.webp",
+        "small": "dish_dish_0004_800.webp"
+      }
     },
     {
       "id": "dish_0005",
@@ -149,21 +157,21 @@
       "currency": "GEL",
       "title": {
         "ka": "მწვანე ლობიო ნიგვზით",
-        "en": "Green beans with walnuts",
-        "ru": "Зеленая фасоль с грецкими орехами"
+        "en": "Green Beans with Walnuts",
+        "ru": "Лобио из зеленой фасоли с орехами"
       },
       "description": {
-        "ka": "მწვანე ლობიო, ნიგოზი, ნიორი, ძმარი, ცოცხალი მწვანილი, სუნელები",
-        "en": "Green beans, walnuts, garlic, vinegar, fresh herbs, spices",
-        "ru": ""
+        "ka": "მწვანე ლობიო, ნიგოზი, ნიორი, ძმარი, ცოცხალი მწვანილი, ქართული სუნელები",
+        "en": "Green beans, walnuts, garlic, vinegar, fresh herbs, Georgian spices",
+        "ru": "Зеленая стручковая фасоль, грецкие орехи, чеснок, уксус, свежая зелень, грузинские специи"
       },
       "vegetarian": true,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მწვანე ლობიოსა და ნიგვზის ტრადიციული შეხამება. ხრაშუნა ტექსტურა და მდიდარი გემო, რომელიც ხორცეულს იდეალურად ერწყმის.",
-        "en": "Fresh green beans are elevated with a savory walnut dressing. This dish is a staple at the Georgian 'Supra' (feast), offering a crunchy, nutty texture that perfectly complements meat dishes.",
-        "ru": ""
+        "ka": "ქართული სუფრის კლასიკა. ნაზი მწვანე ლობიო და არომატული ნიგვზის საკაზმი ჰარმონიულ გემოს ქმნის.",
+        "en": "A vibrant Georgian classic. Tender green beans meet a rich walnut dressing for a clean, earthy finish.",
+        "ru": "Классика грузинского стола. Нежная фасоль в сочетании с пряной ореховой заправкой создает идеальный баланс."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -171,7 +179,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0005_1600.webp",
+        "small": "dish_dish_0005_800.webp"
+      }
     },
     {
       "id": "dish_0006",
@@ -182,21 +194,21 @@
       "currency": "GEL",
       "title": {
         "ka": "პრასი ნიგვზით",
-        "en": "Leeks with walnuts",
-        "ru": "Лук-порей с грецкими орехами"
+        "en": "Leeks with Walnuts",
+        "ru": "Праси с орехами"
       },
       "description": {
-        "ka": "პრასი, ნიგოზი, ნიორი, ძმარი, ცოცხალი მწვანილი, სუნელები",
+        "ka": "პრასი, ნიგოზი, ნიორი, ძმარი, ნედლი მწვანილი, სუნელები",
         "en": "Leeks, walnuts, garlic, vinegar, fresh herbs, spices",
-        "ru": ""
+        "ru": "Лук-порей, грецкие орехи, чеснок, уксус, свежая зелень, специи"
       },
       "vegetarian": true,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მოთუშული პრასი ნიგვზიანი საკმაზით. კერძი, რომელიც ხაზს უსვამს ქართული სამზარეულოს ფილოსოფიას - აქციოს მარტივი ბოსტნეული ნამდვილ დღესასწაულად.",
-        "en": "Tender leeks are marinated and dressed in a savory walnut sauce. This dish highlights the Georgian philosophy of using walnuts to add depth and protein to fresh garden vegetables.",
-        "ru": ""
+        "ka": "კლასიკური ქართული ფხალეული. ნაზი პრასი და არომატული ნიგვზის პასტა იდეალურ ბალანსს ქმნის.",
+        "en": "A refined Georgian cold appetizer. Tender blanched leeks meet a rich, spiced walnut paste for a timeless flavor.",
+        "ru": "Классическая грузинская закуска. Нежный порей в сочетании с пряной ореховой пастой создает идеальный баланс вкуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -204,7 +216,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0006_1600.webp",
+        "small": "dish_dish_0006_800.webp"
+      }
     },
     {
       "id": "dish_0007",
@@ -215,21 +231,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ბოსტნეულის ბუკეტი",
-        "en": "Vegetable bouquet",
+        "en": "Vegetable Bouquet",
         "ru": "Овощной букет"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "კიტრი, პომიდორი, ბოლოკი, მწვანე ხახვი, ქინძი, რეჰანი, წიწმატი",
+        "en": "Cucumber, tomato, radish, green onion, coriander, purple basil, cress",
+        "ru": "Огурцы, помидоры, редис, зеленый лук, кинза, фиолетовый базилик, цицмати"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სეზონური ბოსტნეულის ნაირსახეობა. ქართული სუფრის განუყოფელი ნაწილი, რომელიც იდეალურია მძიმე კერძებს შორის გემოს გასანეიტრალებლად.",
-        "en": "A colorful assortment of fresh seasonal vegetables. In Georgia, fresh herbs and raw veggies are essential table companions, meant to be eaten by hand to cleanse the palate between rich courses.",
-        "ru": ""
+        "ka": "ქართული მიწის ნობათი, წარმოდგენილი დახვეწილი სიმარტივით. ცოცხალი არომატების და ფერების ჰარმონიული ნაკრები.",
+        "en": "A refined selection of Georgia's seasonal harvest. Vibrant colors and crisp textures in perfect minimalist harmony.",
+        "ru": "Изысканная подборка свежих даров грузинской земли. Гармония живых вкусов и природных красок в лаконичной подаче."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -237,7 +253,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0007_1600.webp",
+        "small": "dish_dish_0007_800.webp"
+      }
     },
     {
       "id": "dish_0008",
@@ -254,15 +274,15 @@
       "description": {
         "ka": "ბადრიჯანი, პომიდორი, ბულგარული წიწაკა, ხახვი, ნიორი, ქინძი, რეჰანი, ზეთი, სუნელები",
         "en": "Eggplant, tomatoes, bell peppers, onions, garlic, fresh cilantro, purple basil, oil, spices",
-        "ru": ""
+        "ru": "Баклажаны, томаты, болгарский перец, лук, чеснок, кинза, фиолетовый базилик, масло, специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ზაფხულის არომატი ერთ თეფშზე. ბადრიჯანი, წიწაკა და პომიდორი, მოთუშული ცოცხალ მწვანილებთან ერთად. კერძი, რომელიც ერთდროულად ცხარეცაა და ტკბილიც.",
-        "en": "A Georgian summer ratatouille! Eggplants, peppers, and tomatoes are stewed to perfection with fresh herbs. It’s said that a good Ajapsandali should be spicy enough to wake you up but sweet enough to make you smile.",
-        "ru": ""
+        "ka": "ზაფხულის არომატების ჰარმონიული შერწყმა. ტრადიციული ბოსტნეულის რაგუ, რომელიც ქართული სუფრის სიმბოლოა.",
+        "en": "A vibrant celebration of the summer harvest. This classic Georgian vegetable ragout balances freshness with aromatic herbs.",
+        "ru": "Гармония летних овощей и ароматных трав. Традиционное грузинское рагу в изысканном исполнении."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -270,7 +290,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0008_1600.webp",
+        "small": "dish_dish_0008_800.webp"
+      }
     },
     {
       "id": "dish_0009",
@@ -281,21 +305,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ფხალის ასორტი",
-        "en": "Assorted Pkhali",
-        "ru": "Ассорти Пхали"
+        "en": "Pkhali Assorti",
+        "ru": "Пхали ассорти"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ისპანახი, ჭარხალი, ნიგოზი, ნიორი, სუნელები, ბროწეული",
+        "en": "Spinach, beetroot, walnuts, garlic, Georgian spices, pomegranate",
+        "ru": "Шпинат, свекла, грецкие орехи, чеснок, грузинские специи, гранат"
       },
       "vegetarian": true,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ვერ გადაგიწყვეტიათ? ეს ასორტი საშუალებას გაძლევთ დააგემოვნოთ ფხალეულის მთელი პალიტრა - ისპანახი, ჭარხალი და სხვა ტრადიციული გემოები ერთად.",
-        "en": "Can't decide? This platter offers a colorful mosaic of Pkhali varieties—spinach, beet, and more. It’s the perfect way to sample the diversity of Georgian plant-based cuisine in one go.",
-        "ru": ""
+        "ka": "ტრადიციული ქართული საუზმეული, სადაც ნიგვზისა და ბოსტნეულის ჰარმონია იქმნება. დახვეწილი და ჯანსაღი არჩევანი.",
+        "en": "A vibrant selection of traditional vegetable pâtés blended with walnuts. A clean, nutrient-rich expression of Georgian heritage.",
+        "ru": "Традиционная палитра овощных паштетов с грецким орехом. Изысканная гармония вкуса и пользы в минималистичной подаче."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -303,7 +327,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0009_1600.webp",
+        "small": "dish_dish_0009_800.webp"
+      }
     },
     {
       "id": "dish_0010",
@@ -314,21 +342,21 @@
       "currency": "GEL",
       "title": {
         "ka": "მჟავის ასორტი",
-        "en": "Assorted Pickled vegetables",
-        "ru": "Ассорти маринованных овощей"
+        "en": "Georgian Pickles Assortment",
+        "ru": "Ассорти солений"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ჯონჯოლი, მწვანე პომიდორი, კიტრი, ნიორი, წიწაკა, წითელი კომბოსტო",
+        "en": "Jonjoli, green tomatoes, cucumbers, garlic, hot peppers, red cabbage",
+        "ru": "Джонджоли, зеленые помидоры, огурцы, чеснок, острый перец, красная капуста"
       },
       "vegetarian": true,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მჟავეული - ქართული სუფრის აუცილებელი თანმხლები. ჯონჯოლიდან დაწყებული, კიტრით დამთავრებული, ეს ფერმენტირებული ბოსტნეული იდეალურად აბალანსებს ცხიმიანი კერძების გემოს.",
-        "en": "Pickles, or 'Mzhave', are crucial for digestion in a Georgian feast. From jonjoli (bladdernut flowers) to crunchy cucumbers, these fermented delights cut through the richness of meats and cheeses.",
-        "ru": ""
+        "ka": "ქართული სუფრის განუყოფელი ნაწილი. ტრადიციული დაწნილების მეთოდით მომზადებული ბოსტნეულის მრავალფეროვნება.",
+        "en": "A vibrant selection of traditionally fermented vegetables. The essential palate cleanser of the Georgian supra.",
+        "ru": "Классика грузинского застолья. Традиционные ферментированные овощи с ярким и сбалансированным вкусом."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -336,7 +364,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0010_1600.webp",
+        "small": "dish_dish_0010_800.webp"
+      }
     },
     {
       "id": "dish_0011",
@@ -346,22 +378,22 @@
       "priceMinor": 1500,
       "currency": "GEL",
       "title": {
-        "ka": "ყველი იმერული",
-        "en": "Imeretian cheese",
-        "ru": "Имеретийский сыр"
+        "ka": "იმერული ყველი",
+        "en": "Imeretian Cheese",
+        "ru": "Имеретинский сыр"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ნედლი ძროხის რძე, კვეთი, მარილი",
+        "en": "Fresh cow's milk, rennet, salt",
+        "ru": "Свежее коровье молоко, сычужный фермент, соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "რბილი, ფორებიანი ყველი იმერეთიდან. ხაჭაპურის მთავარი ინგრედიენტი და ცხელი ღომის ან მჭადის საუკეთესო მეწყვილე.",
-        "en": "A soft, porous cow's milk cheese from the Imereti region. Mild and slightly sour, it is the mother of Khachapuri cheese and a breakfast staple, often eaten with hot Gomi or Mchadi.",
-        "ru": ""
+        "ka": "იმერული სამზარეულოს კლასიკა. ნაზი ტექსტურა და მსუბუქი მარილიანობა, რომელიც საუკუნოვან ტრადიციას ინახავს.",
+        "en": "A classic of Imeretian cuisine. Delicate texture and mild saltiness that preserves centuries of tradition.",
+        "ru": "Классика имеретинской кухни. Нежная текстура и легкая соленость, сохраняющие многовековые традиции."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -369,7 +401,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0011_1600.webp",
+        "small": "dish_dish_0011_800.webp"
+      }
     },
     {
       "id": "dish_0012",
@@ -379,22 +415,22 @@
       "priceMinor": 2000,
       "currency": "GEL",
       "title": {
-        "ka": "ყველი სულგუნი",
-        "en": "Sulguni cheese",
-        "ru": "Сулгуни сыр"
+        "ka": "სულგუნი",
+        "en": "Sulguni Cheese",
+        "ru": "Сулугуни"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ძროხის რძე, კვეთი, მარილი",
+        "en": "Cow's milk, rennet, salt",
+        "ru": "Коровье молоко, сычужный фермент, соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული მოცარელა სამეგრელოდან! ფენიანი, ელასტიური და ზომიერად მარილიანი ყველი, რომელიც დნობისას ნამდვილ სასწაულებს ახდენს.",
-        "en": "The mozzarella of Georgia! Originating from Samegrelo, Sulguni is famous for its elastic texture and layers. It has a tangy, salty flavor and is the star ingredient in Elarji and many hot dishes.",
-        "ru": ""
+        "ka": "სამეგრელოს მარგალიტი. დახვეწილი ტექსტურა და ზომიერი სიმლაშე ნამდვილი გემოს მოყვარულთათვის.",
+        "en": "A masterpiece from Samegrelo. Its elastic texture and mild saltiness define the essence of Georgian dairy.",
+        "ru": "Жемчужина Мегрелии. Эластичная текстура и умеренная соленость для истинных ценителей вкуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -402,7 +438,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0012_1600.webp",
+        "small": "dish_dish_0012_800.webp"
+      }
     },
     {
       "id": "dish_0013",
@@ -413,21 +453,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ყველის ასორტი „ქართული“",
-        "en": "Assorted cheese „Georgian“",
-        "ru": "Ассорти сыров „Грузинский“"
+        "en": "Georgian Cheese Platter",
+        "ru": "Грузинское сырное ассорти"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "იმერული ყველი, სულგუნი, შებოლილი სულგუნი, გუდა, ნიგოზი, თაფლი",
+        "en": "Imeretian cheese, Sulguni, smoked Sulguni, Guda, walnuts, honey",
+        "ru": "Имеретинский сыр, сулугуни, копченый сулугуни, гуда, грецкие орехи, мед"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "საქართველოს ყველის ტრადიციების მოკლე ექსკურსი. თეფშზე შეხვდებით როგორც რბილ იმერულს, ისე ხასიათიან სულგუნსა და სხვა სახეობებს.",
-        "en": "A journey through Georgian dairy traditions. This platter typically features the salty, layered Sulguni, the soft Imeretian, and sometimes the pungently delicious Guda cheese from the mountains.",
-        "ru": ""
+        "ka": "საქართველოს რეგიონების საუკეთესო ყველის სახეობების ჰარმონიული ნაკრები. ტრადიციული გემოების თანამედროვე პრეზენტაცია.",
+        "en": "A curated selection of the finest regional cheeses. A modern presentation of authentic Georgian heritage.",
+        "ru": "Гармоничный набор лучших сортов сыра из регионов Грузии. Современная подача традиционных вкусов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -435,7 +475,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0013_1600.webp",
+        "small": "dish_dish_0013_800.webp"
+      }
     },
     {
       "id": "dish_0014",
@@ -445,22 +489,22 @@
       "priceMinor": 2000,
       "currency": "GEL",
       "title": {
-        "ka": "ყველი ქარხნული",
-        "en": "Factory cheese",
-        "ru": "Заводской сыр"
+        "ka": "ქარხნული ყველი",
+        "en": "Karkhnuli Cheese",
+        "ru": "Сыр Кархнули"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ძროხის რძე, მარილი, კვეთი",
+        "en": "Cow's milk, salt, rennet",
+        "ru": "Коровье молоко, соль, сычужный фермент"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "კლასიკური, ნაცნობი გემო. სტაბილური ხარისხის ყველი, რომელიც იდეალურია საუზმეზე, პურთან და კარაქთან ერთად.",
-        "en": "A classic, consistent cheese with a mild flavor profile. While less rustic than village cheeses, it offers a familiar and comforting taste that pairs perfectly with fresh bread and herbs.",
-        "ru": ""
+        "ka": "კლასიკური ქართული ყველი დახვეწილი ტექსტურით. იდეალურია ყოველდღიური გამოყენებისთვის.",
+        "en": "A classic Georgian semi-hard cheese with a refined texture. Perfect for daily enjoyment and versatile pairings.",
+        "ru": "Классический грузинский полутвердый сыр с мягким вкусом. Идеален для ежедневного стола и кулинарных экспериментов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -468,7 +512,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0014_1600.webp",
+        "small": "dish_dish_0014_800.webp"
+      }
     },
     {
       "id": "dish_0015",
@@ -478,22 +526,22 @@
       "priceMinor": 2200,
       "currency": "GEL",
       "title": {
-        "ka": "დაჭრილი ენა (საქონლის)",
-        "en": "Sliced ​​tongue (beef)",
-        "ru": "Нарезанный язык (говядина)"
+        "ka": "დაჭრილი საქონლის ენა",
+        "en": "Sliced Beef Tongue",
+        "ru": "Нарезка из говяжьего языка"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "საქონლის ენა, დაფნის ფოთოლი, პილპილი, მარილი, ნიორი",
+        "en": "Beef tongue, bay leaf, peppercorns, salt, garlic",
+        "ru": "Говяжий язык, лавровый лист, перец, соль, чеснок"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "დელიკატესი, რომელიც სირბილით გამოირჩევა. ნელ ცეცხლზე მოხარშული ენა, რომელიც პირში დნება. განსაკუთრებით უხდება პირშუშხა ან ნიგვზიანი საწებელი.",
-        "en": "A delicacy admired for its tenderness. Boiled slowly with aromatics until it melts in your mouth, beef tongue is often served cold with horseradish or a walnut sauce to enhance its subtle flavor.",
-        "ru": ""
+        "ka": "ნაზი საქონლის ენა, მოხარშული ტრადიციული სანელებლებით. ცივი საუზმის კლასიკა დახვეწილი ფორმით.",
+        "en": "Tender beef tongue simmered with traditional aromatics. A refined take on a classic Georgian cold appetizer.",
+        "ru": "Деликатный говяжий язык, приготовленный с традиционными специями. Утонченная подача классической холодной закуски."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -501,7 +549,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0015_1600.webp",
+        "small": "dish_dish_0015_800.webp"
+      }
     },
     {
       "id": "dish_0016",
@@ -512,21 +564,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ქათამი ბაჟეში",
-        "en": "Chicken in baje",
+        "en": "Chicken in Bazhe",
         "ru": "Курица в баже"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ქათამი, ნიგოზი, ნიორი, უცხო სუნელი, ხმელი ქინძი, ყვითელი ყვავილი, ძმარი",
+        "en": "Chicken, walnuts, garlic, blue fenugreek, dried coriander, marigold, vinegar",
+        "ru": "Курица, грецкие орехи, чеснок, уцхо-сунели, кориандр, имеретинский шафран, уксус"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სადღესასწაულო კერძი. მოხარშული დედალი ნიგვზის სქელ, არომატულ საწებელში. საცივის მსუბუქი და სწრაფად მოსამზადებელი ალტერნატივა.",
-        "en": "Succulent chicken pieces swimming in 'Baje', a spiced walnut sauce similar to Satsivi but lighter. It’s a celebratory dish where the garlic and walnut oils create a creamy, dairy-free gold sauce.",
-        "ru": ""
+        "ka": "კლასიკური ქართული კერძი ნიგვზის ნაზი სოუსით. დახვეწილი არომატებისა და ტრადიციის ჰარმონია.",
+        "en": "A quintessential Georgian classic featuring succulent chicken in a silky walnut sauce. Minimalist elegance meets deep, traditional flavors.",
+        "ru": "Грузинская классика в нежном ореховом соусе. Гармония чистых вкусов и многовековых традиций."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -534,7 +586,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0016_1600.webp",
+        "small": "dish_dish_0016_800.webp"
+      }
     },
     {
       "id": "dish_0017",
@@ -545,21 +601,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ორაგული ბაჟეში",
-        "en": "Salmon in baje",
+        "en": "Salmon in Bazhe",
         "ru": "Лосось в баже"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ორაგული, ნიგოზი, ნიორი, ქართული სუნელები, ძმარი",
+        "en": "Salmon, walnuts, garlic, Georgian spices, vinegar",
+        "ru": "Лосось, грецкий орех, чеснок, грузинские специи, уксус"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ტრადიციული რეცეპტის საინტერესო ინტერპრეტაცია. ცხიმიანი ორაგული მოულოდნელად კარგად ეხამება ნიგვზიან ბაჟეს და ქმნის დახვეწილ ცივ საუზმეს.",
-        "en": "A twist on the traditional chicken dish. The rich, fatty salmon pairs unexpectedly well with the earthy walnut sauce, creating a luxurious cold appetizer that bridges river and land.",
-        "ru": ""
+        "ka": "ტრადიციული ბაჟესა და ნაზი ორაგულის თანამედროვე სინთეზი. დახვეწილი გემოების ჰარმონია თქვენს სუფრაზე.",
+        "en": "A refined coastal take on a traditional feast classic. Silky walnut sauce meets tender salmon for a contemporary balance.",
+        "ru": "Современная интерпретация классики с нежным филе лосося. Шелковистый ореховый соус подчеркивает благородный вкус рыбы."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -567,7 +623,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0017_1600.webp",
+        "small": "dish_dish_0017_800.webp"
+      }
     },
     {
       "id": "dish_0018",
@@ -578,21 +638,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ზეთის ხილი",
-        "en": "Olive",
-        "ru": "Оливки"
+        "en": "Marinated Olives",
+        "ru": "Маслины и оливки"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ზეთისხილი, ზეითუნის ზეთი, მწვანილი, ლიმონი",
+        "en": "Olives, olive oil, fresh herbs, lemon",
+        "ru": "Оливки, оливковое масло, зелень, лимон"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მართალია ქართული არ არის, მაგრამ ჩვენს სუფრაზე უკვე დაიმკვიდრა ადგილი. მარილიანი და პიკანტური - იდეალურია ღვინოსთან და ყველთან.",
-        "en": "Though not native to traditional Georgian cuisine, olives have become a beloved addition. They offer a salty, briny contrast that complements the local cheeses and wines perfectly.",
-        "ru": ""
+        "ka": "ქართული მზით გამთბარი ნობათი. დახვეწილი გემოების სიმბოლო.",
+        "en": "Sun-ripened bounty from the Georgian groves. A minimalist expression of Mediterranean elegance.",
+        "ru": "Пропитанные солнцем плоды из грузинских садов. Изысканная простота в каждой детали."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -600,7 +660,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0018_1600.webp",
+        "small": "dish_dish_0018_800.webp"
+      }
     },
     {
       "id": "dish_0019",
@@ -611,21 +675,21 @@
       "currency": "GEL",
       "title": {
         "ka": "გებჟალია",
-        "en": "Gebzhalia",
+        "en": "Gebjalia",
         "ru": "Гебжалия"
       },
       "description": {
-        "ka": "სულგუნი, ცოცხალი პიტნა, მაწონი, მარილი",
-        "en": "Sulguni cheese, fresh mint, matsoni (yogurt), salt",
-        "ru": ""
+        "ka": "სულგუნი, ნედლი პიტნა, მაწონი, მარილი",
+        "en": "Sulguni cheese, fresh mint, matsoni yogurt, salt",
+        "ru": "Сыр сулугуни, свежая мята, мацони, соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მეგრული სამზარეულოს მარგალიტი. სულგუნისა და პიტნის რულეტები მაწვნის სოუსში. გამაგრილებელი და პიკანტური გემო, რომელიც ცხარე კერძებს ანეიტრალებს.",
-        "en": "A Megrelian masterpiece! Rolls of soft cheese mint-infused cheese are served in a bath of creamy mint-yogurt sauce. It’s a refreshing, melt-in-your-mouth experience that balances the heat of spicy dishes.",
-        "ru": ""
+        "ka": "მეგრული სამზარეულოს ნაზი შედევრი. სულგუნისა და პიტნის გრილი, ჰაეროვანი სინთეზი.",
+        "en": "A delicate masterpiece from Samegrelo. A refreshing, airy fusion of soft sulguni and vibrant mint.",
+        "ru": "Нежный шедевр мегрельской кухни. Освежающий синтез мягкого сулугуни и прохладной мяты."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -633,7 +697,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0019_1600.webp",
+        "small": "dish_dish_0019_800.webp"
+      }
     },
     {
       "id": "dish_0020",
@@ -644,21 +712,21 @@
       "currency": "GEL",
       "title": {
         "ka": "მოხარშული ხბოს კანჭი ცივად",
-        "en": "Cold boiled veal shank",
-        "ru": "Холодная вареная телячья голень"
+        "en": "Chilled Boiled Veal Shank",
+        "ru": "Отварная телячья голяшка (холодная)"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ხბოს კანჭი, ნიორი, ნიახური, დაფნის ფოთოლი, შავი პილპილი",
+        "en": "Veal shank, garlic, celery, bay leaf, black pepper",
+        "ru": "Телячья голяшка, чеснок, сельдерей, лавровый лист, черный перец"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "უბრალოება და გემო. მოხარშული ხბოს კანჭი, რომელიც ცივად მოგართმევათ. ხორცის ბუნებრივი გემო ზედმეტი დანამატების გარეშე.",
-        "en": "Simple yet sophisticated. The veal shank is boiled until tender, preserving its natural gelatin and flavor. Served cold, it’s a pure protein hit, often enjoyed with spicy mustard or adjika.",
-        "ru": ""
+        "ka": "ნაზად მოხარშული ხბოს ხორცი, რომელიც ცივად სერვირდება. ქართული სუფრის კლასიკა მინიმალისტური აქცენტებით.",
+        "en": "Tenderly simmered veal shank served chilled. A refined Georgian classic highlighting pure, natural flavors.",
+        "ru": "Нежная телятина, приготовленная на медленном огне и поданная холодной. Грузинская классика в минималистичном исполнении."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -666,7 +734,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0020_1600.webp",
+        "small": "dish_dish_0020_800.webp"
+      }
     },
     {
       "id": "dish_0021",
@@ -676,22 +748,22 @@
       "priceMinor": 1800,
       "currency": "GEL",
       "title": {
-        "ka": "აკროშკა (სეზონურად)",
-        "en": "Akroshka (seasonal)",
-        "ru": "Акрошка (сезонное блюдо)"
+        "ka": "აკროშკა (სეზონური)",
+        "en": "Seasonal Okroshka",
+        "ru": "Окрошка (сезонная)"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "მაწონი, კიტრი, ბოლოკი, კამა, მწვანე ხახვი, კვერცხი, საქონლის ხორცი",
+        "en": "Matsoni, cucumber, radish, dill, green onion, egg, beef",
+        "ru": "Мацони, огурец, редис, укроп, зеленый лук, яйцо, говядина"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ზაფხულის სიცხის საუკეთესო წამალი. ცივი წვნიანი კეფირითა და ცოცხალი ბოსტნეულით - გამაგრილებელი და მსუბუქი.",
-        "en": "A refreshing cold soup of Russian origin, beloved in Georgian summers. Made with chopped veggies, meats, and kefir or kvass, it’s the ultimate way to cool down on a hot Tbilisi afternoon.",
-        "ru": ""
+        "ka": "ზაფხულის სიგრილე ერთ თასში. ქართული მაწვნით მომზადებული კლასიკური ცივი წვნიანი.",
+        "en": "Summer freshness in a single bowl. A classic cold soup reimagined with traditional Georgian matsoni.",
+        "ru": "Летняя свежесть в одной тарелке. Классический холодный суп на основе традиционного грузинского мацони."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -699,7 +771,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0021_1600.webp",
+        "small": "dish_dish_0021_800.webp"
+      }
     },
     {
       "id": "dish_0022",
@@ -709,22 +785,22 @@
       "priceMinor": 4000,
       "currency": "GEL",
       "title": {
-        "ka": "სტეიკ სალათი „ჩერო“ (ხბოს ხორცით)",
-        "en": "Steak salad „Cherro“ (with veal)",
-        "ru": "Салат «Черро» (с телятиной)"
+        "ka": "სტეიკ სალათი „ჩერო“",
+        "en": "Steak Salad \"Chero\"",
+        "ru": "Стейк-салат «Черо»"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ხბოს რბილი ხორცი, მიქს-სალათი, ჩერი პომიდორი, ციტრუსის დრესინგი, სუნელები",
+        "en": "Tender veal, mixed greens, cherry tomatoes, citrus dressing, Georgian spices",
+        "ru": "Нежная телятина, микс-салат, томаты черри, цитрусовая заправка, грузинские специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ჩვენი რესტორნის საფირმო სალათი. ნაზი ხბოს სტეიკის ნაჭრები ცოცხალ ბოსტნეულთან ერთად - ნოყიერი და ჯანსაღი არჩევანი.",
-        "en": "A hearty salad for meat lovers. Tender strips of veal steak rest atop fresh greens, combining the satisfaction of a main course with the lightness of a salad. A house specialty.",
-        "ru": ""
+        "ka": "ტრადიციული ხბოს ხორცისა და თანამედროვე ბალანსის შერწყმა. სიმსუბუქე და ნოყიერი გემო ერთ თეფშზე.",
+        "en": "A modern fusion of tender veal and fresh greens. A perfect balance of lightness and rich flavor.",
+        "ru": "Современное сочетание нежной телятины и свежей зелени. Идеальный баланс легкости и насыщенного вкуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -732,7 +808,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0022_1600.webp",
+        "small": "dish_dish_0022_800.webp"
+      }
     },
     {
       "id": "dish_0023",
@@ -742,22 +822,22 @@
       "priceMinor": 1500,
       "currency": "GEL",
       "title": {
-        "ka": "კიტრი პომიდვრის სალათი",
-        "en": "Cucumber tomato salad",
-        "ru": "Салат из огурцов и помидоров"
+        "ka": "კიტრი-პომიდვრის სალათი კახური ზეთით",
+        "en": "Cucumber and Tomato Salad with Kakhetian Oil",
+        "ru": "Салат из огурцов и помидоров с кахетинским маслом"
       },
       "description": {
-        "ka": "კიტრი, პომიდორი, წითელი ხახვი, ქინძი, რეჰანი, მზესუმზირის ზეთი, მარილი",
-        "en": "Cucumbers, tomatoes, red onions, fresh cilantro, purple basil, sunflower oil, salt",
-        "ru": ""
+        "ka": "კიტრი, პომიდორი, წითელი ხახვი, ქინძი, რეჰანი, კახური მზესუმზირის ზეთი, მარილი",
+        "en": "Cucumbers, tomatoes, red onions, cilantro, purple basil, sunflower oil, salt",
+        "ru": "Огурцы, помидоры, красный лук, кинза, фиолетовый базилик, подсолнечное масло, соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული ზაფხულის გემო. მთავარი საიდუმლო ინგრედიენტებშია - მზით გაჯერებული პომიდორი, კიტრი და კახური ზეთი, რომელსაც მოხალული მზესუმზირის სურნელი აქვს.",
-        "en": "The quintessential Georgian salad. The secret lies in the ingredients: sun-ripened tomatoes and cucumbers, often dressed with unrefined Kakhetian sunflower oil that smells of roasted seeds.",
-        "ru": ""
+        "ka": "ქართული სუფრის მარადიული კლასიკა. ცოცხალი ბოსტნეული და არომატული კახური ზეთი ქმნის სრულყოფილ ბალანსს.",
+        "en": "A timeless classic of the Georgian table. Fresh vegetables and aromatic sunflower oil create a perfect, minimalist balance.",
+        "ru": "Вечная классика грузинского стола. Свежие овощи и ароматное масло создают идеальный баланс вкуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -765,7 +845,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0023_1600.webp",
+        "small": "dish_dish_0023_800.webp"
+      }
     },
     {
       "id": "dish_0024",
@@ -775,22 +859,22 @@
       "priceMinor": 1700,
       "currency": "GEL",
       "title": {
-        "ka": "კიტრიპომიდვრის სალათი ნიგვზით",
-        "en": "Cucumber tomato salad with walnuts",
-        "ru": "Салат из огурцов и помидоров с грецкими орехами"
+        "ka": "კიტრი-პომიდვრის სალათი ნიგვზით",
+        "en": "Cucumber and Tomato Salad with Walnuts",
+        "ru": "Салат из огурцов и помидоров с орехами"
       },
       "description": {
         "ka": "კიტრი, პომიდორი, წითელი ხახვი, ნიგოზი, ნიორი, ძმარი, ცოცხალი მწვანილი",
         "en": "Cucumbers, tomatoes, red onions, walnuts, garlic, vinegar, fresh herbs",
-        "ru": ""
+        "ru": "Огурцы, помидоры, красный лук, грецкие орехи, чеснок, уксус, свежая зелень"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "კლასიკური სალათის მდიდრული ვერსია. ნიგვზიანი საკმაზი ბოსტნეულს სრულიად ახალ, სადღესასწაულო გემოს სძენს.",
-        "en": "An upgrade to the classic salad. The dressing is a creamy walnut paste with vinegar and spices, turning a simple vegetable side into a rich, flavorful dish that screams 'Georgia'.",
-        "ru": ""
+        "ka": "ქართული სუფრის კლასიკა. ნიგვზის არომატი და ბოსტნეულის სიხალისე იდეალურ ბალანსს ქმნის.",
+        "en": "A Georgian table essential. The rich walnut dressing elevates fresh garden vegetables into a sophisticated classic.",
+        "ru": "Неизменная классика грузинского застолья. Сочетание свежих овощей и пряной ореховой заправки."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -798,7 +882,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0024_1600.webp",
+        "small": "dish_dish_0024_800.webp"
+      }
     },
     {
       "id": "dish_0025",
@@ -808,22 +896,22 @@
       "priceMinor": 2000,
       "currency": "GEL",
       "title": {
-        "ka": "ქათმის სალათი",
-        "en": "Chicken salad",
-        "ru": "Куриный салат"
+        "ka": "ქათმის სალათი ნიგვზით",
+        "en": "Georgian Chicken Salad",
+        "ru": "Грузинский салат из курицы"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ქათმის ფილე, ნიგოზი, ბროწეული, მაიონეზი, ქინძი, უცხო სუნელი",
+        "en": "Chicken breast, walnuts, pomegranate, mayonnaise, fresh coriander, blue fenugreek",
+        "ru": "Куриное филе, грецкий орех, гранат, майонез, кинза, уцхо-сунели"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მსუბუქი და ცილებით მდიდარი. ქათმის ფილე და ცოცხალი ბოსტნეული მსუბუქი დრესინგით - იდეალურია მათთვის, ვინც ჯანსაღ კვებას ირჩევს.",
-        "en": "A versatile classic. Tender chicken breast is tossed with fresh vegetables and a light dressing. It’s a protein-packed, healthy option that doesn't compromise on flavor.",
-        "ru": ""
+        "ka": "კლასიკური რეცეპტის თანამედროვე და დახვეწილი ვერსია. ნაზი ფაქტურა და ნიგვზის მდიდარი არომატი.",
+        "en": "A refined, modern take on a classic recipe. Tender texture meets the rich aroma of Georgian walnuts.",
+        "ru": "Утонченная современная версия классического рецепта. Нежная текстура и богатый аромат грецкого ореха."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -831,7 +919,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0025_1600.webp",
+        "small": "dish_dish_0025_800.webp"
+      }
     },
     {
       "id": "dish_0026",
@@ -842,21 +934,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ცეზარი ქათმით",
-        "en": "Caesar with chicken",
+        "en": "Chicken Caesar Salad",
         "ru": "Цезарь с курицей"
       },
       "description": {
-        "ka": "სალათის ფოთოლი (რომენი), შემწვარი ქათმის ფილე, ყველი პარმეზანი, ორცხობილა, ცეზარის სოუსი",
+        "ka": "რომანოს სალათი, გრილზე მომზადებული ქათმის ფილე, პარმეზანი, ორცხობილა, ცეზარის სოუსი",
         "en": "Romaine lettuce, grilled chicken breast, parmesan cheese, croutons, Caesar dressing",
-        "ru": ""
+        "ru": "салат Романо, куриное филе на гриле, пармезан, гренки, соус Цезарь"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მსოფლიო ჰიტი ქართული აქცენტით. ხრაშუნა სალათის ფოთლები, პარმეზანი და გრილზე შემწვარი ქათმის ფილე ჩვენი შეფ-მზარეულის სპეციალური სოუსით.",
-        "en": "The world-famous salad with a local touch. Crisp romaine, parmesan, and croutons meet grilled chicken. Did you know this salad was invented in Mexico by an Italian immigrant, Caesar Cardini?",
-        "ru": ""
+        "ka": "კლასიკური გემოების თანამედროვე ინტერპრეტაცია. მსუბუქი, ნოყიერი და ყოველთვის აქტუალური არჩევანი.",
+        "en": "A modern take on a timeless classic. Light, satisfying, and perfectly balanced for a contemporary palate.",
+        "ru": "Современная интерпретация классического вкуса. Легкий, сытный и всегда актуальный выбор."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -864,7 +956,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0026_1600.webp",
+        "small": "dish_dish_0026_800.webp"
+      }
     },
     {
       "id": "dish_0027",
@@ -875,21 +971,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ცეზარი ორაგულით",
-        "en": "Caesar with salmon",
+        "en": "Salmon Caesar Salad",
         "ru": "Цезарь с лососем"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "სალათის ფოთლები, შემწვარი ორაგული, პარმეზანი, კრუტონები, ცეზარის სოუსი",
+        "en": "Romaine lettuce, grilled salmon, parmesan, croutons, Caesar dressing",
+        "ru": "Листья салата, жареный лосось, пармезан, гренки, соус цезарь"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "კლასიკური ცეზარის ზღვის ვერსია. გრილზე შემწვარი ორაგული სალათს განსაკუთრებულ სინაზესა და სასარგებლო თვისებებს მატებს.",
-        "en": "A maritime twist on the classic Caesar. Grilled salmon fillet adds a rich, buttery texture to the crisp lettuce and tangy dressing, offering a dose of healthy Omega-3s.",
-        "ru": ""
+        "ka": "კლასიკური რეცეპტის თანამედროვე ინტერპრეტაცია. ნაზი ორაგული და ხრაშუნა ფაქტურა ქმნის იდეალურ ბალანსს.",
+        "en": "A modern take on a timeless classic. Tender salmon meets crisp textures for a perfectly balanced bite.",
+        "ru": "Современная интерпретация классики. Нежный лосось и хрустящие текстуры создают идеальный баланс."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -897,7 +993,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0027_1600.webp",
+        "small": "dish_dish_0027_800.webp"
+      }
     },
     {
       "id": "dish_0028",
@@ -908,21 +1008,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ცეზარი კრევეტებით",
-        "en": "Caesar with shrimps",
+        "en": "Shrimp Caesar Salad",
         "ru": "Цезарь с креветками"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "გრილზე მომზადებული კრევეტები, რომაული სალათი, პარმეზანი, კრუტონები, ცეზარის დრესინგი",
+        "en": "Grilled shrimp, romaine lettuce, parmesan, croutons, Caesar dressing",
+        "ru": "Креветки на гриле, салат ромэн, пармезан, гренки, соус цезарь"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ზღვის პროდუქტების მოყვარულთათვის. წვნიანი კრევეტები იდეალურად ერწყმის ცეზარის სოუსს და ქმნის მსუბუქ, დახვეწილ კერძს.",
-        "en": "For seafood lovers. Juicy shrimps replace the chicken, making the salad lighter and giving it a sweet, oceanic flavor profile that pairs beautifully with the creamy dressing.",
-        "ru": ""
+        "ka": "კლასიკური რეცეპტის თანამედროვე ინტერპრეტაცია ზღვის პროდუქტების მოყვარულთათვის. დახვეწილი, მსუბუქი და დაბალანსებული.",
+        "en": "A modern take on a timeless classic for seafood enthusiasts. Refined, light, and perfectly balanced.",
+        "ru": "Современный взгляд на вечную классику для любителей морепродуктов. Изысканный, легкий и гармоничный вкус."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -930,7 +1030,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0028_1600.webp",
+        "small": "dish_dish_0028_800.webp"
+      }
     },
     {
       "id": "dish_0029",
@@ -941,21 +1045,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ბერძნული სალათი",
-        "en": "Greek salad",
+        "en": "Greek Salad",
         "ru": "Греческий салат"
       },
       "description": {
-        "ka": "პომიდორი, კიტრი, წითელი ხახვი, ყველი ფეტა, კალამატას ზეთისხილი, ზეითუნის ზეთი, ორეგანო",
+        "ka": "პომიდორი, კიტრი, წითელი ხახვი, ფეტა, კალამატას ზეთისხილი, ზეითუნის ზეთი, ორეგანო",
         "en": "Tomatoes, cucumbers, red onions, feta cheese, Kalamata olives, olive oil, oregano",
-        "ru": ""
+        "ru": "Томаты, огурцы, красный лук, сыр фета, оливки каламата, оливковое масло, орегано"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ხმელთაშუა ზღვის კლასიკა. ფეტა, ზეთისხილი და ორეგანო - მარტივი, მაგრამ გენიალური კომბინაცია, რომელიც ხაზს უსვამს ბოსტნეულის სიჯანსაღეს.",
-        "en": "A Mediterranean staple known as 'Horiatiki'. Feta cheese, olives, and fresh veggies seasoned with oregano. It’s a simple, rustic salad that celebrates the quality of its ingredients.",
-        "ru": ""
+        "ka": "ხმელთაშუა ზღვის კლასიკა, სადაც ყოველი ინგრედიენტი მზის ენერგიითაა გაჯერებული. სიმარტივისა და სიახლის იდეალური ბალანსი.",
+        "en": "A Mediterranean classic where every ingredient radiates sun-drenched flavor. The perfect balance of simplicity and freshness.",
+        "ru": "Средиземноморская классика, наполненная энергией солнца. Идеальный баланс простоты и свежести."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -963,7 +1067,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0029_1600.webp",
+        "small": "dish_dish_0029_800.webp"
+      }
     },
     {
       "id": "dish_0030",
@@ -973,22 +1081,22 @@
       "priceMinor": 1800,
       "currency": "GEL",
       "title": {
-        "ka": "ბოსტნეულის სალათი",
-        "en": "Vegetable salad",
-        "ru": "Овощной салат"
+        "ka": "ბოსტნეულის სალათი ნიგვზით",
+        "en": "Georgian Vegetable Salad",
+        "ru": "Овощной салат по-грузински"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "პომიდორი, კიტრი, ხახვი, მწვანილი, ნიგვზის საკაზმი",
+        "en": "tomatoes, cucumbers, red onions, fresh herbs, walnut dressing",
+        "ru": "помидоры, огурцы, красный лук, свежая зелень, ореховая паста"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ბაღის საჩუქარი. სეზონური ბოსტნეულის ნაზავი, შეზავებული მსუბუქად, რათა შენარჩუნდეს ვიტამინები და ბუნებრივი გემო.",
-        "en": "A celebration of garden freshness. A mix of seasonal vegetables dressed lightly to let the natural flavors shine. Perfect for those seeking a light, vitamin-rich accompaniment.",
-        "ru": ""
+        "ka": "ქართული სუფრის მარადიული კლასიკა. ცოცხალი ბოსტნეულისა და არომატული ნიგვზის ჰარმონიული შერწყმა.",
+        "en": "A cornerstone of Georgian hospitality. Fresh garden harvest elevated by a rich, velvety walnut sauce.",
+        "ru": "Вечная классика грузинского застолья. Гармония свежих овощей и насыщенного орехового соуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -996,7 +1104,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0030_1600.webp",
+        "small": "dish_dish_0030_800.webp"
+      }
     },
     {
       "id": "dish_0031",
@@ -1006,22 +1118,22 @@
       "priceMinor": 2700,
       "currency": "GEL",
       "title": {
-        "ka": "სალათი დოლჩე-ვიტა",
-        "en": "Dolce Vita salad",
+        "ka": "სალათი „დოლჩე ვიტა“",
+        "en": "Dolce Vita Salad",
         "ru": "Салат «Дольче Вита»"
       },
       "description": {
         "ka": "საქონლის ენა, ყველი, ბულგარული წიწაკა, მაიონეზი",
-        "en": "Beef tongue, cheese, bell pepper, mayonnaise",
-        "ru": "Говяжий язык, сыр, болгарский перец, майонез"
+        "en": "beef tongue, cheese, bell pepper, mayonnaise",
+        "ru": "говяжий язык, сыр, болгарский перец, майонез"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ტკბილი ცხოვრების გემო. ჩვენი შეფის ექსპერიმენტი, რომელიც აერთიანებს მარილიან და ტკბილ ნოტებს - შესაძლოა ხილის, ყველისა და თხილეულის კომბინაციით.",
-        "en": "A salad that lives up to the 'Sweet Life' name. Likely a house special combining sweet and savory elements—perhaps fruit, nuts, and cheese—to create a harmonious and indulgent flavor profile.",
-        "ru": ""
+        "ka": "დახვეწილი გემოების კლასიკური შერწყმა. ნაზი და ნოყიერი სალათი განსაკუთრებული მომენტებისთვის.",
+        "en": "A classic fusion of refined flavors. A tender and hearty salad crafted for special moments.",
+        "ru": "Классическое сочетание изысканных вкусов. Нежный и сытный салат для особых моментов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1029,7 +1141,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0031_1600.webp",
+        "small": "dish_dish_0031_800.webp"
+      }
     },
     {
       "id": "dish_0032",
@@ -1040,11 +1156,11 @@
       "currency": "GEL",
       "title": {
         "ka": "სალათი „ჩერო“",
-        "en": "Chero salad",
+        "en": "Salad \"Chero\"",
         "ru": "Салат «Черо»"
       },
       "description": {
-        "ka": "რუკოლა, არტიშოკი, ჩერი, მწყერის კვერცხი, ბადრიჯანი, ბალზამირებული სოუსი)",
+        "ka": "არაგულა, არტიშოკი, ჩერი პომიდორი, მწყრის კვერცხი, ბადრიჯანი, ბალზამიკოს სოუსი",
         "en": "Arugula, artichoke, cherry tomatoes, quail eggs, eggplant, balsamic sauce",
         "ru": "Руккола, артишок, помидоры черри, перепелиные яйца, баклажан, бальзамический соус"
       },
@@ -1052,9 +1168,9 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "საფირმო სალათი, შექმნილი სპეციალურად ჩვენი სტუმრებისთვის. ინგრედიენტების უნიკალური ბალანსი, რომელსაც სხვაგან ვერ ნახავთ.",
-        "en": "Our signature salad! Created by our chef to highlight the best ingredients of the season. Expect a unique combination of textures and flavors that you won't find anywhere else.",
-        "ru": ""
+        "ka": "თანამედროვე გემოების დახვეწილი ბალანსი. მსუბუქი და ნოყიერი კომპოზიცია, რომელიც მდიდარია ტექსტურებით.",
+        "en": "A sophisticated balance of modern flavors. A light yet nourishing composition rich in diverse textures.",
+        "ru": "Изысканный баланс современных вкусов. Легкая и питательная композиция, богатая разнообразием текстур."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1062,7 +1178,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0032_1600.webp",
+        "small": "dish_dish_0032_800.webp"
+      }
     },
     {
       "id": "dish_0033",
@@ -1072,9 +1192,9 @@
       "priceMinor": 2800,
       "currency": "GEL",
       "title": {
-        "ka": "ცხელი სალათი",
-        "en": "Hot salad",
-        "ru": "Горячий салат"
+        "ka": "ცხელი სალათი ქათმით",
+        "en": "Warm Chicken Salad",
+        "ru": "Теплый салат с курицей"
       },
       "description": {
         "ka": "ქათმის ფილე, ბულგარული წიწაკა, სოკო, სოიოს სოუსი",
@@ -1085,9 +1205,9 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ვინ თქვა, რომ სალათი ცივი უნდა იყოს? შემწვარი ბოსტნეული ან ხორცი ცოცხალ მწვანილთან ერთად - კომფორტული და გემრიელი არჩევანი.",
-        "en": "Who says salads must be cold? Warm grilled vegetables or sautéed meats are tossed with fresh greens. The heat wilts the leaves slightly, releasing more flavor and creating a comforting dish.",
-        "ru": ""
+        "ka": "გემოების თანამედროვე ბალანსი. ნაზი ქათამი და შემწვარი ბოსტნეული აზიური აქცენტით.",
+        "en": "A modern fusion of textures. Tender chicken and sautéed vegetables finished with a savory soy glaze.",
+        "ru": "Современный баланс вкусов. Нежное куриное филе и обжаренные овощи с азиатским акцентом."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1095,7 +1215,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0033_1600.webp",
+        "small": "dish_dish_0033_800.webp"
+      }
     },
     {
       "id": "dish_0034",
@@ -1106,21 +1230,21 @@
       "currency": "GEL",
       "title": {
         "ka": "რუკოლას სალათი საქონლის ენით",
-        "en": "Arugula salad with beef tongue",
+        "en": "Arugula Salad with Beef Tongue",
         "ru": "Салат из рукколы с говяжьим языком"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "რუკოლა, საქონლის ენა, ჩერი პომიდორი, პარმეზანი, ბალზამიკოს დრესინგი",
+        "en": "Arugula, beef tongue, cherry tomatoes, parmesan, balsamic dressing",
+        "ru": "Руккола, говяжий язык, томаты черри, пармезан, бальзамическая заправка"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "დახვეწილი დუეტი. რუკოლას პიკანტური გემო იდეალურად აბალანსებს მოხარშული ენის ცხიმიანობას. გურმანების საყვარელი სალათი.",
-        "en": "A sophisticated pairing. The peppery bite of arugula cuts through the richness of the tender beef tongue. A balsamic or vinaigrette dressing ties these bold flavors together.",
-        "ru": ""
+        "ka": "კლასიკური ინგრედიენტების თანამედროვე ინტერპრეტაცია. ნაზი საქონლის ენა და რუკოლას პიკანტური სიმწარე იდეალურ ბალანსს ქმნის.",
+        "en": "A modern interpretation of classic ingredients. Tender beef tongue and peppery arugula create a perfect balance of flavors.",
+        "ru": "Современная интерпретация классических ингредиентов. Нежный говяжий язык и пикантная руккола создают идеальный баланс."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1128,7 +1252,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0034_1600.webp",
+        "small": "dish_dish_0034_800.webp"
+      }
     },
     {
       "id": "dish_0035",
@@ -1139,21 +1267,21 @@
       "currency": "GEL",
       "title": {
         "ka": "რუკოლას სალათი კრევეტებით",
-        "en": "Arugula salad with shrimps",
-        "ru": "Салат из рукколы с креветками"
+        "en": "Arugula Salad with Shrimp",
+        "ru": "Салат с рукколой и креветками"
       },
       "description": {
-        "ka": "რუკოლა, ჩერი, კრევეტები, პარმეზანი",
-        "en": "Arugula, cherry, shrimp, parmesan",
+        "ka": "რუკოლა, ჩერი პომიდორი, კრევეტი, პარმეზანი",
+        "en": "Arugula, cherry tomatoes, shrimp, parmesan",
         "ru": "Руккола, черри, креветки, пармезан"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მსუბუქი და არომატული. რუკოლას სიმკვეთრე და კრევეტების სიტკბო - თანამედროვე კერძი, რომელიც ზაფხულის განწყობას შეგიქმნით.",
-        "en": "Light and zesty. The spicy notes of fresh arugula are the perfect backdrop for sweet, succulent shrimps. A modern dish that feels like a summer breeze on a plate.",
-        "ru": ""
+        "ka": "ელეგანტური სიმარტივე. ზღვის ნობათისა და ცოცხალი არომატების იდეალური ბალანსი.",
+        "en": "Elegant simplicity. A perfectly balanced blend of fresh seafood and vibrant flavors.",
+        "ru": "Элегантная простота. Идеальный баланс морепродуктов и ярких, свежих вкусов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1161,7 +1289,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0035_1600.webp",
+        "small": "dish_dish_0035_800.webp"
+      }
     },
     {
       "id": "dish_0036",
@@ -1172,11 +1304,11 @@
       "currency": "GEL",
       "title": {
         "ka": "სალათი „ბორა-ბორა“",
-        "en": "Bora Bora salad",
+        "en": "Bora-Bora Salad",
         "ru": "Салат «Бора-Бора»"
       },
       "description": {
-        "ka": "კიტრი, ავოკადო, კრევეტები",
+        "ka": "კიტრი, ავოკადო, კრევეტი",
         "en": "Cucumber, avocado, shrimp",
         "ru": "Огурец, авокадо, креветки"
       },
@@ -1184,9 +1316,9 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ეგზოტიკური მოგზაურობა თეფშზე. ტროპიკული ხილისა და ხორცეულის თამამი შეხამება, რომელიც ტრადიციული გემოებისგან განსხვავებულ გამოცდილებას გთავაზობთ.",
-        "en": "An exotic mix bringing tropical vibes to the table. Expect a fusion of sweet and savory, possibly featuring fruits like pineapple or mango alongside savory proteins for a refreshing twist.",
-        "ru": ""
+        "ka": "ტროპიკული სიგრილისა და ზღვის ნობათის ჰარმონიული შერწყმა. დახვეწილი არჩევანი მსუბუქი ლანჩისთვის.",
+        "en": "A harmonious blend of tropical freshness and ocean treasures. A refined choice for a light, modern lunch.",
+        "ru": "Гармоничное сочетание тропической свежести и морских деликатесов. Изысканный выбор для легкого ланча."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1194,7 +1326,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0036_1600.webp",
+        "small": "dish_dish_0036_800.webp"
+      }
     },
     {
       "id": "dish_0037",
@@ -1209,17 +1345,17 @@
         "ru": "Кебаб"
       },
       "description": {
-        "ka": "ნახშირზე შემწვარი საქონლისა და ღორის ფარში",
-        "en": "minced beef and pork roasted over charcoal",
-        "ru": "говяжий и свиной фарш, запеченный на углях"
+        "ka": "საქონლისა და ღორის ფარში, სუნელები, ნაკვერჩხალზე შემწვარი",
+        "en": "Minced beef and pork, aromatic spices, charcoal-grilled",
+        "ru": "Фарш из говядины и свинины, специи, приготовлено на углях"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "წვნიანი და არომატული. ტრადიციული რეცეპტით შეკაზმული ხორცი, შემწვარი ნაკვერჩხალზე. თხელ ლავაშსა და ხახვთან ერთად - ნამდვილი სიამოვნება.",
-        "en": "Ground meat spiced with onions and herbs, molded onto a skewer and grilled over charcoal. Known as 'Kababi' in Georgia, it's often served wrapped in thin lavash bread with onions and sumac.",
-        "ru": ""
+        "ka": "კლასიკური რეცეპტი ცეცხლის არომატით. სიმარტივე და ხარისხი ყოველ ლუკმაში.",
+        "en": "A timeless classic infused with smoky notes. Refined simplicity crafted over open flames.",
+        "ru": "Классический рецепт с ароматом дымка. Минимализм и безупречный вкус в каждом кусочке."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1227,7 +1363,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0037_1600.webp",
+        "small": "dish_dish_0037_800.webp"
+      }
     },
     {
       "id": "dish_0038",
@@ -1239,20 +1379,20 @@
       "title": {
         "ka": "ქაბაბი სულგუნით",
         "en": "Kebab with Sulguni",
-        "ru": "Кебаб с сулгуни"
+        "ru": "Люля-кебаб с сулугуни"
       },
       "description": {
-        "ka": "ნახშირზე შემწვარი საქონლისა და ღორის ფარში სულგუნით",
-        "en": "Charcoal-grilled beef and pork with sulguni",
-        "ru": "Говядина и свинина, приготовленные на древесных углях, с добавлением сулгуни."
+        "ka": "საქონლისა და ღორის ხორცი, სულგუნი, სუნელები, ლავაში",
+        "en": "Beef, pork, sulguni cheese, spices, lavash",
+        "ru": "Говядина, свинина, сыр сулугуни, специи, лаваш"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სიურპრიზი შიგთავსში! ქაბაბი სულგუნის გულით. დაჭრისას მდნარი ყველი იღვრება და ხორცს კიდევ უფრო წვნიანს და გემრიელს ხდის.",
-        "en": "A surprise inside! The traditional kebab is stuffed with a stick of Sulguni cheese. When grilled, the cheese melts, creating a gooey, savory core inside the juicy meat.",
-        "ru": ""
+        "ka": "ნაკვერჩხალზე მომზადებული კლასიკური ქაბაბი გამდნარი სულგუნის გულით. დახვეწილი არომატებისა და ტექსტურების იდეალური სინთეზი.",
+        "en": "Charcoal-grilled meat meets a molten core of traditional sulguni cheese. A minimalist take on a rich, smoky classic.",
+        "ru": "Классический кебаб на углях с нежной начинкой из тающего сулугуни. Идеальный баланс дымного аромата и сливочного вкуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1260,7 +1400,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0038_1600.webp",
+        "small": "dish_dish_0038_800.webp"
+      }
     },
     {
       "id": "dish_0039",
@@ -1271,21 +1415,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ბოსტნეულის მწვადი",
-        "en": "Vegetable barbecue",
-        "ru": "Овощной шашлык"
+        "en": "Vegetable Mtsvadi",
+        "ru": "Овощной мцвади"
       },
       "description": {
         "ka": "ბადრიჯანი, ბულგარული წიწაკა, პომიდორი, სოკო",
         "en": "Eggplant, bell pepper, tomato, mushroom",
-        "ru": "Баклажан, болгарский перец, помидор, гриб"
+        "ru": "Баклажан, болгарский перец, томат, грибы"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ბოსტნეული მაყალზე. შებრაწული ბადრიჯანი, წიწაკა და სოკო, რომლებსაც კვამლის არომატი დაუვიწყარ გემოს სძენს. იდეალური გარნირი ან დამოუკიდებელი კერძი.",
-        "en": "Smoky and sweet. Skewered bell peppers, eggplants, and mushrooms are grilled over embers. The fire enhances their natural sugars, making this a fantastic vegetarian main or side.",
-        "ru": ""
+        "ka": "ცეცხლზე მომზადებული ბოსტნეულის ჰარმონია. სუფთა გემო და კვამლის ნაზი არომატი.",
+        "en": "A harmony of fire-roasted vegetables. Clean flavors defined by a delicate touch of smoke.",
+        "ru": "Гармония овощей, приготовленных на открытом огне. Чистый вкус с легким ароматом дыма."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1293,7 +1437,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0039_1600.webp",
+        "small": "dish_dish_0039_800.webp"
+      }
     },
     {
       "id": "dish_0040",
@@ -1304,21 +1452,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ბატკნის მწვადი",
-        "en": "Lamb barbecue",
-        "ru": "Шашлык из баранины"
+        "en": "Lamb Mtsvadi",
+        "ru": "Шашлык из ягненка"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ბატკნის რბილი ხორცი, მარილი, პილპილი, ხახვი",
+        "en": "Tender lamb, salt, black pepper, onion",
+        "ru": "Нежная ягнятина, соль, черный перец, лук"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "კავკასიური კლასიკა. ნაკვერჩხალზე შემწვარი ბატკნის ნაჭრები. ხორცის ბუნებრივი არომატი, რომელსაც მხოლოდ მარილი და ცეცხლი სჭირდება.",
-        "en": "A classic of the Caucasus. Chunks of lamb are marinated and grilled to perfection. The fat renders over the fire, dripping onto the coals and creating that unmistakable smoky aroma.",
-        "ru": ""
+        "ka": "ცეცხლზე მომზადებული ნაზი ბატკანი. ქართული სუფრის მარადიული კლასიკა.",
+        "en": "Flame-grilled tender lamb skewers. A timeless classic of the Georgian feast.",
+        "ru": "Нежная ягнятина, приготовленная на открытом огне. Вечная классика грузинского застолья."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1326,7 +1474,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0040_1600.webp",
+        "small": "dish_dish_0040_800.webp"
+      }
     },
     {
       "id": "dish_0041",
@@ -1339,19 +1491,19 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული მწვადი - სუფრის მშვენება. საუკეთესო ხორცის ნაჭრები, შემწვარი წალამზე ან ნაკვერჩხალზე. კერძი, რომელსაც წარდგენა არ სჭირდება.",
-        "en": "Georgia's national obsession, 'Mtsvadi'. Often made from pork neck, it’s traditionally grilled on vine branches (tsalami) for a unique flavor. No marinade is needed, just salt and fire!",
-        "ru": ""
+        "ka": "ცეცხლზე მომზადებული ქართული ტრადიცია. სიმარტივე და დახვეწილი გემო ყოველ ლუკმაში.",
+        "en": "A Georgian tradition forged in fire. Pure simplicity and refined flavor in every bite.",
+        "ru": "Грузинская традиция, рожденная в огне. Чистота вкуса и минимализм в каждом кусочке."
       },
       "title": {
         "ka": "ღორის მწვადი",
-        "en": "Pork barbecue",
-        "ru": "Шашлык из свинины"
+        "en": "Pork Mtsvadi",
+        "ru": "Мцвади из свинины"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ღორის კისერი, მარილი, ხახვი",
+        "en": "Pork neck, sea salt, onions",
+        "ru": "Свиная шея, морская соль, лук"
       },
       "photo": {
         "full": "dish_dish_0041_1600.webp",
@@ -1374,21 +1526,21 @@
       "currency": "GEL",
       "title": {
         "ka": "კალმახი შამფურზე",
-        "en": "Trout on a skewer",
+        "en": "Trout on a Skewer",
         "ru": "Форель на шампуре"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "კალმახი, ბროწეული, ლიმონი, ნედლი მწვანილი, სანელებლები",
+        "en": "Trout, pomegranate, lemon, fresh herbs, spices",
+        "ru": "форель, гранат, лимон, свежая зелень, специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მთის მდინარის გემო. შამფურზე შემწვარი მთლიანი კალმახი. ხრაშუნა კანი და ნაზი ხორცი - მარტივი და გენიალური.",
-        "en": "Whole trout, skewered and grilled. The skin becomes crispy while the flesh remains tender and flaky. It’s a simple preparation that honors the clean taste of the mountain river fish.",
-        "ru": ""
+        "ka": "ნაკვერჩხალზე მომზადებული მთის კალმახი. სუფთა გემო და ტრადიციული სიმარტივე.",
+        "en": "Mountain trout grilled over charcoal. Clean flavors meeting traditional simplicity.",
+        "ru": "Горная форель, приготовленная на углях. Чистый вкус и традиционная простота."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1396,7 +1548,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0042_1600.webp",
+        "small": "dish_dish_0042_800.webp"
+      }
     },
     {
       "id": "dish_0043",
@@ -1407,21 +1563,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ქაბაბი ქათმის ხორცით",
-        "en": "Chicken kebab",
-        "ru": "Куриный кебаб"
+        "en": "Chicken Kebab",
+        "ru": "Люля-кебаб из курицы"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ქათმის ფილე, ხახვი, ნიორი, ქინძი, ქართული სუნელები, ლავაში",
+        "en": "Chicken fillet, onion, garlic, cilantro, Georgian spices, lavash",
+        "ru": "Куриное филе, лук, чеснок, кинза, грузинские специи, лаваш"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მსუბუქი ალტერნატივა. შეკაზმული ქათმის ფარში, შემწვარი მაყალზე. წვნიანი და დიეტური, განსაკუთრებით უხდება ლიმონი.",
-        "en": "A lighter alternative to beef or pork. Minced chicken is seasoned with herbs and spices, then grilled. It’s juicy, flavorful, and pairs perfectly with a squeeze of lemon.",
-        "ru": ""
+        "ka": "ნაზი ქათმის ხორცი და არომატული მწვანილი. კლასიკური გემოს მსუბუქი და დახვეწილი ვერსია.",
+        "en": "Tender chicken blended with aromatic herbs. A refined, lighter take on a Georgian classic.",
+        "ru": "Нежное куриное мясо с ароматными травами. Легкая и изысканная версия грузинской классики."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1429,7 +1585,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0043_1600.webp",
+        "small": "dish_dish_0043_800.webp"
+      }
     },
     {
       "id": "dish_0044",
@@ -1440,21 +1600,21 @@
       "currency": "GEL",
       "title": {
         "ka": "მწვადის ასორტი",
-        "en": "Assorted barbecue",
-        "ru": "Ассорти из шашлыков"
+        "en": "Mtsvadi Assorti",
+        "ru": "Ассорти мцвади"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ღორის ხორცი, ხბოს ხორცი, ქათმის ფილე, ხახვი, ბროწეული, სანელებლები",
+        "en": "Pork, veal, chicken fillet, onions, pomegranate, spices",
+        "ru": "Свинина, телятина, куриное филе, лук, гранат, специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ხორცის მოყვარულთა ოცნება. ღორის, ქათმისა და ქაბაბის ნაკრები ერთ ლანგარზე. იდეალურია მეგობრებთან ერთად გასაზიარებლად.",
-        "en": "The ultimate meat feast! A platter featuring pork, chicken, and kebab skewers. Perfect for sharing, it offers a taste of everything the grill master has to offer.",
-        "ru": ""
+        "ka": "ცეცხლზე მომზადებული საუკეთესო ხორცის ნაირსახეობა. ტრადიციული არომატების თანამედროვე პრეზენტაცია.",
+        "en": "A selection of premium meats grilled over an open flame. A modern presentation of traditional Georgian flavors.",
+        "ru": "Отборные виды мяса, приготовленные на открытом огне. Современная подача традиционных вкусов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1462,7 +1622,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0044_1600.webp",
+        "small": "dish_dish_0044_800.webp"
+      }
     },
     {
       "id": "dish_0045",
@@ -1473,21 +1637,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ქათმის მწვადი",
-        "en": "Chicken barbecue",
+        "en": "Chicken Mtsvadi",
         "ru": "Шашлык из курицы"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ქათმის ფილე, ხახვი, ბროწეული, ქართული სანელებლები",
+        "en": "Chicken fillet, onions, pomegranate, Georgian spices",
+        "ru": "Куриное филе, лук, гранат, грузинские специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქათმის მწვადი - ნაზი და არომატული. მარინადში დავარგებული ხორცი, რომელიც ნაკვერჩხალზე შეწვისას ინარჩუნებს სირბილეს.",
-        "en": "Marinated chicken chunks grilled over charcoal. The marinade, often yogurt or vinegar-based, keeps the meat tender and juicy while the fire adds a delicious char.",
-        "ru": ""
+        "ka": "ცეცხლზე მომზადებული ნაზი ქათმის ხორცი. ტრადიციული გემო თანამედროვე შესრულებით.",
+        "en": "Tender chicken grilled over an open flame. A timeless classic refined for the modern palate.",
+        "ru": "Нежное куриное мясо, приготовленное на углях. Традиционный вкус в минималистичном исполнении."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1495,7 +1659,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0045_1600.webp",
+        "small": "dish_dish_0045_800.webp"
+      }
     },
     {
       "id": "dish_0046",
@@ -1506,21 +1674,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ღორის ნეკნის მწვადი",
-        "en": "Pork rib barbecue",
-        "ru": "Шашлык из свиных ребрышек"
+        "en": "Pork Rib Mtsvadi",
+        "ru": "Мцвади из свиных ребрышек"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ღორის ნეკნი, მარილი, ხახვი, ბროწეული",
+        "en": "Pork ribs, sea salt, onions, pomegranate seeds",
+        "ru": "Свиные ребрышки, соль, лук, зерна граната"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მათთვის, ვისაც ხორცი ძვალზე უყვარს. შებრაწული ნეკნები, რომლებსაც ცხიმი განსაკუთრებულ გემოსა და სირბილეს მატებს.",
-        "en": "For those who love meat on the bone. Pork ribs are grilled until the meat pulls away from the bone. The fat renders down to create a sticky, savory crust.",
-        "ru": ""
+        "ka": "ცეცხლზე მომზადებული წვნიანი ნეკნები. ქართული სუფრის კლასიკა თანამედროვე აქცენტით.",
+        "en": "Succulent ribs grilled over open flames. A minimalist take on Georgia's most iconic fire-roasted tradition.",
+        "ru": "Сочные ребра, приготовленные на открытом огне. Современное прочтение главной грузинской традиции."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1528,7 +1696,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0046_1600.webp",
+        "small": "dish_dish_0046_800.webp"
+      }
     },
     {
       "id": "dish_0047",
@@ -1538,22 +1710,22 @@
       "priceMinor": 2000,
       "currency": "GEL",
       "title": {
-        "ka": "ქათმის ფრთები",
-        "en": "Chicken wings",
-        "ru": "Куриные крылышки"
+        "ka": "ქათმის ფრთები აჯიკით",
+        "en": "Spicy Ajika Chicken Wings",
+        "ru": "Куриные крылышки с аджикой"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ქათმის ფრთები, მწარე აჯიკა, ნიორი, ქართული სუნელები, მწვანილი",
+        "en": "Chicken wings, spicy ajika, garlic, Georgian spices, fresh herbs",
+        "ru": "Куриные крылышки, острая аджика, чеснок, грузинские специи, зелень"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ხრაშუნა და მიმზიდველი. მაყალზე შემწვარი ფრთები - საუკეთესო არჩევანი ლუდთან ან უბრალოდ წასახემსებლად.",
-        "en": "Crispy, smoky, and addictive. Grilled chicken wings are a universal favorite. Perfect as a snack with beer or a meal on their own, seasoned to perfection.",
-        "ru": ""
+        "ka": "ტრადიციული სიმწარე და ხრაშუნა ტექსტურა. თანამედროვე ხედვა ნაცნობ ქართულ გემოზე.",
+        "en": "A bold fusion of heat and heritage. Perfectly glazed with authentic Megrelian ajika for a modern edge.",
+        "ru": "Хрустящая корочка и пикантность мегрельской аджики. Современная интерпретация классического грузинского вкуса."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1561,7 +1733,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0047_1600.webp",
+        "small": "dish_dish_0047_800.webp"
+      }
     },
     {
       "id": "dish_0048",
@@ -1571,22 +1747,22 @@
       "priceMinor": 3200,
       "currency": "GEL",
       "title": {
-        "ka": "კრევეტები",
-        "en": "Shrimp",
-        "ru": "Креветки"
+        "ka": "კრევეტები ნიორსა და თეთრ ღვინოში",
+        "en": "Shrimps in Garlic and White Wine",
+        "ru": "Креветки в чесноке и белом вине"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "კრევეტი, ნიორი, თეთრი ღვინო, კარაქი, ქინძი, სვანური მარილი",
+        "en": "Shrimp, garlic, white wine, butter, coriander, Svanetian salt",
+        "ru": "Креветки, чеснок, белое вино, сливочное масло, кинза, сванская соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "შემწვარი კრევეტები - ზღვის ნიავი თქვენს თეფშზე. მომზადებული მარტივად, ლიმონითა და ნივრით, რათა არ დაიკარგოს პროდუქტის ბუნებრივი სიტკბო.",
-        "en": "Grilled or fried, shrimps are a treat. In Georgia, they are often cooked simply with lemon and garlic to highlight their natural sweetness. A taste of the Black Sea coast.",
-        "ru": ""
+        "ka": "ზღვის პროდუქტების თანამედროვე ინტერპრეტაცია. ქართული სანელებლებისა და ნაზი ტექსტურის ჰარმონია.",
+        "en": "A modern interpretation of seafood. A harmony of Georgian spices and delicate texture.",
+        "ru": "Современная интерпретация морепродуктов. Гармония грузинских специй и нежной текстуры."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1594,7 +1770,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0048_1600.webp",
+        "small": "dish_dish_0048_800.webp"
+      }
     },
     {
       "id": "dish_0049",
@@ -1604,22 +1784,22 @@
       "priceMinor": 300,
       "currency": "GEL",
       "title": {
-        "ka": "პური",
-        "en": "Bread",
-        "ru": "Хлеб"
+        "ka": "ქართული პური",
+        "en": "Georgian Bread",
+        "ru": "Грузинский хлеб"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ხორბლის ფქვილი, წყალი, მარილი, საფუარი",
+        "en": "Wheat flour, water, salt, yeast",
+        "ru": "Пшеничная мука, вода, соль, дрожжи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული პური - სუფრის გული. თონეში გამომცხვარი, ხრაშუნა ყუათა და რბილი გულით. ყველაზე გემრიელი „კოვზი“ საწებლებისთვის.",
-        "en": "Georgian bread, 'Puri', is sacred. Traditionally baked in a clay oven called a 'Tone', it has a crispy crust and a soft, chewy interior. It’s the utensil for scooping up sauces and cheese.",
-        "ru": ""
+        "ka": "თიხის თონეში გამომცხვარი ტრადიცია. სუფთა გემო და ხრაშუნა ტექსტურა.",
+        "en": "Tradition baked in a clay oven. Pure taste and a crisp texture.",
+        "ru": "Традиция, рожденная в глиняном тоне. Чистый вкус и хрустящая текстура."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1627,7 +1807,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0049_1600.webp",
+        "small": "dish_dish_0049_800.webp"
+      }
     },
     {
       "id": "dish_0050",
@@ -1638,21 +1822,21 @@
       "currency": "GEL",
       "title": {
         "ka": "მჭადი კეცზე",
-        "en": "Mchadi on a ketsi",
+        "en": "Mchadi on Ketsi",
         "ru": "Мчади на кеци"
       },
       "description": {
         "ka": "სიმინდის ფქვილი, წყალი, მარილი, ზეთი",
         "en": "Cornmeal, water, salt, oil",
-        "ru": "Грузинский кукурузный хлеб"
+        "ru": "Кукурузная мука, вода, соль, масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "კეცზე გამომცხვარი სიმინდის კვერი. გარედან ხრაშუნა, შიგნით ცხელი - ყველისა და ლობიოს განუყრელი მეგობარი.",
-        "en": "Traditional cornbead fried in a clay pan (ketsi). Crunchy on the outside and hot on the inside, it’s the best friend of cheese, specifically Imeretian or Sulguni.",
-        "ru": ""
+        "ka": "ტრადიციული ქართული სიმინდის პური, გამომცხვარი თიხის კეცზე. მარტივი, ნოყიერი და ავთენტური გემო.",
+        "en": "Traditional Georgian cornbread baked on a clay ketsi. A simple, nourishing, and authentic staple.",
+        "ru": "Традиционный грузинский кукурузный хлеб, запеченный на глиняной кеци. Простой, сытный и аутентичный вкус."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1660,7 +1844,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0050_1600.webp",
+        "small": "dish_dish_0050_800.webp"
+      }
     },
     {
       "id": "dish_0051",
@@ -1671,21 +1859,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ჭვიშტვარი",
-        "en": "Chvishtvari",
-        "ru": "Чвиштвари"
+        "en": "Chvishtari",
+        "ru": "Чвиштари"
       },
       "description": {
-        "ka": "სიმინდის ფქვილი, სულგუნი, წყალი/რძე, მარილი, ზეთი",
-        "en": "Cornmeal, Sulguni cheese, water/milk, salt, oil",
-        "ru": "Грузинский кукурузный хлеб с сыром"
+        "ka": "სიმინდის ფქვილი, სულგუნი, წყალი, რძე, მარილი, ზეთი",
+        "en": "Cornmeal, Sulguni cheese, water, milk, salt, oil",
+        "ru": "Кукурузная мука, сулугуни, вода, молоко, соль, масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სვანური სტუმართმოყვარეობა. სიმინდის ცომში ჩაზელილი ყველი, რომელიც შეწვისას დნება და კერძს საოცრად გემრიელსა და ნოყიერს ხდის.",
-        "en": "Mchadi's rich cousin from Svaneti or Samegrelo. Cheese is mixed directly into the cornmeal dough before frying, creating a cheesy, stretchy, savory cornbread delight.",
-        "ru": ""
+        "ka": "სვანური კულინარიის შედევრი, რომელიც აერთიანებს ოქროსფერ სიმინდის ფქვილსა და ნაზ სულგუნს. ხრაშუნა ზედაპირი და მდნარი გული.",
+        "en": "A Svanetian masterpiece blending golden cornmeal with melting Sulguni cheese. Perfectly crispy on the outside with a soft, cheesy heart.",
+        "ru": "Сванский кулинарный шедевр из золотистой кукурузной муки и нежного сулугуни. Хрустящая корочка и тающая сырная сердцевина."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1693,7 +1881,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0051_1600.webp",
+        "small": "dish_dish_0051_800.webp"
+      }
     },
     {
       "id": "dish_0052",
@@ -1705,20 +1897,20 @@
       "title": {
         "ka": "ხაჭაპური იმერული",
         "en": "Imeretian Khachapuri",
-        "ru": "Имеретинский хачапури"
+        "ru": "Хачапури по-имеретински"
       },
       "description": {
-        "ka": "ცომი (ხორბლის ფქვილი, წყალი, საფუარი, მარილი), იმერული ყველი, კვერცხი, კარაქი",
-        "en": "Dough (wheat flour, water, yeast, salt), Imeretian cheese, egg, butter",
-        "ru": ""
+        "ka": "ხორბლის ფქვილი, წყალი, საფუარი, მარილი, იმერული ყველი, კვერცხი, კარაქი",
+        "en": "wheat flour, water, yeast, salt, Imeretian cheese, egg, butter",
+        "ru": "пшеничная мука, вода, дрожжи, соль, имеретинский сыр, яйцо, сливочное масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ყველასთვის საყვარელი კლასიკა. იმერული ყველისა და რბილი ცომის იდეალური ბალანსი. ეს არის ხაჭაპური, რომელიც არასდროს გვბეზრდება.",
-        "en": "The classic cheese bread. A round dough filled with Imeretian cheese. It’s the most common type, beloved for its soft dough and uniform, savory filling.",
-        "ru": ""
+        "ka": "ქართული სუფრის მარადიული კლასიკა იმერეთიდან. ნაზი ცომი და დახვეწილი ყველის გულსართი სრულყოფილ ჰარმონიაში.",
+        "en": "A timeless Georgian classic from the Imereti region. Soft dough meets a rich cheese filling in perfect, minimalist harmony.",
+        "ru": "Вечная классика грузинского стола из региона Имерети. Нежное тесто и тающая сырная начинка в идеальном исполнении."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1726,7 +1918,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0052_1600.webp",
+        "small": "dish_dish_0052_800.webp"
+      }
     },
     {
       "id": "dish_0053",
@@ -1738,20 +1934,20 @@
       "title": {
         "ka": "ხაჭაპური მეგრული",
         "en": "Megrelian Khachapuri",
-        "ru": "Мегрельский хачапури"
+        "ru": "Хачапури по-мегрельски"
       },
       "description": {
         "ka": "ცომი, იმერული ყველი, სულგუნი, კარაქი, კვერცხი",
         "en": "Dough, Imeretian cheese, Sulguni cheese, butter, egg",
-        "ru": ""
+        "ru": "Тесто, имеретинский сыр, сулугуни, сливочное масло, яйцо"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ორმაგი ყველი, ორმაგი სიამოვნება! ზემოდან მოყრილი სულგუნი ცხვება და ქმნის ოქროსფერ, ხრაშუნა ქერქს. ყველის მოყვარულთა არჩევანი.",
-        "en": "Double the cheese, double the joy! Similar to Imeretian, but topped with an extra layer of cheese before baking. It creates a golden, bubbly crust that cheese lovers adore.",
-        "ru": ""
+        "ka": "მეგრული სამზარეულოს კლასიკა ორმაგი ყველით. ოქროსფერი ქერქი და ნაზი შიგთავსი ნამდვილი სიამოვნებაა.",
+        "en": "A Megrelian classic defined by its double layer of cheese. Golden, crisp, and indulgently rich.",
+        "ru": "Классика мегрельской кухни с двойным слоем сыра. Золотистая корочка и нежная начинка дарят истинное наслаждение."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1759,7 +1955,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0053_1600.webp",
+        "small": "dish_dish_0053_800.webp"
+      }
     },
     {
       "id": "dish_0054",
@@ -1772,19 +1972,19 @@
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "აჭარულის თანამედროვე ვერსია. გაბრტყელებული ცომი, ნაკლები ყუა და უფრო ხრაშუნა ტექსტურა - მათთვის, ვისაც მეტი გულსართი უყვარს.",
-        "en": "A variation of the famous boat shape. The dough is rolled thinner for a crispier texture, focusing more on the filling of cheese, butter, and egg.",
-        "ru": ""
+        "ka": "აჭარული კლასიკა მსუბუქი ფორმით. ზედმეტი ცომის გარეშე, მხოლოდ ხრაშუნა ნაპირები და მდნარი ყველის გული.",
+        "en": "A light take on the Adjarian classic. We remove the excess dough to focus on the crispy crust and the molten cheese heart.",
+        "ru": "Легкая версия аджарской классики. Минимум теста, максимум хрустящей корочки и нежной сырной начинки."
       },
       "title": {
-        "ka": "ხაჭაპური აჭარული (ცომგამოცლილი)",
-        "en": "Adjarian Khachapuri (dough-rolled)",
-        "ru": "Аджарский Хачапури (раскатанный в тесте)"
+        "ka": "აჭარული ხაჭაპური (ცომგამოცლილი)",
+        "en": "Adjaruli Khachapuri (Dough-scraped)",
+        "ru": "Хачапури по-аджарски (без мякиша)"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ცომი, სულგუნი, იმერული ყველი, კვერცხის გული, კარაქი",
+        "en": "dough, sulguni cheese, imeretian cheese, egg yolk, butter",
+        "ru": "тесто, сулугуни, имеретинский сыр, яичный желток, сливочное масло"
       },
       "photo": {
         "full": "dish_dish_0054_1600.webp",
@@ -1807,21 +2007,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ხაჭაპური აჭარული",
-        "en": "Adjarian Khachapuri",
-        "ru": "Аджарский хачапури"
+        "en": "Adjaruli Khachapuri",
+        "ru": "Хачапури по-аджарски"
       },
       "description": {
-        "ka": "ცომი, ყველის ნაზავი (იმერული/სულგუნი), კვერცხი, კარაქი",
-        "en": "Dough, mixed cheese (Imeretian/Sulguni), egg, butter",
-        "ru": ""
+        "ka": "ცომი, იმერული ყველი, სულგუნი, კვერცხი, კარაქი",
+        "en": "Dough, Imeretian cheese, Sulguni, egg, butter",
+        "ru": "Тесто, имеретинский сыр, сулугуни, яйцо, сливочное масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მზე და ზღვა თეფშზე. ნავის ფორმის ცომი, ყველი, კარაქი და კვერცხი. მირთმევის რიტუალი - ყველაფრის არევა - კერძს კიდევ უფრო გემრიელს ხდის.",
-        "en": "The boat-shaped icon. Filled with cheese and topped with a raw egg and a stick of butter. You mix it all together before eating. It represents the sun (egg) and the sea (cheese).",
-        "ru": ""
+        "ka": "აჭარული ნავი, რომელიც ზღვისა და მზის სიმბოლოს აერთიანებს. ტრადიციული გემო თანამედროვე შესრულებით.",
+        "en": "A boat-shaped crust carrying the sun and the sea. A timeless Georgian classic redefined with minimalist elegance.",
+        "ru": "Легендарная лодочка, объединяющая тепло солнца и вкус моря. Совершенный баланс формы и содержания."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1829,7 +2029,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0055_1600.webp",
+        "small": "dish_dish_0055_800.webp"
+      }
     },
     {
       "id": "dish_0056",
@@ -1840,21 +2044,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ხაჭაპური შამფურზე",
-        "en": "Khachapuri on a skewer",
-        "ru": "Хачапури на вертеле"
+        "en": "Grilled Skewer Khachapuri",
+        "ru": "Хачапури на шампуре"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "საფუვრიანი ცომი, სულგუნი, კარაქი",
+        "en": "Yeast dough, Sulguni cheese, butter",
+        "ru": "Дрожжевое тесто, сулугуни, сливочное масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "გემრიელი ინჟინერია. შამფურზე დახვეული ცომი და სულგუნი. მაყალზე მომზადებული ხაჭაპური კვამლის არომატით - დაუვიწყარი სანახაობა და გემო.",
-        "en": "A feat of engineering! Cheese is threaded onto a skewer, wrapped in dough, and grilled. The result is a smoky, crispy tube of dough with a molten cheese center.",
-        "ru": ""
+        "ka": "ნაკვერჩხალზე გამომცხვარი ხრაშუნა ცომი და გამდნარი სულგუნი. ტრადიციული გემოების თანამედროვე ინტერპრეტაცია.",
+        "en": "Crispy dough wrapped around melting Sulguni, grilled over open flames. A smoky, modern twist on a Georgian classic.",
+        "ru": "Хрустящее тесто и тягучий сулугуни, приготовленные на открытом огне. Современное прочтение грузинской классики."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1862,7 +2066,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0056_1600.webp",
+        "small": "dish_dish_0056_800.webp"
+      }
     },
     {
       "id": "dish_0057",
@@ -1872,22 +2080,22 @@
       "priceMinor": 3000,
       "currency": "GEL",
       "title": {
-        "ka": "ხაჭაპური საფირმო",
-        "en": "Khachapuri Sapirmo",
-        "ru": "Хачапури Сапирмо"
+        "ka": "საფირმო ხაჭაპური",
+        "en": "Signature Khachapuri",
+        "ru": "Фирменный хачапури"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ხორბლის ფქვილი, იმერული ყველი, სულგუნი, კარაქი, კვერცხი",
+        "en": "wheat flour, Imeretian cheese, Sulguni cheese, butter, egg",
+        "ru": "пшеничная мука, имеретинский сыр, сулугуни, сливочное масло, яйцо"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სადღესასწაულო ხაჭაპური. დიდი ზომის, მდიდრული გულსართით - შექმნილია იმისთვის, რომ სუფრაზე მთავარი ადგილი დაიკავოს.",
-        "en": "A special variation, often larger or with a different dough layering technique. 'Sapirmo' implies it's fit for a feast, designed to impress with its size and flavor.",
-        "ru": ""
+        "ka": "ჩვენი ინტერპრეტაცია კლასიკურ გემოზე. საუკეთესო ყველის ნაზავი და ოქროსფერი ცომი.",
+        "en": "A modern take on a timeless classic. A perfect blend of premium cheeses and golden dough.",
+        "ru": "Наша интерпретация классического вкуса. Сочетание лучших сыров и золотистого теста."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1895,7 +2103,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0057_1600.webp",
+        "small": "dish_dish_0057_800.webp"
+      }
     },
     {
       "id": "dish_0058",
@@ -1910,17 +2122,17 @@
         "ru": "Лобиани"
       },
       "description": {
-        "ka": "ცომი, ლობიო, ხახვი, სუნელები, ზეთი/ღორის ქონი",
-        "en": "Dough, kidney beans, onions, spices, oil/pork fat",
-        "ru": ""
+        "ka": "ცომი, წითელი ლობიო, ხახვი, სუნელები, მცენარეული ზეთი",
+        "en": "Dough, kidney beans, onions, spices, vegetable oil",
+        "ru": "Тесто, красная фасоль, лук, специи, растительное масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "რაჭული ტრადიცია. ლობიოს გულსართით და ღორის ქონით შეკაზმული ცომი. ნოყიერი და არომატული, განსაკუთრებით კარგია ზამთარში.",
-        "en": "A bean-filled bread from Racha. Mashed kidney beans, seasoned with ham or bacon fat, are stuffed into the dough. It’s a savory, hearty alternative to cheese bread.",
-        "ru": ""
+        "ka": "ტრადიციული გემო თანამედროვე შესრულებით. ნაზი ცომი და არომატული ლობიოს გულსართი.",
+        "en": "A timeless Georgian classic. Golden dough filled with perfectly seasoned bean mash.",
+        "ru": "Грузинская классика в минималистичном стиле. Нежное тесто с ароматной начинкой из фасоли."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1928,7 +2140,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0058_1600.webp",
+        "small": "dish_dish_0058_800.webp"
+      }
     },
     {
       "id": "dish_0059",
@@ -1940,20 +2156,20 @@
       "title": {
         "ka": "აჭარული ლობიანი",
         "en": "Adjarian Lobiani",
-        "ru": "Аджарский Лобиани"
+        "ru": "Аджарский лобиани"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "წითელი ლობიო, პურის ფქვილი, კარაქი, კვერცხის გული, ქართული სუნელები",
+        "en": "Red beans, wheat flour, butter, egg yolk, Georgian spices",
+        "ru": "Красная фасоль, пшеничная мука, сливочное масло, яичный желток, грузинские специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ლობიანი აჭარულად. ნავის ფორმაში გამომცხვარი ლობიო, ხშირად კარაქით ან შებოლილი ხორცით. საინტერესო ვიზუალი და ნაცნობი გემო.",
-        "en": "Lobiani shaped like an Adjarian Khachapuri boat. Instead of cheese, the open boat is filled with spicy bean mash, sometimes topped with butter or bacon for extra richness.",
-        "ru": ""
+        "ka": "კლასიკური ლობიანის თანამედროვე ინტერპრეტაცია აჭარული ხაჭაპურის ფორმით. ნოყიერი შიგთავსი და ოქროსფერი ცომი იდეალურ ბალანსს ქმნის.",
+        "en": "A modern interpretation of classic bean pie in the iconic boat shape. Hearty filling and golden crust create a perfect balance.",
+        "ru": "Современная интерпретация классического лобиани в форме лодочки. Сытная начинка и золотистое тесто создают идеальный баланс."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1961,7 +2177,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0059_1600.webp",
+        "small": "dish_dish_0059_800.webp"
+      }
     },
     {
       "id": "dish_0060",
@@ -1976,17 +2196,17 @@
         "ru": "Ачма"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "თხელი ცომის ფენები, სულგუნი, კარაქი, კვერცხი",
+        "en": "Thin dough layers, sulguni cheese, butter, eggs",
+        "ru": "Тонкие слои теста, сыр сулугуни, сливочное масло, яйца"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული ლაზანია. ფენებად ჩაწყობილი მოხარშული ცომი და ყველი. ფუმფულა, კარაქიანი და ძალიან ნოყიერი - აჭარული სამზარეულოს სიამაყე.",
-        "en": "The Georgian lasagna. Layers of boiled dough and cheese are baked together to create a fluffy, buttery, cheesy casserole. It’s distinct from other Khachapuris due to its unique texture.",
-        "ru": ""
+        "ka": "ქართული სამზარეულოს კლასიკა - ჰაეროვანი ფენებისა და მდნარი ყველის სინთეზი. დახვეწილი გემო, რომელიც ტრადიციასა და თანამედროვეობას აერთიანებს.",
+        "en": "A Georgian classic featuring delicate, airy layers and melted cheese. A refined taste that bridges tradition with modern simplicity.",
+        "ru": "Классика грузинской кухни — синтез воздушных слоев и тающего сыра. Утонченный вкус, объединяющий традиции и современность."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -1994,7 +2214,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0060_1600.webp",
+        "small": "dish_dish_0060_800.webp"
+      }
     },
     {
       "id": "dish_0061",
@@ -2005,21 +2229,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ღომი",
-        "en": "Gomi",
+        "en": "Ghomi",
         "ru": "Гоми"
       },
       "description": {
         "ka": "ღერღილი, სიმინდის ფქვილი, წყალი",
-        "en": "Coarse cornmeal (gherghili), fine cornmeal, water",
-        "ru": ""
+        "en": "Coarse cornmeal, fine cornmeal, water",
+        "ru": "Кукурузная крупа крупного помола, кукурузная мука, вода"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სამეგრელოს სავიზიტო ბარათი. ღერღილის ფაფა, რომელშიც სულგუნის ფირფიტები დნება. ცხელი ღომი და ცივი ყველი - კონტრასტი, რომელიც ყველას უყვარს.",
-        "en": "The staple of Western Georgia (Samegrelo). A hot porridge made from white cornmeal. Neutral in flavor, it is the perfect canvas for melting strips of Sulguni cheese.",
-        "ru": ""
+        "ka": "დასავლეთ საქართველოს კულინარიული საგანძური. სიმინდის მარცვლის ნაზი ტექსტურა და სუფთა, ავთენტური გემო.",
+        "en": "A cornerstone of Western Georgian cuisine. This slow-cooked cornmeal staple is celebrated for its velvety texture and minimalist elegance.",
+        "ru": "Кулинарный символ Западной Грузии. Нежная кукурузная каша с безупречной текстурой и чистым, аутентичным вкусом."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2027,7 +2251,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0061_1600.webp",
+        "small": "dish_dish_0061_800.webp"
+      }
     },
     {
       "id": "dish_0062",
@@ -2038,21 +2266,21 @@
       "currency": "GEL",
       "title": {
         "ka": "პილმენი",
-        "en": "Dumplings",
+        "en": "Pelmeni",
         "ru": "Пельмени"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "საქონლის ხორცი, ღორის ხორცი, ხახვი, ქართული სუნელები, ცომი, არაჟანი",
+        "en": "Beef, pork, onions, Georgian spices, handmade dough, sour cream",
+        "ru": "Говядина, свинина, лук, грузинские специи, тонкое тесто, сметана"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "პელმენი - კომფორტული საკვები. ხორცის პატარა გუნდები ცომში, მოხარშული და მირთმეული კარაქთან ან არაჟანთან ერთად.",
-        "en": "Likely 'Pelmeni' or similar. Small pockets of dough filled with meat, boiled and served with butter or sour cream. A comfort food that warms the soul.",
-        "ru": ""
+        "ka": "ხელნაკეთი სრულყოფილება თითოეულ ლუკმაში. მინიმალისტური ფორმა და ღრმა, ტრადიციული გემო.",
+        "en": "Hand-crafted perfection in every bite. Minimalist form meets deep, traditional flavor.",
+        "ru": "Совершенство ручной работы в каждом кусочке. Минималистичная форма и глубокий вкус традиций."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2060,7 +2288,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0062_1600.webp",
+        "small": "dish_dish_0062_800.webp"
+      }
     },
     {
       "id": "dish_0063",
@@ -2075,17 +2307,17 @@
         "ru": "Эларджи"
       },
       "description": {
-        "ka": "ღერღილი, სიმინდის ფქვილი, სულგუნი, წყალი",
+        "ka": "მსხვილი სიმინდის ფქვილი, წვრილი სიმინდის ფქვილი, სულგუნი, წყალი",
         "en": "Coarse cornmeal, fine cornmeal, Sulguni cheese, water",
-        "ru": ""
+        "ru": "Кукурузная мука грубого помола, кукурузная мука мелкого помола, сулугуни, вода"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სანახაობრივი კერძი! ღომისა და სულგუნის ნაზავი, რომელიც იმდენ ხანს იზილება, სანამ ერთ მთლიან, წელვად მასად არ იქცევა. მეგრული მასპინძლობის პიკი.",
-        "en": "A mesmerizing dish of Gomi mixed with excessive amounts of Sulguni cheese until it becomes a single, super-stretchy mass. Watching it being served is a show in itself!",
-        "ru": ""
+        "ka": "სამეგრელოს კულინარიული სიმბოლო. სიმინდისა და სულგუნის ჰარმონიული ნაზავი, რომელიც გამორჩეული ელასტიურობითა და ნაზი ტექსტურით ხასიათდება.",
+        "en": "A masterpiece from Samegrelo. A silky blend of cornmeal and melted Sulguni cheese, celebrated for its iconic stretch and rich texture.",
+        "ru": "Символ мегрельской кухни. Гармоничное сочетание кукурузы и тягучего сулугуни с нежной, эластичной текстурой."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2093,7 +2325,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0063_1600.webp",
+        "small": "dish_dish_0063_800.webp"
+      }
     },
     {
       "id": "dish_0064",
@@ -2108,17 +2344,17 @@
         "ru": "Пицца Маргарита"
       },
       "description": {
-        "ka": "პიცის ცომი, ტომატის სოუსი, ყველი მოცარელა, ცოცხალი ბაზილიკი, ზეითუნის ზეთი",
-        "en": "Pizza dough, tomato sauce, mozzarella cheese, fresh basil, olive oil",
-        "ru": ""
+        "ka": "პიცის ცომი, ტომატის სოუსი, მოცარელა, რეჰანი, ზეითუნის ზეთი",
+        "en": "Pizza dough, tomato sauce, mozzarella, fresh basil, olive oil",
+        "ru": "Тесто для пиццы, томатный соус, моцарелла, свежий базилик, оливковое масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "იტალიური დროშის ფერები. პომიდორი, მოცარელა და ბაზილიკი. სიმარტივეშია გენიალობა - პიცა, რომელიც ყველას უყვარს.",
-        "en": "The queen of pizzas. Named after Queen Margherita of Savoy, it features the colors of the Italian flag: red tomatoes, white mozzarella, and green basil. Simple and perfect.",
-        "ru": ""
+        "ka": "იტალიური კლასიკა, სადაც გემოების სისადავე და ჰარმონია ერთიანდება. ნეაპოლური ტრადიცია თქვენს მაგიდაზე.",
+        "en": "An Italian classic where simplicity meets perfect harmony. Neapolitan tradition delivered to your table.",
+        "ru": "Итальянская классика, в которой гармонично сочетаются простота и вкус. Неаполитанская традиция на вашем столе."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2126,7 +2362,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0064_1600.webp",
+        "small": "dish_dish_0064_800.webp"
+      }
     },
     {
       "id": "dish_0065",
@@ -2137,21 +2377,21 @@
       "currency": "GEL",
       "title": {
         "ka": "პიცა პეპერონი",
-        "en": "Pizza Pepperoni",
+        "en": "Pepperoni Pizza",
         "ru": "Пицца Пепперони"
       },
       "description": {
-        "ka": "პიცის ცომი, ტომატის სოუსი, ყველი მოცარელა, ძეხვი პეპერონი",
-        "en": "Pizza dough, tomato sauce, mozzarella cheese, pepperoni salami",
-        "ru": ""
+        "ka": "პიცის ცომი, ტომატის სოუსი, მოცარელა, პეპერონი",
+        "en": "Pizza dough, tomato sauce, mozzarella, pepperoni",
+        "ru": "Тесто для пиццы, томатный соус, моцарелла, пепперони"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "პიკანტური არჩევანი. ცხარე ძეხვი, ყველი და ტომატის სოუსი. მსოფლიოში ერთ-ერთი ყველაზე პოპულარული პიცა.",
-        "en": "A favorite worldwide. Spicy salami slices atop cheese and tomato sauce. The oils from the pepperoni seep into the cheese, creating a spicy, savory kick.",
-        "ru": ""
+        "ka": "კლასიკური იტალიური გემო თანამედროვე შესრულებით. პიკანტური პეპერონი და მდნარი მოცარელა საუკეთესო კომბინაციაა.",
+        "en": "A classic Italian profile with a modern twist. Spicy pepperoni and melted mozzarella in perfect harmony.",
+        "ru": "Классический итальянский вкус в современном исполнении. Пикантные пепперони и нежная моцарелла в идеальном балансе."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2159,7 +2399,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0065_1600.webp",
+        "small": "dish_dish_0065_800.webp"
+      }
     },
     {
       "id": "dish_0066",
@@ -2170,21 +2414,21 @@
       "currency": "GEL",
       "title": {
         "ka": "პიცა სამარხვო",
-        "en": "Lenten pizza",
+        "en": "Lenten Pizza",
         "ru": "Постная пицца"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ტომატის სოუსი, სოკო, ბულგარული წიწაკა, ზეთისხილი, მწვანილი, სამარხვო ყველი",
+        "en": "Tomato sauce, mushrooms, bell peppers, olives, fresh herbs, vegan cheese",
+        "ru": "Томатный соус, грибы, болгарский перец, оливки, зелень, постный сыр"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სამარხვო, მაგრამ გემრიელი. ბოსტნეულით, სოკოთი და ზეთისხილით დახუნძლული პიცა, რომელიც ამტკიცებს, რომ უყველოდაც შეიძლება გემრიელი იყოს.",
-        "en": "A plant-based pizza for fasting days. Loaded with vegetables, mushrooms, and olives, typically without cheese, showing that vegan food can be just as delicious.",
-        "ru": ""
+        "ka": "გემოსა და ტრადიციის ჰარმონია. მსუბუქი არჩევანი მათთვის, ვინც სიმარტივეს აფასებს.",
+        "en": "A harmony of flavor and tradition. A light choice for those who value simplicity.",
+        "ru": "Гармония вкуса и традиций. Легкий выбор для тех, кто ценит простоту."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2192,7 +2436,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0066_1600.webp",
+        "small": "dish_dish_0066_800.webp"
+      }
     },
     {
       "id": "dish_0067",
@@ -2207,17 +2455,17 @@
         "ru": "Пицца Прошутто"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ხელით დაზელილი ცომი, ტომატის სოუსი, სულგუნი, პროშუტო, რუკოლა, ზეითუნის ზეთი",
+        "en": "hand-kneaded dough, tomato sauce, sulguni cheese, prosciutto, arugula, olive oil",
+        "ru": "тесто ручного замеса, томатный соус, сулугуни, прошутто, руккола, оливковое масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "დახვეწილი გემო. თხლად დაჭრილი პროშუტო (გამოყვანილი ლორი) პიცას განსაკუთრებულ არომატს და მარილიანობას სძენს.",
-        "en": "For the connoisseur. Topped with thin slices of cured ham (prosciutto). The salty ham contrasts beautifully with the melted cheese and tomato base.",
-        "ru": ""
+        "ka": "იტალიური ტრადიცია და ქართული სულგუნის სიმსუბუქე. დახვეწილი გემოების მინიმალისტური სინთეზი.",
+        "en": "Italian tradition meets the lightness of Georgian sulguni. A minimalist synthesis of refined flavors.",
+        "ru": "Итальянская традиция и легкость грузинского сулугуни. Минималистичный синтез изысканных вкусов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2225,7 +2473,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0067_1600.webp",
+        "small": "dish_dish_0067_800.webp"
+      }
     },
     {
       "id": "dish_0068",
@@ -2236,21 +2488,21 @@
       "currency": "GEL",
       "title": {
         "ka": "პიცა 4 ყველით",
-        "en": "Pizza with 4 cheeses",
-        "ru": "Пицца с 4 сырами"
+        "en": "4 Cheese Pizza",
+        "ru": "Пицца 4 сыра"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "მოცარელა, იმერული ყველი, სულგუნი, დაძველებული ყველი, ტომატის სოუსი",
+        "en": "Mozzarella, Imeretian cheese, Sulguni, aged cheese, tomato sauce",
+        "ru": "Моцарелла, имеретинский сыр, сулугуни, выдержанный сыр, томатный соус"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ყველის მოყვარულთა ოცნება. ოთხი სახეობის ყველის ნაზავი - ნაღებიანი, ცხარე და არომატული გემოების სიმფონია.",
-        "en": "Quattro Formaggi. A rich blend of four distinct cheeses—usually Mozzarella, Gorgonzola, Parmesan, and a mild melting cheese. A creamy, decadent dream.",
-        "ru": ""
+        "ka": "კლასიკური იტალიური რეცეპტისა და ქართული ყველის სახეობების დახვეწილი სინთეზი. მინიმალისტური გემო ნამდვილი გურმანებისთვის.",
+        "en": "A refined synthesis of classic Italian recipes and authentic Georgian cheeses. Minimalist flavor for true gourmets.",
+        "ru": "Изысканный синтез классического итальянского рецепта и грузинских сортов сыра. Минималистичный вкус для истинных гурманов."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2258,7 +2510,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0068_1600.webp",
+        "small": "dish_dish_0068_800.webp"
+      }
     },
     {
       "id": "dish_0069",
@@ -2269,21 +2525,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ბლინები ხორცით",
-        "en": "Pancakes with meat",
+        "en": "Meat Blini",
         "ru": "Блинчики с мясом"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "თხელი ცომი, საქონლის ხორცი, ხახვი, სანელებლები, კარაქი",
+        "en": "Thin crepes, minced beef, onion, spices, butter",
+        "ru": "Тонкое тесто, говядина, лук, специи, сливочное масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ბლინები ხორცით. თხელი ცომი და შეკაზმული ხორცის გულსართი. შემწვარი ოქროსფრად - იდეალურია არაჟანთან.",
-        "en": "Thin crêpes rolled with a savory ground meat filling. Fried until golden, they are a popular appetizer or breakfast item, often served with sour cream.",
-        "ru": ""
+        "ka": "ნაზი ბლინები საქონლის ხორცის გულსართით. კლასიკური გემო, დაბრაწული ოქროსფერ ფერამდე.",
+        "en": "Delicate crepes with a savory beef filling. A timeless comfort dish, pan-seared to golden perfection.",
+        "ru": "Нежные блинчики с говяжьим фаршем. Классический вкус, обжаренный до золотистой корочки."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2291,7 +2547,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0069_1600.webp",
+        "small": "dish_dish_0069_800.webp"
+      }
     },
     {
       "id": "dish_0070",
@@ -2306,17 +2566,17 @@
         "ru": "Кубдари"
       },
       "description": {
-        "ka": "ცომი, საქონლის/ღორის ხორცი, ხახვი, სვანური მარილი, გიცრული, ნიორი",
-        "en": "Dough, beef/pork meat, onions, Svanetian salt, gitsruli (wild caraway), garlic",
-        "ru": ""
+        "ka": "ცომი, საქონლისა და ღორის ხორცი, ხახვი, სვანური მარილი, გიცრული, ნიორი",
+        "en": "Dough, beef, pork, onions, Svanetian salt, gitsruli, garlic",
+        "ru": "Тесто, говядина, свинина, лук, сванская соль, гицрули, чеснок"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "სვანეთის სიამაყე. ხორციანი ღვეზელი, შეკაზმული უნიკალური სუნელით - გიცრულით. ცხარე, არომატული და ძალიან ვაჟკაცური კერძი.",
-        "en": "The meat pie of Svaneti. Dough filled with chunks of meat (beef, pork, or lamb) and spiced with 'Gitsruli', a unique mountain herb. It’s spicy, hearty, and ancient.",
-        "ru": ""
+        "ka": "სვანეთის მთების სიმბოლო. დაჭრილი ხორცისა და ველური სუნელების ნამდვილი ჰარმონია.",
+        "en": "The soul of Svaneti mountains. Hand-chopped meat infused with the aroma of wild mountain caraway.",
+        "ru": "Сердце горной Сванетии. Рубленое мясо в сочетании с ароматом дикого тмина и специй."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2324,7 +2584,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0070_1600.webp",
+        "small": "dish_dish_0070_800.webp"
+      }
     },
     {
       "id": "dish_0071",
@@ -2335,21 +2599,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ხინკალი ქალაქური",
-        "en": "Khinkali kalakuri",
-        "ru": "Хинкали калакури"
+        "en": "Khinkali Kalakuri",
+        "ru": "Хинкали Калакури"
       },
       "description": {
-        "ka": "ცომი, შერეული ფარში (საქონელი/ღორი), ხახვი, ქინძი, მარილი, შავი პილპილი",
+        "ka": "ცომი, შერეული ფარში (საქონელი, ღორი), ხახვი, ქინძი, მარილი, შავი პილპილი",
         "en": "Dough, mixed ground meat (beef/pork), onions, fresh cilantro, salt, black pepper",
-        "ru": ""
+        "ru": "Тесто, смешанный фарш (говядина, свинина), лук, кинза, соль, черный перец"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "თბილისური კლასიკა. ხორცით და მწვანილებით (ქინძი) სავსე ხინკალი. ყველაზე პოპულარული არჩევანი ქალაქში.",
-        "en": "The urban version of the famous dumpling. Filled with meat (beef/pork) and fresh herbs like cilantro. The 'Kalakuri' (city style) is the most popular variety in Tbilisi.",
-        "ru": ""
+        "ka": "თბილისური კლასიკა მწვანილითა და არომატული ბულიონით. ტრადიციული ფორმა და დახვეწილი გემო.",
+        "en": "An urban classic featuring fresh herbs and a rich, savory broth. Tradition meets modern refinement in every bite.",
+        "ru": "Тбилисская классика с ароматной зеленью и насыщенным бульоном. Традиционная форма и безупречный вкус."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2357,7 +2621,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0071_1600.webp",
+        "small": "dish_dish_0071_800.webp"
+      }
     },
     {
       "id": "dish_0072",
@@ -2368,21 +2636,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ხინკალი მთიულური",
-        "en": "Khinkali mtiuluri",
-        "ru": "Хинкали мтиулури"
+        "en": "Mtiuluri Khinkali",
+        "ru": "Хинкали Мтиулури"
       },
       "description": {
-        "ka": "ცომი, ფარში (საქონელი/ღორი/ცხვარი), ხახვი, მარილი, შავი პილპილი, ძირა",
-        "en": "Dough, ground meat (beef/pork/lamb), onions, salt, black pepper, cumin",
-        "ru": ""
+        "ka": "ცომი, საქონლისა და ღორის ხორცი, ხახვი, მარილი, შავი პილპილი, ძირა",
+        "en": "Dough, beef and pork mince, onions, salt, black pepper, cumin",
+        "ru": "Тесто, фарш из говядины и свинины, лук, соль, черный перец, зира"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მთის მკაცრი გემო. ხინკალი მხოლოდ ხორცით, ხახვითა და პილპილით, მწვანილის გარეშე. ხორცის სუფთა არომატი.",
-        "en": "The mountain version. Meat filling (often lamb or beef) with no herbs, just onions, salt, pepper, and sometimes cumin. It offers a purer, more rugged meat flavor.",
-        "ru": ""
+        "ka": "მთის ტრადიციის პირველქმნილი გემო. მინიმალისტური რეცეპტი, სადაც აქცენტი ხორცის არომატსა და წვენზეა.",
+        "en": "The primal taste of mountain tradition. A minimalist recipe focusing on pure meat flavor and rich broth.",
+        "ru": "Первозданный вкус горных традиций. Минималистичный рецепт, подчеркивающий аромат мяса и наваристый бульон."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2390,7 +2658,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0072_1600.webp",
+        "small": "dish_dish_0072_800.webp"
+      }
     },
     {
       "id": "dish_0073",
@@ -2401,21 +2673,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ხინკალი სოკოსი",
-        "en": "Mushroom khinkali",
-        "ru": "Грибные хинкали"
+        "en": "Mushroom Khinkali",
+        "ru": "Хинкали с грибами"
       },
       "description": {
-        "ka": "ცომი, სოკო, ხახვი, ცოცხალი მწვანილი, მარილი, პილპილი",
-        "en": "Dough, mushrooms, onions, fresh herbs, salt, pepper",
-        "ru": ""
+        "ka": "ცომი, სოკო, ხახვი, ნედლი მწვანილი, მარილი, პილპილი",
+        "en": "dough, mushrooms, onions, fresh herbs, salt, pepper",
+        "ru": "тесто, грибы, лук, свежая зелень, соль, перец"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ვეგეტარიანული, მაგრამ ძალიან გემრიელი. სოკოსა და მწვანილის გულსართით. იმდენად წვნიანია, რომ ხორცის მოყვარულებსაც მოსწონთ.",
-        "en": "A vegetarian delight. Filled with finely chopped mushrooms and herbs. They are juicy and flavorful, proving that Khinkali doesn't need meat to be delicious.",
-        "ru": ""
+        "ka": "ტრადიციული ფორმა მცენარეული შიგთავსით. სოკოს არომატი და ნაზი ცომი ქმნის სრულყოფილ ბალანსს.",
+        "en": "A forest-inspired take on the mountain classic. Earthy mushrooms meet delicate, hand-pleated dough.",
+        "ru": "Лесная интерпретация горной классики. Землистый вкус грибов в сочетании с нежным тестом."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2423,7 +2695,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0073_1600.webp",
+        "small": "dish_dish_0073_800.webp"
+      }
     },
     {
       "id": "dish_0074",
@@ -2433,22 +2709,22 @@
       "priceMinor": 250,
       "currency": "GEL",
       "title": {
-        "ka": "ხინკალი ყველის",
-        "en": "Cheese khinkali",
-        "ru": "Сырные хинкали"
+        "ka": "ყველის ხინკალი",
+        "en": "Cheese Khinkali",
+        "ru": "Хинкали с сыром"
       },
       "description": {
-        "ka": "ცომი, იმერული ყველი/სულგუნი, კარაქი",
-        "en": "Dough, Imeretian/Sulguni cheese, butter",
-        "ru": ""
+        "ka": "ცომი, იმერული ყველი, სულგუნი, კარაქი",
+        "en": "dough, Imeretian cheese, sulguni, butter",
+        "ru": "тесто, имеретинский сыр, сулугуни, сливочное масло"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ხაჭაპურისა და ხინკლის ჰიბრიდი. გამდნარი ყველის გულსართი ცომის პარკში. მდიდარი და ნოყიერი.",
-        "en": "Filled with melting cheese (usually Imeretian or Sulguni mixed with butter/curd). They are rich and comforting, a favorite for those who love dairy.",
-        "ru": ""
+        "ka": "ტრადიციული ფორმა და ნაზი ყველის შიგთავსი. დახვეწილი არჩევანი ვეგეტარიანული სამზარეულოს მოყვარულთათვის.",
+        "en": "A traditional shape filled with a delicate blend of melted cheeses. A refined choice for lovers of vegetarian Georgian cuisine.",
+        "ru": "Традиционная форма и нежная сырная начинка. Изысканный выбор для любителей вегетарианской грузинской кухни."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2456,7 +2732,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0074_1600.webp",
+        "small": "dish_dish_0074_800.webp"
+      }
     },
     {
       "id": "dish_0075",
@@ -2467,21 +2747,21 @@
       "currency": "GEL",
       "title": {
         "ka": "აჯიკა",
-        "en": "Adjika",
+        "en": "Ajika",
         "ru": "Аджика"
       },
       "description": {
         "ka": "წითელი წიწაკა, ნიორი, ხმელი ქინძი, უცხო სუნელი, მარილი",
-        "en": "Red chili peppers, garlic, dry coriander, blue fenugreek, salt",
-        "ru": ""
+        "en": "red chili peppers, garlic, dry coriander, blue fenugreek, salt",
+        "ru": "красный острый перец, чеснок, сушеный кориандр, уцхо-сунели, соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "მეგრული ცხარე ლეგენდა. წიწაკის, ნივრისა და სუნელების პასტა. ეს არ არის უბრალოდ სოუსი, ეს არის გემოს გამაძლიერებელი ნებისმიერი კერძისთვის.",
-        "en": "A spicy red pepper paste from Samegrelo and Abkhazia. Made with peppers, garlic, and herbs. It’s not just a sauce; it’s a flavor bomb added to stews, meats, and marinades.",
-        "ru": ""
+        "ka": "დასავლეთ საქართველოს ცეცხლოვანი სული. მინიმალისტური, ინტენსიური და შეუცვლელი.",
+        "en": "The fiery soul of Western Georgia. Minimalist, intense, and indispensable.",
+        "ru": "Огненная душа Западной Грузии. Минималистичная, интенсивная и незаменимая."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2489,7 +2769,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0075_1600.webp",
+        "small": "dish_dish_0075_800.webp"
+      }
     },
     {
       "id": "dish_0076",
@@ -2504,17 +2788,17 @@
         "ru": "Ткемали"
       },
       "description": {
-        "ka": "ტყემალი, ნიორი, ომბალო, ცოცხალი ქინძი, კამა, მარილი, წითელი წიწაკა",
-        "en": "Wild sour plums, garlic, pennyroyal (ombako), fresh coriander, dill, salt, red pepper",
-        "ru": ""
+        "ka": "ველური ტყემალი, ნიორი, ომბალო, ქინძი, კამა, მარილი, წითელი წიწაკა",
+        "en": "Wild sour plums, garlic, pennyroyal, fresh coriander, dill, salt, red pepper",
+        "ru": "Дикая слива, чеснок, омбало, кинза, укроп, соль, красный перец"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ქართული კეტჩუპი! ველური ტყემლისგან მომზადებული მომჟავო საწებელი. შეუცვლელია შემწვარ კარტოფილთან და ხორცთან.",
-        "en": "The Georgian ketchup! A sour plum sauce made from wild plums. It’s rich in antioxidants and aids digestion. Essential with fried potatoes and meats.",
-        "ru": ""
+        "ka": "ქართული სუფრის მარადიული კლასიკა. ველური ტყემლისა და ომბალოს სინთეზი ქმნის დახვეწილ, მჟავე აქცენტს ნებისმიერი კერძისთვის.",
+        "en": "The definitive Georgian condiment. A minimalist blend of wild plums and aromatic herbs, designed to bring vibrant acidity to the table.",
+        "ru": "Вечная классика грузинской кухни. Сочетание дикой сливы и омбало создает идеальный кисло-пряный акцент для ваших блюд."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2522,7 +2806,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0076_1600.webp",
+        "small": "dish_dish_0076_800.webp"
+      }
     },
     {
       "id": "dish_0077",
@@ -2537,17 +2825,17 @@
         "ru": "Киндзмари"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "ნედლი ქინძი, თეთრი ღვინის ძმარი, ნიორი, მარილი",
+        "en": "Fresh cilantro, white wine vinegar, garlic, sea salt",
+        "ru": "Свежая кинза, белый винный уксус, чеснок, морская соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ძმრისა და ქინძის მარტივი, მაგრამ გენიალური ნაზავი. იდეალურად ანეიტრალებს თევზისა და ფრინველის ცხიმიანობას.",
-        "en": "A vinegar and cilantro sauce. Simple yet pungent, it is the base for 'Shkmeruli' or fish dishes, cutting through fat and adding a fresh, herbal acidic kick.",
-        "ru": ""
+        "ka": "კლასიკური ქართული სოუსი, რომელიც აერთიანებს სიმჟავესა და არომატს. იდეალურია მოხარშულ თევზთან ან ფრინველის ხორცთან.",
+        "en": "A vibrant Georgian sauce defined by its sharp, herbal profile. Traditionally paired with poached fish for a refreshing finish.",
+        "ru": "Классический грузинский соус с ярким ароматом зелени и легкой кислинкой. Идеально дополняет отварную рыбу или птицу."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2555,7 +2843,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0077_1600.webp",
+        "small": "dish_dish_0077_800.webp"
+      }
     },
     {
       "id": "dish_0078",
@@ -2566,21 +2858,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ბაჟე",
-        "en": "Baje",
+        "en": "Bazhe",
         "ru": "Баже"
       },
       "description": {
-        "ka": "ნიგოზი, ნიორი, წყალი/ბულიონი, ძმარი/ლიმონის წვენი, ყვითელი ყვავილი, უცხო სუნელი, ხმელი ქინძი, სუნელები",
-        "en": "Walnuts, garlic, water/broth, vinegar/lemon juice, yellow flower (marigold), blue fenugreek, coriander, spices",
-        "ru": ""
+        "ka": "ნიგოზი, ნიორი, ბულიონი, ძმარი, ყვითელი ყვავილი, უცხო სუნელი, ქინძი, სანელებლები",
+        "en": "Walnuts, garlic, broth, vinegar, marigold, blue fenugreek, coriander, spices",
+        "ru": "Грецкие орехи, чеснок, бульон, уксус, имеретинский шафран, уцхо-сунели, кориандр, специи"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "ნიგვზის უნივერსალური საწებელი. უფრო თხელი ვიდრე საცივი, მაგრამ არანაკლებ გემრიელი. უხდება ყველაფერს - ქათამს, თევზს და ბოსტნეულს.",
-        "en": "A versatile walnut sauce. Ground walnuts, garlic, spices, and broth (or water) create a creamy sauce that pairs with everything from chicken to vegetables and fish.",
-        "ru": ""
+        "ka": "ქართული სუფრის მარადიული კლასიკა. ნიგვზის ნაზი სოუსი, რომელიც ნებისმიერ კერძს დახვეწილ გემოს სძენს.",
+        "en": "A timeless staple of the Georgian feast. This silky walnut sauce adds refined depth and aromatic elegance to any dish.",
+        "ru": "Вечная классика грузинского застолья. Нежный ореховый соус, придающий любому блюду изысканный и глубокий вкус."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2588,7 +2880,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0078_1600.webp",
+        "small": "dish_dish_0078_800.webp"
+      }
     },
     {
       "id": "dish_0079",
@@ -2599,21 +2895,21 @@
       "currency": "GEL",
       "title": {
         "ka": "ტომატის საწებელი",
-        "en": "Tomato sauce",
-        "ru": "Томатный соус"
+        "en": "Tomato Satsebeli",
+        "ru": "Томатный сацебели"
       },
       "description": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "პომიდორი, ნიორი, ქინძი, უცხო სუნელი, ხმელი ქინძი, წიწაკა, მარილი",
+        "en": "tomatoes, garlic, cilantro, blue fenugreek, dried coriander, chili, salt",
+        "ru": "помидоры, чеснок, кинза, уцхо-сунели, молотый кориандр, перец, соль"
       },
       "vegetarian": false,
       "topRated": false,
       "soldOut": false,
       "story": {
-        "ka": "კლასიკური წითელი საწებელი. პომიდვრის ბუნებრივი მჟავიანობა და სიტკბო - მრავალი კერძის საფუძველი.",
-        "en": "A classic red sauce made from ripe tomatoes. Whether used for pasta or as a dip, its acidity and sweetness are the foundation of many great dishes.",
-        "ru": ""
+        "ka": "კლასიკური ქართული სოუსი, რომელიც აერთიანებს მწიფე პომიდვრისა და სურნელოვანი სანელებლების ბალანსს. იდეალური დანამატი ხორცისა და ბოსტნეულის კერძებისთვის.",
+        "en": "A classic Georgian sauce balancing ripe tomatoes with aromatic mountain spices. The perfect minimalist companion for grilled meats and vegetables.",
+        "ru": "Классический грузинский соус, сочетающий спелые томаты и ароматные специи. Идеальное дополнение к мясным и овощным блюдам."
       },
       "chefsPick": false,
       "priceLabel": {
@@ -2621,7 +2917,11 @@
         "en": "",
         "ru": ""
       },
-      "priceVariants": []
+      "priceVariants": [],
+      "photo": {
+        "full": "dish_dish_0079_1600.webp",
+        "small": "dish_dish_0079_800.webp"
+      }
     },
     {
       "id": "dish_0080",
@@ -4341,11 +4641,20 @@
     },
     {
       "id": "dish_0132",
-      "categoryId": "cat_0008",
-      "order": 390,
+      "categoryId": "cat_0023",
+      "order": 10,
       "status": "active",
       "priceMinor": 35000,
       "currency": "GEL",
+      "vegetarian": false,
+      "topRated": false,
+      "chefsPick": false,
+      "soldOut": false,
+      "story": {
+        "ka": "ზღვისა და მდინარის ნობათი. სხვადასხვა სახის თევზის ასორტი - საშუალება, რომ ერთდროულად დააგემოვნოთ ყველაფერი.",
+        "en": "A showcase of the catch. A selection of different fish, grilled or fried, offered together. Perfect for sharing a taste of the sea or river.",
+        "ru": ""
+      },
       "title": {
         "ka": "თევზის დაფა",
         "en": "Fish platter",
@@ -4356,15 +4665,6 @@
         "en": "",
         "ru": ""
       },
-      "vegetarian": false,
-      "topRated": false,
-      "soldOut": false,
-      "story": {
-        "ka": "ზღვისა და მდინარის ნობათი. სხვადასხვა სახის თევზის ასორტი - საშუალება, რომ ერთდროულად დააგემოვნოთ ყველაფერი.",
-        "en": "A showcase of the catch. A selection of different fish, grilled or fried, offered together. Perfect for sharing a taste of the sea or river.",
-        "ru": ""
-      },
-      "chefsPick": false,
       "priceLabel": {
         "ka": "",
         "en": "",
@@ -4473,11 +4773,20 @@
     },
     {
       "id": "dish_0136",
-      "categoryId": "cat_0008",
+      "categoryId": "cat_0023",
       "order": 430,
       "status": "active",
       "priceMinor": 4000,
       "currency": "GEL",
+      "vegetarian": false,
+      "topRated": false,
+      "chefsPick": false,
+      "soldOut": false,
+      "story": {
+        "ka": "დორადო - ოქროს თევზი. თეთრი, ნაზი ხორცი და მცირე რაოდენობით ფხა. გრილზე მომზადებისას ინარჩუნებს წვნიანობას.",
+        "en": "Sea Bream. A popular Mediterranean fish with white, flaky flesh. Grilled whole, it offers a mild and clean taste.",
+        "ru": ""
+      },
       "title": {
         "ka": "დორადო",
         "en": "Dorado",
@@ -4488,15 +4797,6 @@
         "en": "",
         "ru": ""
       },
-      "vegetarian": false,
-      "topRated": false,
-      "soldOut": false,
-      "story": {
-        "ka": "დორადო - ოქროს თევზი. თეთრი, ნაზი ხორცი და მცირე რაოდენობით ფხა. გრილზე მომზადებისას ინარჩუნებს წვნიანობას.",
-        "en": "Sea Bream. A popular Mediterranean fish with white, flaky flesh. Grilled whole, it offers a mild and clean taste.",
-        "ru": ""
-      },
-      "chefsPick": false,
       "priceLabel": {
         "ka": "",
         "en": "",
@@ -6526,7 +6826,8 @@
             "ru": "1 L"
           }
         }
-      ]
+      ],
+      "chefsPick": false
     },
     {
       "id": "dish_0196",
@@ -6535,6 +6836,15 @@
       "status": "active",
       "priceMinor": 1000,
       "currency": "GEL",
+      "vegetarian": false,
+      "topRated": false,
+      "chefsPick": false,
+      "soldOut": false,
+      "story": {
+        "ka": "",
+        "en": "",
+        "ru": ""
+      },
       "title": {
         "ka": "ფინლანდია",
         "en": "Finlandia",
@@ -6545,21 +6855,37 @@
         "en": "",
         "ru": ""
       },
-      "vegetarian": false,
-      "topRated": false,
-      "soldOut": false,
-      "story": {
-        "ka": "",
-        "en": "",
-        "ru": ""
-      },
-      "chefsPick": false,
       "priceLabel": {
-        "ka": "",
-        "en": "",
-        "ru": ""
+        "ka": "50ml",
+        "en": "50 ml",
+        "ru": "50 мл"
       },
-      "priceVariants": []
+      "priceVariants": [
+        {
+          "priceMinor": 7000,
+          "label": {
+            "ka": "500ml",
+            "en": "500 ml",
+            "ru": "500 мл"
+          }
+        },
+        {
+          "priceMinor": 9000,
+          "label": {
+            "ka": "700ml",
+            "en": "700 ml",
+            "ru": "700 мл"
+          }
+        },
+        {
+          "priceMinor": 12000,
+          "label": {
+            "ka": "1l",
+            "en": "1 L",
+            "ru": "1 л"
+          }
+        }
+      ]
     },
     {
       "id": "dish_0197",
@@ -6917,5 +7243,5 @@
       "priceVariants": []
     }
   ],
-  "updatedAt": "2026-02-23T14:51:56.108Z"
+  "updatedAt": "2026-03-14T07:36:08.000Z"
 }

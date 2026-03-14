@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PHOTO_TEMPLATES, type PhotoTemplateId } from '@/lib/photo-templates';
 import { isValidDishName } from '@/lib/photo-ai';
+import { compressToWebP } from '@/lib/image-utils';
 
 interface PhotoStylizerProps {
     dishName: string;
@@ -80,10 +81,24 @@ export default function PhotoStylizer({
         });
     }
 
-    function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
         const file = event.target.files?.[0] || null;
-        setFile(file);
+        if (!file) {
+            setFile(null);
+            return;
+        }
+
+        try {
+            // Show a brief loading state if desired here
+            const compressedWebP = await compressToWebP(file);
+            setFile(compressedWebP);
+        } catch (error) {
+            console.error('Failed to compress image:', error);
+            // Fallback to original file if canvas fails
+            setFile(file); 
+        }
     }
+
 
     function handleRemoveImage() {
         if (previewUrl) URL.revokeObjectURL(previewUrl);
