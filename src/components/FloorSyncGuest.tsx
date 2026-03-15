@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { AppDictionary } from '@/lib/dictionaries';
 import type { ContentLocale } from '@/lib/types';
 import type {
@@ -40,8 +40,8 @@ const UI = {
         orderConfirmed: 'Order confirmed',
         tableCleared: 'Table cleared',
         allCategories: 'All',
-        sessionOpened: 'Menu opened',
-        guestOpenedSession: 'Guest opened the menu.',
+        sessionOpened: 'QR code scanned',
+        guestOpenedSession: 'Guest scanned the QR code.',
         addService: 'Add to Selection',
         quickAdd: 'Quick add',
         qty: 'Qty',
@@ -101,8 +101,8 @@ const UI = {
         orderConfirmed: 'შეკვეთა დადასტურდა',
         tableCleared: 'მაგიდა გასუფთავდა',
         allCategories: 'ყველა',
-        sessionOpened: 'მენიუ გაიხსნა',
-        guestOpenedSession: 'სტუმარმა მენიუ გახსნა.',
+        sessionOpened: 'QR კოდი დასკანერდა',
+        guestOpenedSession: 'სტუმარმა QR კოდი დაასკანერა.',
         addService: 'შეკვეთაში დამატება',
         quickAdd: 'სწრაფი დამატება',
         qty: 'რაოდ.',
@@ -162,8 +162,8 @@ const UI = {
         orderConfirmed: 'Заказ подтвержден',
         tableCleared: 'Стол очищен',
         allCategories: 'Все',
-        sessionOpened: 'Меню открыто',
-        guestOpenedSession: 'Гость открыл меню.',
+        sessionOpened: 'QR-код отсканирован',
+        guestOpenedSession: 'Гость отсканировал QR-код.',
         addService: 'Добавить в заказ',
         quickAdd: 'Быстро добавить',
         qty: 'Кол-во',
@@ -345,7 +345,7 @@ export default function FloorSyncGuest({
     sessionId: string;
     tableId: DemoTableId;
 }) {
-    const skipFirstSync = useRef(true);
+
     const routeLocale = resolveGuestLocale(locale);
     const floorSyncCopy = dict.floorSync as Partial<Record<string, string>> | undefined;
     const [guestLocale, setGuestLocale] = useState<ContentLocale>(routeLocale);
@@ -450,10 +450,6 @@ export default function FloorSyncGuest({
                 : 'browsing';
 
     useEffect(() => {
-        if (skipFirstSync.current) {
-            skipFirstSync.current = false;
-            return;
-        }
 
         const timeoutId = window.setTimeout(async () => {
             try {

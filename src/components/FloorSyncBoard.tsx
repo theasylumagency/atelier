@@ -272,9 +272,9 @@ export default function FloorSyncBoard({
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 2xl:grid-cols-[minmax(0,1.2fr)_360px] gap-5 flex-1">
+                <div className="flex flex-row max-sm:flex-col gap-5 flex-1">
                     <div
-                        className="relative border border-neutral-800 bg-[#0A0A0A] overflow-hidden min-h-[420px] sm:min-h-[500px] md:min-h-[580px] lg:min-h-[620px] rounded-3xl"
+                        className="relative border w-full border-neutral-800 bg-[#0A0A0A] overflow-hidden min-h-[420px] sm:min-h-[500px] md:min-h-[580px] lg:min-h-[620px] rounded-3xl"
                         style={{ backgroundSize: '32px 32px', backgroundImage: 'radial-gradient(circle,#333 1px,transparent 1px)' }}
                     >
                         {DEMO_TABLES.map((table) => {
@@ -337,15 +337,15 @@ export default function FloorSyncBoard({
                                                         {ui.currentFocus}
                                                     </p>
                                                     <p className="text-sm text-white">
-                                                                {selectedDish
-                                                                    ? getDishTitle(selectedDish, locale)
-                                                                    : getCategoryLabel(
-                                                                        state.selectedCategory,
-                                                                        activeCategories,
-                                                                        locale,
-                                                                        floorSyncCopy?.all || ui.allCategories,
-                                                                        ui.noCategoryFocused
-                                                                    )}
+                                                        {selectedDish
+                                                            ? getDishTitle(selectedDish, locale)
+                                                            : getCategoryLabel(
+                                                                state.selectedCategory,
+                                                                activeCategories,
+                                                                locale,
+                                                                floorSyncCopy?.all || ui.allCategories,
+                                                                ui.noCategoryFocused
+                                                            )}
                                                     </p>
                                                 </div>
                                                 <span
@@ -421,7 +421,7 @@ export default function FloorSyncBoard({
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-1 gap-5 h-full">
+                    <div className="grid grid-cols-1 gap-5 h-full">
                         <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
                             <div className="flex items-start justify-between gap-3 mb-5">
                                 <div>

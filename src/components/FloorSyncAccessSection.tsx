@@ -4,6 +4,7 @@ import type { AppDictionary } from '@/lib/dictionaries';
 import { DEMO_TABLES, getFloorSyncBoardPath } from '@/lib/floor-sync';
 import { getFloorSyncScanPath } from '@/lib/floor-sync-server';
 import TableActions from './TableActions';
+import FloorSyncNotificationModal from './FloorSyncNotificationModal';
 
 async function makeQrDataUrl(value: string) {
     return QRCode.toDataURL(value, {
@@ -119,6 +120,13 @@ export default async function FloorSyncAccessSection({
                         </article>
                     ))}
                 </div>
+
+                <FloorSyncNotificationModal
+                    sessionId={sessionId}
+                    locale={locale}
+                    panelHref={`/${locale}/panel`}
+                    boardHref={boardHref}
+                />
             </div>
         </section>
     );

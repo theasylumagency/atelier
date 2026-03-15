@@ -30,11 +30,11 @@ export default function Hero({ dict }: { dict: AppDictionary }) {
                 </span>
 
                 <h1
-                    className="text-6xl md:text-[4rem] font-serif leading-[0.9] text-white mb-10"
+                    className="text-6xl md:text-4xl max-sm:text-3xl font-serif leading-[0.9] text-white mb-10"
                     dangerouslySetInnerHTML={{ __html: dict.hero.title }}
                 />
 
-                <p className="text-lg font-sans md:text-xl text-stone-300 max-w-3xl font-light leading-relaxed py-8 border-y border-white/10 my-6">
+                <p className="text-lg font-sans md:text-base text-stone-300 max-w-3xl font-light leading-relaxed py-8 border-y border-white/10 my-6">
                     {dict.hero.subtitle}
                 </p>
 

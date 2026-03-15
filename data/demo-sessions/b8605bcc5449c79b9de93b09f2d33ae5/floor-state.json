@@ -1,0 +1,65 @@
+{
+  "updatedAt": "2026-03-15T18:18:08.481Z",
+  "tables": {
+    "table-01": {
+      "tableId": "table-01",
+      "status": "idle",
+      "activeView": "menu",
+      "selectedCategory": "all",
+      "selectedDishId": null,
+      "cart": [],
+      "sessionStartedAt": null,
+      "updatedAt": "2026-03-15T04:42:12.929Z",
+      "activityFeed": []
+    },
+    "table-04": {
+      "tableId": "table-04",
+      "status": "ordering",
+      "activeView": "menu",
+      "selectedCategory": "all",
+      "selectedDishId": null,
+      "cart": [
+        {
+          "dishId": "dish_0001",
+          "quantity": 2
+        }
+      ],
+      "sessionStartedAt": "2026-03-15T18:17:05.698Z",
+      "updatedAt": "2026-03-15T18:18:08.481Z",
+      "activityFeed": [
+        {
+          "id": "2026-03-15T18:18:07.749Z-qbem4v",
+          "type": "quantity_changed",
+          "label": "რაოდენობა განახლდა",
+          "meta": "ეკალა ფხალი (სეზონური) x2",
+          "createdAt": "2026-03-15T18:18:07.749Z"
+        },
+        {
+          "id": "2026-03-15T18:17:16.575Z-4sfo8h",
+          "type": "item_added",
+          "label": "შეკვეთაში დაემატა",
+          "meta": "ეკალა ფხალი (სეზონური) x1",
+          "createdAt": "2026-03-15T18:17:16.575Z"
+        },
+        {
+          "id": "2026-03-15T18:17:05.703Z-3myg82",
+          "type": "session_started",
+          "label": "მენიუ გაიხსნა",
+          "meta": "სტუმარმა მენიუ გახსნა.",
+          "createdAt": "2026-03-15T18:17:05.703Z"
+        }
+      ]
+    },
+    "table-08": {
+      "tableId": "table-08",
+      "status": "idle",
+      "activeView": "menu",
+      "selectedCategory": "all",
+      "selectedDishId": null,
+      "cart": [],
+      "sessionStartedAt": null,
+      "updatedAt": "2026-03-15T04:42:12.929Z",
+      "activityFeed": []
+    }
+  }
+}

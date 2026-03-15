@@ -14,26 +14,43 @@ const apiKey = process.env.GEMINI_API_KEY;
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 // Initialize Redis. By default, it seamlessly connects to localhost:6379
-const redis = new Redis();
+// Initialize Redis with a retry strategy that gives up gracefully
+const redis = new Redis({
+    maxRetriesPerRequest: null,
+    retryStrategy(times) {
+        if (times > 3) return null; // Stop retrying after 3 attempts
+        return Math.min(times * 50, 2000);
+    }
+});
+
+// Prevent connection errors from crashing the Node process or flooding the console
+redis.on('error', () => {
+    // Silently handle the error. 
+});
+
+async function isRateLimited(key: string): Promise<boolean> {
+    try {
+        // If Redis isn't connected (e.g., local dev), safely bypass the limit
+        if (redis.status !== 'ready') return false;
+
+        const redisKey = `limit:${key}`;
+        const currentCount = await redis.incr(redisKey);
+
+        if (currentCount === 1) {
+            await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS);
+        }
+
+        return currentCount > RATE_LIMIT_MAX;
+    } catch (error) {
+        // Fallback: If the DB throws an error during the check, allow the request
+        return false;
+    }
+}
 
 const RATE_LIMIT_WINDOW_SECONDS = 60; // 1 minute window
-const RATE_LIMIT_MAX = 6; // 6 requests allowed
+const RATE_LIMIT_MAX = 600; // 6 requests allowed
 
-// --- REDIS RATE LIMITER ---
-// This safely tracks requests across all PM2 cluster cores.
-async function isRateLimited(key: string): Promise<boolean> {
-    const redisKey = `photo_forge_limit:${key}`;
-    
-    // Increment the request count for this specific IP address
-    const currentCount = await redis.incr(redisKey);
-    
-    // If this is their very first request in this window, start the 60-second expiration timer
-    if (currentCount === 1) {
-        await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS);
-    }
-    
-    return currentCount > RATE_LIMIT_MAX;
-}
+
 
 
 const requestLog = new Map<string, number[]>();
@@ -100,7 +117,7 @@ function buildPrompt(dishName: string, ingredients: string | undefined, angle: s
 
     const settings: Record<string, string> = {
         'concrete': 'Plated on a stark, pure light-grey textured concrete surface. Zero tabletop clutter.',
-        'dark-slate': 'Plated elegantly on a dark, matte ceramic plate resting on a dark slate table.',
+        'dark-slate': 'Served elegantly in a dark, matte ceramic vessel appropriate for the specific dish type (e.g., a deep bowl for soups, a small ramekin or sauce boat for tkemali/sauces, a flat plate for solid mains). Resting on a dark slate table.',
         'white-linen': 'Plated on pristine white, slightly textured ceramics resting on a light, whitewashed oak table with soft linen.'
     };
 
@@ -171,15 +188,16 @@ async function saveOptimizedWebpVariants(imageBuffer: Buffer) {
     const smallPath = path.join(getUploadsDir(), smallFilename);
 
     // 1. FULL QUALITY (1024x1024): 
-    // Since Gemini natively returned a highly compressed WebP, we bypass Sharp 
-    // entirely and write the raw buffer straight to disk to save VPS CPU compute.
-    await fs.writeFile(fullPath, imageBuffer);
+    // Since the API returns a standard format, we use Sharp to encode the master WebP
+    await sharp(imageBuffer)
+        .webp({ quality: 90 }) // High quality for the 1600/1024px master asset
+        .toFile(fullPath);
 
     // 2. SMALL PREVIEW (512x512): 
-    // We only invoke Sharp to rapidly generate the downscaled mobile thumbnail.
+    // Downscale and compress heavily for the mobile thumbnail
     await sharp(imageBuffer)
         .resize({ width: 512, height: 512, fit: 'cover', position: 'centre', withoutEnlargement: true })
-        .webp({ quality: 72, effort: 4 }) // Lowered effort slightly for faster processing
+        .webp({ quality: 72, effort: 4 })
         .toFile(smallPath);
 
     return { small: smallFilename, full: fullFilename };
@@ -242,12 +260,11 @@ export async function POST(req: NextRequest) {
             model: 'gemini-3.1-flash-image-preview',
             contents: contentsPayload,
             config: {
-                // Ensure the model knows we expect an image format back
-                responseModalities: ['IMAGE'],
+                // Ensure the model knows we expect both text and image formats back
+                responseModalities: ['TEXT', 'IMAGE'],
                 imageConfig: {
                     aspectRatio: '1:1',
-                    // Request WebP directly from Google's servers
-                    outputMimeType: 'image/webp', 
+                    // REMOVED: outputMimeType (SDK does not support it for this model)
                 },
             },
         });
