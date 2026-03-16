@@ -6,32 +6,20 @@ import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { z } from 'zod';
-import Redis from 'ioredis'; // <-- Import ioredis
+import { ensureRedisReady, getRedisClient } from '@/lib/server/redis';
 
 export const runtime = 'nodejs';
 
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
-// Initialize Redis. By default, it seamlessly connects to localhost:6379
-// Initialize Redis with a retry strategy that gives up gracefully
-const redis = new Redis({
-    maxRetriesPerRequest: null,
-    retryStrategy(times) {
-        if (times > 3) return null; // Stop retrying after 3 attempts
-        return Math.min(times * 50, 2000);
-    }
-});
-
-// Prevent connection errors from crashing the Node process or flooding the console
-redis.on('error', () => {
-    // Silently handle the error. 
-});
-
 async function isRateLimited(key: string): Promise<boolean> {
     try {
-        // If Redis isn't connected (e.g., local dev), safely bypass the limit
-        if (redis.status !== 'ready') return false;
+        const redis = getRedisClient();
+        const isReady = await ensureRedisReady(redis);
+        if (!isReady) {
+            return false;
+        }
 
         const redisKey = `limit:${key}`;
         const currentCount = await redis.incr(redisKey);
@@ -41,20 +29,13 @@ async function isRateLimited(key: string): Promise<boolean> {
         }
 
         return currentCount > RATE_LIMIT_MAX;
-    } catch (error) {
-        // Fallback: If the DB throws an error during the check, allow the request
+    } catch {
         return false;
     }
 }
 
 const RATE_LIMIT_WINDOW_SECONDS = 60; // 1 minute window
 const RATE_LIMIT_MAX = 600; // 6 requests allowed
-
-
-
-
-const requestLog = new Map<string, number[]>();
-
 type GeneratedInlineDataPart = {
     inlineData?: {
         data?: string;

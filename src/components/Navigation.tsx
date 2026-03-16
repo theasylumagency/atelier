@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { AppDictionary } from '@/lib/dictionaries';
@@ -45,24 +46,21 @@ export default function Navigation({ dict, locale }: { dict: AppDictionary; loca
         >
             <div className="max-w-[1600px] mx-auto px-8 md:px-12 h-24 md:h-16 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-
-                    <Link href={`/${locale}`}>
-                        <div className="flex items-center">
-                            <img
-                                src="/logo/maitrise-atelier-logo-white-outline-nf.svg"
-                                alt="Logo"
-                                width={200}
-                                height={200}
-                                className="hidden md:block"
-                            />
-                            <img
-                                src="/logo/maitrise-atelier-logo-mobile.svg"
-                                alt="Mobile Logo"
-                                width={40}
-                                height={40}
-                                className="block md:hidden"
-                            />
-                        </div>
+                    <Link href={`/${locale}`} aria-label="Maitrise Atelier home" className="flex items-center">
+                        <Image
+                            src="/logo/maitrise-atelier-logo-white-outline-nf.svg"
+                            alt="Logo"
+                            width={200}
+                            height={53}
+                            className="hidden md:block"
+                        />
+                        <Image
+                            src="/logo/maitrise-atelier-logo-mobile.svg"
+                            alt="Mobile Logo"
+                            width={40}
+                            height={48}
+                            className="block md:hidden"
+                        />
                     </Link>
                 </div>
                 <div className="flex items-center gap-10">

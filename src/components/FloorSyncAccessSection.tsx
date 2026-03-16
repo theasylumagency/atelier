@@ -115,6 +115,34 @@ export default async function FloorSyncAccessSection({
                                 <TableActions
                                     scanUrl={table.scanUrl}
                                     scanPath={table.scanPath}
+                                    labels={{
+                                        copied:
+                                            ((dict.floorSync as {
+                                                dashboard?: {
+                                                    tableActions?: {
+                                                        copied?: string;
+                                                    };
+                                                };
+                                            })?.dashboard?.tableActions?.copied ?? 'Copied'),
+                                        copyLink:
+                                            ((dict.floorSync as {
+                                                dashboard?: {
+                                                    tableActions?: {
+                                                        copyLink?: string;
+                                                    };
+                                                };
+                                            })?.dashboard?.tableActions?.copyLink ??
+                                                'Copy Link'),
+                                        desktopPreview:
+                                            ((dict.floorSync as {
+                                                dashboard?: {
+                                                    tableActions?: {
+                                                        desktopPreview?: string;
+                                                    };
+                                                };
+                                            })?.dashboard?.tableActions?.desktopPreview ??
+                                                'Desktop Preview'),
+                                    }}
                                 />
                             </div>
                         </article>

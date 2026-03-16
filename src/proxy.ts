@@ -31,7 +31,7 @@ function attachDemoSession(response: NextResponse, sessionId: string) {
     });
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     const pathnameHasLocale = locales.some(

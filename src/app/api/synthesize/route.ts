@@ -7,13 +7,10 @@ import {
     sanitizePromptValue,
     type SynthesizeRequest,
 } from '@/lib/ai-synthesis';
-import Redis from 'ioredis'; // <-- Import the Redis client
+import { ensureRedisReady, getRedisClient } from '@/lib/server/redis';
 
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
-
-// Initialize Redis. It securely connects to localhost:6379 on your Hostinger VPS
-const redis = new Redis();
 
 const RATE_LIMIT_WINDOW_SECONDS = 60; // 1 minute window
 const RATE_LIMIT_MAX = 8; // 8 requests allowed per IP
@@ -29,15 +26,24 @@ function getClientKey(req: NextRequest): string {
 // --- REDIS RATE LIMITER ---
 // Safely tracks text generation requests across all PM2 cluster cores
 async function isRateLimited(key: string): Promise<boolean> {
-    const redisKey = `text_synthesis_limit:${key}`;
-    
-    const currentCount = await redis.incr(redisKey);
-    
-    if (currentCount === 1) {
-        await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS);
+    try {
+        const redis = getRedisClient();
+        const isReady = await ensureRedisReady(redis);
+        if (!isReady) {
+            return false;
+        }
+
+        const redisKey = `text_synthesis_limit:${key}`;
+        const currentCount = await redis.incr(redisKey);
+
+        if (currentCount === 1) {
+            await redis.expire(redisKey, RATE_LIMIT_WINDOW_SECONDS);
+        }
+
+        return currentCount > RATE_LIMIT_MAX;
+    } catch {
+        return false;
     }
-    
-    return currentCount > RATE_LIMIT_MAX;
 }
 
 function buildPrompt(input: SynthesizeRequest): string {

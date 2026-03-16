@@ -5,9 +5,14 @@ import { useState } from 'react';
 interface TableActionsProps {
     scanUrl: string;
     scanPath: string;
+    labels: {
+        copied: string;
+        copyLink: string;
+        desktopPreview: string;
+    };
 }
 
-export default function TableActions({ scanUrl, scanPath }: TableActionsProps) {
+export default function TableActions({ scanUrl, scanPath, labels }: TableActionsProps) {
     const [isCopied, setIsCopied] = useState(false);
 
     const handleCopy = async () => {
@@ -29,7 +34,7 @@ export default function TableActions({ scanUrl, scanPath }: TableActionsProps) {
                 <span className="material-symbols-outlined text-sm">
                     {isCopied ? 'check' : 'content_copy'}
                 </span>
-                <span>{isCopied ? 'Copied' : 'Copy Link'}</span>
+                <span>{isCopied ? labels.copied : labels.copyLink}</span>
             </button>
 
             <a
@@ -38,7 +43,7 @@ export default function TableActions({ scanUrl, scanPath }: TableActionsProps) {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-white transition-colors"
             >
-                <span>Desktop Preview</span>
+                <span>{labels.desktopPreview}</span>
                 <span className="material-symbols-outlined text-sm">open_in_new</span>
             </a>
         </div>

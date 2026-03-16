@@ -172,6 +172,344 @@
         "floorBoard": "Floor Board",
         "realTime": "Real-time spatial sync",
         "liveFeed": "Live",
-        "winterCollectionDesc": "Seasonal menu reflecting the beauty and richness of Georgia's nature. Each dish is a work of art created with the finest ingredients and traditional recipes."
+        "winterCollectionDesc": "Seasonal menu reflecting the beauty and richness of Georgia's nature. Each dish is a work of art created with the finest ingredients and traditional recipes.",
+        "dashboard": {
+            "rail": {
+                "title": "Commercial Control",
+                "exit": "Exit Dashboard"
+            },
+            "tabs": {
+                "overview": {
+                    "label": "Home",
+                    "badge": "Overview"
+                },
+                "live": {
+                    "label": "Live",
+                    "badge": "Real"
+                },
+                "insights": {
+                    "label": "Insights",
+                    "badge": "Modeled"
+                },
+                "ai": {
+                    "label": "AI",
+                    "badge": "Modeled"
+                },
+                "scan": {
+                    "label": "Scan QR",
+                    "badge": "Demo"
+                }
+            },
+            "ui": {
+                "browsing": "Browsing",
+                "ordering": "Ordering",
+                "sent": "Sent",
+                "completed": "Completed",
+                "idle": "Idle",
+                "currentFocus": "Current Focus",
+                "activityFeed": "Activity Feed",
+                "terminalSummary": "Terminal Summary",
+                "viewedDish": "Viewed dish",
+                "activeCategory": "Active category",
+                "cartTotal": "Cart total",
+                "items": "Items",
+                "waitingForGuest": "Waiting for guest interaction",
+                "actionRequired": "Action Required",
+                "browsingActive": "Browsing / Active",
+                "clearedPaid": "Cleared / Paid",
+                "noDishViewed": "No dish viewed yet",
+                "noCategoryFocused": "No category focused yet",
+                "liveSince": "Live since",
+                "lastAction": "Last action",
+                "protectedFeed": "Protected internal feed",
+                "focusHint": "Click a table to inspect its live feed.",
+                "allCategories": "All",
+                "none": "None",
+                "paidClear": "Paid / Clear",
+                "sessionStarted": "QR code scanned",
+                "browsingCategory": "Browsing category",
+                "viewingDish": "Viewing dish",
+                "addedToCart": "Added to cart",
+                "removedFromCart": "Removed from cart",
+                "quantityUpdated": "Quantity updated",
+                "orderConfirmed": "Order confirmed",
+                "tableCleared": "Table cleared"
+            },
+            "overview": {
+                "eyebrow": "Dashboard Home",
+                "title": "Commercial control, not just a menu feed.",
+                "description": "This workspace combines one live operational tab with two modeled intelligence tabs so you can demonstrate what the finished restaurant system will feel like.",
+                "snapshotEyebrow": "Workspace snapshot",
+                "liveLayerLabel": "Live layer",
+                "liveLayerValue": "{count} tables active",
+                "modeledLayersLabel": "Modeled layers",
+                "modeledLayersValue": "2 intelligence tabs",
+                "lastLiveSyncLabel": "Last live sync",
+                "framingEyebrow": "Demo framing",
+                "framingBody": "Keep the live board grounded in the current session. Use the insights and AI tabs to sell the future commercial value.",
+                "storyEyebrow": "Stakeholder story",
+                "storyTitle": "What this dashboard can communicate in one meeting",
+                "storyPending": "{count} pending tables",
+                "aiPreviewEyebrow": "AI preview",
+                "aiPreviewTitle": "Plain-language weekly interpretation",
+                "aiPreviewAction": "Open AI interpretation"
+            },
+            "live": {
+                "eyebrow": "Live Floor",
+                "liveSessionFeed": "Live session feed",
+                "markerLabel": "T-12",
+                "boothLabel": "Booth B-1"
+            },
+            "insights": {
+                "eyebrow": "Modeled intelligence",
+                "title": "Action-oriented insights",
+                "description": "This tab shows how the product stops being a menu and becomes a decision tool. Every card below is demonstrational and intentionally modeled.",
+                "badge": "Demonstrational layer",
+                "movesTitle": "Recommended moves",
+                "suggestedActionTitle": "Suggested action"
+            },
+            "ai": {
+                "eyebrow": "Modeled intelligence",
+                "title": "AI interpretation",
+                "description": "The AI role here is simple: translate behavioral data into clear recommendations, summaries, and experiments that operators can act on.",
+                "badge": "Demonstrational layer",
+                "summaryTitle": "Weekly summary in plain language",
+                "capabilitiesTitle": "What AI can do here",
+                "askTitle": "Ask the system",
+                "responseTitle": "AI response"
+            },
+            "scan": {
+                "eyebrow": "Demo utility",
+                "title": "Scan QR to add another participant",
+                "description": "This tab is only for the presentation. It is not part of the regular dashboard product. Use it to bring one more phone into the same demo session.",
+                "badge": "Demo only",
+                "recommended": "Recommended for the next participant.",
+                "active": "Already active in the demo, but still available if you want to reuse it.",
+                "stepsTitle": "How to use it",
+                "steps": [
+                    "1. Open this tab during the presentation.",
+                    "2. Ask another participant to scan the code on their phone.",
+                    "3. Their actions will appear inside the same live demonstration session."
+                ],
+                "qrTitle": "Session join QR",
+                "qrDescription": "Scans into the current dashboard demo session and opens the guest route directly on mobile.",
+                "qrAlt": "{table} join QR code",
+                "preparing": "Preparing QR...",
+                "note": "Not a regular dashboard feature. This exists only so you can add another participant during the demo.",
+                "sessionReference": "Session reference"
+            },
+            "tableActions": {
+                "copied": "Copied",
+                "copyLink": "Copy Link",
+                "desktopPreview": "Desktop Preview"
+            },
+            "showcase": {
+                "fallbacks": {
+                    "primaryDish": "Signature Khachapuri",
+                    "secondaryDish": "Chef Grill Plate",
+                    "dessertDish": "Honey Cake",
+                    "spotlight": "Khachapuri",
+                    "dessert": "Desserts",
+                    "mains": "Grill & Mains"
+                },
+                "panels": [
+                    {
+                        "title": "Live operations board",
+                        "description": "Keep the current floor visualization intact so stakeholders still see real guest activity.",
+                        "action": "Open live board",
+                        "tab": "live",
+                        "badge": "Real data"
+                    },
+                    {
+                        "title": "Action-oriented insights",
+                        "description": "Show how behavior patterns become concrete menu and placement decisions.",
+                        "action": "Open insights",
+                        "tab": "insights",
+                        "badge": "Modeled layer"
+                    },
+                    {
+                        "title": "AI interpretation",
+                        "description": "Demonstrate summaries, anomaly detection, and plain-language recommendations.",
+                        "action": "Open AI view",
+                        "tab": "ai",
+                        "badge": "Modeled layer"
+                    }
+                ],
+                "notes": [
+                    "These intelligence tabs are demonstrational. Their numbers are modeled, not pulled from live sessions.",
+                    "The goal is to show owners, chefs, and managers what the finished product layer can look like.",
+                    "Real analytics can later replace every modeled card without changing the interface structure."
+                ],
+                "moves": [
+                    {
+                        "title": "Reframe {primaryDish}",
+                        "detail": "Treat it as a presentation problem first, not a demand problem."
+                    },
+                    {
+                        "title": "Promote {dessert}",
+                        "detail": "Introduce desserts earlier so guests see them before mentally closing the meal."
+                    },
+                    {
+                        "title": "Use {mains} as a control block",
+                        "detail": "It can anchor A/B tests because it already attracts stable intent."
+                    },
+                    {
+                        "title": "Separate tourist behavior by time",
+                        "detail": "Model a dedicated 20:00 to 22:30 visitor path for non-local language users."
+                    }
+                ],
+                "insights": [
+                    {
+                        "eyebrow": "Prime attention",
+                        "title": "{spotlight} receives the heaviest attention between 19:00 and 21:00.",
+                        "description": "Guests open this section early in dinner service, then return to it after first-round drinks.",
+                        "metric": "+34% detail opens",
+                        "action": "Move this category into the first visible row during peak hours.",
+                        "tone": "amber"
+                    },
+                    {
+                        "eyebrow": "Low follow-through",
+                        "title": "{primaryDish} earns many opens but lags behind {secondaryDish} in follow-through.",
+                        "description": "The item looks interesting enough to inspect, but the current presentation does not close the decision.",
+                        "metric": "22 opens / 3 add-to-cart signals",
+                        "action": "Refresh the photo first, then test a tighter description.",
+                        "tone": "rose"
+                    },
+                    {
+                        "eyebrow": "Language behavior",
+                        "title": "Russian-language visitors stay longer inside menu details than English-language visitors.",
+                        "description": "That usually signals stronger evaluation behavior, not necessarily stronger intent to order.",
+                        "metric": "+41 sec average dwell time",
+                        "action": "Use shorter decision cues for English and deeper detail blocks for Russian.",
+                        "tone": "sky"
+                    },
+                    {
+                        "eyebrow": "Table signal",
+                        "title": "Tables 4 and 8 show the highest repeat digital engagement.",
+                        "description": "These tables reopen dish details more often and spend longer in comparison behavior.",
+                        "metric": "2.3x repeat interactions",
+                        "action": "Use these tables for placement experiments and higher-margin upsells.",
+                        "tone": "emerald"
+                    },
+                    {
+                        "eyebrow": "Placement test",
+                        "title": "{secondaryDish} underperforms despite stronger placement than {primaryDish}.",
+                        "description": "Visibility alone is not enough when the item story and first image are weaker than the alternative.",
+                        "metric": "-18% relative attention yield",
+                        "action": "Swap copy or photography before allocating more prime placement.",
+                        "tone": "amber"
+                    },
+                    {
+                        "eyebrow": "Late-session demand",
+                        "title": "{dessert} receives strong late-session attention but stays too hidden on first entry.",
+                        "description": "Guests discover sweet options deep into the journey, after most primary decisions are already made.",
+                        "metric": "27% of late-session detail views",
+                        "action": "Bring desserts forward earlier in the browsing path or after mains.",
+                        "tone": "sky"
+                    }
+                ],
+                "aiSummary": "This week, {mains} gained strong attention from English-language visitors after 20:00. {dessert} detail views increased late in the journey, but conversion signals stayed flat. Consider surfacing desserts earlier and revising the presentation of {primaryDish} and {dessertDish}.",
+                "aiCapabilities": [
+                    {
+                        "title": "Weekly summary",
+                        "description": "Turn raw behavior into a short operator briefing written in plain language.",
+                        "icon": "calendar_view_week"
+                    },
+                    {
+                        "title": "Anomaly detection",
+                        "description": "Flag unusual drops, spikes, or sudden attention shifts before teams notice manually.",
+                        "icon": "warning"
+                    },
+                    {
+                        "title": "Underperforming dishes",
+                        "description": "Separate weak presentation from weak demand by comparing opens against follow-through.",
+                        "icon": "restaurant_menu"
+                    },
+                    {
+                        "title": "A/B interpretation",
+                        "description": "Explain whether featured slots, copy changes, or new photos actually improved behavior.",
+                        "icon": "compare_arrows"
+                    },
+                    {
+                        "title": "Seasonality spotting",
+                        "description": "Surface cyclical shifts by daypart, week, or visitor type without spreadsheet work.",
+                        "icon": "schedule"
+                    },
+                    {
+                        "title": "Language behavior",
+                        "description": "Compare how different language groups inspect categories, details, and menu depth.",
+                        "icon": "translate"
+                    }
+                ],
+                "aiPrompts": [
+                    {
+                        "id": "conversion",
+                        "question": "Which dishes attract attention but probably fail to convert?",
+                        "signal": "High detail views, low follow-through",
+                        "answer": "{primaryDish} stands out as the clearest presentation issue. Guests inspect it often, but modeled add-to-cart behavior is weak compared with {secondaryDish}. {dessertDish} shows a similar pattern later in the session, suggesting curiosity without enough confidence to act.",
+                        "actions": [
+                            "Replace the lead image for {primaryDish}.",
+                            "Shorten the first two lines of the description to make the choice easier.",
+                            "Retest {dessertDish} with an earlier placement and a tighter name card."
+                        ]
+                    },
+                    {
+                        "id": "categories",
+                        "question": "Which categories should we move higher?",
+                        "signal": "Strong demand hidden too deep",
+                        "answer": "{spotlight} and {dessert} both deserve earlier visibility. The first attracts peak-hour attention quickly, while the second earns late-session interest once guests finally discover it.",
+                        "actions": [
+                            "Move {spotlight} into the first visible row at dinner launch.",
+                            "Insert {dessert} earlier after guests inspect {mains}.",
+                            "Use one featured slot for a short high-margin category teaser."
+                        ]
+                    },
+                    {
+                        "id": "tourists",
+                        "question": "When do tourists interact most?",
+                        "signal": "Visitor behavior by time window",
+                        "answer": "Modeled tourist engagement climbs after 20:00 and stays strongest until roughly 22:30. That period shows the highest concentration of language switching, deep detail inspection, and comparison behavior.",
+                        "actions": [
+                            "Schedule multilingual featured items for the evening window.",
+                            "Show shorter decision cues early and richer stories one tap deeper.",
+                            "Use this period for premium upsell experiments instead of lunch."
+                        ]
+                    },
+                    {
+                        "id": "tables",
+                        "question": "Which tables have the most digital engagement?",
+                        "signal": "Repeat interaction concentration",
+                        "answer": "Tables 4 and 8 produce the most modeled digital engagement. They reopen items more often, compare alternatives longer, and react more consistently to featured placements than the other demo tables.",
+                        "actions": [
+                            "Prioritize these tables for placement experiments.",
+                            "Watch whether staff service style changes the interaction depth.",
+                            "Use their patterns as a baseline when new promotional logic is introduced."
+                        ]
+                    },
+                    {
+                        "id": "featured",
+                        "question": "Did the new featured items perform better than the previous ones?",
+                        "signal": "Modeled A/B comparison",
+                        "answer": "The new featured slot increases visibility, but the improvement is uneven. {secondaryDish} gains placement advantage without enough response, while {primaryDish} still wins on pure attention even from a weaker slot.",
+                        "actions": [
+                            "Keep the experiment running, but swap the weaker featured creative.",
+                            "Judge the slot by attention-to-action ratio, not by impressions alone.",
+                            "Retain the winning story structure from the better-performing item."
+                        ]
+                    },
+                    {
+                        "id": "language",
+                        "question": "Which language users are more likely to inspect details?",
+                        "signal": "Depth of evaluation by language",
+                        "answer": "Russian-language visitors show the deepest modeled detail-inspection behavior. English-language visitors decide faster, but they also abandon detail pages sooner when the first image or first sentence is weak.",
+                        "actions": [
+                            "Give Russian flows richer context and pairing suggestions.",
+                            "Keep English flows sharper, faster, and visually decisive.",
+                            "Use language-specific summaries rather than one universal description style."
+                        ]
+                    }
+                ]
+            }
+        }
     }
 }

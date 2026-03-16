@@ -347,7 +347,9 @@ export default function FloorSyncGuest({
 }) {
 
     const routeLocale = resolveGuestLocale(locale);
-    const floorSyncCopy = dict.floorSync as Partial<Record<string, string>> | undefined;
+    const floorSyncCopy = dict.floorSync as unknown as
+        | (Partial<Record<string, string>> & { dashboard?: unknown })
+        | undefined;
     const [guestLocale, setGuestLocale] = useState<ContentLocale>(routeLocale);
     const ui = UI[guestLocale];
     const usesRouteCopy = guestLocale === routeLocale;
