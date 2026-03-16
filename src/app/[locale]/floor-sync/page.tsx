@@ -12,6 +12,7 @@ export default async function FloorSyncPage(props: {
         session?: string;
         table?: string;
         guest?: string;
+        tab?: string;
     }>;
 }) {
     const params = await props.params;
@@ -22,6 +23,14 @@ export default async function FloorSyncPage(props: {
         ? searchParams.table
         : getDefaultTableId();
     const guestMode = searchParams.guest === '1';
+    const initialTab =
+        searchParams.tab === 'live' ||
+        searchParams.tab === 'insights' ||
+        searchParams.tab === 'ai' ||
+        searchParams.tab === 'scan' ||
+        searchParams.tab === 'overview'
+            ? searchParams.tab
+            : 'overview';
 
     let dishes: Dish[] = [];
     let categories: Category[] = [];
@@ -54,12 +63,13 @@ export default async function FloorSyncPage(props: {
     }
 
     return (
-        <div className="min-h-screen bg-[#0A0A0A] text-white pt-24 font-sans selection:bg-amber-500/30">
+        <div className="h-dvh overflow-hidden bg-[#05070a] text-white font-sans selection:bg-amber-500/30">
             <FloorSync
                 dict={dict}
                 initialCategories={categories}
                 initialDishes={dishes}
                 initialFloorState={floorState}
+                initialTab={initialTab}
                 locale={params.locale}
                 sessionId={sessionId}
             />

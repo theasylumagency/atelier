@@ -44,7 +44,7 @@ export default async function FloorSyncAccessSection({
         })
     );
 
-    const boardHref = getFloorSyncBoardPath(locale, sessionId);
+    const boardHref = getFloorSyncBoardPath(String(locale), undefined, 'live');
 
     return (
         <section className={`${compact ? 'py-24' : 'min-h-screen pt-32 pb-24'} bg-black text-white`}>

@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import type { AppDictionary } from '@/lib/dictionaries';
-import { getFloorSyncHubPath } from '@/lib/floor-sync';
+import { getFloorSyncBoardPath } from '@/lib/floor-sync';
 
 export default function Transition({ dict }: { dict: AppDictionary }) {
     const params = useParams();
     const locale = String(params.locale || 'en');
+    const liveBoardHref = getFloorSyncBoardPath(locale, undefined, 'live');
 
     return (
         <section className="relative flex min-h-[100vh] w-full items-center justify-center overflow-hidden border-y border-neutral-800 bg-[#050505]">
@@ -52,7 +53,7 @@ export default function Transition({ dict }: { dict: AppDictionary }) {
                         {dict.transition.cta1}
                     </Link>
                     <Link
-                        href={getFloorSyncHubPath(locale)}
+                        href={liveBoardHref}
                         className="flex items-center justify-center border border-white bg-white px-8 py-4 font-mono text-[10px] font-bold uppercase tracking-widest text-black transition-transform active:scale-95 hover:bg-neutral-200"
                     >
                         {dict.transition.cta2}

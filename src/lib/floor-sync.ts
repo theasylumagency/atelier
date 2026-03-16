@@ -158,13 +158,23 @@ export function getFloorSyncHubPath(locale: AppLocale | string) {
     return `/${locale}/floor-sync/access`;
 }
 
-export function getFloorSyncBoardPath(locale: AppLocale | string, sessionId?: string) {
-    if (!sessionId) {
-        return `/${locale}/floor-sync`;
+export function getFloorSyncBoardPath(
+    locale: AppLocale | string,
+    sessionId?: string,
+    tab?: 'overview' | 'live' | 'insights' | 'ai' | 'scan'
+) {
+    const params = new URLSearchParams();
+
+    if (sessionId) {
+        params.set('session', sessionId);
     }
 
-    const params = new URLSearchParams({ session: sessionId });
-    return `/${locale}/floor-sync?${params.toString()}`;
+    if (tab) {
+        params.set('tab', tab);
+    }
+
+    const query = params.toString();
+    return query ? `/${locale}/floor-sync?${query}` : `/${locale}/floor-sync`;
 }
 
 export function getFloorSyncGuestPath(

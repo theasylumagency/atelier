@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import type { AppDictionary } from '@/lib/dictionaries';
-import { getFloorSyncHubPath } from '@/lib/floor-sync';
+import { getFloorSyncBoardPath } from '@/lib/floor-sync';
 
 export default function Process({ dict }: { dict: AppDictionary }) {
     const params = useParams();
     const locale = params.locale || 'en';
-    const floorSyncHref = getFloorSyncHubPath(String(locale));
+    const processTabs = ['live', 'insights', 'ai'] as const;
     const [activeIndex, setActiveIndex] = useState(0);
 
     // Auto-cycle the active step
@@ -102,7 +102,11 @@ export default function Process({ dict }: { dict: AppDictionary }) {
 
                         return (
                             <Link
-                                href={floorSyncHref}
+                                href={getFloorSyncBoardPath(
+                                    String(locale),
+                                    undefined,
+                                    processTabs[idx] || 'overview'
+                                )}
                                 key={idx}
                                 className="group flex flex-col items-center relative cursor-pointer"
                                 onMouseEnter={() => setActiveIndex(idx)} // Pause auto-cycle on hover
