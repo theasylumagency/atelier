@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import type { AppDictionary } from '@/lib/dictionaries';
 import { getFloorSyncHubPath } from '@/lib/floor-sync';
 
@@ -9,9 +9,7 @@ export default function Navigation({ dict, locale }: { dict: AppDictionary; loca
     const [hidden, setHidden] = useState(false);
     const [hovered, setHovered] = useState(false);
     const pathname = usePathname();
-    const searchParams = useSearchParams();
     const isFloorSyncBoardRoute = pathname?.endsWith('/floor-sync');
-    const guestMode = isFloorSyncBoardRoute && searchParams.get('guest') === '1';
 
     useEffect(() => {
         let lastScrollY = window.scrollY;
@@ -35,7 +33,7 @@ export default function Navigation({ dict, locale }: { dict: AppDictionary; loca
         return segments.join('/');
     };
 
-    if (guestMode || isFloorSyncBoardRoute) {
+    if (isFloorSyncBoardRoute) {
         return null;
     }
 
