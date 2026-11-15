@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-02-23T09:05:31.345Z",
+  "items": [
+    {
+      "id": "cat_0001",
+      "order": 10,
+      "status": "active",
+      "title": {
+        "ka": "ცივი კერძები",
+        "en": "Cold dishes",
+        "ru": "Холодные закуски"
+      }
+    },
+    {
+      "id": "cat_0002",
+      "order": 20,
+      "status": "active",
+      "title": {
+        "ka": "სალათები",
+        "en": "Salads",
+        "ru": "Салаты"
+      }
+    },
+    {
+      "id": "cat_0003",
+      "order": 30,
+      "status": "active",
+      "title": {
+        "ka": "მაყალი",
+        "en": "Barbecues",
+        "ru": "Барбекю"
+      }
+    },
+    {
+      "id": "cat_0004",
+      "order": 40,
+      "status": "active",
+      "title": {
+        "ka": "პურეული",
+        "en": "Dough Dishes",
+        "ru": "Блюда из теста"
+      }
+    },
+    {
+      "id": "cat_0005",
+      "order": 50,
+      "status": "active",
+      "title": {
+        "ka": "ხინკალი",
+        "en": "Khinkali",
+        "ru": "Хинкали"
+      }
+    },
+    {
+      "id": "cat_0006",
+      "order": 60,
+      "status": "active",
+      "title": {
+        "ka": "სოუსები",
+        "en": "Sauces",
+        "ru": "Соусы"
+      }
+    },
+    {
+      "id": "cat_0007",
+      "order": 70,
+      "status": "active",
+      "title": {
+        "ka": "წვნიანი კერძები",
+        "en": "Soups",
+        "ru": "Супы"
+      }
+    },
+    {
+      "id": "cat_0008",
+      "order": 80,
+      "status": "active",
+      "title": {
+        "ka": "ცხელი კერძები",
+        "en": "Hot Dishes",
+        "ru": "Горячие блюда"
+      }
+    },
+    {
+      "id": "cat_0009",
+      "order": 90,
+      "status": "active",
+      "title": {
+        "ka": "დესერტი",
+        "en": "Desserts",
+        "ru": "Десерты"
+      }
+    },
+    {
+      "id": "cat_0010",
+      "order": 100,
+      "status": "active",
+      "title": {
+        "ka": "უალკოჰოლო სასმელი",
+        "en": "Soft Drinks",
+        "ru": "Безалкогольные напитки"
+      }
+    },
+    {
+      "id": "cat_0011",
+      "order": 110,
+      "status": "active",
+      "title": {
+        "ka": "ყავა-ჩაი",
+        "en": "Coffee and Tea",
+        "ru": "Кофе и чай"
+      }
+    },
+    {
+      "id": "cat_0012",
+      "order": 120,
+      "status": "active",
+      "title": {
+        "ka": "საუზმე",
+        "en": "Breakfast",
+        "ru": "Завтрак"
+      }
+    },
+    {
+      "id": "cat_0013",
+      "order": 130,
+      "status": "active",
+      "title": {
+        "ka": "ლუდი",
+        "en": "Beer",
+        "ru": ""
+      }
+    },
+    {
+      "id": "cat_0014",
+      "order": 140,
+      "status": "active",
+      "title": {
+        "ka": "ბოთლის ღვინო \"შატო მუხრანი\"",
+        "en": "Bottled wine \"Chateau Mukhrani\"",
+        "ru": "Вино в бутылках \"Шато Мухрани\""
+      }
+    },
+    {
+      "id": "cat_0015",
+      "order": 150,
+      "status": "active",
+      "title": {
+        "ka": "ცქრიალა ღვინო",
+        "en": "Sparkling wine",
+        "ru": "Игристое вино"
+      }
+    },
+    {
+      "id": "cat_0016",
+      "order": 160,
+      "status": "active",
+      "title": {
+        "ka": "ჩამოსასხმელი ღვინო",
+        "en": "Draft wine",
+        "ru": "Разливное вино"
+      }
+    },
+    {
+      "id": "cat_0017",
+      "order": 170,
+      "status": "active",
+      "title": {
+        "ka": "სახლის არაყი",
+        "en": "Homemade vodka",
+        "ru": "Домашняя водка"
+      }
+    },
+    {
+      "id": "cat_0018",
+      "order": 180,
+      "status": "active",
+      "title": {
+        "ka": "არაყი",
+        "en": "Vodka",
+        "ru": "Водка"
+      }
+    },
+    {
+      "id": "cat_0019",
+      "order": 190,
+      "status": "active",
+      "title": {
+        "ka": "კონიაკი",
+        "en": "Cognac",
+        "ru": "Коньяк"
+      }
+    },
+    {
+      "id": "cat_0020",
+      "order": 200,
+      "status": "active",
+      "title": {
+        "ka": "ვისკი",
+        "en": "Whiskey",
+        "ru": "Виски"
+      }
+    },
+    {
+      "id": "cat_0021",
+      "order": 210,
+      "status": "active",
+      "title": {
+        "ka": "კოქტეილი",
+        "en": "Cocktail",
+        "ru": "Коктейль"
+      }
+    },
+    {
+      "id": "cat_0022",
+      "order": 220,
+      "status": "active",
+      "title": {
+        "ka": "ჩილიმი",
+        "en": "Hookah",
+        "ru": "Кальян"
+      }
+    }
+  ]
+}

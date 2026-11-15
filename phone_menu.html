@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'ATELIER - Premium Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000000",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .text-glow { text-shadow: 0 0 15px rgba(255,255,255,0.1); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-slate-500/30">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/5">
+<div class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+<button class="p-2 -ml-2 hover:bg-slate-200/50 dark:hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+<h1 class="text-xl font-bold tracking-[0.2em] uppercase text-glow">L'Atelier</h1>
+<div class="flex items-center gap-4">
+<button class="relative p-2 hover:bg-slate-200/50 dark:hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+<span class="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-slate-900 dark:bg-slate-100 text-[10px] font-bold text-white dark:text-black">2</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto pb-24">
+<!-- Editorial Hero Section -->
+<section class="px-6 py-12 border-b border-slate-200 dark:border-white/5">
+<p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 mb-2">Winter Collection</p>
+<h2 class="text-4xl md:text-6xl font-light leading-none mb-6">The Sensory <br/><span class="font-bold">Narrative</span></h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-md leading-relaxed font-light">
+                An exploration of textures and origins. Every plate is a minimalist composition of seasonal purity.
+            </p>
+</section>
+<!-- Sophisticated Horizontal Navigation -->
+<nav class="sticky top-[69px] z-40 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-white/5 overflow-hidden">
+<div class="flex items-center overflow-x-auto no-scrollbar py-4 px-6 gap-8 whitespace-nowrap">
+<a class="text-xs uppercase tracking-widest font-bold border-b-2 border-primary dark:border-slate-100 pb-1" href="#">Cold Starters</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Warm Entrees</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">From the Josper</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Floral Infusions</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Seafood</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Vintage Wines</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Desserts</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Digestifs</a>
+<a class="text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Truffle Collection</a>
+</div>
+</nav>
+<!-- Menu Grid -->
+<div class="p-6 grid gap-12">
+<!-- Dish Card 1 -->
+<article class="group relative flex flex-col gap-6">
+<div class="aspect-[4/5] w-full overflow-hidden bg-slate-100 dark:bg-white/5 rounded-xl">
+<img alt="Hokkaido Scallops" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Macro close-up of elegantly plated scallops with citrus garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbuddDjkFI8xU2BTSBSZwa-wppmp_HFx4fi1bvP_yr2M3wAKliNMmcUp53NTrF88ZIJGoqQHhKLo3f7k-4aCSvkEucp8nuRgHem8TfdAnJVNxmZ__0XqZBA8b__shsniUQGPM8sBjlzNmnAwUwA9izHcWwvGkZgbc9FVEu4AOyTiUcqAqQDJM3CAbq5DyGZlYkNAriURdJVIKOL9rB9FKXBS_PnqOTHu3TFGbYXcHCRFMP_pacSsxw-qS3EUThBqdCwf7UIGyJB7iw"/>
+<div class="absolute top-4 left-4 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-[10px] uppercase tracking-widest rounded-full text-white">Signature</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<h3 class="text-2xl font-medium tracking-tight">Hokkaido Scallops</h3>
+<span class="text-lg font-light">$38</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed font-light max-w-sm">
+                        Shiso, Yuzu Kosho, Finger Lime. Infused with cold-pressed bergamot oil and artisanal sea salt.
+                    </p>
+<div class="flex items-center gap-6 mt-4">
+<button class="text-xs uppercase tracking-[0.2em] font-bold border-b border-slate-900 dark:border-white pb-1 hover:opacity-60 transition-opacity">
+                            View Details
+                        </button>
+<button class="flex items-center gap-2 group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">add_circle</span>
+<span class="text-xs uppercase tracking-[0.2em] font-bold">Add to Cart</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Dish Card 2 -->
+<article class="group relative flex flex-col gap-6">
+<div class="aspect-[4/5] w-full overflow-hidden bg-slate-100 dark:bg-white/5 rounded-xl">
+<img alt="Heirloom Radish" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Artistic arrangement of sliced colorful heirloom radishes on dark ceramic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwdoplKnqq4k-tv3r3mc9okoIznq5tX1F9pZkhncqTzlchtW2o21CHM7eEX3Ot2iDBw2ZsxAqwGBhFFQIeq7F1OgOFLxagzCH-JOBv46acSGy5TepAXeRbPgu2LKoC6Tc7zsWmjytaRxdkf8ParUqKaMWOH4TcdJUfYVhZzCN0NhBZ5h_OhpOhfaD5-swQyU4-ubLpOG7Y3aw59HrfzQCv8i8sX9zhNWdgTJ-cEnAHSLEQzRS9N0e6iCNu1vfrdyrLC_-opGlMCPOL"/>
+<div class="absolute top-4 left-4 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-[10px] uppercase tracking-widest rounded-full text-white">Vegetarian</span>
+<span class="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-[10px] uppercase tracking-widest rounded-full text-white">Chef's Choice</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<h3 class="text-2xl font-medium tracking-tight">Heirloom Garden</h3>
+<span class="text-lg font-light">$26</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed font-light max-w-sm">
+                        Fermented honey, whipped pine nuts, and wild-foraged herbs from the estate gardens.
+                    </p>
+<div class="flex items-center gap-6 mt-4">
+<button class="text-xs uppercase tracking-[0.2em] font-bold border-b border-slate-900 dark:border-white pb-1 hover:opacity-60 transition-opacity">
+                            View Details
+                        </button>
+<button class="flex items-center gap-2 group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">add_circle</span>
+<span class="text-xs uppercase tracking-[0.2em] font-bold">Add to Cart</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Dish Card 3 -->
+<article class="group relative flex flex-col gap-6">
+<div class="aspect-[4/5] w-full overflow-hidden bg-slate-100 dark:bg-white/5 rounded-xl">
+<img alt="Iberico Pluma" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Tender cut of Iberico pork with charcoal grill marks and minimal garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq4Ps8pFUTsvjmrSyYcIm-ofX0daNvkB4FW39SxDOYt2JSWHjm7ccxaO_TH6ZXWJVmvApovbJAj2ECVMyiZ5aNjTamoag_ljkNGc89t8oAh4TlVQTEJDwd5xKPiJ-b2Pla6E4aI96Q843fdHUzlcM5cCQ-dT_AdDbkgRp82NGDv4CORqF1aA7GTeFDNIs-Kw2qFxICkkhM349kZbI3IGvPayIw_UcdWmy9NmrVLIdyMD51qw_apv4xirx317yGaUpic6WAsPAB6kJs"/>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<h3 class="text-2xl font-medium tracking-tight">Iberico Pluma</h3>
+<span class="text-lg font-light">$54</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 leading-relaxed font-light max-w-sm">
+                        Charred over Josper charcoal. Served with smoked eggplant silk and PX reduction.
+                    </p>
+<div class="flex items-center gap-6 mt-4">
+<button class="text-xs uppercase tracking-[0.2em] font-bold border-b border-slate-900 dark:border-white pb-1 hover:opacity-60 transition-opacity">
+                            View Details
+                        </button>
+<button class="flex items-center gap-2 group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">add_circle</span>
+<span class="text-xs uppercase tracking-[0.2em] font-bold">Add to Cart</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-background-light dark:bg-background-dark/95 backdrop-blur-lg border-t border-slate-200 dark:border-white/5 safe-area-inset-bottom">
+<div class="max-w-screen-xl mx-auto flex items-center justify-around py-4">
+<a class="flex flex-col items-center gap-1 text-slate-900 dark:text-white" href="#">
+<span class="material-symbols-outlined fill-[1] text-2xl">restaurant_menu</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Menu</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">calendar_today</span>
+<span class="text-[10px] uppercase tracking-widest">Reserve</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] uppercase tracking-widest">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">location_on</span>
+<span class="text-[10px] uppercase tracking-widest">Find Us</span>
+</a>
+</div>
+</nav>
+<!-- Floating Cart Status (Minimalist) -->
+<div class="fixed bottom-24 right-6 z-50">
+<button class="bg-slate-900 dark:bg-slate-100 text-white dark:text-black rounded-full h-14 w-14 flex items-center justify-center shadow-2xl group active:scale-95 transition-transform">
+<div class="relative">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+<div class="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full border-2 border-slate-900 dark:border-slate-100"></div>
+</div>
+</button>
+</div>
+</body></html>

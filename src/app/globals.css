@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+
+}
+
+@theme inline {
+  --color-background-dark: #0a0a0a;
+  --color-background-darker: #111111;
+  --color-background-zinc: #18181b;
+  --font-inter: var(--font-inter);
+
+}
+
+.locale-latin :is(h1, h2, h3, h4) {
+  font-family: var(--font-playfair-latin), serif;
+}
+
+.locale-ka :is(h1, h2, h3, h4) {
+  font-family: var(--font-playfair-ka), serif;
+}
+
+.font-serif-latin {
+  font-family: var(--font-playfair-latin), serif;
+}
+
+.font-serif-ka {
+  font-family: var(--font-playfair-ka), serif;
+}
+
+.texture-haze {
+  background:
+    radial-gradient(60rem 34rem at 12% 18%, rgba(255, 255, 255, 0.12), transparent 55%),
+    radial-gradient(42rem 26rem at 82% 22%, rgba(255, 255, 255, 0.08), transparent 52%),
+    radial-gradient(48rem 28rem at 50% 78%, rgba(214, 214, 214, 0.05), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  background-color: #050505;
+  filter: blur(24px);
+  transform: scale(1.06);
+}
+
+.texture-lattice {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.07), transparent 34%),
+    radial-gradient(circle at 82% 28%, rgba(255, 255, 255, 0.05), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  background-size: 120px 120px, 120px 120px, auto, auto, auto;
+  background-position: 0 0, 0 0, center, center, center;
+  background-color: #050505;
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+
+
+  .animate-fade-in {
+    animation: fadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  .text-justified {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .luxury-gradient {
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.2) 0%, rgba(10, 10, 10, 0.8) 100%);
+  }
+
+  .magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+
+  .glass-panel {
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glowing-line {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    width: 1px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.categories-mobile::-webkit-scrollbar {
+  height: 8px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[lang="ka"] {
+  line-height: 1.6;
+}
+
+html[lang="ka"] .leading-none,
+html[lang="ka"] .leading-\[0\.9\],
+html[lang="ka"] .leading-\[1\.1\] {
+  line-height: 1.3 !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* ------------------------------------------------------------------
+   Landing UI primitives
+   ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.btn-primary,
+.btn-ghost,
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  min-height: 3.5rem;
+  padding: 0 2rem;
+  background: #f5f5f4;
+  color: #0a0a0a;
+  border: 1px solid #f5f5f4;
+}
+.btn-primary:hover { background: #d6d3d1; border-color: #d6d3d1; }
+
+.btn-ghost {
+  min-height: 3.5rem;
+  padding: 0 2rem;
+  color: #e7e5e4;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(10, 10, 10, 0.35);
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover { border-color: rgba(255, 255, 255, 0.6); color: #fff; }
+
+.btn-nav {
+  padding: 0.55rem 1rem;
+  font-size: 11px;
+  color: #0a0a0a;
+  background: #f5f5f4;
+}
+.btn-nav:hover { background: #d6d3d1; }
+
+.nav-link {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #a8a29e;
+  transition: color 0.3s ease;
+}
+.nav-link:hover { color: #fff; }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f5f5f4;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 0.4rem;
+  transition: border-color 0.3s ease, gap 0.3s ease;
+}
+.link-arrow:hover { border-color: #fff; gap: 0.8rem; }
+
+/* ------------------------------------------------------------------
+   Georgian typography
+   Georgian has no letter case: CSS `uppercase` turns Mkhedruli into
+   Mtavruli, which is hard to read at small sizes, and wide tracking
+   breaks Georgian word shapes. Neutralise both across the Georgian
+   locale (landing, panel and floor board alike).
+   ------------------------------------------------------------------ */
+.locale-ka .uppercase,
+.locale-ka .eyebrow,
+.locale-ka .btn-primary,
+.locale-ka .btn-ghost,
+.locale-ka .btn-nav,
+.locale-ka .nav-link,
+.locale-ka .link-arrow {
+  text-transform: none;
+}
+
+.locale-ka [class*="tracking-["],
+.locale-ka .tracking-widest,
+.locale-ka .tracking-wider,
+.locale-ka .tracking-wide,
+.locale-ka .eyebrow,
+.locale-ka .btn-primary,
+.locale-ka .btn-ghost,
+.locale-ka .btn-nav,
+.locale-ka .nav-link,
+.locale-ka .link-arrow {
+  letter-spacing: 0.02em;
+}
+
+.locale-ka .eyebrow { font-size: 13px; font-weight: 500; }
+.locale-ka .btn-primary,
+.locale-ka .btn-ghost { font-size: 14px; font-weight: 500; }
+.locale-ka .btn-nav,
+.locale-ka .nav-link { font-size: 13px; font-weight: 500; }
+.locale-ka .link-arrow { font-size: 14px; font-weight: 500; }
+
+/* Tiny labels are unreadable in Georgian script — give them a floor. */
+.locale-ka .text-\[8px\],
+.locale-ka .text-\[9px\],
+.locale-ka .text-\[10px\] {
+  font-size: 11.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+.locale-latin .font-serif { font-family: var(--font-playfair-latin), serif; }
+.locale-ka .font-serif { font-family: var(--font-playfair-ka), serif; }
+.locale-ka .font-serif-latin,
+.locale-latin .font-serif-latin { font-family: var(--font-playfair-latin), serif; }

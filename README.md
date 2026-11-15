@@ -1,0 +1,74 @@
+# L'Atelier (Maîtrise)
+
+**A Brutalist Luxury Digital Maître D'**
+
+L'Atelier is a premium, cutting-edge web application designed for exclusive restaurants and hospitality environments. It serves as both a high-end digital menu experience for guests and a real-time, spatial command center for the floor staff and kitchen. 
+
+The application is engineered with a **Dark Modernism** and **Brutalist Luxury** aesthetic—featuring absolute contrast minimalism, cinematic interactions, and an uncompromisingly sleek user interface.
+
+## 🚀 Tech Stack
+
+Built with modern, bleeding-edge web technologies to ensure maximum performance and developer experience:
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language:** TypeScript
+- **AI Integration:** `@google/generative-ai`
+
+## ✨ Core Features
+
+- **The Spatial Protocol (FloorSync):** A frictionless, real-time connection between the guest's mobile device and the kitchen's floor board. Eliminates wait times and provides absolute command over the dining experience.
+- **Digital Maître D' (Mobile Interface):** A highly refined, edge-to-edge mobile menu simulation featuring rich photography, dark gradient overlays, and glassmorphic micro-animations.
+- **The Command Center / Panel:** A brutalist dashboard for staff to manage active collections, dishes, and floor status.
+- **Internationalization (i18n):** Built-in support for multiple locales (e.g., English and Georgian) to cater to an international luxury clientele.
+- **Cinematic Interactions:** Graceful fade-ins, scale reveals, and orchestrated scrolling experiences that feel deliberate and high-end.
+
+## 🎨 Design System
+
+The application strictly adheres to the **Asylum Agency Design System**:
+- **Palette:** Absolute Black (`#000000`) base, Stark White (`#FFFFFF`) contrast, Muted Zinc (`#A1A1AA`) for secondary text, and Whisper White (`#FFFFFF` at 5-10% opacity) for subtle structural borders.
+- **Typography:** Massive, unapologetic display headers contrasted with clean, utilitarian body text with wide tracking.
+- **Layout:** Extreme use of negative space and asymmetrical tension to command focus.
+
+*For complete details, please refer to the `DESIGN.md` file.*
+
+## 🏁 Getting Started
+
+To run the development server locally:
+
+First, install the dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application. You can start editing the page by modifying `src/app/page.tsx`.
+
+## 📁 Project Structure
+
+This project follows a standard Next.js App Router structure within the `src` directory:
+
+- `src/app/`: Next.js App Router pages, layouts, and API routes. Includes the `[locale]` dynamic route for internationalization.
+- `src/components/`: Reusable React components (e.g., `FloorSync`, `DishCard`, etc.).
+- `src/lib/`: Utility functions, configuration files, and i18n dictionaries.
+- `public/`: Static assets such as images, fonts, and dish uploads.
+- `data/`: JSON data files for menus, categories, and configurations.
+
+## 📜 License
+
+Private and Confidential. All rights reserved.

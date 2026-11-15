@@ -1,0 +1,51 @@
+'use client';
+
+import { useState } from 'react';
+
+interface TableActionsProps {
+    scanUrl: string;
+    scanPath: string;
+    labels: {
+        copied: string;
+        copyLink: string;
+        desktopPreview: string;
+    };
+}
+
+export default function TableActions({ scanUrl, scanPath, labels }: TableActionsProps) {
+    const [isCopied, setIsCopied] = useState(false);
+
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(scanUrl);
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    };
+
+    return (
+        <div className="mt-5 flex items-center justify-between border-t border-white/5 pt-4">
+            <button
+                onClick={handleCopy}
+                className="group flex items-center gap-2 text-xs text-stone-400 hover:text-white transition-colors cursor-pointer"
+            >
+                <span className="material-symbols-outlined text-sm">
+                    {isCopied ? 'check' : 'content_copy'}
+                </span>
+                <span>{isCopied ? labels.copied : labels.copyLink}</span>
+            </button>
+
+            <a
+                href={scanPath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-xs text-stone-400 hover:text-white transition-colors"
+            >
+                <span>{labels.desktopPreview}</span>
+                <span className="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+        </div>
+    );
+}

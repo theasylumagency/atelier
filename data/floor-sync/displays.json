@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "display_home_main",
+      "name": "Homepage Main Screen",
+      "slug": "home-main",
+      "status": "active",
+      "lastSeenAt": null
+    }
+  ]
+}
